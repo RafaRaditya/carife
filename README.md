@@ -17,11 +17,11 @@ Build debug untuk kedua varian berjalan, **58 unit test lolos**, dan keduanya su
 
 Varian offline diuji dengan **mode pesawat aktif**: Home memuat 95 kafe Bekasi (92 dari OSM + 3 hero demo), ganti kota ke Jakarta menampilkan 604 kafe, detail menampilkan jam `Mo-Su 07:00–21:00` dan website asli, pencarian "kopi" menyaring 604 → 103 hasil. Tidak ada satu pun request jaringan.
 
-Peta penuh dan section **Peta** memakai tile **OpenStreetMap** lewat osmdroid, jadi gambarnya butuh internet (tile yang sudah pernah dibuka tersimpan di cache). Tanpa koneksi, pin dan daftar kafe di layar peta tetap berfungsi. Preview kecil di Home tetap ilustrasi lokal.
+Peta penuh, section **Peta**, dan preview di Home memakai tile **OpenStreetMap** lewat osmdroid, jadi gambarnya butuh internet (tile yang sudah pernah dibuka tersimpan di cache). Tanpa koneksi, pin dan daftar kafe di layar peta tetap berfungsi.
 
 | Layar | Status | Catatan |
 | --- | --- | --- |
-| Home Discovery | Berfungsi | Kafe nyata per kota + data contoh lengkap, jumlah buka dihitung dari data, preview peta pin ilustratif, peta penuh OSM yang bisa digeser/zoom, pemilih kota |
+| Home Discovery | Berfungsi | Kafe nyata per kota + data contoh lengkap, jumlah buka dihitung dari data, peta OSM interaktif, peta penuh, pemilih kota |
 | Explore & Filters | Berfungsi | Filter AND, sort, panel bottom sheet, peta OSM interaktif, empty state yang menjelaskan |
 | Cafe Detail | Berfungsi | Semua field OSM + simulasi kepadatan, menu, dan ulasan contoh |
 | Bandingkan | Berfungsi | Matriks 2–3 kafe digeser horizontal, sorotan Cocok Nugas & Paling Hemat |

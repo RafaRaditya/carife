@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -69,7 +70,7 @@ import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafeCard
 import com.carife.app.ui.components.CarifeChip
 import com.carife.app.ui.components.FullMapDialog
-import com.carife.app.ui.components.IllustratedMap
+import com.carife.app.ui.components.OsmMapView
 import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifePrimaryFixed
@@ -170,12 +171,19 @@ fun HomeScreen(
         }
 
         item {
-            Box(Modifier.padding(horizontal = 20.dp)) {
-                IllustratedMap(
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth()
+                    .height(170.dp)
+                    .clip(RoundedCornerShape(20.dp)),
+            ) {
+                OsmMapView(
                     city = appState.selectedCity,
                     cafes = nearest,
-                    onPinClick = { cafe -> onOpenCafe(cafe.id) },
-                    onMapClick = onOpenExplore,
+                    onOpenCafe = onOpenCafe,
+                    maxMarkers = 60,
+                    modifier = Modifier.fillMaxSize(),
                 )
                 Surface(
                     onClick = { showFullMap = true },
