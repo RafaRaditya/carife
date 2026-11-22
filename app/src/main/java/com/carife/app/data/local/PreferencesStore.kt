@@ -9,9 +9,12 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.carife.app.core.model.Amenity
 import com.carife.app.core.model.BudgetBucket
 import com.carife.app.core.model.RadiusPreference
+import com.carife.app.core.model.StudyRoom
 import com.carife.app.core.model.UserPreferences
+import com.carife.app.core.model.UserProfile
 import com.carife.app.core.model.WifiRequirement
 import com.carife.app.core.model.ZonePreference
+import com.carife.app.data.DemoFriendsData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
@@ -30,6 +33,11 @@ data class StoredPreferences(
     val amenities: List<String> = emptyList(),
     val radius: String = RadiusPreference.ANY.name,
     val hasSavedPreferences: Boolean = false,
+    val profile: UserProfile = UserProfile(),
+    val addedFriendIds: List<String> = DemoFriendsData.defaultFriendIds,
+    val joinedSpotFriendIds: List<String> = emptyList(),
+    val rooms: List<StudyRoom> = emptyList(),
+    val joinedRoomIds: List<String> = emptyList(),
 ) {
     fun toUserPreferences(): UserPreferences = UserPreferences(
         budget = BudgetBucket.entries.firstOrNull { it.name == budget } ?: BudgetBucket.ANY,
@@ -38,19 +46,6 @@ data class StoredPreferences(
         amenities = amenities.mapNotNull { name -> Amenity.entries.firstOrNull { it.name == name } }.toSet(),
         radius = RadiusPreference.entries.firstOrNull { it.name == radius } ?: RadiusPreference.ANY,
     )
-
-    companion object {
-        fun from(prefs: UserPreferences, favorites: List<String>, cityId: String) = StoredPreferences(
-            favorites = favorites,
-            selectedCityId = cityId,
-            budget = prefs.budget.name,
-            wifi = prefs.wifi.name,
-            zone = prefs.zone.name,
-            amenities = prefs.amenities.map { it.name },
-            radius = prefs.radius.name,
-            hasSavedPreferences = true,
-        )
-    }
 }
 
 class PreferencesStore(private val context: Context) {
@@ -58,36 +53,94 @@ class PreferencesStore(private val context: Context) {
     private val json = Json { ignoreUnknownKeys = true }
     private val key = stringPreferencesKey("carife_state")
 
-    val flow: Flow<StoredPreferences> = context.dataStore.data.map { prefs ->
-        val raw = prefs[key]
-        if (raw.isNullOrBlank()) {
-            StoredPreferences()
+    val flow: Flow<StoredPreferences> = context.dataStore.data.map { prefs -> decode(prefs[key]) }
+
+    suspend fun savePreferences(value: UserPreferences) = update { current ->
+        current.withPreferences(value)
+    }
+
+    suspend fun saveAccount(profile: UserProfile, cityId: String) = update { current ->
+        current.copy(profile = profile, selectedCityId = cityId)
+    }
+
+    suspend fun setProfilePhoto(hasPhoto: Boolean, updatedAtEpochMillis: Long) = update { current ->
+        current.copy(
+            profile = current.profile.copy(
+                hasPhoto = hasPhoto,
+                photoUpdatedAtEpochMillis = updatedAtEpochMillis,
+            )
+        )
+    }
+
+    suspend fun addFriend(friendId: String) = update { current ->
+        if (friendId in current.addedFriendIds) {
+            current
         } else {
-            runCatching { json.decodeFromString<StoredPreferences>(raw) }.getOrDefault(StoredPreferences())
+            current.copy(addedFriendIds = current.addedFriendIds + friendId)
         }
     }
 
-    suspend fun save(value: StoredPreferences) {
-        context.dataStore.edit { prefs -> prefs[key] = json.encodeToString(value) }
+    suspend fun removeFriend(friendId: String) = update { current ->
+        val hostedDemoRoomIds = DemoFriendsData.demoRooms
+            .filter { room -> room.hostFriendId == friendId }
+            .map { room -> room.id }
+            .toSet()
+        current.copy(
+            addedFriendIds = current.addedFriendIds - friendId,
+            joinedSpotFriendIds = current.joinedSpotFriendIds - friendId,
+            joinedRoomIds = current.joinedRoomIds - hostedDemoRoomIds,
+        )
     }
 
-    suspend fun toggleFavorite(cafeId: String) {
+    suspend fun toggleJoinedSpot(friendId: String) = update { current ->
+        val joined = current.joinedSpotFriendIds.toMutableSet()
+        if (!joined.add(friendId)) joined.remove(friendId)
+        current.copy(joinedSpotFriendIds = joined.toList())
+    }
+
+    suspend fun createRoom(room: StudyRoom) = update { current ->
+        current.copy(rooms = current.rooms + room)
+    }
+
+    suspend fun deleteRoom(roomId: String) = update { current ->
+        current.copy(
+            rooms = current.rooms.filterNot { it.id == roomId },
+            joinedRoomIds = current.joinedRoomIds - roomId,
+        )
+    }
+
+    suspend fun toggleJoinedRoom(roomId: String) = update { current ->
+        val joined = current.joinedRoomIds.toMutableSet()
+        if (!joined.add(roomId)) joined.remove(roomId)
+        current.copy(joinedRoomIds = joined.toList())
+    }
+
+    suspend fun toggleFavorite(cafeId: String) = update { current ->
+        val favorites = current.favorites.toMutableList()
+        if (favorites.contains(cafeId)) favorites.remove(cafeId) else favorites.add(cafeId)
+        current.copy(favorites = favorites)
+    }
+
+    suspend fun selectCity(cityId: String) = update { current ->
+        current.copy(selectedCityId = cityId)
+    }
+
+    private suspend fun update(transform: (StoredPreferences) -> StoredPreferences) {
         context.dataStore.edit { prefs ->
-            val current = prefs[key]?.let {
-                runCatching { json.decodeFromString<StoredPreferences>(it) }.getOrNull()
-            } ?: StoredPreferences()
-            val favorites = current.favorites.toMutableList()
-            if (favorites.contains(cafeId)) favorites.remove(cafeId) else favorites.add(cafeId)
-            prefs[key] = json.encodeToString(current.copy(favorites = favorites))
+            prefs[key] = json.encodeToString(transform(decode(prefs[key])))
         }
     }
 
-    suspend fun selectCity(cityId: String) {
-        context.dataStore.edit { prefs ->
-            val current = prefs[key]?.let {
-                runCatching { json.decodeFromString<StoredPreferences>(it) }.getOrNull()
-            } ?: StoredPreferences()
-            prefs[key] = json.encodeToString(current.copy(selectedCityId = cityId))
-        }
-    }
+    private fun StoredPreferences.withPreferences(value: UserPreferences): StoredPreferences = copy(
+        budget = value.budget.name,
+        wifi = value.wifi.name,
+        zone = value.zone.name,
+        amenities = value.amenities.map { it.name },
+        radius = value.radius.name,
+        hasSavedPreferences = true,
+    )
+
+    private fun decode(raw: String?): StoredPreferences =
+        raw?.let { runCatching { json.decodeFromString<StoredPreferences>(it) }.getOrNull() }
+            ?: StoredPreferences()
 }

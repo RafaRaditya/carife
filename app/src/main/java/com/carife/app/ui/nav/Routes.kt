@@ -7,6 +7,7 @@ object Routes {
     const val EXPLORE = "explore"
     const val COMPARE = "compare"
     const val PROFILE = "profile"
+    const val ACCOUNT = "account"
     const val DETAIL = "detail/{cafeId}"
     const val ARG_CAFE_ID = "cafeId"
 

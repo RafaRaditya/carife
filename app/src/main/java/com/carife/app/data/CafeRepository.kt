@@ -6,7 +6,6 @@ import com.carife.app.data.demo.DemoDataOverlay
 import com.carife.app.data.local.BundledCatalog
 import com.carife.app.data.local.CafeCache
 import com.carife.app.data.remote.CafeSourceException
-import com.carife.app.data.remote.OsmCafeMapper
 import com.carife.app.data.remote.OverpassClient
 import com.carife.app.data.remote.OverpassQuery
 import com.carife.app.domain.DistanceUtil
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.util.concurrent.atomic.AtomicBoolean
 
 enum class FeedOrigin {
     /** Snapshot OpenStreetMap yang dibundel di APK. Butuh nol koneksi. */
@@ -53,89 +51,64 @@ class CafeRepository(
     val state: StateFlow<CatalogState> = _state.asStateFlow()
 
     private val loadMutex = Mutex()
-    private val inFlight = AtomicBoolean(false)
+    private var userCoordinates: Pair<Double, Double>? = null
 
-    suspend fun load(
-        city: City,
-        userLat: Double? = null,
-        userLon: Double? = null,
-        forceRefresh: Boolean = false,
-    ) {
+    suspend fun load(city: City, forceRefresh: Boolean = false) {
         loadMutex.withLock {
-            val cached = cache.read(city.id, city.radiusMeters)
+            val cached = if (networkEnabled) cache.read(city.id, city.radiusMeters) else null
             val baseline = cached?.cafes ?: bundled.cafesFor(city)
             val origin = if (cached != null) FeedOrigin.CACHE else FeedOrigin.BUNDLED
             val now = System.currentTimeMillis()
             val cacheFresh = cached != null && now - cached.fetchedAtEpochMillis < CACHE_TTL_MS
+            val shouldRefresh = networkEnabled && (!cacheFresh || forceRefresh)
 
             _state.value = CatalogState(
                 city = city,
-                cafes = decorate(baseline, city, userLat, userLon),
-                origin = if (baseline.isEmpty()) null else origin,
-                isRefreshing = networkEnabled && (!cacheFresh || forceRefresh),
+                cafes = withDistances(DemoDataOverlay.apply(baseline, city.id), city),
+                origin = origin,
+                isRefreshing = shouldRefresh,
                 fetchedAtEpochMillis = cached?.fetchedAtEpochMillis,
-                errorMessage = null,
             )
 
-            if (!networkEnabled) return
-            if (cacheFresh && !forceRefresh) return
-
-            refresh(city, userLat, userLon)
+            if (shouldRefresh) refresh(city)
         }
     }
 
-    suspend fun refresh(city: City, userLat: Double? = null, userLon: Double? = null) {
-        if (!networkEnabled) return
-        if (!inFlight.compareAndSet(false, true)) return
-
-        _state.value = _state.value.copy(city = city, isRefreshing = true, errorMessage = null)
-
+    private suspend fun refresh(city: City) {
         try {
-            val body = client.fetchCafes(OverpassQuery.cafesAround(city))
-            val cafes = OsmCafeMapper.mapResponse(body, city.id)
+            val cafes = client.fetchCafes(OverpassQuery.cafesAround(city), city.id)
             val fetchedAt = System.currentTimeMillis()
             cache.write(city.id, city.radiusMeters, cafes, fetchedAt)
 
             _state.value = CatalogState(
                 city = city,
-                cafes = decorate(cafes, city, userLat, userLon),
+                cafes = withDistances(DemoDataOverlay.apply(cafes, city.id), city),
                 origin = FeedOrigin.NETWORK,
-                isRefreshing = false,
                 fetchedAtEpochMillis = fetchedAt,
             )
-        } catch (e: CafeSourceException) {
+        } catch (_: CafeSourceException) {
             val current = _state.value
-            val fallback = current.cafes.ifEmpty {
-                decorate(cache.read(city.id, city.radiusMeters)?.cafes ?: bundled.cafesFor(city), city, userLat, userLon)
-            }
-
-            _state.value = CatalogState(
-                city = city,
-                cafes = fallback,
-                origin = current.origin ?: FeedOrigin.BUNDLED,
+            _state.value = current.copy(
                 isRefreshing = false,
-                fetchedAtEpochMillis = current.fetchedAtEpochMillis,
-                errorMessage = if (fallback.isEmpty()) {
-                    "Tidak ada kafe bawaan untuk kota ini dan koneksi gagal."
+                errorMessage = if (current.cafes.isEmpty()) {
+                    "Belum ada katalog tersimpan dan pembaruan gagal."
                 } else {
-                    "Tidak bisa memperbarui. Menampilkan data offline."
+                    "Pembaruan gagal. Katalog tersimpan masih bisa digunakan."
                 },
             )
-        } finally {
-            inFlight.set(false)
         }
     }
 
     fun updateUserLocation(lat: Double?, lon: Double?) {
+        userCoordinates = if (lat != null && lon != null) lat to lon else null
         val current = _state.value
         val city = current.city ?: return
-        _state.value = current.copy(cafes = decorate(current.cafes, city, lat, lon))
+        _state.value = current.copy(cafes = withDistances(current.cafes, city))
     }
 
-    private fun decorate(cafes: List<Cafe>, city: City, userLat: Double?, userLon: Double?): List<Cafe> {
-        val refLat = userLat ?: city.lat
-        val refLon = userLon ?: city.lon
-        return DemoDataOverlay.apply(cafes, city.id).map { cafe ->
+    private fun withDistances(cafes: List<Cafe>, city: City): List<Cafe> {
+        val (refLat, refLon) = userCoordinates ?: (city.lat to city.lon)
+        return cafes.map { cafe ->
             cafe.copy(distanceMeters = DistanceUtil.haversineMeters(refLat, refLon, cafe.lat, cafe.lon))
         }
     }

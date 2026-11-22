@@ -13,23 +13,26 @@ import java.time.Instant
 
 object FilterEngine {
 
+    private val whitespace = Regex("\\s+")
+    private val wifiSpelling = Regex("\\bwi[\\s-]*fi\\b")
+
     fun apply(
         cafes: List<Cafe>,
         filters: ExploreFilters,
         now: Instant = Instant.now(),
+        matchScores: Map<String, Int> = emptyMap(),
     ): List<Cafe> {
         val filtered = cafes.filter { matches(it, filters, now) }
+        val byDistance = compareBy<Cafe>({ it.distanceMeters ?: Int.MAX_VALUE }, { it.name.lowercase() })
         return when (filters.sort) {
-            SortOption.NEAREST -> filtered.sortedWith(
-                compareBy({ it.distanceMeters ?: Int.MAX_VALUE }, { it.name.lowercase() })
-            )
+            SortOption.NEAREST -> filtered.sortedWith(byDistance)
 
             SortOption.CHEAPEST -> filtered.sortedWith(
                 compareBy({ it.priceMin ?: Int.MAX_VALUE }, { it.distanceMeters ?: Int.MAX_VALUE })
             )
 
             SortOption.MATCH -> filtered.sortedWith(
-                compareBy({ it.distanceMeters ?: Int.MAX_VALUE }, { it.name.lowercase() })
+                compareByDescending<Cafe> { matchScores[it.id] ?: -1 }.then(byDistance)
             )
         }
     }
@@ -52,11 +55,11 @@ object FilterEngine {
         }
 
         if (filters.amenities.isNotEmpty()) {
-            if (!filters.amenities.all { cafe.amenities.contains(it) }) return false
+            if (!filters.amenities.all(cafe::hasAmenity)) return false
         }
 
         if (filters.openNowOnly) {
-            if (OpeningHours.isOpenNow(cafe.openingHoursRaw, now) != true) return false
+            if (OpeningHours.isOpenNow(cafe, now) != true) return false
         }
 
         return true
@@ -70,6 +73,8 @@ object FilterEngine {
             cafe.area?.let { append(it).append(' ') }
             cafe.address?.let { append(it).append(' ') }
             cafe.amenities.forEach { append(it.label).append(' ') }
+            if (cafe.hasWifi) append("wifi ")
+            if ((cafe.outletCount ?: 0) > 0) append("colokan ")
         }
         return normalize(haystack).contains(query)
     }
@@ -86,7 +91,7 @@ object FilterEngine {
 
     private fun matchesWifi(cafe: Cafe, requirement: WifiRequirement): Boolean = when (requirement) {
         WifiRequirement.ANY -> true
-        WifiRequirement.STANDARD -> cafe.amenities.contains(Amenity.WIFI)
+        WifiRequirement.STANDARD -> cafe.hasWifi
         WifiRequirement.MIN_30 -> cafe.wifiMbps?.let { it >= 30 } ?: false
         WifiRequirement.OVER_30 -> cafe.wifiMbps?.let { it > 30 } ?: false
         WifiRequirement.OVER_50 -> cafe.wifiMbps?.let { it > 50 } ?: false
@@ -113,5 +118,5 @@ object FilterEngine {
     }
 
     private fun normalize(value: String): String =
-        value.trim().lowercase().replace(Regex("\\s+"), " ")
+        value.trim().lowercase().replace(wifiSpelling, "wifi").replace(whitespace, " ")
 }

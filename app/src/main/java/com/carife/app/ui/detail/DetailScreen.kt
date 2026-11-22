@@ -1,14 +1,11 @@
 package com.carife.app.ui.detail
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +14,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
@@ -37,15 +36,14 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.carife.app.core.model.Cafe
@@ -56,17 +54,22 @@ import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafePhotoPlaceholder
 import com.carife.app.ui.components.CarifeEmptyState
 import com.carife.app.ui.components.DemoBadge
+import com.carife.app.ui.components.SharePreview
 import com.carife.app.ui.components.formatRupiahFull
+import com.carife.app.ui.components.openCafeDirections
+import com.carife.app.ui.components.openShareSheet
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import com.carife.app.ui.theme.CarifeTertiary
-import java.time.Instant
 
 private const val NO_DATA = "Belum ada data"
 
+private enum class ShareAction { CAFE, INVITE }
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DetailScreen(
     viewModel: CarifeViewModel,
@@ -77,6 +80,7 @@ fun DetailScreen(
     val appState by viewModel.appState.collectAsStateWithLifecycle()
     val catalog by viewModel.catalog.collectAsStateWithLifecycle()
     val compareIds by viewModel.compareIds.collectAsStateWithLifecycle()
+    val now by viewModel.openingHoursTime.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
     val cafe = catalog.cafes.firstOrNull { it.id == cafeId }
@@ -92,19 +96,19 @@ fun DetailScreen(
                 IconButton(onClick = onBack) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Kembali")
                 }
-                Text("Cafe Details", style = MaterialTheme.typography.titleMedium)
+                Text("Detail Kafe", style = MaterialTheme.typography.titleMedium)
             }
             Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
-                CarifeEmptyState(
-                    title = "Kafe tidak ditemukan",
-                    message = if (catalog.isRefreshing) {
-                        "Sedang memuat data kafe…"
-                    } else {
-                        "Data kafe ini tidak ada di katalog kota yang dipilih."
-                    },
-                    primaryLabel = "Kembali",
-                    onPrimary = onBack,
-                )
+                if (catalog.city == null || catalog.isRefreshing) {
+                    CircularProgressIndicator()
+                } else {
+                    CarifeEmptyState(
+                        title = "Kafe tidak ditemukan",
+                        message = "Data kafe ini tidak ada di katalog kota yang dipilih.",
+                        primaryLabel = "Kembali",
+                        onPrimary = onBack,
+                    )
+                }
             }
         }
         return
@@ -112,8 +116,8 @@ fun DetailScreen(
 
     val isFavorite = appState.favorites.contains(cafe.id)
     val isComparing = compareIds.contains(cafe.id)
-    val openNow = OpeningHours.isOpenNow(cafe.openingHoursRaw, Instant.now())
-    var showInviteDialog by remember(cafe.id) { mutableStateOf(false) }
+    val openNow = OpeningHours.isOpenNow(cafe, now)
+    var shareAction by rememberSaveable(cafe.id) { mutableStateOf<ShareAction?>(null) }
 
     LazyColumn(
         modifier = Modifier
@@ -151,9 +155,7 @@ fun DetailScreen(
                             shape = RoundedCornerShape(999.dp),
                             color = CarifeSurfaceContainerLowest.copy(alpha = 0.94f),
                         ) {
-                            IconButton(onClick = {
-                                share(context, ShareTextBuilder.shareMessage(cafe))
-                            }) {
+                            IconButton(onClick = { shareAction = ShareAction.CAFE }) {
                                 Icon(Icons.Filled.Share, contentDescription = "Bagikan kafe ini")
                             }
                         }
@@ -179,7 +181,7 @@ fun DetailScreen(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = cafe.photoCount?.let { "$it Foto" } ?: "Foto belum tersedia dari OpenStreetMap",
+                        text = "Foto belum tersedia",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier
@@ -207,9 +209,13 @@ fun DetailScreen(
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
                     cafe.distanceMeters?.let { distance ->
-                        InfoPill("${DistanceUtil.formatDistance(distance)} dari lokasimu")
+                        val reference = if (appState.userLocation != null) "lokasimu" else "pusat kota"
+                        InfoPill("${DistanceUtil.formatDistance(distance)} dari $reference")
                     }
                     openNow?.let { isOpen ->
                         Surface(
@@ -259,8 +265,8 @@ fun DetailScreen(
                             fontWeight = FontWeight.Bold,
                         )
                         Text(
-                            text = cafe.densityPercent?.let { "$it% lebih ramai dari biasanya" }
-                                ?: "Angka ini contoh, bukan pengukuran langsung.",
+                            text = cafe.densityPercent?.let { "$it% perkiraan keterisian" }
+                                ?: "Data contoh.",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -275,19 +281,10 @@ fun DetailScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Button(
-                    onClick = {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(ShareTextBuilder.directionsUrl(cafe)))
-                        runCatching { context.startActivity(intent) }
-                            .onFailure {
-                                val text = ShareTextBuilder.directionsUrl(cafe)
-                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                                clipboard.setPrimaryClip(ClipData.newPlainText("Alamat ${cafe.name}", text))
-                                viewModel.emitMessage("Tidak ada aplikasi peta. Alamat disalin.")
-                            }
-                    },
+                    onClick = { openCafeDirections(context, cafe, viewModel::emitMessage) },
                     modifier = Modifier.weight(1f),
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp, vertical = 10.dp),
-                ) { Text("Rute", style = MaterialTheme.typography.labelMedium, maxLines = 1) }
+                ) { Text("Rute", style = MaterialTheme.typography.labelMedium) }
 
                 OutlinedButton(
                     onClick = {
@@ -297,20 +294,20 @@ fun DetailScreen(
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp, vertical = 10.dp),
                 ) {
                     Text(
-                        if (isComparing) "Dipilih" else "Banding",
+                        if (isComparing) "Dipilih" else "Bandingkan",
                         style = MaterialTheme.typography.labelMedium,
-                        maxLines = 1,
+                        textAlign = TextAlign.Center,
                     )
                 }
 
                 OutlinedButton(
                     onClick = {
-                        showInviteDialog = true
+                        shareAction = ShareAction.INVITE
                     },
                     modifier = Modifier.weight(1f),
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp, vertical = 10.dp),
                 ) {
-                    Text("Ajak", style = MaterialTheme.typography.labelMedium, maxLines = 1)
+                    Text("Ajak Teman", style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center)
                 }
             }
         }
@@ -320,7 +317,11 @@ fun DetailScreen(
                 DetailRow("Alamat", cafe.address ?: NO_DATA)
                 DetailRow("Area", cafe.area ?: NO_DATA)
                 DetailRow("Jam operasional", cafe.openingHoursRaw ?: NO_DATA)
-                DetailRow("Wi-Fi", cafe.wifiMbps?.let { "$it Mbps" } ?: NO_DATA)
+                DetailRow(
+                    "Wi-Fi",
+                    cafe.wifiMbps?.let { "$it Mbps" }
+                        ?: if (cafe.hasWifi) "Ada Wi-Fi" else NO_DATA,
+                )
                 DetailRow(
                     "Colokan",
                     cafe.outletCount?.let { "$it colokan" } ?: cafe.outlets ?: NO_DATA,
@@ -411,8 +412,12 @@ fun DetailScreen(
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 Text(
-                    text = "Nama, alamat, dan jam berasal dari OpenStreetMap. " +
-                        "Harga, colokan, rating, kepadatan, menu, dan ulasan adalah data contoh.",
+                    text = if (cafe.id.startsWith("osm:")) {
+                        "Data lokasi dari OpenStreetMap. Harga, kecepatan Wi-Fi, colokan, rating, " +
+                            "kepadatan, menu, dan ulasan adalah data contoh."
+                    } else {
+                        "Kafe ini menggunakan data contoh."
+                    },
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -421,69 +426,63 @@ fun DetailScreen(
         }
     }
 
-    if (showInviteDialog) {
-        InviteDialog(
+    shareAction?.let { action ->
+        CafeShareDialog(
             cafe = cafe,
-            onDismiss = { showInviteDialog = false },
-            onShare = { note, floor ->
-                share(context, ShareTextBuilder.inviteMessage(cafe, note, floor))
-                showInviteDialog = false
+            action = action,
+            onDismiss = { shareAction = null },
+            onShare = { message ->
+                if (openShareSheet(context, message, viewModel::emitMessage)) shareAction = null
             },
         )
     }
 }
-
 @Composable
-private fun InviteDialog(
+private fun CafeShareDialog(
     cafe: Cafe,
+    action: ShareAction,
     onDismiss: () -> Unit,
-    onShare: (note: String?, floor: String?) -> Unit,
+    onShare: (String) -> Unit,
 ) {
-    var note by remember { mutableStateOf("") }
-    var floor by remember { mutableStateOf("") }
+    var note by rememberSaveable { mutableStateOf("") }
+    var floor by rememberSaveable { mutableStateOf("") }
+    val isInvite = action == ShareAction.INVITE
+    val message = if (isInvite) {
+        ShareTextBuilder.inviteMessage(cafe, note.trim(), floor.trim())
+    } else {
+        ShareTextBuilder.shareMessage(cafe)
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Ajak Teman Nugas") },
+        title = { Text(if (isInvite) "Ajak Teman Nugas" else "Bagikan Kafe") },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text(cafe.name, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                Text(
-                    "Pesan ini dibuka di menu berbagi Android setelah kamu setuju.",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                OutlinedTextField(
-                    value = floor,
-                    onValueChange = { floor = it },
-                    label = { Text("Lantai / meja (opsional)") },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                OutlinedTextField(
-                    value = note,
-                    onValueChange = { note = it },
-                    label = { Text("Catatan (opsional)") },
-                    minLines = 2,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Text(
-                    "Pratinjau:",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Text(
-                    ShareTextBuilder.inviteMessage(
-                        cafe,
-                        note.ifBlank { null },
-                        floor.ifBlank { null },
-                    ),
-                    style = MaterialTheme.typography.bodySmall,
-                )
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                if (isInvite) {
+                    OutlinedTextField(
+                        value = floor,
+                        onValueChange = { floor = it },
+                        label = { Text("Lantai / meja (opsional)") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = note,
+                        onValueChange = { note = it },
+                        label = { Text("Catatan (opsional)") },
+                        minLines = 2,
+                        maxLines = 4,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+                SharePreview(message)
             }
         },
         confirmButton = {
-            TextButton(onClick = { onShare(note.ifBlank { null }, floor.ifBlank { null }) }) {
+            TextButton(onClick = { onShare(message) }) {
                 Text("Bagikan")
             }
         },
@@ -543,12 +542,4 @@ private fun DetailRow(label: String, value: String) {
             modifier = Modifier.weight(1.4f),
         )
     }
-}
-
-internal fun share(context: android.content.Context, text: String) {
-    val intent = Intent(Intent.ACTION_SEND).apply {
-        type = "text/plain"
-        putExtra(Intent.EXTRA_TEXT, text)
-    }
-    context.startActivity(Intent.createChooser(intent, "Bagikan lewat"))
 }

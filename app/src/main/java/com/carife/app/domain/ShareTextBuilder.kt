@@ -1,31 +1,20 @@
 package com.carife.app.domain
 
 import com.carife.app.core.model.Cafe
+import com.carife.app.core.model.StudyRoom
 import java.net.URLEncoder
 
 object ShareTextBuilder {
 
-    fun mapsUrl(cafe: Cafe): String {
-        val query = buildString {
-            append(cafe.name)
-            cafe.address?.takeIf { it.isNotBlank() }?.let { append(", ").append(it) }
-            append(" @").append(cafe.lat).append(',').append(cafe.lon)
-        }
-        return "https://www.google.com/maps/search/?api=1&query=${encode(query)}"
-    }
+    fun mapsUrl(cafe: Cafe): String =
+        "https://www.google.com/maps/search/?api=1&query=${coordinates(cafe)}"
 
-    fun directionsUrl(cafe: Cafe): String {
-        val destination = buildString {
-            append(cafe.name)
-            cafe.address?.takeIf { it.isNotBlank() }?.let { append(", ").append(it) }
-        }
-        return "https://www.google.com/maps/dir/?api=1&destination=${encode(destination)}"
-    }
+    fun directionsUrl(cafe: Cafe): String =
+        "https://www.google.com/maps/dir/?api=1&destination=${coordinates(cafe)}"
 
     fun shareMessage(cafe: Cafe): String = buildString {
         append("Nugas di ").append(cafe.name)
         cafe.address?.takeIf { it.isNotBlank() }?.let { append("\n").append(it) }
-        cafe.distanceMeters?.let { append("\n").append(DistanceUtil.formatDistance(it)).append(" dari lokasimu") }
         append("\n\n").append(mapsUrl(cafe))
         append("\n\nDibagikan lewat Carife")
     }
@@ -47,6 +36,17 @@ object ShareTextBuilder {
         append("\n\nDibagikan lewat Carife")
     }
 
-    private fun encode(value: String): String =
-        URLEncoder.encode(value, "UTF-8").replace("+", "%20")
+    fun roomInviteMessage(room: StudyRoom, cafe: Cafe?): String = buildString {
+        append("Ayo gabung room \"").append(room.title).append("\"")
+        (cafe?.name ?: room.cafeName)
+            ?.takeIf { it.isNotBlank() }
+            ?.let { append(" di ").append(it) }
+        append("!\n").append(room.schedule)
+        room.note.takeIf { it.isNotBlank() }?.let { append("\nCatatan: ").append(it) }
+        cafe?.let { append("\n\n").append(mapsUrl(it)) }
+        append("\n\nDikirim lewat Carife")
+    }
+
+    private fun coordinates(cafe: Cafe): String =
+        URLEncoder.encode("${cafe.lat},${cafe.lon}", "UTF-8")
 }

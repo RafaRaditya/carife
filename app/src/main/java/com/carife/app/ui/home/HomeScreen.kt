@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -26,7 +27,6 @@ import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.NearMe
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.AccessTime
-import androidx.compose.material.icons.outlined.Air
 import androidx.compose.material.icons.outlined.Deck
 import androidx.compose.material.icons.outlined.Payments
 import androidx.compose.material.icons.outlined.Power
@@ -50,25 +50,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.carife.app.BuildConfig
 import com.carife.app.core.model.Amenity
-import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.ExploreFilters
 import com.carife.app.core.model.NoiseLevel
-import com.carife.app.core.model.SortOption
 import com.carife.app.core.model.WifiRequirement
 import com.carife.app.core.model.ZonePreference
-import com.carife.app.domain.DistanceUtil
 import com.carife.app.domain.MatchScorer
 import com.carife.app.domain.OpeningHours
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafeCard
 import com.carife.app.ui.components.CarifeChip
+import com.carife.app.ui.components.CityPickerDialog
 import com.carife.app.ui.components.FullMapDialog
 import com.carife.app.ui.components.OsmMapView
 import com.carife.app.ui.theme.CarifeOnPrimary
@@ -79,7 +76,6 @@ import com.carife.app.ui.theme.CarifeSecondaryContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import com.carife.app.ui.theme.CarifeTertiary
-import java.time.Instant
 
 private data class QuickChip(
     val label: String,
@@ -101,21 +97,24 @@ private val quickChips = listOf(
     },
 )
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun HomeScreen(
     viewModel: CarifeViewModel,
     onOpenCafe: (String) -> Unit,
-    onOpenExplore: () -> Unit,
+    onOpenSearch: () -> Unit,
     onOpenExploreWithFilters: () -> Unit,
+    onOpenQuickFilter: () -> Unit,
 ) {
     val appState by viewModel.appState.collectAsStateWithLifecycle()
     val catalog by viewModel.catalog.collectAsStateWithLifecycle()
     val compareIds by viewModel.compareIds.collectAsStateWithLifecycle()
+    val now by viewModel.openingHoursTime.collectAsStateWithLifecycle()
+    val city = catalog.city ?: appState.selectedCity
 
-    val now = remember(catalog.cafes) { Instant.now() }
     val cafes = catalog.cafes
     val openNowCount = remember(cafes, now) {
-        cafes.count { OpeningHours.isOpenNow(it.openingHoursRaw, now) == true }
+        cafes.count { OpeningHours.isOpenNow(it, now) == true }
     }
     val nearest = remember(cafes) {
         cafes.sortedWith(compareBy({ it.distanceMeters ?: Int.MAX_VALUE }, { it.name.lowercase() }))
@@ -124,12 +123,10 @@ fun HomeScreen(
         if (!appState.hasSavedPreferences) emptyMap()
         else cafes.mapNotNull { cafe -> MatchScorer.score(cafe, appState.preferences)?.let { cafe.id to it } }.toMap()
     }
-    val bestMatch = remember(scores, cafes) {
-        scores.entries
-            .filter { it.value > 0 }
-            .mapNotNull { entry -> cafes.firstOrNull { it.id == entry.key }?.let { it to entry.value } }
-            .minWithOrNull(compareByDescending<Pair<Cafe, Int>> { it.second }
-                .thenBy { it.first.distanceMeters ?: Int.MAX_VALUE })
+    val bestMatch = remember(nearest, scores) {
+        val cafe = nearest.maxByOrNull { scores[it.id] ?: 0 }
+        val score = cafe?.let { scores[it.id] } ?: 0
+        if (cafe != null && score > 0) cafe to score else null
     }
 
     var showCityPicker by remember { mutableStateOf(false) }
@@ -144,9 +141,10 @@ fun HomeScreen(
     ) {
         item {
             HomeHeader(
-                cityName = appState.selectedCity.name,
+                cityName = city.name,
                 openNowCount = openNowCount,
-                onOpenExplore = onOpenExplore,
+                onOpenSearch = onOpenSearch,
+                onOpenFilters = onOpenExploreWithFilters,
                 onPickCity = { showCityPicker = true },
             )
         }
@@ -163,7 +161,7 @@ fun HomeScreen(
                         icon = chip.icon,
                         onClick = {
                             viewModel.setExploreFilters(chip.buildFilters(ExploreFilters()))
-                            onOpenExploreWithFilters()
+                            onOpenQuickFilter()
                         },
                     )
                 }
@@ -179,7 +177,7 @@ fun HomeScreen(
                     .clip(RoundedCornerShape(20.dp)),
             ) {
                 OsmMapView(
-                    city = appState.selectedCity,
+                    city = city,
                     cafes = nearest,
                     onOpenCafe = onOpenCafe,
                     maxMarkers = 60,
@@ -241,14 +239,14 @@ fun HomeScreen(
                             Text("◎", color = CarifeOnPrimary, fontWeight = FontWeight.Bold)
                         }
                         Column(Modifier.weight(1f)) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                                 Text(
-                                    text = "${bestMatch.second}% Sangat Cocok",
+                                    text = "${bestMatch.second}% cocok",
                                     style = MaterialTheme.typography.labelLarge,
                                     fontWeight = FontWeight.Bold,
                                 )
                                 Text(
-                                    text = "  Carife Match",
+                                    text = "Carife Match",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = CarifePrimary,
                                 )
@@ -277,6 +275,7 @@ fun HomeScreen(
                     text = "${nearest.size} Kafe Nugas Terdekat",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
+                    modifier = Modifier.weight(1f).padding(end = 8.dp),
                 )
                 Text(
                     text = "Jarak terdekat",
@@ -286,16 +285,33 @@ fun HomeScreen(
             }
         }
 
+        if (catalog.errorMessage != null && cafes.isNotEmpty()) {
+            item {
+                Row(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        text = catalog.errorMessage.orEmpty(),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f),
+                    )
+                    TextButton(onClick = viewModel::retry) { Text("Coba lagi") }
+                }
+            }
+        }
+
         when {
             catalog.errorMessage != null && cafes.isEmpty() -> item {
                 CatalogErrorState(
                     message = catalog.errorMessage ?: "",
-                    cityName = appState.selectedCity.name,
                     onRetry = viewModel::retry,
                 )
             }
 
-            catalog.isRefreshing && cafes.isEmpty() -> item {
+            (catalog.city == null || catalog.isRefreshing) && cafes.isEmpty() -> item {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -306,13 +322,8 @@ fun HomeScreen(
                         CircularProgressIndicator(color = CarifePrimary)
                         Spacer(Modifier.size(12.dp))
                         Text(
-                            "Memuat kafe di ${appState.selectedCity.name}…",
+                            "Memuat kafe di ${city.name}…",
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                        Text(
-                            "Server OpenStreetMap kadang butuh 30–40 detik.",
-                            style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
@@ -327,15 +338,14 @@ fun HomeScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
-                        "Belum ada kafe ditemukan di sekitar ${appState.selectedCity.name}",
+                        "Belum ada kafe ditemukan di sekitar ${city.name}",
                         style = MaterialTheme.typography.titleSmall,
                     )
-                    Text(
-                        "Coba kota lain atau muat ulang.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    TextButton(onClick = viewModel::retry) { Text("Muat ulang") }
+                    if (BuildConfig.OFFLINE_ONLY) {
+                        TextButton(onClick = { showCityPicker = true }) { Text("Pilih kota") }
+                    } else {
+                        TextButton(onClick = viewModel::retry) { Text("Muat ulang") }
+                    }
                 }
             }
 
@@ -345,7 +355,7 @@ fun HomeScreen(
                     matchScore = scores[cafe.id],
                     isFavorite = appState.favorites.contains(cafe.id),
                     isSelectedForCompare = compareIds.contains(cafe.id),
-                    showCompareCheckbox = false,
+                    now = now,
                     onOpen = { onOpenCafe(cafe.id) },
                     onToggleFavorite = { viewModel.toggleFavorite(cafe.id) },
                     onToggleCompare = { viewModel.toggleCompare(cafe.id) },
@@ -369,7 +379,7 @@ fun HomeScreen(
     if (showCityPicker) {
         CityPickerDialog(
             cities = viewModel.cityRepository.cities,
-            selectedId = appState.selectedCity.id,
+            selectedId = city.id,
             onDismiss = { showCityPicker = false },
             onSelect = { cityId ->
                 viewModel.selectCity(cityId)
@@ -380,7 +390,7 @@ fun HomeScreen(
 
     if (showFullMap) {
         FullMapDialog(
-            city = appState.selectedCity,
+            city = city,
             cafes = nearest,
             onOpenCafe = { cafeId ->
                 showFullMap = false
@@ -392,55 +402,11 @@ fun HomeScreen(
 }
 
 @Composable
-private fun CityPickerDialog(
-    cities: List<com.carife.app.core.model.City>,
-    selectedId: String,
-    onDismiss: () -> Unit,
-    onSelect: (String) -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Pilih Kota") },
-        text = {
-            Column(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .heightIn(max = 380.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                cities.forEach { city ->
-                    Surface(
-                        onClick = { onSelect(city.id) },
-                        shape = RoundedCornerShape(14.dp),
-                        color = if (city.id == selectedId) CarifePrimaryFixed
-                        else MaterialTheme.colorScheme.surfaceContainer,
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
-                            Text(
-                                city.name,
-                                style = MaterialTheme.typography.titleSmall,
-                                fontWeight = if (city.id == selectedId) FontWeight.Bold else FontWeight.Normal,
-                            )
-                            Text(
-                                city.province,
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                    }
-                }
-            }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Tutup") } },
-    )
-}
-
-@Composable
 private fun HomeHeader(
     cityName: String,
     openNowCount: Int,
-    onOpenExplore: () -> Unit,
+    onOpenSearch: () -> Unit,
+    onOpenFilters: () -> Unit,
     onPickCity: () -> Unit,
 ) {
     Column(
@@ -509,37 +475,45 @@ private fun HomeHeader(
         )
 
         Surface(
-            onClick = onOpenExplore,
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(999.dp),
             color = CarifeSurfaceContainerLowest,
             shadowElevation = 2.dp,
         ) {
             Row(
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 13.dp),
+                modifier = Modifier.padding(end = 4.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                Icon(Icons.Filled.Search, contentDescription = null, tint = CarifePrimary, modifier = Modifier.size(20.dp))
-                Text(
-                    "Cari kafe, wifi, colokan…",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.weight(1f),
-                )
-                Icon(
-                    Icons.Filled.FilterList,
-                    contentDescription = "Buka filter",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(18.dp),
-                )
+                Row(
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = 48.dp)
+                        .clickable(onClick = onOpenSearch)
+                        .padding(start = 16.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    Icon(Icons.Filled.Search, contentDescription = null, tint = CarifePrimary, modifier = Modifier.size(20.dp))
+                    Text(
+                        "Cari kafe, wifi, colokan…",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                IconButton(onClick = onOpenFilters) {
+                    Icon(
+                        Icons.Filled.FilterList,
+                        contentDescription = "Buka filter",
+                        tint = CarifePrimary,
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-private fun CatalogErrorState(message: String, cityName: String, onRetry: () -> Unit) {
+private fun CatalogErrorState(message: String, onRetry: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -549,13 +523,11 @@ private fun CatalogErrorState(message: String, cityName: String, onRetry: () -> 
     ) {
         Text("Belum ada data kafe", style = MaterialTheme.typography.titleSmall)
         Text(
-            "$message\nKota $cityName belum punya data kafe bawaan di aplikasi ini.",
+            message,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        if (!com.carife.app.BuildConfig.OFFLINE_ONLY) {
-            TextButton(onClick = onRetry) { Text("Coba lagi") }
-        }
+        TextButton(onClick = onRetry) { Text("Coba lagi") }
     }
 }
 

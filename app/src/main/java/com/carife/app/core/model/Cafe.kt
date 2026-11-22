@@ -27,4 +27,10 @@ data class Cafe(
     val menu: List<MenuItem> = emptyList(),
     val reviews: List<ReviewSample> = emptyList(),
     val isDemoData: Boolean = false,
-)
+) {
+    val hasWifi: Boolean
+        get() = Amenity.WIFI in amenities || (wifiMbps ?: 0) > 0
+
+    fun hasAmenity(amenity: Amenity): Boolean =
+        if (amenity == Amenity.WIFI) hasWifi else amenity in amenities
+}

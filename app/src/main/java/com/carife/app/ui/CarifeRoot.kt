@@ -26,9 +26,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -41,6 +43,7 @@ import com.carife.app.ui.detail.DetailScreen
 import com.carife.app.ui.explore.ExploreScreen
 import com.carife.app.ui.home.HomeScreen
 import com.carife.app.ui.nav.Routes
+import com.carife.app.ui.profile.AccountSettingsScreen
 import com.carife.app.ui.profile.ProfileScreen
 
 private data class BottomDestination(
@@ -62,8 +65,8 @@ fun CarifeRoot(viewModel: CarifeViewModel = viewModel()) {
     val navController = rememberNavController()
     val snackbarHostState = remember { SnackbarHostState() }
     val appState by viewModel.appState.collectAsStateWithLifecycle()
+    var locationRequested by rememberSaveable { mutableStateOf(false) }
 
-    val context = LocalContext.current
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions(),
     ) { result ->
@@ -75,7 +78,8 @@ fun CarifeRoot(viewModel: CarifeViewModel = viewModel()) {
     }
 
     LaunchedEffect(Unit) {
-        if (!viewModel.locationProvider.hasPermission()) {
+        if (!locationRequested && !viewModel.locationProvider.hasPermission()) {
+            locationRequested = true
             permissionLauncher.launch(
                 arrayOf(
                     Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -128,11 +132,7 @@ private fun CarifeBottomBar(
                 selected = selected,
                 onClick = {
                     if (!selected) {
-                        navController.navigate(destination.route) {
-                            popUpTo(Routes.HOME) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
+                        navController.openTab(destination.route)
                     }
                 },
                 icon = {
@@ -156,6 +156,14 @@ private fun CarifeBottomBar(
     }
 }
 
+private fun NavHostController.openTab(route: String) {
+    navigate(route) {
+        popUpTo(Routes.HOME) { saveState = true }
+        launchSingleTop = true
+        restoreState = true
+    }
+}
+
 @Composable
 private fun CarifeNavHost(
     navController: NavHostController,
@@ -171,10 +179,17 @@ private fun CarifeNavHost(
             HomeScreen(
                 viewModel = viewModel,
                 onOpenCafe = { cafeId -> navController.navigate(Routes.detail(cafeId)) },
-                onOpenExplore = { navController.navigate(Routes.EXPLORE) { launchSingleTop = true } },
+                onOpenSearch = {
+                    viewModel.requestExploreEntry(ExploreEntry.SEARCH)
+                    navController.openTab(Routes.EXPLORE)
+                },
                 onOpenExploreWithFilters = {
-                    viewModel.openFilterPanel()
-                    navController.navigate(Routes.EXPLORE) { launchSingleTop = true }
+                    viewModel.requestExploreEntry(ExploreEntry.FILTERS)
+                    navController.openTab(Routes.EXPLORE)
+                },
+                onOpenQuickFilter = {
+                    viewModel.requestExploreEntry(ExploreEntry.QUICK_FILTER)
+                    navController.openTab(Routes.EXPLORE)
                 },
             )
         }
@@ -183,7 +198,8 @@ private fun CarifeNavHost(
             ExploreScreen(
                 viewModel = viewModel,
                 onOpenCafe = { cafeId -> navController.navigate(Routes.detail(cafeId)) },
-                onOpenCompare = { navController.navigate(Routes.COMPARE) { launchSingleTop = true } },
+                onOpenCompare = { navController.openTab(Routes.COMPARE) },
+                onOpenHome = { navController.openTab(Routes.HOME) },
             )
         }
 
@@ -191,7 +207,7 @@ private fun CarifeNavHost(
             CompareScreen(
                 viewModel = viewModel,
                 onOpenCafe = { cafeId -> navController.navigate(Routes.detail(cafeId)) },
-                onPickCafes = { navController.navigate(Routes.EXPLORE) { launchSingleTop = true } },
+                onPickCafes = { navController.openTab(Routes.EXPLORE) },
             )
         }
 
@@ -199,6 +215,15 @@ private fun CarifeNavHost(
             ProfileScreen(
                 viewModel = viewModel,
                 onOpenCafe = { cafeId -> navController.navigate(Routes.detail(cafeId)) },
+                onOpenAccountSettings = { navController.navigate(Routes.ACCOUNT) },
+                onPreferencesSaved = { navController.openTab(Routes.HOME) },
+            )
+        }
+
+        composable(Routes.ACCOUNT) {
+            AccountSettingsScreen(
+                viewModel = viewModel,
+                onBack = { navController.popBackStack() },
             )
         }
 
@@ -208,7 +233,13 @@ private fun CarifeNavHost(
                 viewModel = viewModel,
                 cafeId = cafeId,
                 onBack = { navController.popBackStack() },
-                onOpenCompare = { navController.navigate(Routes.COMPARE) { launchSingleTop = true } },
+                onOpenCompare = {
+                    if (navController.previousBackStackEntry?.destination?.route == Routes.COMPARE) {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(Routes.COMPARE) { launchSingleTop = true }
+                    }
+                },
             )
         }
     }

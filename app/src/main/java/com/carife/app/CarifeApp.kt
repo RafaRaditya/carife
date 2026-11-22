@@ -6,6 +6,7 @@ import com.carife.app.data.CityRepository
 import com.carife.app.data.local.BundledCatalog
 import com.carife.app.data.local.CafeCache
 import com.carife.app.data.local.PreferencesStore
+import com.carife.app.data.local.ProfilePhotoStore
 import com.carife.app.data.remote.OverpassClient
 import com.carife.app.location.LocationProvider
 import org.osmdroid.config.Configuration
@@ -16,6 +17,8 @@ class AppContainer(application: Application) {
     val cityRepository = CityRepository(application)
 
     val preferencesStore = PreferencesStore(application)
+
+    val profilePhotoStore = ProfilePhotoStore(application)
 
     val bundledCatalog = BundledCatalog(application)
 

@@ -14,15 +14,7 @@ object CompareAdvisor {
     fun advise(cafes: List<Cafe>, preferences: UserPreferences): Advice {
         if (cafes.isEmpty()) return Advice(null, null, null)
 
-        val scores = cafes.associate { cafe ->
-            cafe.id to MatchScorer.score(cafe, preferences)
-        }
-
-        val bestForStudy = scores
-            .filterValues { it != null && it > 0 }
-            .maxWithOrNull(
-                compareBy({ it.value }, { -1 * (cafes.first { c -> c.id == it.key }.distanceMeters ?: Int.MAX_VALUE) })
-            )?.key
+        val bestForStudy = MatchScorer.bestMatch(cafes, preferences)?.first?.id
 
         val cheapest = cafes
             .filter { it.priceMin != null }

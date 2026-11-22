@@ -5,6 +5,7 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +25,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -36,6 +40,7 @@ import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafePhotoPlaceholder
 import com.carife.app.ui.components.DemoBadge
 import com.carife.app.ui.components.formatRupiahFull
+import com.carife.app.ui.components.openCafeDirections
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
@@ -53,6 +58,7 @@ fun CompareScreen(
     val appState by viewModel.appState.collectAsStateWithLifecycle()
     val catalog by viewModel.catalog.collectAsStateWithLifecycle()
     val compareIds by viewModel.compareIds.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     val selected = compareIds.mapNotNull { id -> catalog.cafes.firstOrNull { it.id == id } }
 
@@ -129,7 +135,7 @@ fun CompareScreen(
         }
 
         item {
-            CompareMatrix(selected, advice, onOpenCafe)
+            CompareMatrix(selected, advice, onOpenCafe, onRemoveCafe = viewModel::toggleCompare)
         }
 
         if (advice.summary != null) {
@@ -166,11 +172,11 @@ fun CompareScreen(
             ) {
                 selected.forEach { cafe ->
                     Button(
-                        onClick = { onOpenCafe(cafe.id) },
+                        onClick = { openCafeDirections(context, cafe, viewModel::emitMessage) },
                         modifier = Modifier.fillMaxWidth(),
                     ) {
                         Text(
-                            "Rute / Detail ${cafe.name}",
+                            "Rute ke ${cafe.name}",
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )
@@ -186,6 +192,7 @@ private fun CompareMatrix(
     cafes: List<Cafe>,
     advice: CompareAdvisor.Advice,
     onOpenCafe: (String) -> Unit,
+    onRemoveCafe: (String) -> Unit,
 ) {
     val scrollState = rememberScrollState()
 
@@ -204,6 +211,7 @@ private fun CompareMatrix(
                     isBestForStudy = advice.bestForStudyId == cafe.id,
                     isCheapest = advice.cheapestId == cafe.id,
                     onOpen = { onOpenCafe(cafe.id) },
+                    onRemove = { onRemoveCafe(cafe.id) },
                 )
             }
         }
@@ -265,6 +273,7 @@ private fun CafeHeaderCell(
     isBestForStudy: Boolean,
     isCheapest: Boolean,
     onOpen: () -> Unit,
+    onRemove: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -310,7 +319,16 @@ private fun CafeHeaderCell(
             overflow = TextOverflow.Ellipsis,
         )
 
-        TextButton(onClick = onOpen) { Text("Detail") }
+        Row {
+            TextButton(onClick = onOpen, modifier = Modifier.weight(1f)) { Text("Detail") }
+            TextButton(
+                onClick = onRemove,
+                modifier = Modifier.weight(1f).semantics {
+                    contentDescription = "Hapus ${cafe.name} dari perbandingan"
+                },
+                contentPadding = PaddingValues(horizontal = 4.dp),
+            ) { Text("Hapus") }
+        }
     }
 }
 

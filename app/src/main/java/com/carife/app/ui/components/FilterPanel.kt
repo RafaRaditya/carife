@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -25,19 +26,21 @@ import com.carife.app.core.model.NoiseLevel
 import com.carife.app.core.model.RadiusPreference
 import com.carife.app.core.model.WifiRequirement
 import com.carife.app.core.model.ZonePreference
-import com.carife.app.domain.FilterEngine
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FilterPanel(
     filters: ExploreFilters,
     candidates: List<Cafe>,
+    resultCount: Int,
     onChange: (ExploreFilters) -> Unit,
     onReset: () -> Unit,
     onDone: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val availableAmenities = candidates.flatMap { it.amenities }.toSet()
+    val availableAmenities = remember(candidates) {
+        Amenity.entries.filter { amenity -> candidates.any { it.hasAmenity(amenity) } }.toSet()
+    }
 
     Column(
         modifier = modifier
@@ -124,7 +127,7 @@ fun FilterPanel(
                     CarifeChip(
                         label = amenity.label,
                         selected = filters.amenities.contains(amenity),
-                        enabled = availableAmenities.contains(amenity),
+                        enabled = availableAmenities.contains(amenity) || filters.amenities.contains(amenity),
                         onClick = {
                             val updated = if (filters.amenities.contains(amenity)) {
                                 filters.amenities - amenity
@@ -159,7 +162,7 @@ fun FilterPanel(
         }
 
         Text(
-            text = "${FilterEngine.apply(candidates, filters).size} kafe cocok dengan kriteria ini",
+            text = "$resultCount kafe cocok dengan kriteria ini",
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -168,7 +171,7 @@ fun FilterPanel(
             onClick = onDone,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text("Tampilkan ${FilterEngine.apply(candidates, filters).size} Kafe")
+            Text("Tampilkan $resultCount Kafe")
         }
     }
 }

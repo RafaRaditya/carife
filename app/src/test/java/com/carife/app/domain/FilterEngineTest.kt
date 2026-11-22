@@ -93,6 +93,42 @@ class FilterEngineTest {
     }
 
     @Test
+    fun `search finds wifi and colokan advertised by cafe cards`() {
+        val cafes = listOf(
+            cafe("speed", wifiMbps = 50, outlets = 2),
+            cafe("tag", amenities = setOf(Amenity.WIFI), outlets = 0),
+            cafe("unknown"),
+        )
+
+        for (query in listOf("wifi", "Wi-Fi", " wi  fi ")) {
+            val results = FilterEngine.apply(cafes, ExploreFilters(query = query))
+            assertEquals(setOf("speed", "tag"), results.map { it.id }.toSet())
+        }
+        assertEquals(listOf("speed"), FilterEngine.apply(cafes, ExploreFilters(query = "colokan")).map { it.id })
+        val combined = ExploreFilters(query = "wifi", amenities = setOf(Amenity.WIFI), minOutlets = 1)
+        assertEquals(listOf("speed"), FilterEngine.apply(cafes, combined).map { it.id })
+
+        val standard = ExploreFilters(wifi = WifiRequirement.STANDARD)
+        assertEquals(setOf("speed", "tag"), FilterEngine.apply(cafes, standard).map { it.id }.toSet())
+    }
+
+    @Test
+    fun `match sort ranks by score then by distance`() {
+        val cafes = listOf(
+            cafe("near", distance = 50),
+            cafe("highNear", distance = 200),
+            cafe("highFar", distance = 800),
+        )
+        val result = FilterEngine.apply(
+            cafes,
+            ExploreFilters(sort = SortOption.MATCH),
+            matchScores = mapOf("near" to 50, "highNear" to 100, "highFar" to 100),
+        )
+
+        assertEquals(listOf("highNear", "highFar", "near"), result.map { it.id })
+    }
+
+    @Test
     fun `open now filter requires parseable hours`() {
         val monday = Instant.parse("2024-01-01T03:00:00Z")
         val cafes = listOf(

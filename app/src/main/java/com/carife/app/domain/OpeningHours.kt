@@ -1,5 +1,6 @@
 package com.carife.app.domain
 
+import com.carife.app.core.model.Cafe
 import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDateTime
@@ -8,6 +9,7 @@ import java.time.ZoneId
 object OpeningHours {
 
     val BEKASI_ZONE: ZoneId = ZoneId.of("Asia/Jakarta")
+    private val MAKASSAR_ZONE: ZoneId = ZoneId.of("Asia/Makassar")
 
     private val DAY_TOKENS = mapOf(
         "Mo" to DayOfWeek.MONDAY,
@@ -23,12 +25,13 @@ object OpeningHours {
         "^((?:(?:Mo|Tu|We|Th|Fr|Sa|Su)(?:\\s*-\\s*(?:Mo|Tu|We|Th|Fr|Sa|Su))?(?:\\s*,\\s*)?)+)\\s*(.*)$"
     )
     private val TIME_RANGE = Regex("^(\\d{1,2}):(\\d{2})\\s*-\\s*(\\d{1,2}):(\\d{2})$")
+    private val EVERY_DAY_AND_HOLIDAYS = Regex("^Mo\\s*-\\s*Su\\s*,\\s*PH(?=\\s)")
 
     data class Interval(val startMinute: Int, val endMinute: Int)
 
     data class Parsed(val intervalsByDay: Map<DayOfWeek, List<Interval>>) {
-        fun isOpenAt(moment: Instant): Boolean {
-            val local = LocalDateTime.ofInstant(moment, BEKASI_ZONE)
+        fun isOpenAt(moment: Instant, zone: ZoneId = BEKASI_ZONE): Boolean {
+            val local = LocalDateTime.ofInstant(moment, zone)
             val minutes = local.hour * 60 + local.minute
             return intervalsByDay[local.dayOfWeek].orEmpty().any { minutes >= it.startMinute && minutes < it.endMinute }
         }
@@ -47,27 +50,28 @@ object OpeningHours {
         val result = linkedMapOf<DayOfWeek, MutableList<Interval>>()
 
         for (rule in text.split(';')) {
-            val trimmed = rule.trim()
+            val trimmed = rule.trim().replace(EVERY_DAY_AND_HOLIDAYS, "Mo-Su")
             if (trimmed.isEmpty()) continue
 
             val days: List<DayOfWeek>
             val timePart: String
             val prefixMatch = DAY_PREFIX.find(trimmed)
             if (prefixMatch != null) {
-                days = parseDays(prefixMatch.groupValues[1]) ?: continue
+                days = parseDays(prefixMatch.groupValues[1]) ?: return null
                 timePart = prefixMatch.groupValues[2].trim()
             } else {
                 days = DayOfWeek.entries.toList()
                 timePart = trimmed
             }
 
-            if (timePart.equals("24/7", ignoreCase = true)) {
-                days.forEach { day -> result.getOrPut(day) { mutableListOf() }.add(Interval(0, 1440)) }
-                continue
+            val ranges = when (timePart.lowercase()) {
+                "closed", "off" -> emptyList()
+                "24/7" -> listOf(0 to 1440)
+                else -> parseTimeRanges(timePart)?.takeIf { it.isNotEmpty() } ?: return null
             }
 
-            val ranges = parseTimeRanges(timePart) ?: continue
-            if (ranges.isEmpty()) continue
+            // A later weekly rule replaces earlier hours on its listed days.
+            days.forEach { day -> result[day] = mutableListOf() }
             for (day in days) {
                 for ((start, end) in ranges) {
                     val bucket = result.getOrPut(day) { mutableListOf() }
@@ -119,7 +123,8 @@ object OpeningHours {
             val startMinute = match.groupValues[2].toIntOrNull() ?: return null
             val endHour = match.groupValues[3].toIntOrNull() ?: return null
             val endMinute = match.groupValues[4].toIntOrNull() ?: return null
-            if (startHour > 24 || endHour > 24 || startMinute > 59 || endMinute > 59) return null
+            if (startHour > 23 || endHour > 24 || startMinute > 59 || endMinute > 59) return null
+            if (endHour == 24 && endMinute != 0) return null
             ranges.add(startHour * 60 + startMinute to endHour * 60 + endMinute)
         }
         return ranges
@@ -127,4 +132,9 @@ object OpeningHours {
 
     fun isOpenNow(raw: String?, now: Instant = Instant.now()): Boolean? =
         parse(raw)?.isOpenAt(now)
+
+    fun isOpenNow(cafe: Cafe, now: Instant): Boolean? {
+        val zone = if (cafe.cityId == "makassar") MAKASSAR_ZONE else BEKASI_ZONE
+        return parse(cafe.openingHoursRaw)?.isOpenAt(now, zone)
+    }
 }

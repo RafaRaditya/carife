@@ -1,5 +1,6 @@
 package com.carife.app.data.remote
 
+import com.carife.app.core.model.Cafe
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -105,6 +106,16 @@ class OsmCafeMapperTest {
     fun `malformed body returns empty list`() {
         assertTrue(OsmCafeMapper.mapResponse("bukan json", "bekasi").isEmpty())
         assertTrue(OsmCafeMapper.mapResponse("{}", "bekasi").isEmpty())
+    }
+
+    @Test
+    fun `incomplete refresh is distinct from a valid empty catalog`() {
+        assertNull(OsmCafeMapper.mapCompleteResponse("""{"elements":{}}""", "bekasi"))
+        assertNull(OsmCafeMapper.mapCompleteResponse("""{"remark":"timeout","elements":[]}""", "bekasi"))
+        assertEquals(
+            emptyList<Cafe>(),
+            OsmCafeMapper.mapCompleteResponse("""{"elements":[]}""", "bekasi"),
+        )
     }
 
     @Test

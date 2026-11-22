@@ -66,6 +66,7 @@ class CafeCache(private val cacheDir: File) {
     private data class CachedPayload(
         val fetchedAtEpochMillis: Long,
         val cafes: List<CachedCafe>,
+        val responseChecked: Boolean = false,
     )
 
     data class Snapshot(val cafes: List<Cafe>, val fetchedAtEpochMillis: Long)
@@ -75,6 +76,8 @@ class CafeCache(private val cacheDir: File) {
         if (!file.exists()) return@withContext null
         val payload = runCatching { json.decodeFromString<CachedPayload>(file.readText()) }.getOrNull()
             ?: return@withContext null
+        // Earlier versions could cache an empty list after decoding failed.
+        if (payload.cafes.isEmpty() && !payload.responseChecked) return@withContext null
         Snapshot(payload.cafes.map { it.toCafe() }, payload.fetchedAtEpochMillis)
     }
 
@@ -82,7 +85,7 @@ class CafeCache(private val cacheDir: File) {
         withContext(Dispatchers.IO) {
             runCatching {
                 cacheDir.mkdirs()
-                val payload = CachedPayload(fetchedAt, cafes.map { CachedCafe.from(it) })
+                val payload = CachedPayload(fetchedAt, cafes.map { CachedCafe.from(it) }, responseChecked = true)
                 fileFor(cityId, radiusMeters).writeText(json.encodeToString(payload))
             }
         }

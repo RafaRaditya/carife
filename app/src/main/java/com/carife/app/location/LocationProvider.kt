@@ -40,32 +40,25 @@ class LocationProvider(private val context: Context) {
         val newListener = LocationListener { loc ->
             _location.value = UserLocation(loc.latitude, loc.longitude)
         }
-        listener = newListener
-        runCatching {
-            manager.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER,
-                60_000L,
-                250f,
-                newListener,
-                Looper.getMainLooper(),
-            )
-        }.onFailure {
+        val registered = listOf(LocationManager.NETWORK_PROVIDER, LocationManager.GPS_PROVIDER).map { provider ->
             runCatching {
                 manager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER,
+                    provider,
                     60_000L,
                     250f,
                     newListener,
                     Looper.getMainLooper(),
                 )
-            }
+            }.isSuccess
         }
+        if (registered.any { it }) listener = newListener
     }
 
     fun stop() {
         val manager = context.getSystemService(Context.LOCATION_SERVICE) as? LocationManager
         listener?.let { runCatching { manager?.removeUpdates(it) } }
         listener = null
+        _location.value = null
     }
 
     @Suppress("MissingPermission")

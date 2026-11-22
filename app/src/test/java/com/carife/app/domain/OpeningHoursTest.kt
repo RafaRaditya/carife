@@ -1,5 +1,6 @@
 package com.carife.app.domain
 
+import com.carife.app.core.model.Cafe
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -47,6 +48,33 @@ class OpeningHoursTest {
     fun `multiple rules combined with semicolon`() {
         val saturdayNoon = Instant.parse("2024-01-06T05:00:00Z") // Sabtu 12:00 WIB
         assertEquals(true, OpeningHours.isOpenNow("Mo-Fr 08:00-22:00; Sa-Su 10:00-15:00", saturdayNoon))
+    }
+
+    @Test
+    fun `later weekly rules override earlier hours`() {
+        val saturdayAfternoon = Instant.parse("2024-01-06T07:00:00Z")
+        val sundayMorning = Instant.parse("2024-01-07T03:00:00Z")
+
+        assertEquals(false, OpeningHours.isOpenNow("Tu-Su 08:00-15:00; Sa 08:00-12:00", saturdayAfternoon))
+        assertEquals(false, OpeningHours.isOpenNow("Mo-Su 08:00-22:00; Su off", sundayMorning))
+        assertEquals(true, OpeningHours.isOpenNow("Mo-Su,PH 07:00-22:00", sundayMorning))
+        assertNull(OpeningHours.isOpenNow("Mo-Su 08:00-22:00; PH unknown", sundayMorning))
+    }
+
+    @Test
+    fun `cafe in Makassar uses local time for open now`() {
+        val cafe = Cafe(
+            id = "test",
+            name = "Kafe",
+            cityId = "makassar",
+            lat = -5.1,
+            lon = 119.4,
+            openingHoursRaw = "08:00-22:00",
+        )
+        val halfPastSevenWib = Instant.parse("2024-01-01T00:30:00Z")
+
+        assertEquals(true, OpeningHours.isOpenNow(cafe, halfPastSevenWib))
+        assertEquals(false, OpeningHours.isOpenNow(cafe.copy(cityId = "bekasi"), halfPastSevenWib))
     }
 
     @Test

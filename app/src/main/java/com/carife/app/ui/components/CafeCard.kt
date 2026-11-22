@@ -1,10 +1,12 @@
 package com.carife.app.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -30,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -38,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.DensityLevel
 import com.carife.app.domain.DistanceUtil
+import com.carife.app.domain.OpeningHours
 import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
@@ -46,19 +50,20 @@ import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeTertiary
 import java.time.Instant
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CafeCard(
     cafe: Cafe,
     matchScore: Int?,
     isFavorite: Boolean,
     isSelectedForCompare: Boolean,
-    showCompareCheckbox: Boolean,
+    now: Instant,
     onOpen: () -> Unit,
     onToggleFavorite: () -> Unit,
     onToggleCompare: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val openNow = rememberOpenNow(cafe.openingHoursRaw)
+    val openNow = remember(cafe, now) { OpeningHours.isOpenNow(cafe, now) }
 
     Surface(
         modifier = modifier.fillMaxWidth(),
@@ -144,9 +149,9 @@ fun CafeCard(
                     }
                 }
 
-                Row(
+                FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
+                    verticalArrangement = Arrangement.spacedBy(3.dp),
                 ) {
                     cafe.rating?.let { rating ->
                         Text(
@@ -168,11 +173,13 @@ fun CafeCard(
                     }
                 }
 
-                Row(
+                FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
+                    verticalArrangement = Arrangement.spacedBy(3.dp),
                 ) {
-                    cafe.wifiMbps?.let { MetaItem(Icons.Outlined.Wifi, "$it Mbps") }
+                    if (cafe.hasWifi) {
+                        MetaItem(Icons.Outlined.Wifi, cafe.wifiMbps?.let { "$it Mbps" } ?: "Wi-Fi")
+                    }
                     cafe.outletCount?.let { MetaItem(Icons.Outlined.Power, "$it colokan") }
                     if (cafe.priceMin != null && cafe.priceMax != null) {
                         MetaItem(icon = null, text = "${formatRupiah(cafe.priceMin)}–${formatRupiah(cafe.priceMax)}")
@@ -194,35 +201,31 @@ fun CafeCard(
                 }
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .heightIn(min = 48.dp)
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(
+                            if (isSelectedForCompare) CarifePrimary.copy(alpha = 0.12f)
+                            else CarifeSurfaceContainer
+                        )
+                        .toggleable(
+                            value = isSelectedForCompare,
+                            role = Role.Checkbox,
+                            onValueChange = { onToggleCompare() },
+                        )
+                        .padding(start = 4.dp, end = 14.dp),
                 ) {
-                    if (showCompareCheckbox) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .heightIn(min = 48.dp)
-                                .clip(RoundedCornerShape(999.dp))
-                                .background(
-                                    if (isSelectedForCompare) CarifePrimary.copy(alpha = 0.12f)
-                                    else CarifeSurfaceContainer
-                                )
-                                .clickable(onClick = onToggleCompare)
-                                .padding(start = 4.dp, end = 14.dp),
-                        ) {
-                            Checkbox(
-                                checked = isSelectedForCompare,
-                                onCheckedChange = { onToggleCompare() },
-                                modifier = Modifier.size(44.dp),
-                            )
-                            Text(
-                                text = if (isSelectedForCompare) "Dipilih" else "Bandingkan",
-                                style = MaterialTheme.typography.labelMedium,
-                                color = CarifePrimary,
-                            )
-                        }
-                    }
+                    Checkbox(
+                        checked = isSelectedForCompare,
+                        onCheckedChange = null,
+                        modifier = Modifier.size(44.dp),
+                    )
+                    Text(
+                        text = if (isSelectedForCompare) "Dipilih" else "Bandingkan",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = CarifePrimary,
+                    )
                 }
             }
         }
@@ -248,12 +251,5 @@ private fun MetaItem(icon: ImageVector?, text: String, tint: androidx.compose.ui
             style = MaterialTheme.typography.labelSmall,
             color = tint ?: MaterialTheme.colorScheme.onSurfaceVariant,
         )
-    }
-}
-
-@Composable
-fun rememberOpenNow(rawHours: String?): Boolean? {
-    return remember(rawHours) {
-        rawHours?.let { com.carife.app.domain.OpeningHours.isOpenNow(it, Instant.now()) }
     }
 }

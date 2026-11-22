@@ -5,19 +5,22 @@ import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.SmokingZone
 import com.carife.app.domain.DistanceUtil
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 
 object OsmCafeMapper {
 
     private val json = Json { ignoreUnknownKeys = true }
 
-    fun mapResponse(body: String, cityId: String): List<Cafe> {
-        val root = runCatching { json.parseToJsonElement(body) }.getOrNull() ?: return emptyList()
-        val elements = (root as? JsonObject)?.get("elements")?.jsonArray ?: return emptyList()
+    fun mapResponse(body: String, cityId: String): List<Cafe> =
+        mapCompleteResponse(body, cityId).orEmpty()
+
+    internal fun mapCompleteResponse(body: String, cityId: String): List<Cafe>? {
+        val root = runCatching { json.parseToJsonElement(body) as? JsonObject }.getOrNull() ?: return null
+        if ("remark" in root) return null
+        val elements = root["elements"] as? JsonArray ?: return null
         return dedupe(elements.mapNotNull { mapElement(it, cityId) })
     }
 
@@ -30,8 +33,10 @@ object OsmCafeMapper {
 
         val type = obj.text("type") ?: "node"
         val elementId = obj.text("id") ?: return null
-        val lat = obj.double("lat") ?: obj["center"]?.jsonObject?.double("lat") ?: return null
-        val lon = obj.double("lon") ?: obj["center"]?.jsonObject?.double("lon") ?: return null
+        val center = obj["center"] as? JsonObject
+        val lat = obj.double("lat") ?: center?.double("lat") ?: return null
+        val lon = obj.double("lon") ?: center?.double("lon") ?: return null
+        if (lat !in -90.0..90.0 || lon !in -180.0..180.0) return null
 
         val street = tags.text("addr:street")
         val houseNumber = tags.text("addr:housenumber")

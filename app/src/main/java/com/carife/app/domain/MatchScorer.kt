@@ -30,7 +30,7 @@ object MatchScorer {
 
         when (preferences.wifi) {
             WifiRequirement.ANY -> Unit
-            WifiRequirement.STANDARD -> results.add(cafe.amenities.contains(Amenity.WIFI))
+            WifiRequirement.STANDARD -> results.add(cafe.hasWifi)
             WifiRequirement.MIN_30 -> results.add(cafe.wifiMbps?.let { it >= 30 } ?: false)
             WifiRequirement.OVER_30 -> results.add(cafe.wifiMbps?.let { it > 30 } ?: false)
             WifiRequirement.OVER_50 -> results.add(cafe.wifiMbps?.let { it > 50 } ?: false)
@@ -64,7 +64,7 @@ object MatchScorer {
         }
 
         for (amenity in preferences.amenities) {
-            results.add(cafe.amenities.contains(amenity))
+            results.add(cafe.hasAmenity(amenity))
         }
 
         if (results.isEmpty()) return null
