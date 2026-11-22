@@ -108,7 +108,7 @@ Gradle 8.13 · AGP 8.13.0 · Kotlin 2.1.20 · Compose BOM 2025.06.01 · `compile
 - `data/demo` — `DemoProfiles` (kurasi + kafe hero), `DemoDataGenerator` (angka deterministik), `DemoDataOverlay` (titik suntik)
 - `data` — `CafeRepository` (offline-first: bundel → cache → jaringan opsional), `CityRepository`
 - `domain` — `FilterEngine`, `MatchScorer`, `OpeningHours`, `DistanceUtil`, `CompareAdvisor`, `ShareTextBuilder`
-- `ui` — tema, komponen (`IllustratedMap` untuk preview, `OsmMapView` untuk peta penuh), dan lima layar + `CarifeRoot` (navigasi)
+- `ui` — tema, komponen (termasuk `OsmMapView`), dan lima layar + `CarifeRoot` (navigasi)
 
 ## Test
 
