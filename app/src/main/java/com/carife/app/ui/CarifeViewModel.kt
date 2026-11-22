@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.carife.app.CarifeApp
 import com.carife.app.core.model.Cafe
+import com.carife.app.core.model.CheckIn
 import com.carife.app.core.model.City
 import com.carife.app.core.model.ExploreFilters
 import com.carife.app.core.model.StudyRoom
@@ -48,6 +49,7 @@ data class AppState(
     val joinedSpotFriendIds: Set<String>,
     val rooms: List<StudyRoom>,
     val joinedRoomIds: Set<String>,
+    val checkIn: CheckIn?,
 )
 
 data class UiMessage(val text: String, val id: Long = System.nanoTime())
@@ -107,6 +109,7 @@ class CarifeViewModel(application: Application) : AndroidViewModel(application) 
             joinedSpotFriendIds = prefs.joinedSpotFriendIds.toSet(),
             rooms = prefs.rooms,
             joinedRoomIds = prefs.joinedRoomIds.toSet(),
+            checkIn = prefs.checkIn,
         )
     }.stateIn(
         viewModelScope,
@@ -123,6 +126,7 @@ class CarifeViewModel(application: Application) : AndroidViewModel(application) 
             joinedSpotFriendIds = emptySet(),
             rooms = emptyList(),
             joinedRoomIds = emptySet(),
+            checkIn = null,
         ),
     )
 
@@ -305,6 +309,68 @@ class CarifeViewModel(application: Application) : AndroidViewModel(application) 
                 emitMessage("Room ditutup.")
             } catch (_: IOException) {
                 emitMessage("Room gagal ditutup. Coba lagi.")
+            }
+        }
+    }
+
+    fun checkIn(cafe: Cafe, floor: String?, note: String?) {
+        val checkIn = CheckIn(
+            cafeId = cafe.id,
+            cafeName = cafe.name,
+            floor = floor?.takeIf { it.isNotBlank() },
+            note = note?.takeIf { it.isNotBlank() },
+            createdAtEpochMillis = System.currentTimeMillis(),
+        )
+        viewModelScope.launch {
+            try {
+                preferencesStore.saveCheckIn(checkIn)
+                emitMessage("Check-in tersimpan di ${cafe.name}.")
+            } catch (_: IOException) {
+                emitMessage("Check-in gagal disimpan. Coba lagi.")
+            }
+        }
+    }
+
+    fun checkOut() {
+        viewModelScope.launch {
+            try {
+                preferencesStore.clearCheckIn()
+                emitMessage("Kamu sudah check-out.")
+            } catch (_: IOException) {
+                emitMessage("Check-out gagal. Coba lagi.")
+            }
+        }
+    }
+
+    fun updateRoomInvites(roomId: String, invitedFriendIds: List<String>) {
+        viewModelScope.launch {
+            try {
+                preferencesStore.updateRoomInvites(roomId, invitedFriendIds)
+                emitMessage("Daftar teman di room diperbarui.")
+            } catch (_: IOException) {
+                emitMessage("Daftar undangan gagal diperbarui. Coba lagi.")
+            }
+        }
+    }
+
+    fun updateRoomDetails(roomId: String, title: String, schedule: String) {
+        viewModelScope.launch {
+            try {
+                preferencesStore.updateRoomDetails(roomId, title, schedule)
+                emitMessage("Detail room diperbarui.")
+            } catch (_: IOException) {
+                emitMessage("Detail room gagal diperbarui. Coba lagi.")
+            }
+        }
+    }
+
+    fun updateRoomCapacity(roomId: String, capacity: Int) {
+        viewModelScope.launch {
+            try {
+                preferencesStore.updateRoomCapacity(roomId, capacity)
+                emitMessage("Kuota room diperbarui.")
+            } catch (_: IOException) {
+                emitMessage("Kuota room gagal diperbarui. Coba lagi.")
             }
         }
     }

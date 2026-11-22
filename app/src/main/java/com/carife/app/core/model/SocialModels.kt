@@ -20,6 +20,15 @@ data class UserProfile(
 }
 
 @Serializable
+data class CheckIn(
+    val cafeId: String? = null,
+    val cafeName: String,
+    val floor: String? = null,
+    val note: String? = null,
+    val createdAtEpochMillis: Long = 0L,
+)
+
+@Serializable
 data class StudyRoom(
     val id: String,
     val cafeId: String? = null,

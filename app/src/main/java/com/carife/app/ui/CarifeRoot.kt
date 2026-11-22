@@ -5,12 +5,12 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.CompareArrows
+import androidx.compose.material.icons.filled.Group
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Map
-import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.CompareArrows
+import androidx.compose.material.icons.outlined.Group
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Map
 import androidx.compose.material3.Badge
@@ -45,6 +45,8 @@ import com.carife.app.ui.home.HomeScreen
 import com.carife.app.ui.nav.Routes
 import com.carife.app.ui.profile.AccountSettingsScreen
 import com.carife.app.ui.profile.ProfileScreen
+import com.carife.app.ui.teman.FriendsScreen
+import com.carife.app.ui.teman.TemanScreen
 
 private data class BottomDestination(
     val route: String,
@@ -57,7 +59,7 @@ private val destinations = listOf(
     BottomDestination(Routes.HOME, "Home", Icons.Filled.Home, Icons.Outlined.Home),
     BottomDestination(Routes.EXPLORE, "Peta", Icons.Filled.Map, Icons.Outlined.Map),
     BottomDestination(Routes.COMPARE, "Bandingkan", Icons.Filled.CompareArrows, Icons.Outlined.CompareArrows),
-    BottomDestination(Routes.PROFILE, "Teman", Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle),
+    BottomDestination(Routes.TEMAN, "Teman", Icons.Filled.Group, Icons.Outlined.Group),
 )
 
 @Composable
@@ -211,12 +213,27 @@ private fun CarifeNavHost(
             )
         }
 
+        composable(Routes.TEMAN) {
+            TemanScreen(
+                viewModel = viewModel,
+                onOpenCafe = { cafeId -> navController.navigate(Routes.detail(cafeId)) },
+                onOpenProfile = { navController.navigate(Routes.PROFILE) },
+                onOpenFriends = { navController.navigate(Routes.FRIENDS) },
+            )
+        }
+
         composable(Routes.PROFILE) {
             ProfileScreen(
                 viewModel = viewModel,
-                onOpenCafe = { cafeId -> navController.navigate(Routes.detail(cafeId)) },
+                onBack = { navController.popBackStack() },
                 onOpenAccountSettings = { navController.navigate(Routes.ACCOUNT) },
-                onPreferencesSaved = { navController.openTab(Routes.HOME) },
+            )
+        }
+
+        composable(Routes.FRIENDS) {
+            FriendsScreen(
+                viewModel = viewModel,
+                onBack = { navController.popBackStack() },
             )
         }
 

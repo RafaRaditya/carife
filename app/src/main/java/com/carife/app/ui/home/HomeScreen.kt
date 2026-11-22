@@ -533,10 +533,10 @@ private fun CatalogErrorState(message: String, onRetry: () -> Unit) {
 
 internal fun catalogSourceLabel(origin: com.carife.app.data.FeedOrigin?): String = when (origin) {
     com.carife.app.data.FeedOrigin.NETWORK ->
-        "Data kafe: OpenStreetMap · baru dimuat dari internet · harga, Wi-Fi, dan kepadatan adalah data contoh"
+        "Data kafe: OpenStreetMap · baru dimuat dari internet"
     com.carife.app.data.FeedOrigin.CACHE ->
-        "Data kafe: OpenStreetMap · tersimpan di perangkat · harga, Wi-Fi, dan kepadatan adalah data contoh"
+        "Data kafe: OpenStreetMap · tersimpan di perangkat"
     com.carife.app.data.FeedOrigin.BUNDLED ->
-        "Data kafe: snapshot OpenStreetMap di dalam aplikasi · jalan tanpa internet · harga, Wi-Fi, dan kepadatan adalah data contoh"
+        "Data kafe: snapshot OpenStreetMap di dalam aplikasi · jalan tanpa internet"
     null -> ""
 }

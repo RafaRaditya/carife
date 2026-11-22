@@ -121,7 +121,8 @@ fun AccountSettingsScreen(
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .weight(1f)
+                .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
                 .padding(bottom = 24.dp),
@@ -320,7 +321,7 @@ fun AccountSettingsScreen(
             }
 
             Text(
-                text = "Profil, foto, dan kota disimpan lokal. Data teman tetap berupa konten demo.",
+                text = "Profil, foto, dan kota disimpan lokal di perangkat ini.",
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )

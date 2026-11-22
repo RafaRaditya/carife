@@ -38,7 +38,6 @@ import com.carife.app.domain.CompareAdvisor
 import com.carife.app.domain.DistanceUtil
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafePhotoPlaceholder
-import com.carife.app.ui.components.DemoBadge
 import com.carife.app.ui.components.formatRupiahFull
 import com.carife.app.ui.components.openCafeDirections
 import com.carife.app.ui.theme.CarifePrimary
@@ -308,8 +307,6 @@ private fun CafeHeaderCell(
                 .height(76.dp),
             cornerRadius = 14.dp,
         )
-
-        if (cafe.isDemoData) DemoBadge()
 
         Text(
             cafe.name,

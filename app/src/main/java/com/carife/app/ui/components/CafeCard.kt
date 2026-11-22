@@ -97,13 +97,6 @@ fun CafeCard(
                         )
                     }
                 }
-                if (cafe.isDemoData) {
-                    DemoBadge(
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .padding(6.dp),
-                    )
-                }
             }
 
             Column(

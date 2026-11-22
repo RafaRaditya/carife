@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.carife.app.core.model.Amenity
 import com.carife.app.core.model.BudgetBucket
+import com.carife.app.core.model.CheckIn
 import com.carife.app.core.model.RadiusPreference
 import com.carife.app.core.model.StudyRoom
 import com.carife.app.core.model.UserPreferences
@@ -38,6 +39,7 @@ data class StoredPreferences(
     val joinedSpotFriendIds: List<String> = emptyList(),
     val rooms: List<StudyRoom> = emptyList(),
     val joinedRoomIds: List<String> = emptyList(),
+    val checkIn: CheckIn? = null,
 ) {
     fun toUserPreferences(): UserPreferences = UserPreferences(
         budget = BudgetBucket.entries.firstOrNull { it.name == budget } ?: BudgetBucket.ANY,
@@ -113,6 +115,34 @@ class PreferencesStore(private val context: Context) {
         val joined = current.joinedRoomIds.toMutableSet()
         if (!joined.add(roomId)) joined.remove(roomId)
         current.copy(joinedRoomIds = joined.toList())
+    }
+
+    suspend fun saveCheckIn(checkIn: CheckIn) = update { current ->
+        current.copy(checkIn = checkIn)
+    }
+
+    suspend fun clearCheckIn() = update { current ->
+        current.copy(checkIn = null)
+    }
+
+    suspend fun updateRoomInvites(roomId: String, invitedFriendIds: List<String>) = updateRoom(roomId) { room ->
+        room.copy(invitedFriendIds = invitedFriendIds)
+    }
+
+    suspend fun updateRoomDetails(roomId: String, title: String, schedule: String) = updateRoom(roomId) { room ->
+        room.copy(title = title.trim(), schedule = schedule.trim())
+    }
+
+    suspend fun updateRoomCapacity(roomId: String, capacity: Int) = updateRoom(roomId) { room ->
+        room.copy(capacity = capacity)
+    }
+
+    private suspend fun updateRoom(roomId: String, transform: (StudyRoom) -> StudyRoom) = update { current ->
+        current.copy(
+            rooms = current.rooms.map { room ->
+                if (room.id == roomId) transform(room) else room
+            }
+        )
     }
 
     suspend fun toggleFavorite(cafeId: String) = update { current ->

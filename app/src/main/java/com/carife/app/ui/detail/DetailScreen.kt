@@ -53,7 +53,6 @@ import com.carife.app.domain.ShareTextBuilder
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafePhotoPlaceholder
 import com.carife.app.ui.components.CarifeEmptyState
-import com.carife.app.ui.components.DemoBadge
 import com.carife.app.ui.components.SharePreview
 import com.carife.app.ui.components.formatRupiahFull
 import com.carife.app.ui.components.openCafeDirections
@@ -189,7 +188,6 @@ fun DetailScreen(
                             .background(CarifeSurfaceContainerLowest.copy(alpha = 0.9f))
                             .padding(horizontal = 10.dp, vertical = 5.dp),
                     )
-                    if (cafe.isDemoData) DemoBadge()
                 }
             }
         }
@@ -266,7 +264,7 @@ fun DetailScreen(
                         )
                         Text(
                             text = cafe.densityPercent?.let { "$it% perkiraan keterisian" }
-                                ?: "Data contoh.",
+                                ?: "Perkiraan keterisian belum tersedia.",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -375,7 +373,7 @@ fun DetailScreen(
 
         if (cafe.reviews.isNotEmpty()) {
             item {
-                DetailSection("Ulasan Contoh") {
+                DetailSection("Ulasan") {
                     cafe.reviews.forEach { review ->
                         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                             Row(
@@ -411,16 +409,13 @@ fun DetailScreen(
                     .padding(horizontal = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
-                Text(
-                    text = if (cafe.id.startsWith("osm:")) {
-                        "Data lokasi dari OpenStreetMap. Harga, kecepatan Wi-Fi, colokan, rating, " +
-                            "kepadatan, menu, dan ulasan adalah data contoh."
-                    } else {
-                        "Kafe ini menggunakan data contoh."
-                    },
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+                if (cafe.id.startsWith("osm:")) {
+                    Text(
+                        text = "Data lokasi dari OpenStreetMap.",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
                 TextButton(onClick = onOpenCompare) { Text("Lihat perbandingan kafe") }
             }
         }
