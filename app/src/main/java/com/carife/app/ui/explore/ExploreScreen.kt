@@ -62,7 +62,7 @@ import com.carife.app.ui.components.CarifeChip
 import com.carife.app.ui.components.CarifeEmptyState
 import com.carife.app.ui.components.FilterPanel
 import com.carife.app.ui.components.FullMapDialog
-import com.carife.app.ui.components.IllustratedMap
+import com.carife.app.ui.components.OsmMapView
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 
@@ -131,14 +131,19 @@ fun ExploreScreen(
             }
 
             item {
-                Box(Modifier.padding(horizontal = 20.dp)) {
-                    IllustratedMap(
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .fillMaxWidth()
+                        .height(170.dp)
+                        .clip(RoundedCornerShape(20.dp)),
+                ) {
+                    OsmMapView(
                         city = appState.selectedCity,
                         cafes = results,
-                        onPinClick = { cafe -> onOpenCafe(cafe.id) },
-                        height = 150.dp,
-                        maxPins = 12,
-                        onMapClick = { showFullMap = true },
+                        onOpenCafe = onOpenCafe,
+                        maxMarkers = 60,
+                        modifier = Modifier.fillMaxSize(),
                     )
                     Surface(
                         onClick = { showFullMap = true },
