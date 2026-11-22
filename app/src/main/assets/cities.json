@@ -1,0 +1,15 @@
+[
+  { "id": "bekasi", "name": "Bekasi", "province": "Jawa Barat", "lat": -6.2383, "lon": 106.9756, "radiusMeters": 8000 },
+  { "id": "jakarta", "name": "Jakarta", "province": "DKI Jakarta", "lat": -6.2088, "lon": 106.8456, "radiusMeters": 10000 },
+  { "id": "depok", "name": "Depok", "province": "Jawa Barat", "lat": -6.4025, "lon": 106.7942, "radiusMeters": 7000 },
+  { "id": "tangerang", "name": "Tangerang", "province": "Banten", "lat": -6.1781, "lon": 106.6300, "radiusMeters": 8000 },
+  { "id": "tangerang-selatan", "name": "Tangerang Selatan", "province": "Banten", "lat": -6.2884, "lon": 106.7179, "radiusMeters": 7000 },
+  { "id": "bogor", "name": "Bogor", "province": "Jawa Barat", "lat": -6.5971, "lon": 106.8060, "radiusMeters": 7000 },
+  { "id": "bandung", "name": "Bandung", "province": "Jawa Barat", "lat": -6.9175, "lon": 107.6191, "radiusMeters": 8000 },
+  { "id": "semarang", "name": "Semarang", "province": "Jawa Tengah", "lat": -6.9932, "lon": 110.4203, "radiusMeters": 8000 },
+  { "id": "yogyakarta", "name": "Yogyakarta", "province": "DI Yogyakarta", "lat": -7.7956, "lon": 110.3695, "radiusMeters": 7000 },
+  { "id": "surabaya", "name": "Surabaya", "province": "Jawa Timur", "lat": -7.2575, "lon": 112.7521, "radiusMeters": 9000 },
+  { "id": "malang", "name": "Malang", "province": "Jawa Timur", "lat": -7.9666, "lon": 112.6326, "radiusMeters": 7000 },
+  { "id": "medan", "name": "Medan", "province": "Sumatera Utara", "lat": 3.5952, "lon": 98.6722, "radiusMeters": 8000 },
+  { "id": "makassar", "name": "Makassar", "province": "Sulawesi Selatan", "lat": -5.1477, "lon": 119.4327, "radiusMeters": 8000 }
+]

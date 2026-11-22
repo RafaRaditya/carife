@@ -1,0 +1,2376 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-20T00:56:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1544546804,
+  "lat": -7.9524465,
+  "lon": 112.6394961,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "asian",
+    "name": "cofe POM"
+  }
+},
+{
+  "type": "node",
+  "id": 3300126476,
+  "lat": -7.9784361,
+  "lon": 112.6432617,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "32",
+    "addr:street": "Jl. Kesatrian Dalam",
+    "amenity": "cafe",
+    "cuisine": "kopi_Tubruk",
+    "internet_access": "yes",
+    "name": "Sudi Mampir",
+    "opening_hours": "24/7",
+    "phone": "+62870000800",
+    "smoking": "outside",
+    "website": "https://sudimampir.com/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3915757312,
+  "lat": -7.9881602,
+  "lon": 112.6299181,
+  "tags": {
+    "addr:city": "Kota Malang",
+    "addr:postcode": "65117",
+    "addr:street": "Jalan Halmahera",
+    "amenity": "cafe",
+    "cuisine": "nasi",
+    "internet_access": "no",
+    "name": "Warung Facebook",
+    "opening_hours": "11:00-15:00"
+  }
+},
+{
+  "type": "node",
+  "id": 3915757684,
+  "lat": -7.9884645,
+  "lon": 112.6295442,
+  "tags": {
+    "addr:city": "Kota Malang",
+    "addr:postcode": "65117",
+    "addr:street": "Jalan Nusa Kambangan",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "no",
+    "name": "Warung Susu Kopi STMJ",
+    "opening_hours": "19:00-24:00",
+    "smoking": "separated"
+  }
+},
+{
+  "type": "node",
+  "id": 3958387071,
+  "lat": -7.9268277,
+  "lon": 112.6019638,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:housenumber": "32",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CSbqSC",
+    "name": "Double Six 66"
+  }
+},
+{
+  "type": "node",
+  "id": 3958394535,
+  "lat": -7.9222431,
+  "lon": 112.5959582,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:housenumber": "32",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CKNrmx",
+    "name": "Ria Djenaka"
+  }
+},
+{
+  "type": "node",
+  "id": 3958402652,
+  "lat": -7.9221676,
+  "lon": 112.5959289,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:housenumber": "40",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CKPFRc",
+    "name": "Otoy The Waroeng"
+  }
+},
+{
+  "type": "node",
+  "id": 3958412935,
+  "lat": -7.9274959,
+  "lon": 112.6028748,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/Dh185W",
+    "name": "Paffee Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 3958413109,
+  "lat": -7.9214528,
+  "lon": 112.5951206,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:housenumber": "42",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CmVXat",
+    "name": "Benndoll Caffee"
+  }
+},
+{
+  "type": "node",
+  "id": 3958414333,
+  "lat": -7.9237250,
+  "lon": 112.5986272,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:housenumber": "16",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9KrFG",
+    "name": "Agil Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 3958416341,
+  "lat": -7.9266382,
+  "lon": 112.6024304,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Tlogomas",
+    "addr:housenumber": "Kav 1",
+    "addr:place": "Tlogomas",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tlogomas",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CmNNNo",
+    "name": "Mimiq Koffie"
+  }
+},
+{
+  "type": "node",
+  "id": 3958540121,
+  "lat": -7.9360207,
+  "lon": 112.6245666,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Puncak Borobudur",
+    "addr:housenumber": "505",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9K5Vo",
+    "name": "Arek-arek Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3958540208,
+  "lat": -7.9369824,
+  "lon": 112.6269133,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Soekarno - Hatta",
+    "addr:housename": "Ruko Borobudur Megah",
+    "addr:housenumber": "Kav 11",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/Dc2Lb2",
+    "name": "Cotton Co"
+  }
+},
+{
+  "type": "node",
+  "id": 3958543412,
+  "lat": -7.9375369,
+  "lon": 112.6280513,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Soekarno - Hatta",
+    "addr:housenumber": "82C",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9K3QS",
+    "name": "Calories"
+  }
+},
+{
+  "type": "node",
+  "id": 3958546347,
+  "lat": -7.9393279,
+  "lon": 112.6306960,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Soekarno - Hatta",
+    "addr:housenumber": "25",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9K1Tq",
+    "name": "Labore Coffee Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 3958548311,
+  "lat": -7.9392628,
+  "lon": 112.6305699,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Soekarno - Hatta",
+    "addr:housenumber": "27",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/Dc2G68",
+    "name": "Hobbies Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 3958549900,
+  "lat": -7.9386410,
+  "lon": 112.6291040,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Soekarno - Hatta",
+    "addr:housenumber": "34",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9JYR9",
+    "name": "Monkey Garage"
+  }
+},
+{
+  "type": "node",
+  "id": 3958555964,
+  "lat": -7.9392332,
+  "lon": 112.6364586,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:housenumber": "26",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Terusan Borobudur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CmNf4f",
+    "name": "Levels"
+  }
+},
+{
+  "type": "node",
+  "id": 3958556485,
+  "lat": -7.9401682,
+  "lon": 112.6376659,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:housenumber": "27",
+    "addr:place": "Mojolangu",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Borobudur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Mojolangu",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CSc4E5",
+    "name": "Vosco Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 3958566559,
+  "lat": -7.9537134,
+  "lon": 112.6319169,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Melati",
+    "addr:housenumber": "38A",
+    "addr:place": "Lowokwaru",
+    "addr:postcode": "65141",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Lowokwaru",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CKNVbF",
+    "name": "Teko Coffee Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 3958566694,
+  "lat": -7.9561138,
+  "lon": 112.6317170,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Melati",
+    "addr:housenumber": "11A",
+    "addr:place": "Lowokwaru",
+    "addr:postcode": "65141",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Lowokwaru",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9JGqJ",
+    "name": "Justice Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 3958582258,
+  "lat": -7.9617692,
+  "lon": 112.6210363,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Bogor",
+    "addr:housenumber": "11",
+    "addr:place": "Sumbersari",
+    "addr:postcode": "65145",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Sumbersari",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/CSbKCo",
+    "name": "DW Coffee Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 4085902685,
+  "lat": -7.9600590,
+  "lon": 112.6326587,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Coffee Taste",
+    "shop": "coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 4993826523,
+  "lat": -7.9778445,
+  "lon": 112.6329247,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:postcode": "65111",
+    "addr:street": "Jalan Majapahit",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Java Dancer Coffee",
+    "opening_hours": "Mo-Su 09:00-22:30",
+    "phone": "+62 816-5638-50",
+    "website": "http://javadancer.com"
+  }
+},
+{
+  "type": "node",
+  "id": 5169132523,
+  "lat": -7.9631678,
+  "lon": 112.6403916,
+  "tags": {
+    "amenity": "cafe",
+    "name": "STMJ Sukomulyo 39"
+  }
+},
+{
+  "type": "node",
+  "id": 5330300566,
+  "lat": -7.9415165,
+  "lon": 112.6228244,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Soekarno - Hatta",
+    "addr:housenumber": "D414",
+    "addr:place": "Tulusrejo",
+    "addr:postcode": "65141",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Tulusrejo",
+    "amenity": "cafe",
+    "image": "source_ref=https://flic.kr/p/D9JWa7",
+    "name": "Circle Cafe & Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 5418451023,
+  "lat": -7.9803840,
+  "lon": 112.6414508,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mr. Oleng"
+  }
+},
+{
+  "type": "node",
+  "id": 5913545785,
+  "lat": -7.9726345,
+  "lon": 112.6210244,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Willis"
+  }
+},
+{
+  "type": "node",
+  "id": 5914020905,
+  "lat": -7.9648448,
+  "lon": 112.6202153,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Coffee Toffee"
+  }
+},
+{
+  "type": "node",
+  "id": 6222278585,
+  "lat": -7.9681487,
+  "lon": 112.6270436,
+  "tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Jalan Guntur",
+    "amenity": "cafe",
+    "cuisine": "american;indonesian;coffee_shop;pasta;pizza;breakfast",
+    "internet_access": "wlan",
+    "name": "Library Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 6409412885,
+  "lat": -7.9581503,
+  "lon": 112.6208076,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Robara (Roti bakar, coffee)"
+  }
+},
+{
+  "type": "node",
+  "id": 6409430585,
+  "lat": -7.9383663,
+  "lon": 112.6296749,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Calories"
+  }
+},
+{
+  "type": "node",
+  "id": 6429944585,
+  "lat": -7.9671177,
+  "lon": 112.6389250,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Raja Sambal - Warung"
+  }
+},
+{
+  "type": "node",
+  "id": 6467510689,
+  "lat": -7.9465437,
+  "lon": 112.6257703,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rocketto"
+  }
+},
+{
+  "type": "node",
+  "id": 6696660122,
+  "lat": -7.9752515,
+  "lon": 112.6345537,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Noch Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 6718347686,
+  "lat": -7.9251516,
+  "lon": 112.5855273,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kanun cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6723137587,
+  "lat": -7.9548110,
+  "lon": 112.6312107,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kacapiring cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 6746341686,
+  "lat": -7.9532663,
+  "lon": 112.6067701,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Nasi Uduk Ayam Bakar Madu"
+  }
+},
+{
+  "type": "node",
+  "id": 6984264493,
+  "lat": -7.9855925,
+  "lon": 112.6309825,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "7",
+    "addr:street": "Jalan Sutan Syahrir",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Kopi Tuju"
+  }
+},
+{
+  "type": "node",
+  "id": 7135815196,
+  "lat": -7.9735151,
+  "lon": 112.6119661,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7302014701,
+  "lat": -7.9734520,
+  "lon": 112.6361108,
+  "tags": {
+    "addr:city": "Klojen",
+    "addr:housenumber": "14",
+    "addr:postcode": "65111",
+    "addr:street": "Jalan Pattimura",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "yes",
+    "internet_access:fee": "yes",
+    "internet_access:ssid": "Iindihome",
+    "name": "crispycornermalang",
+    "opening_hours": "Mo-Su 16:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7765772991,
+  "lat": -7.9736819,
+  "lon": 112.6556219,
+  "tags": {
+    "addr:city": "Maang",
+    "addr:housenumber": "20",
+    "addr:postcode": "65139",
+    "addr:street": "Jalan Sawojajar",
+    "amenity": "cafe",
+    "cuisine": "asian",
+    "internet_access": "yes",
+    "name": "MAXIM STRONG RIDER",
+    "opening_hours": "10:00-22:00",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7783633845,
+  "lat": -7.9269322,
+  "lon": 112.6500021,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "1",
+    "addr:postcode": "65126",
+    "addr:street": "Jalan Jenderal Achmad Yani Utara",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Rest Area Maxim Freedom Malang",
+    "opening_hours": "24/7",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7934218885,
+  "lat": -7.9352486,
+  "lon": 112.6117818,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Gartenhouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8883250655,
+  "lat": -7.9452691,
+  "lon": 112.6508979,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "190",
+    "addr:postcode": "65126",
+    "addr:street": "Jalan Laksda. Adi Sucipto",
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "cuisine": "asian",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "D'chareso",
+    "opening_hours": "Mo-Sa 08:00-21:30",
+    "outdoor_seating": "no",
+    "payment:cash": "yes",
+    "phone": "+6281336703338",
+    "source": "survey",
+    "start_date": "2021-05-27",
+    "website": "https://dchareso.business.site/"
+  }
+},
+{
+  "type": "node",
+  "id": 9393453019,
+  "lat": -7.9744377,
+  "lon": 112.6274338,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Harmoni Cafe & Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 9769604217,
+  "lat": -7.9646304,
+  "lon": 112.6252093,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9769604218,
+  "lat": -7.9565406,
+  "lon": 112.6177367,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9816158490,
+  "lat": -7.9713748,
+  "lon": 112.6436340,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "23",
+    "addr:postcode": "65126",
+    "addr:street": "Jalan Ronggolawe",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "yes",
+    "name": "MAXIM RONGGOLAWE KLOJEN",
+    "opening_hours": "24/7",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091254417,
+  "lat": -7.9749024,
+  "lon": 112.6368286,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Coffee Trunojoyo"
+  }
+},
+{
+  "type": "node",
+  "id": 10153311616,
+  "lat": -7.9762435,
+  "lon": 112.6291568,
+  "tags": {
+    "addr:city": "RW 04 Kel. Oro Oro Dowo, Klojen Kota Malang",
+    "addr:housenumber": "2",
+    "addr:street": "Jalan Semeru",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Lafayette Coffee and Eatery",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10284233558,
+  "lat": -7.9373778,
+  "lon": 112.6266444,
+  "tags": {
+    "amenity": "cafe",
+    "name": "hako"
+  }
+},
+{
+  "type": "node",
+  "id": 10287247817,
+  "lat": -7.9833465,
+  "lon": 112.6298374,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "description": "Café & patisserie",
+    "indoor_seating": "yes",
+    "name": "Lapidoth",
+    "opening_hours": "Mo-Su 08:00-23:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10653504305,
+  "lat": -7.9732605,
+  "lon": 112.6367318,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Klodjen Djaja"
+  }
+},
+{
+  "type": "node",
+  "id": 10980693163,
+  "lat": -7.9444581,
+  "lon": 112.6017428,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mystic Coffe"
+  }
+},
+{
+  "type": "node",
+  "id": 10980693164,
+  "lat": -7.9446709,
+  "lon": 112.6017007,
+  "tags": {
+    "amenity": "cafe",
+    "name": "IQ Caffe"
+  }
+},
+{
+  "type": "node",
+  "id": 10980693165,
+  "lat": -7.9450409,
+  "lon": 112.6016704,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Oase Cafe & Literacy"
+  }
+},
+{
+  "type": "node",
+  "id": 10980693166,
+  "lat": -7.9432695,
+  "lon": 112.6022214,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Arthemis Coffe"
+  }
+},
+{
+  "type": "node",
+  "id": 10980744341,
+  "lat": -7.9435870,
+  "lon": 112.6043272,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Toeman Cafe and Eatry"
+  }
+},
+{
+  "type": "node",
+  "id": 11012315636,
+  "lat": -8.0024165,
+  "lon": 112.6307537,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Jamu Tradisional Fatimah 88"
+  }
+},
+{
+  "type": "node",
+  "id": 11126635715,
+  "lat": -7.9794963,
+  "lon": 112.6307808,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Pengyu Kopitiam"
+  }
+},
+{
+  "type": "node",
+  "id": 11126635723,
+  "lat": -7.9549362,
+  "lon": 112.6062680,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Sigura-gura",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11246123639,
+  "lat": -7.9444170,
+  "lon": 112.6198312,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "18",
+    "addr:postcode": "65141",
+    "addr:street": "Jalan Soekarno Hatta",
+    "amenity": "cafe",
+    "bar": "yes",
+    "cuisine": "international",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Tipsy Lion Malang",
+    "opening_hours": "Mo-Su 12:00-02:00",
+    "outdoor_seating": "yes",
+    "phone": "+628112888235",
+    "smoking": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11587089628,
+  "lat": -7.9579260,
+  "lon": 112.6611100,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "no",
+    "name": "Warung Nasi Campur 14",
+    "opening_hours": "Mo-Su 09:00-15:00",
+    "outdoor_seating": "no",
+    "payment:cash": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11611895504,
+  "lat": -7.9796195,
+  "lon": 112.6312901,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "1- K",
+    "addr:postcode": "65119",
+    "addr:street": "Jalan Majapahit",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;sandwich;cake",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "H&U Coffee and Eatery",
+    "opening_hours": "Mo-Sa 09:00-21:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11752804510,
+  "lat": -7.9410313,
+  "lon": 112.6376533,
+  "tags": {
+    "addr:housenumber": "59",
+    "addr:street": "Jalan Candi Trowulan",
+    "amenity": "cafe",
+    "contact:email": "morningmate.id@gmail.com",
+    "contact:instagram": "morningmate.id",
+    "contact:whatsapp": "+62 813-3314-0052",
+    "name": "Morning Mate",
+    "phone": "+62 813-3314-0052"
+  }
+},
+{
+  "type": "node",
+  "id": 11822275689,
+  "lat": -7.9835297,
+  "lon": 112.6302077,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11990146066,
+  "lat": -7.9574302,
+  "lon": 112.6012522,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Kopi tjapGiling"
+  }
+},
+{
+  "type": "node",
+  "id": 11998192482,
+  "lat": -7.9789353,
+  "lon": 112.6282292,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Hamur Mbah Indut",
+    "opening_hours": "Mo-We, Fr-Su 08:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12000784358,
+  "lat": -7.9476084,
+  "lon": 112.6202459,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Handall"
+  }
+},
+{
+  "type": "node",
+  "id": 12018866663,
+  "lat": -7.9720000,
+  "lon": 112.6208525,
+  "tags": {
+    "addr:housenumber": "25a",
+    "addr:street": "Jalan Besar Ijen",
+    "amenity": "cafe",
+    "contact:instagram": "cigylncraft.cnc",
+    "indoor_seating": "yes",
+    "name": "Cigyl and Craft",
+    "opening_hours": "Mo-Su 08:00-12:00",
+    "outdoor_seating": "yes",
+    "phone": "+62 812-3587-9604",
+    "short_name": "Cigyl",
+    "start_date": "2024-04",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12022201617,
+  "lat": -7.9789964,
+  "lon": 112.6288045,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Malang",
+    "name": "Kopi Wojo",
+    "phone": "+62 818-1825-4455"
+  }
+},
+{
+  "type": "node",
+  "id": 12022498852,
+  "lat": -7.9785864,
+  "lon": 112.6289995,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cokelat Majapahit",
+    "start_date": "2023-06-12"
+  }
+},
+{
+  "type": "node",
+  "id": 12022527048,
+  "lat": -7.9796152,
+  "lon": 112.6280396,
+  "tags": {
+    "amenity": "cafe",
+    "name": "mera."
+  }
+},
+{
+  "type": "node",
+  "id": 12022548026,
+  "lat": -7.9800621,
+  "lon": 112.6273038,
+  "tags": {
+    "alt_name": "Bougenville Kopi",
+    "amenity": "cafe",
+    "name": "Bougenville Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12022550171,
+  "lat": -7.9783601,
+  "lon": 112.6286547,
+  "tags": {
+    "addr:housenumber": "986",
+    "amenity": "cafe",
+    "contact:instagram": "basrakitchen",
+    "name": "Basra Kitchen",
+    "phone": "+62 812-3463-5494"
+  }
+},
+{
+  "type": "node",
+  "id": 12022776984,
+  "lat": -7.9781954,
+  "lon": 112.6296551,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "hamurutea.kayutangan",
+    "name": "Hamur Utea",
+    "opening_hours": "Mo-Su 16:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12027024769,
+  "lat": -7.9570909,
+  "lon": 112.6092425,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Jalan Sigura - Gura V",
+    "amenity": "cafe",
+    "cuisine": "malaysian",
+    "name": "Kedai Milo Nusantara"
+  }
+},
+{
+  "type": "node",
+  "id": 12105697898,
+  "lat": -7.9740867,
+  "lon": 112.6166964,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12106630672,
+  "lat": -7.9793095,
+  "lon": 112.5983136,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Kopi Kaito"
+  }
+},
+{
+  "type": "node",
+  "id": 12110805195,
+  "lat": -7.9672043,
+  "lon": 112.6339554,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "40 B4",
+    "addr:postcode": "65115",
+    "addr:street": "Jalan Jaksa Agung Suprapto",
+    "amenity": "cafe",
+    "name": "Teman Nongkrong Malang",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "website": "https://www.instagram.com/temannongkrongmalang/"
+  }
+},
+{
+  "type": "node",
+  "id": 12157102490,
+  "lat": -7.9773372,
+  "lon": 112.6014650,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12157232467,
+  "lat": -7.9723341,
+  "lon": 112.6171203,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Jalan Wilis",
+    "amenity": "cafe",
+    "name": "Tumbazz Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 12170299954,
+  "lat": -7.9645447,
+  "lon": 112.5929757,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12222406700,
+  "lat": -7.9569125,
+  "lon": 112.6184063,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12253584258,
+  "lat": -7.9874881,
+  "lon": 112.6253066,
+  "tags": {
+    "addr:city": "Kota Malang",
+    "addr:district": "Klojen",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Nusa Kambangan",
+    "addr:subdistrict": "Kasin",
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "opening_hours": "24/7",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12412318290,
+  "lat": -7.9394861,
+  "lon": 112.6388712,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Jalan Simpang Borobudur",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "baby_feeding": "no",
+    "changing_table": "no",
+    "contact:instagram": "cremebycarikcenik",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "yes",
+    "internet_access:ssid": "CREMEBYCARIKCENIK",
+    "name": "Crème",
+    "opening_hours": "Mo-Su 05:30-20:30",
+    "operator": "Carik Cenik",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "toilets:wheelchair": "limited",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12441703570,
+  "lat": -7.9672960,
+  "lon": 112.6155925,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:district": "Klojen",
+    "addr:housenumber": "27",
+    "addr:postcode": "65115",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Jombang",
+    "addr:subdistrict": "Gading Kasri",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "check_date": "2026-02-12",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Toko Kopi TUKU - Malang",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "smoking": "isolated",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://tuku.coffee",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12458883409,
+  "lat": -7.9678514,
+  "lon": 112.6212486,
+  "tags": {
+    "addr:housenumber": "Jalan Pahlawan Trip",
+    "addr:street": "11",
+    "amenity": "cafe",
+    "contact:instagram": "lukeartisanbakery",
+    "name": "Luke Artisan Bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 12585577139,
+  "lat": -7.9734620,
+  "lon": 112.6182532,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warmindo Sebelas"
+  }
+},
+{
+  "type": "node",
+  "id": 12633098492,
+  "lat": -7.9324277,
+  "lon": 112.6293192,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Muraco Headquarter"
+  }
+},
+{
+  "type": "node",
+  "id": 12688071069,
+  "lat": -7.9746991,
+  "lon": 112.6142690,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Arasseo Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12704317737,
+  "lat": -7.9786636,
+  "lon": 112.6292867,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Jalan Jenderal Basuki Rahmat",
+    "amenity": "cafe",
+    "contact:instagram": "oppaexpress.id",
+    "name": "Oppa Express",
+    "phone": "+62 812-5566-5578",
+    "website": "https://oppaexpress.wixsite.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12846799003,
+  "lat": -7.9379760,
+  "lon": 112.5844959,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:country": "ID",
+    "amenity": "cafe",
+    "leisure": "playground",
+    "name": "Milkyland Cafe & Playground",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "node",
+  "id": 12876437102,
+  "lat": -7.9758033,
+  "lon": 112.6315957,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "yes",
+    "name": "Critasena",
+    "opening_hours": "00:00-24:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12940242117,
+  "lat": -7.9756841,
+  "lon": 112.5968034,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Teras Nyaman"
+  }
+},
+{
+  "type": "node",
+  "id": 12955199215,
+  "lat": -7.9834350,
+  "lon": 112.6091694,
+  "tags": {
+    "addr:housenumber": "24 kav 1",
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13073672501,
+  "lat": -7.9256202,
+  "lon": 112.6002539,
+  "tags": {
+    "addr:housenumber": "10",
+    "addr:postcode": "65144",
+    "addr:street": "Jl. Raya Tlogomas No.10, Tlogomas, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144",
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "CW Coffee & Eatery - Tlogomas",
+    "opening_hours": "24/7",
+    "website": "https://www.cwcoffee.id/",
+    "website:menu": "https://www.cwcoffee.id/our-menu/"
+  }
+},
+{
+  "type": "node",
+  "id": 13191676637,
+  "lat": -7.9395112,
+  "lon": 112.6332043,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:district": "Kota Malang",
+    "addr:housename": "Ruko Trowulan Square",
+    "addr:housenumber": "Kav 1",
+    "addr:postcode": "65142",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Candi Trowulan",
+    "addr:subdistrict": "Lowokwaru",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;makanan_ringan",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Seduhlur",
+    "opening_hours": "Mo-Sa 00:00-24:00",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "smoking": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13197059417,
+  "lat": -7.9287487,
+  "lon": 112.6064130,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Coffeeshop Kebon Cak Kin"
+  }
+},
+{
+  "type": "node",
+  "id": 13197267393,
+  "lat": -7.9565089,
+  "lon": 112.6440139,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13410446101,
+  "lat": -7.9690611,
+  "lon": 112.6315846,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Akasha"
+  }
+},
+{
+  "type": "node",
+  "id": 13439162810,
+  "lat": -7.9593058,
+  "lon": 112.6555292,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:district": "Blimbing",
+    "addr:housenumber": "66",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Simpang Sulfat Utara",
+    "addr:subdistrict": "Pandanwangi",
+    "amenity": "cafe",
+    "name": "Sarabba Warkop"
+  }
+},
+{
+  "type": "node",
+  "id": 13439216129,
+  "lat": -7.9686941,
+  "lon": 112.6182961,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:district": "Klojen",
+    "addr:housenumber": "36A",
+    "addr:postcode": "65115",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Gede",
+    "addr:subdistrict": "Gadingkasri",
+    "amenity": "cafe",
+    "contact:instagram": "sebayacoffee",
+    "name": "Sebaya Coffee",
+    "opening_hours": "Mo-Sa 16:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13481273931,
+  "lat": -7.9730550,
+  "lon": 112.6093107,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Kopakopi"
+  }
+},
+{
+  "type": "node",
+  "id": 13545353935,
+  "lat": -7.9390809,
+  "lon": 112.6342444,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Kopitiam 99"
+  }
+},
+{
+  "type": "node",
+  "id": 13622725394,
+  "lat": -7.9515580,
+  "lon": 112.6394668,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13717820532,
+  "lat": -7.9333598,
+  "lon": 112.6306263,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Paman"
+  }
+},
+{
+  "type": "node",
+  "id": 13904978582,
+  "lat": -7.9308306,
+  "lon": 112.6270734,
+  "tags": {
+    "addr:city": "Malang",
+    "addr:housenumber": "25",
+    "addr:postcode": "65141",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Sudimoro Manunggal",
+    "amenity": "cafe",
+    "description": "Coffee Shop",
+    "name": "DOSE Coffee & Sweets"
+  }
+},
+{
+  "type": "node",
+  "id": 13965417711,
+  "lat": -7.9783410,
+  "lon": 112.6379000,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14048125201,
+  "lat": -7.9378059,
+  "lon": 112.6820153,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "check_date": "2026-09-10",
+    "contact:instagram": "ombekofie",
+    "cuisine": "international",
+    "drive_through": "no",
+    "internet_access": "wlan",
+    "level": "0",
+    "name": "Ombé Kofie",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "outdoor_seating": "yes",
+    "toilets": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14109247888,
+  "lat": -7.9675536,
+  "lon": 112.6453166,
+  "tags": {
+    "addr:city": "Kota Malang",
+    "addr:district": "Bunulrejo",
+    "addr:housenumber": "127B",
+    "addr:neighbourhood": "Bunulrejo",
+    "addr:postcode": "65123",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jl. Grindulu No",
+    "addr:subdistrict": "Bunulrejo",
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Pinkof"
+  }
+},
+{
+  "type": "way",
+  "id": 392542350,
+  "center": {
+    "lat": -7.9392702,
+    "lon": 112.6056891
+  },
+  "tags": {
+    "addr:city": "Malang",
+    "addr:district": "Kota Malang",
+    "addr:full": "Jalan Mertojoyo Utara",
+    "addr:housenumber": "A10",
+    "addr:place": "Merjosari",
+    "addr:postcode": "65144",
+    "addr:province": "Jawa Timur",
+    "addr:subdistrict": "Lowokwaru",
+    "addr:suburb": "Merjosari",
+    "amenity": "cafe",
+    "building": "yes",
+    "image": "source_ref=https://flic.kr/p/DgZ3yo",
+    "name": "Boss Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 403182857,
+  "center": {
+    "lat": -7.9663563,
+    "lon": 112.6200302
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kedai Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 403233817,
+  "center": {
+    "lat": -7.9608717,
+    "lon": 112.6133705
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Bingsoo"
+  }
+},
+{
+  "type": "way",
+  "id": 410160544,
+  "center": {
+    "lat": -7.9348167,
+    "lon": 112.6076086
+  },
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jl. Tata Surya",
+    "amenity": "cafe",
+    "building": "yes",
+    "building:levels": "1",
+    "building:roof": "tile",
+    "building:structure": "plastered",
+    "building:walls": "brick",
+    "capacity": "25",
+    "name": "Surya Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 427956886,
+  "center": {
+    "lat": -7.9757552,
+    "lon": 112.6360462
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "building": "yes",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 463211084,
+  "center": {
+    "lat": -7.9654385,
+    "lon": 112.6205146
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Java Dancer",
+    "name:en": "Java Dancer Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 475770014,
+  "center": {
+    "lat": -7.9725504,
+    "lon": 112.6184444
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "The Grove Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 530920783,
+  "center": {
+    "lat": -7.9699231,
+    "lon": 112.6192947
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Bangi Kopitiam"
+  }
+},
+{
+  "type": "way",
+  "id": 630601592,
+  "center": {
+    "lat": -7.9392903,
+    "lon": 112.6342887
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 630811614,
+  "center": {
+    "lat": -7.9746806,
+    "lon": 112.6133297
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Jalan Leci",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cafe Litchi"
+  }
+},
+{
+  "type": "way",
+  "id": 632979834,
+  "center": {
+    "lat": -7.9390574,
+    "lon": 112.6363655
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Par Muse"
+  }
+},
+{
+  "type": "way",
+  "id": 633256857,
+  "center": {
+    "lat": -7.9421185,
+    "lon": 112.6407238
+  },
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Jalan Candi Kidal",
+    "amenity": "cafe",
+    "building": "house",
+    "name": "Omah Candi Cafe",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 746317243,
+  "center": {
+    "lat": -7.9538147,
+    "lon": 112.6533647
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 746415636,
+  "center": {
+    "lat": -7.9704973,
+    "lon": 112.6615707
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 746415695,
+  "center": {
+    "lat": -7.9762727,
+    "lon": 112.6678199
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 746415700,
+  "center": {
+    "lat": -7.9764759,
+    "lon": 112.6680587
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 857695019,
+  "center": {
+    "lat": -7.9574737,
+    "lon": 112.6172390
+  },
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "building": "university",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Nowhere Cafe",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 948487394,
+  "center": {
+    "lat": -7.9742510,
+    "lon": 112.6161533
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kopi Ortu"
+  }
+},
+{
+  "type": "way",
+  "id": 1098737082,
+  "center": {
+    "lat": -7.9405746,
+    "lon": 112.6605036
+  },
+  "tags": {
+    "addr:housenumber": "P6-61",
+    "alt_name": "Kopitom Cafe & Cake",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "soto;rawon;bakso_sapi",
+    "name": "Kopitom"
+  }
+},
+{
+  "type": "way",
+  "id": 1109879901,
+  "center": {
+    "lat": -7.9762385,
+    "lon": 112.6290820
+  },
+  "tags": {
+    "addr:city": "Malang",
+    "addr:district": "Klojen",
+    "addr:housenumber": "2",
+    "addr:neighbourhood": "RW 4",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Semeru",
+    "addr:subdistrict": "Oro-Oro Dowo",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "building": "commercial",
+    "building:levels": "2",
+    "cuisine": "regional",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Lafayette Coffee and Eatery",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "outdoor_seating": "yes",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "way",
+  "id": 1307406504,
+  "center": {
+    "lat": -7.9726027,
+    "lon": 112.6135077
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Zocco"
+  }
+},
+{
+  "type": "way",
+  "id": 1309053546,
+  "center": {
+    "lat": -7.9790737,
+    "lon": 112.6126344
+  },
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Jalan Kesemek",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Pawvillion Dog Café",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1309184856,
+  "center": {
+    "lat": -7.9721789,
+    "lon": 112.6072789
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "The Arbanat",
+    "opening_hours": "07:00-21:30",
+    "phone": "+62 34-1573000"
+  }
+},
+{
+  "type": "way",
+  "id": 1310642270,
+  "center": {
+    "lat": -7.9755430,
+    "lon": 112.6122942
+  },
+  "tags": {
+    "addr:housenumber": "2B",
+    "addr:street": "Jalan Raya Langsep",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kotäsk Kaffe Co."
+  }
+},
+{
+  "type": "way",
+  "id": 1326446372,
+  "center": {
+    "lat": -7.9697030,
+    "lon": 112.5908831
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1328292783,
+  "center": {
+    "lat": -7.9777784,
+    "lon": 112.6057605
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Kopicu"
+  }
+},
+{
+  "type": "way",
+  "id": 1357127147,
+  "center": {
+    "lat": -7.9779611,
+    "lon": 112.6197328
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Sari Lambau"
+  }
+},
+{
+  "type": "way",
+  "id": 1362264089,
+  "center": {
+    "lat": -7.9783587,
+    "lon": 112.6133353
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "house"
+  }
+},
+{
+  "type": "way",
+  "id": 1362661619,
+  "center": {
+    "lat": -7.9750407,
+    "lon": 112.6262890
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Naiki"
+  }
+},
+{
+  "type": "way",
+  "id": 1363007087,
+  "center": {
+    "lat": -7.9755435,
+    "lon": 112.6196246
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "building": "shophouse",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1377423419,
+  "center": {
+    "lat": -7.9619231,
+    "lon": 112.5903404
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Common Grounds Malang"
+  }
+},
+{
+  "type": "way",
+  "id": 1378577403,
+  "center": {
+    "lat": -7.9787603,
+    "lon": 112.6140022
+  },
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Jalan Wuni",
+    "amenity": "cafe",
+    "branch": "Malang",
+    "building": "house",
+    "contact:instagram": "ejjihouse.id",
+    "cuisine": "japanese",
+    "name": "Ejji Coffee House",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1412791035,
+  "center": {
+    "lat": -7.9671709,
+    "lon": 112.6142945
+  },
+  "tags": {
+    "access": "yes",
+    "addr:city": "Malang",
+    "addr:district": "Klojen",
+    "addr:postcode": "65115",
+    "addr:province": "Jawa Timur",
+    "addr:street": "Jalan Bondowoso",
+    "addr:subdistrict": "Gading Kasri",
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "opening_hours": "Mo-Su 07:00-23:50",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1418376372,
+  "center": {
+    "lat": -7.9809635,
+    "lon": 112.6129298
+  },
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Jalan Anggur",
+    "amenity": "cafe",
+    "building": "house",
+    "name": "eighthaus.co"
+  }
+},
+{
+  "type": "way",
+  "id": 1426410074,
+  "center": {
+    "lat": -7.9776429,
+    "lon": 112.6149377
+  },
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Jalan Kepundung",
+    "amenity": "cafe",
+    "building": "house",
+    "name": "Kogu"
+  }
+},
+{
+  "type": "way",
+  "id": 1426783615,
+  "center": {
+    "lat": -7.9812055,
+    "lon": 112.6136021
+  },
+  "tags": {
+    "addr:housenumber": "18",
+    "amenity": "cafe",
+    "building": "house",
+    "name": "Djavu Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 1459764742,
+  "center": {
+    "lat": -7.9679089,
+    "lon": 112.6384794
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1460100951,
+  "center": {
+    "lat": -7.9762260,
+    "lon": 112.6201627
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cafe Bunker Gedong Ijen"
+  }
+},
+{
+  "type": "way",
+  "id": 1460191712,
+  "center": {
+    "lat": -7.9731945,
+    "lon": 112.6171079
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Djawara"
+  }
+},
+{
+  "type": "way",
+  "id": 1463952952,
+  "center": {
+    "lat": -7.9733740,
+    "lon": 112.6346506
+  },
+  "tags": {
+    "addr:housenumber": "24",
+    "addr:street": "Jalan Pattimura",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Legi Pait"
+  }
+},
+{
+  "type": "way",
+  "id": 1467827854,
+  "center": {
+    "lat": -7.9362534,
+    "lon": 112.6248078
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "loc_name": "Nakoa Coffee Suhat",
+    "name": "Nakoa"
+  }
+},
+{
+  "type": "way",
+  "id": 1476759303,
+  "center": {
+    "lat": -7.9361260,
+    "lon": 112.6246563
+  },
+  "tags": {
+    "addr:housenumber": "G-504",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Tenthirty",
+    "official_name": "Tenthirty Coffee and Eatery",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1481319692,
+  "center": {
+    "lat": -7.9847079,
+    "lon": 112.6391607
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "contact:instagram": "den__dew",
+    "name": "Den | Dew"
+  }
+},
+{
+  "type": "way",
+  "id": 1488879141,
+  "center": {
+    "lat": -7.9365400,
+    "lon": 112.6509362
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+}
+
+  ]
+}

@@ -1,0 +1,1031 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-20T00:51:52Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2989497107,
+  "lat": -6.2437569,
+  "lon": 106.6506675,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Eastern KopiTM"
+  }
+},
+{
+  "type": "node",
+  "id": 3535047796,
+  "lat": -6.2324953,
+  "lon": 106.6161648,
+  "tags": {
+    "addr:city": "Tangerang",
+    "addr:postcode": "15811",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "yes",
+    "name": "Warung Senja",
+    "opening_hours": "17:00-24:00",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "node",
+  "id": 4235195588,
+  "lat": -6.2282619,
+  "lon": 106.6092467,
+  "tags": {
+    "addr:postcode": "15811",
+    "addr:street": "Jl. Bulevard Diponegoro",
+    "amenity": "cafe",
+    "name": "Maxx Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 4244110760,
+  "lat": -6.2112656,
+  "lon": 106.6022557,
+  "tags": {
+    "addr:city": "Tangerang",
+    "addr:postcode": "15810",
+    "addr:street": "Jl. Borobudur Raya, Bencongan Indah, Klp. Dua",
+    "amenity": "cafe",
+    "name": "Roti Pisang Bakar Bencongan Indah"
+  }
+},
+{
+  "type": "node",
+  "id": 4430901451,
+  "lat": -6.2274939,
+  "lon": 106.6059956,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Starbucks"
+  }
+},
+{
+  "type": "node",
+  "id": 4430901453,
+  "lat": -6.2285122,
+  "lon": 106.6067040,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "Maxx Coffee",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4613464691,
+  "lat": -6.2372272,
+  "lon": 106.6306359,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Happy Puppy Karaoke"
+  }
+},
+{
+  "type": "node",
+  "id": 4758905441,
+  "lat": -6.1229121,
+  "lon": 106.6511594,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "level": "1",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4758905527,
+  "lat": -6.1231169,
+  "lon": 106.6510362,
+  "tags": {
+    "amenity": "cafe",
+    "level": "1",
+    "name": "Luccini"
+  }
+},
+{
+  "type": "node",
+  "id": 4758905823,
+  "lat": -6.1223670,
+  "lon": 106.6515670,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "OldTown White Coffee",
+    "brand:wikidata": "Q7085308",
+    "cuisine": "coffee_shop;malaysian",
+    "level": "1",
+    "name": "OldTown White Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5123512135,
+  "lat": -6.1192703,
+  "lon": 106.6647585,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Koi"
+  }
+},
+{
+  "type": "node",
+  "id": 5123534327,
+  "lat": -6.1198250,
+  "lon": 106.6643812,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Koi"
+  }
+},
+{
+  "type": "node",
+  "id": 5123544421,
+  "lat": -6.1195519,
+  "lon": 106.6641692,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mokka Coffee Cabana"
+  }
+},
+{
+  "type": "node",
+  "id": 5123549634,
+  "lat": -6.1182935,
+  "lon": 106.6662593,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Krispy Kreme"
+  }
+},
+{
+  "type": "node",
+  "id": 5123559027,
+  "lat": -6.1187544,
+  "lon": 106.6651809,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bakenir"
+  }
+},
+{
+  "type": "node",
+  "id": 5123559033,
+  "lat": -6.1184352,
+  "lon": 106.6659327,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Old Town White Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 5123559040,
+  "lat": -6.1181208,
+  "lon": 106.6669433,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Starbucks"
+  }
+},
+{
+  "type": "node",
+  "id": 5123559041,
+  "lat": -6.1182439,
+  "lon": 106.6671912,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ya Kun Kaja Toast"
+  }
+},
+{
+  "type": "node",
+  "id": 5123604621,
+  "lat": -6.1182001,
+  "lon": 106.6679139,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bangi Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 6264118185,
+  "lat": -6.2106578,
+  "lon": 106.6192911,
+  "tags": {
+    "addr:city": "Kota Tangerang, Banten",
+    "addr:housenumber": "0877-2169-0872",
+    "addr:postcode": "15139",
+    "addr:street": "cafe",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;fast_food",
+    "description": "Jl. Kav. Pemda Raya No.3, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Cali Social Area",
+    "opening_hours": "Mo-Su 10:00-23:00",
+    "outdoor_seating": "yes",
+    "phone": "+62 877 2169 0872",
+    "website": "https://www.instagram.com/calisocialarea/"
+  }
+},
+{
+  "type": "node",
+  "id": 6725584584,
+  "lat": -6.1795077,
+  "lon": 106.6433278,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6894271890,
+  "lat": -6.1286419,
+  "lon": 106.6578846,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Lumintu"
+  }
+},
+{
+  "type": "node",
+  "id": 6894271892,
+  "lat": -6.1288287,
+  "lon": 106.6578863,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Twister Jus"
+  }
+},
+{
+  "type": "node",
+  "id": 6894277889,
+  "lat": -6.1290498,
+  "lon": 106.6578268,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Alumni"
+  }
+},
+{
+  "type": "node",
+  "id": 6894277986,
+  "lat": -6.1282862,
+  "lon": 106.6579479,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Maximum Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 6894277987,
+  "lat": -6.1286974,
+  "lon": 106.6578823,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warunk Soto Nikmat"
+  }
+},
+{
+  "type": "node",
+  "id": 6894278786,
+  "lat": -6.1289669,
+  "lon": 106.6578554,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fore",
+    "name:en": "Fore"
+  }
+},
+{
+  "type": "node",
+  "id": 6894278885,
+  "lat": -6.1289099,
+  "lon": 106.6578525,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Twister Jus"
+  }
+},
+{
+  "type": "node",
+  "id": 6928898485,
+  "lat": -6.1243445,
+  "lon": 106.6336242,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Toko Cat"
+  }
+},
+{
+  "type": "node",
+  "id": 6951184888,
+  "lat": -6.1290280,
+  "lon": 106.6333419,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Aisyha Cell"
+  }
+},
+{
+  "type": "node",
+  "id": 6956656787,
+  "lat": -6.1944547,
+  "lon": 106.6343257,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Maxx Coffee",
+    "brand:wikidata": "Q124651563",
+    "cuisine": "coffee_shop",
+    "name": "Maxx Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6956681685,
+  "lat": -6.2147854,
+  "lon": 106.6768434,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "name:en": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7097052353,
+  "lat": -6.1778445,
+  "lon": 106.6322141,
+  "tags": {
+    "addr:city": "Tangerang",
+    "addr:postcode": "15111",
+    "addr:street": "Jl. A. Damyati No.23, RT.006/RW.003, Kelurahan Sukarasa",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "bar": "yes",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "yes",
+    "name": "BREATH! Cofffe NOW",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7223889466,
+  "lat": -6.2267873,
+  "lon": 106.6081468,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7341476685,
+  "lat": -6.1578644,
+  "lon": 106.6675328,
+  "tags": {
+    "addr:housenumber": "RT.004/RW.006",
+    "addr:postcode": "15122",
+    "addr:street": "Arcadia Daan Mogot",
+    "amenity": "cafe",
+    "name": "Waroenk Nyender",
+    "opening_hours": "24/7",
+    "operator": "Waroenk Nyender, Jl. Arcadia Daan Mogot, RT.004/RW.006, Batuceper, Tangerang City, Banten 15122",
+    "website": "http://Waroenk Nyender, Jl. Arcadia Daan Mogot, RT.004/RW.006, Batuceper, Tangerang City, Banten 15122"
+  }
+},
+{
+  "type": "node",
+  "id": 7912839940,
+  "lat": -6.2061482,
+  "lon": 106.6497128,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Top Model Collection"
+  }
+},
+{
+  "type": "node",
+  "id": 7912849300,
+  "lat": -6.2061684,
+  "lon": 106.6497555,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ombee Alam Sutra"
+  }
+},
+{
+  "type": "node",
+  "id": 7912926138,
+  "lat": -6.2075096,
+  "lon": 106.6495633,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Dua Bintang Snack & Drink"
+  }
+},
+{
+  "type": "node",
+  "id": 7912979578,
+  "lat": -6.2100259,
+  "lon": 106.6481903,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Angkringan NACA Cafe SEBLAK"
+  }
+},
+{
+  "type": "node",
+  "id": 7913005377,
+  "lat": -6.2089418,
+  "lon": 106.6484425,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Nongkie"
+  }
+},
+{
+  "type": "node",
+  "id": 7913009073,
+  "lat": -6.2093039,
+  "lon": 106.6483491,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warunk Kepo Jus dan Sop Buah"
+  }
+},
+{
+  "type": "node",
+  "id": 7913026535,
+  "lat": -6.2096382,
+  "lon": 106.6484262,
+  "tags": {
+    "amenity": "cafe",
+    "name": "NICE STORY"
+  }
+},
+{
+  "type": "node",
+  "id": 7913049986,
+  "lat": -6.2101001,
+  "lon": 106.6482090,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Paul"
+  }
+},
+{
+  "type": "node",
+  "id": 9684550576,
+  "lat": -6.2410999,
+  "lon": 106.6533074,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 9694462229,
+  "lat": -6.2199317,
+  "lon": 106.6143289,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Palem Semi",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9695577226,
+  "lat": -6.2290911,
+  "lon": 106.6078867,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Roti Bakar 88 - Taman Sari Lippo Karawaci"
+  }
+},
+{
+  "type": "node",
+  "id": 9696286137,
+  "lat": -6.1705337,
+  "lon": 106.6796089,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Munim Poris"
+  }
+},
+{
+  "type": "node",
+  "id": 9754236973,
+  "lat": -6.1433484,
+  "lon": 106.6276865,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomokofi - Aeropolis"
+  }
+},
+{
+  "type": "node",
+  "id": 9771085659,
+  "lat": -6.1903793,
+  "lon": 106.5898570,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Starbuck"
+  }
+},
+{
+  "type": "node",
+  "id": 9869293402,
+  "lat": -6.1173516,
+  "lon": 106.6671737,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "yes",
+    "name": "Blue Sky Premier Lounge Domestic"
+  }
+},
+{
+  "type": "node",
+  "id": 10572632910,
+  "lat": -6.1195070,
+  "lon": 106.6635393,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jetlag Cart Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 10692808915,
+  "lat": -6.2327601,
+  "lon": 106.6586235,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ryuko"
+  }
+},
+{
+  "type": "node",
+  "id": 10725861004,
+  "lat": -6.2408357,
+  "lon": 106.6565569,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kafe Pendekar"
+  }
+},
+{
+  "type": "node",
+  "id": 11088546601,
+  "lat": -6.2407598,
+  "lon": 106.6286544,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Biggby Coffee",
+    "brand:wikidata": "Q4906876",
+    "brand:wikipedia": "en:Biggby Coffee",
+    "cuisine": "coffee_shop;sandwich;dessert",
+    "description": "Summarecon Mall Serpong, DGF-205, Lantai Dasar, Downtown Walk",
+    "diet:halal": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "level": "0",
+    "level:ref": "GF",
+    "name": "Biggby Coffee",
+    "outdoor_seating": "yes",
+    "phone": "+622129310456",
+    "website": "https://www.biggby.co.id"
+  }
+},
+{
+  "type": "node",
+  "id": 11088569110,
+  "lat": -6.2268907,
+  "lon": 106.6066876,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Biggby Coffee",
+    "brand:wikidata": "Q4906876",
+    "brand:wikipedia": "en:Biggby Coffee",
+    "cuisine": "coffee_shop;sandwich;dessert",
+    "description": "Supermal Karawaci, UG Unit 20",
+    "diet:halal": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "level": "1",
+    "level:ref": "UG",
+    "name": "Biggby Coffee",
+    "phone": "+62215465272",
+    "website": "https://www.biggby.co.id"
+  }
+},
+{
+  "type": "node",
+  "id": 12322905908,
+  "lat": -6.1711752,
+  "lon": 106.6829303,
+  "tags": {
+    "amenity": "cafe",
+    "brand:wikidata": "Q4906876",
+    "brand:wikipedia": "en:Biggby Coffee",
+    "cuisine": "coffee_shop;sandwich;dessert",
+    "description": "Ruko Poris Paradise Ekslusif Blok A3, No.17",
+    "diet:halal": "yes",
+    "drive_through": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Biggby Coffee",
+    "outdoor_seating": "yes",
+    "website": "https://www.biggby.co.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 12834010678,
+  "lat": -6.2236435,
+  "lon": 106.6485709,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Universitas Binus Alam Sutera",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "TOMORO Coffee",
+    "opening_hours": "Mo-Sa 08:00-17:00",
+    "outdoor_seating": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12837300490,
+  "lat": -6.2189599,
+  "lon": 106.6154605,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12837300492,
+  "lat": -6.2197445,
+  "lon": 106.6143233,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12837300493,
+  "lat": -6.2195797,
+  "lon": 106.6143257,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13169258774,
+  "lat": -6.2126153,
+  "lon": 106.6882353,
+  "tags": {
+    "amenity": "cafe",
+    "check_date:opening_hours": "2025-09-25",
+    "name": "Warkop MANIS MANJA",
+    "opening_hours:signed": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13190449061,
+  "lat": -6.2191329,
+  "lon": 106.6874493,
+  "tags": {
+    "amenity": "cafe",
+    "check_date:opening_hours": "2025-10-03",
+    "name": "Warkop WARKOP",
+    "opening_hours:signed": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13253776272,
+  "lat": -6.1998398,
+  "lon": 106.6922365,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "check_date:opening_hours": "2025-10-24",
+    "diet:halal": "yes",
+    "indoor_seating": "yes",
+    "name": "Warkop Barokah",
+    "opening_hours:signed": "no",
+    "outdoor_seating": "yes",
+    "smoking": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13282518963,
+  "lat": -6.2312221,
+  "lon": 106.5878057,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Starbuck Ubud"
+  }
+},
+{
+  "type": "node",
+  "id": 14253743303,
+  "lat": -6.1729396,
+  "lon": 106.6304941,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Starbucks"
+  }
+},
+{
+  "type": "node",
+  "id": 14254614387,
+  "lat": -6.1210914,
+  "lon": 106.6554766,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-10-06",
+    "name": "Toast Break",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 14254614388,
+  "lat": -6.1211383,
+  "lon": 106.6554435,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-10-06",
+    "name": "Sappo Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 14359829562,
+  "lat": -6.1812259,
+  "lon": 106.6303713,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Pasar Lama",
+    "name": "Coffee Rider"
+  }
+},
+{
+  "type": "node",
+  "id": 14359830789,
+  "lat": -6.1895638,
+  "lon": 106.5907864,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Jatiuwung",
+    "name": "Coffee Rider"
+  }
+},
+{
+  "type": "node",
+  "id": 14372966180,
+  "lat": -6.1808476,
+  "lon": 106.6639753,
+  "tags": {
+    "addr:city": "Tangerang",
+    "addr:district": "Cipondoh",
+    "addr:housename": "FPR House",
+    "addr:housenumber": "AH 8",
+    "addr:postcode": "15141",
+    "addr:province": "Banten",
+    "addr:street": "Jalan Puri Dewata 5",
+    "addr:subdistrict": "Poris Plawad Utara",
+    "addr:unit": "AH 8",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "FPR House"
+  }
+},
+{
+  "type": "way",
+  "id": 297143775,
+  "center": {
+    "lat": -6.1329384,
+    "lon": 106.6408373
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Safer Sky Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 721179534,
+  "center": {
+    "lat": -6.2137972,
+    "lon": 106.6832619
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 746340993,
+  "center": {
+    "lat": -6.1482534,
+    "lon": 106.6768109
+  },
+  "tags": {
+    "addr:city": "Tangerang",
+    "addr:housenumber": "A9",
+    "addr:postcode": "15124",
+    "addr:street": "Jl. Duta Persada 11 Duta Garden",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "email": "info@kopiluo.com",
+    "image": "http://www.kopiluo.com/img/logo.gif",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "internet_access:ssid": "Kopiluo Wifi",
+    "name": "Kopiluo",
+    "opening_hours": "24/7",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1084139407,
+  "center": {
+    "lat": -6.1945691,
+    "lon": 106.6332024
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1265456124,
+  "center": {
+    "lat": -6.2193874,
+    "lon": 106.6103400
+  },
+  "tags": {
+    "addr:city": "Tangerang",
+    "addr:housenumber": "249",
+    "addr:postcode": "15139",
+    "addr:street": "Jalan Raya Kavling Perkebunan",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop;indonesian",
+    "name": "foodpedia palem semi"
+  }
+},
+{
+  "type": "way",
+  "id": 1410468989,
+  "center": {
+    "lat": -6.2294164,
+    "lon": 106.6590437
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "commercial",
+    "building:levels": "1",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "way",
+  "id": 1566607318,
+  "center": {
+    "lat": -6.1862012,
+    "lon": 106.6576043
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "relation",
+  "id": 14984502,
+  "center": {
+    "lat": -6.1290288,
+    "lon": 106.6556419
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "indonesian;asian",
+    "name": "Airport Cafetaria",
+    "name:ru": "Местное недорогое кафе",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}

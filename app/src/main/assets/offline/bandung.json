@@ -1,0 +1,6397 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-20T00:53:58Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1746761936,
+  "lat": -6.8939696,
+  "lon": 107.6055017,
+  "tags": {
+    "addr:postcode": "40131",
+    "addr:street": "Jalan Cihampelas",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "email": "feedback@starbucks.co.id",
+    "internet_access": "wlan",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "phone": "+62 22 2061102",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1956516949,
+  "lat": -6.8690020,
+  "lon": 107.6208824,
+  "tags": {
+    "amenity": "cafe",
+    "name": "SPBU Dago",
+    "name:en": "Spbu"
+  }
+},
+{
+  "type": "node",
+  "id": 2496127739,
+  "lat": -6.9069786,
+  "lon": 107.6208901,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Saring Sinar Pagi"
+  }
+},
+{
+  "type": "node",
+  "id": 3029767274,
+  "lat": -6.8643925,
+  "lon": 107.6278981,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40154",
+    "addr:street": "Bukit Pakar Timur IV Kav B1",
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3421238301,
+  "lat": -6.9021325,
+  "lon": 107.6040636,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:street": "Cihampelas",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Habenagen Coffeeshop",
+    "name:en": "Habenhagen"
+  }
+},
+{
+  "type": "node",
+  "id": 3428599973,
+  "lat": -6.9060828,
+  "lon": 107.6202185,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3429603356,
+  "lat": -6.9070431,
+  "lon": 107.6230593,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Oldway Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 3797908134,
+  "lat": -6.9183143,
+  "lon": 107.6143286,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "ice_cream",
+    "name": "Kabut Salju"
+  }
+},
+{
+  "type": "node",
+  "id": 3806721281,
+  "lat": -6.8784830,
+  "lon": 107.6168390,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cokotetra"
+  }
+},
+{
+  "type": "node",
+  "id": 3806721325,
+  "lat": -6.8834511,
+  "lon": 107.6147196,
+  "tags": {
+    "amenity": "cafe",
+    "name": "YUTAKANA",
+    "name:en": "Yutakana"
+  }
+},
+{
+  "type": "node",
+  "id": 4143048396,
+  "lat": -6.9091910,
+  "lon": 107.6276245,
+  "tags": {
+    "addr:street": "Jalan Bengawan",
+    "amenity": "cafe",
+    "name": "Roti Gempol & Kopi Anjis!"
+  }
+},
+{
+  "type": "node",
+  "id": 4143072990,
+  "lat": -6.9089804,
+  "lon": 107.6274290,
+  "tags": {
+    "addr:street": "Jalan Bengawan",
+    "amenity": "cafe",
+    "name": "KAFE SISHA FURDAN"
+  }
+},
+{
+  "type": "node",
+  "id": 4150283093,
+  "lat": -6.9072246,
+  "lon": 107.6203843,
+  "tags": {
+    "addr:street": "Jalan Lombok",
+    "amenity": "cafe",
+    "name": "Two Cents"
+  }
+},
+{
+  "type": "node",
+  "id": 4177773891,
+  "lat": -6.8979598,
+  "lon": 107.6098119,
+  "tags": {
+    "addr:housenumber": "66",
+    "addr:street": "Tamansari",
+    "amenity": "cafe",
+    "name": "Kopi kamu"
+  }
+},
+{
+  "type": "node",
+  "id": 4256116369,
+  "lat": -6.8636195,
+  "lon": 107.6339512,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "28",
+    "addr:postcode": "40198",
+    "addr:street": "Jalan Lembah Pakar Timur",
+    "amenity": "cafe",
+    "name": "The Valley Bistro"
+  }
+},
+{
+  "type": "node",
+  "id": 4256123806,
+  "lat": -6.9079727,
+  "lon": 107.6239556,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "127",
+    "addr:postcode": "40114",
+    "addr:street": "Jalan R.E. Martadinata",
+    "amenity": "cafe",
+    "name": "Karnivor"
+  }
+},
+{
+  "type": "node",
+  "id": 4256140907,
+  "lat": -6.8869895,
+  "lon": 107.6126856,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "2",
+    "addr:postcode": "40132",
+    "addr:street": "Jalan Dayang Sumbi",
+    "amenity": "cafe",
+    "name": "Noah's Barn"
+  }
+},
+{
+  "type": "node",
+  "id": 4256147603,
+  "lat": -6.8650359,
+  "lon": 107.6265097,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#5",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Raya Ranca Kendal Luhur",
+    "amenity": "cafe",
+    "name": "The Stone Cafe",
+    "name:en": "The Stone"
+  }
+},
+{
+  "type": "node",
+  "id": 4256150971,
+  "lat": -6.8676855,
+  "lon": 107.6277808,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#8",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Ranca Kendal Luhur",
+    "amenity": "cafe",
+    "name": "Congo Gallery & Cafe",
+    "name:en": "Congo Gallery",
+    "opening_hours": "Su-Fr 07:00-23:00; Sa 07:00-00:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4256331317,
+  "lat": -6.9061929,
+  "lon": 107.5981092,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#3",
+    "addr:postcode": "40171",
+    "addr:street": "Jalan Dr. Cipto",
+    "amenity": "cafe",
+    "name": "Badung Cafe & Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 4258313505,
+  "lat": -6.9047280,
+  "lon": 107.6178751,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#14",
+    "addr:postcode": "40115",
+    "addr:street": "Jalan Progo",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Hummingbird Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 4272686695,
+  "lat": -6.9088982,
+  "lon": 107.6184895,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#66",
+    "addr:postcode": "40113",
+    "addr:street": "Jalan Aceh",
+    "amenity": "cafe",
+    "name": "Eatboss Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4320607780,
+  "lat": -6.9174530,
+  "lon": 107.6132859,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "11",
+    "addr:street": "Jl. Sumatera",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "name": "Bober"
+  }
+},
+{
+  "type": "node",
+  "id": 4320639466,
+  "lat": -6.9164146,
+  "lon": 107.6138316,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "28",
+    "addr:street": "Jl. Sumatera",
+    "amenity": "cafe",
+    "cuisine": "cafe",
+    "name": "Brusselsspring"
+  }
+},
+{
+  "type": "node",
+  "id": 4320643325,
+  "lat": -6.9165930,
+  "lon": 107.6138143,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "28",
+    "addr:street": "Jalan Sumatra",
+    "amenity": "cafe",
+    "name": "Soleluna"
+  }
+},
+{
+  "type": "node",
+  "id": 4320655631,
+  "lat": -6.9054890,
+  "lon": 107.6206005,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "2",
+    "addr:street": "Cimanuk",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Two Cents"
+  }
+},
+{
+  "type": "node",
+  "id": 4320705419,
+  "lat": -6.9291255,
+  "lon": 107.6196615,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "11A",
+    "addr:street": "Jl. Lodaya, Malabar, Lengkong",
+    "amenity": "cafe",
+    "name": "Little White Cafe",
+    "name:en": "Little White"
+  }
+},
+{
+  "type": "node",
+  "id": 4320707953,
+  "lat": -6.9036224,
+  "lon": 107.6209866,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "11",
+    "addr:street": "Jalan Cimanuk",
+    "amenity": "cafe",
+    "name": "Vanilla Kitchen & Wine"
+  }
+},
+{
+  "type": "node",
+  "id": 4320715786,
+  "lat": -6.9046421,
+  "lon": 107.6187470,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "22",
+    "addr:street": "Progo, Citarum",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Kopi Progo",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "no",
+    "phone": "+62 823-1717-1515",
+    "website": "https://maps.app.goo.gl/XpQSBsgo8WWMUXoB9"
+  }
+},
+{
+  "type": "node",
+  "id": 4320722067,
+  "lat": -6.9045688,
+  "lon": 107.6197076,
+  "tags": {
+    "addr:city": "Bandung Wetan",
+    "addr:housenumber": "33",
+    "addr:street": "Jl. Progo , Citarum",
+    "amenity": "cafe",
+    "name": "Giggle Box Cafe And Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 4320923689,
+  "lat": -6.9286472,
+  "lon": 107.5868038,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "249",
+    "addr:street": "Jalan PETA",
+    "amenity": "cafe",
+    "name": "Southville"
+  }
+},
+{
+  "type": "node",
+  "id": 4320928124,
+  "lat": -6.9160557,
+  "lon": 107.6091519,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "90",
+    "addr:street": "Jl. Braga",
+    "amenity": "cafe",
+    "name": "Wiki Koffie"
+  }
+},
+{
+  "type": "node",
+  "id": 4322633063,
+  "lat": -6.9052965,
+  "lon": 107.6138859,
+  "tags": {
+    "addr:city": "Kota Bandung, Jawa Barat",
+    "addr:housenumber": "3",
+    "addr:street": "Jl. Bahureksa, Bandung Wetan",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Everjoy Coffee and Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4326457996,
+  "lat": -6.9010768,
+  "lon": 107.6097423,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "10",
+    "addr:street": "Jl. Sawunggaling, Tamansari",
+    "amenity": "cafe",
+    "name": "Chingu Cafe",
+    "name:it": "Chingu"
+  }
+},
+{
+  "type": "node",
+  "id": 4326646566,
+  "lat": -6.9023988,
+  "lon": 107.6097023,
+  "tags": {
+    "addr:city": "Taman Sari, Bandung Wetan, Bandung, Jawa Barat",
+    "addr:housenumber": "1",
+    "addr:street": "Jalan Ranggagading",
+    "amenity": "cafe",
+    "name": "Couvee",
+    "opening_hours": "Mo-Su 07:00-23:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4326767332,
+  "lat": -6.9024057,
+  "lon": 107.6143369,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "40",
+    "addr:street": "Jl. Trunojoyo , Citarum",
+    "amenity": "cafe",
+    "name": "ETC Etcetera"
+  }
+},
+{
+  "type": "node",
+  "id": 4326781690,
+  "lat": -6.9003320,
+  "lon": 107.6136806,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "7",
+    "addr:street": "Jalan Diponegoro",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Oldbens Cafe",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+62 878-2426-9298"
+  }
+},
+{
+  "type": "node",
+  "id": 4326873539,
+  "lat": -6.8725270,
+  "lon": 107.5932983,
+  "tags": {
+    "addr:city": "Gegerkalong, Sukasari, Bandung City, West Java",
+    "addr:housenumber": "11B",
+    "addr:street": "Jl. Budi Luhur I",
+    "amenity": "cafe",
+    "name": "Ludwick Café"
+  }
+},
+{
+  "type": "node",
+  "id": 4326876027,
+  "lat": -6.9204024,
+  "lon": 107.6130499,
+  "tags": {
+    "addr:city": "Kebon Pisang, Bandung, Jawa Barat",
+    "addr:housenumber": "30",
+    "addr:street": "Jalan Naripan",
+    "amenity": "cafe",
+    "name": "Uncle's Storage"
+  }
+},
+{
+  "type": "node",
+  "id": 4326877060,
+  "lat": -6.8842570,
+  "lon": 107.5968352,
+  "tags": {
+    "addr:city": "Pasteur, Sukajadi, Kota Bandung, Jawa Barat",
+    "addr:housenumber": "35",
+    "addr:street": "Jl. Sirnamanah",
+    "amenity": "cafe",
+    "name": "Monsoon Cafe",
+    "name:en": "Monsoon"
+  }
+},
+{
+  "type": "node",
+  "id": 4326884850,
+  "lat": -6.8997615,
+  "lon": 107.6104078,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:street": "Jl. Sulanjana, Tamansari, Bandung Wetan",
+    "amenity": "cafe",
+    "name": "Hoppers"
+  }
+},
+{
+  "type": "node",
+  "id": 4326888054,
+  "lat": -6.8996949,
+  "lon": 107.6102940,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:street": "Jl. Sulanjana, Tamansari, Bandung Wetan",
+    "amenity": "cafe",
+    "name": "Kedai Persib"
+  }
+},
+{
+  "type": "node",
+  "id": 4327244823,
+  "lat": -6.9072065,
+  "lon": 107.5668787,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "51",
+    "addr:street": "Jalan Cibeureum",
+    "amenity": "cafe",
+    "name": "Ngopi Doeloe"
+  }
+},
+{
+  "type": "node",
+  "id": 4327246099,
+  "lat": -6.8979361,
+  "lon": 107.5928670,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "37",
+    "addr:street": "Jalan Dr. Djunjunan , Pamoyanan, Cicendo",
+    "amenity": "cafe",
+    "name": "Kedai Pantai Timur"
+  }
+},
+{
+  "type": "node",
+  "id": 4327951247,
+  "lat": -6.8851859,
+  "lon": 107.5815401,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "84A",
+    "addr:street": "Jalan Prof. Drg. Surya Sumantri",
+    "amenity": "cafe",
+    "name": "Take Ichi Japanese Cafe",
+    "name:en": "Take Ichi"
+  }
+},
+{
+  "type": "node",
+  "id": 4327985397,
+  "lat": -6.8891532,
+  "lon": 107.5822790,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "36D",
+    "addr:street": "Jl. Surya Sumantri",
+    "amenity": "cafe",
+    "name": "Sugar Rush"
+  }
+},
+{
+  "type": "node",
+  "id": 4327994060,
+  "lat": -6.9013700,
+  "lon": 107.5990705,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:street": "Jl. Dr. Otten",
+    "amenity": "cafe",
+    "name": "Otten Inn & Viit Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4328025912,
+  "lat": -6.9309098,
+  "lon": 107.6262291,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "91",
+    "addr:street": "Jl. Pelajar Pejuang 45",
+    "amenity": "cafe",
+    "name": "Milan Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4328069510,
+  "lat": -6.9120068,
+  "lon": 107.5960795,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#16",
+    "addr:street": "Jalan Kesatriaan , Arjuna, Cicendo",
+    "amenity": "cafe",
+    "name": "Magic Wok Tavern"
+  }
+},
+{
+  "type": "node",
+  "id": 4328076556,
+  "lat": -6.9109614,
+  "lon": 107.5979568,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "65",
+    "addr:street": "Jalan Pasir Kaliki",
+    "amenity": "cafe",
+    "name": "Pokatiam"
+  }
+},
+{
+  "type": "node",
+  "id": 4328129194,
+  "lat": -6.9173440,
+  "lon": 107.5983109,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "8B",
+    "addr:street": "Jl. Gardujati , Kb. Jeruk, Andir",
+    "amenity": "cafe",
+    "name": "Yoss Coffe",
+    "name:en": "Yoss"
+  }
+},
+{
+  "type": "node",
+  "id": 4328171595,
+  "lat": -6.9049710,
+  "lon": 107.6102432,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "19",
+    "addr:street": "Jl. Ir. H.Djuanda",
+    "amenity": "cafe",
+    "name": "beri kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 4328175741,
+  "lat": -6.9025596,
+  "lon": 107.6104052,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "10",
+    "addr:street": "Jl. Ranggagading",
+    "amenity": "cafe",
+    "name": "SWG COFFEE"
+  }
+},
+{
+  "type": "node",
+  "id": 4328179212,
+  "lat": -6.9023283,
+  "lon": 107.6102359,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "2",
+    "addr:street": "Jl. Sawunggaling",
+    "amenity": "cafe",
+    "name": "Cafe Pohon Durian Bandung"
+  }
+},
+{
+  "type": "node",
+  "id": 4328211453,
+  "lat": -6.8861336,
+  "lon": 107.5816203,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "76C",
+    "addr:postcode": "40164",
+    "addr:street": "Jalan Surya Sumantri",
+    "alt_name": "Starbucks Surya Sumantri",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4329252652,
+  "lat": -6.9095825,
+  "lon": 107.6273878,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "165",
+    "addr:street": "Jl. Taman Pramuka , Cihapit",
+    "amenity": "cafe",
+    "name": "Buthcer's Bill Cafe & Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 4329459744,
+  "lat": -6.8958583,
+  "lon": 107.6348705,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:street": "Jl. Pahlawan, Neglasari, Cibeunying Kaler",
+    "amenity": "cafe",
+    "name": "Gotcha Ice Cream"
+  }
+},
+{
+  "type": "node",
+  "id": 4329483915,
+  "lat": -6.8946071,
+  "lon": 107.6346631,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "#85",
+    "addr:street": "Jl. Pahlawan , Sukaluyu, Cibeunying Kaler",
+    "amenity": "cafe",
+    "name": "Koffiechino"
+  }
+},
+{
+  "type": "node",
+  "id": 4329494632,
+  "lat": -6.8940138,
+  "lon": 107.6348136,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "89",
+    "addr:street": "Jl. Pahlawan",
+    "amenity": "cafe",
+    "name": "Trends Cafe & Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 4329495286,
+  "lat": -6.8943992,
+  "lon": 107.6352770,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "72",
+    "addr:street": "JL Pahlawan",
+    "amenity": "cafe",
+    "name": "Gaza Mediterranean"
+  }
+},
+{
+  "type": "node",
+  "id": 4329532364,
+  "lat": -6.8949494,
+  "lon": 107.6164681,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "26",
+    "addr:street": "Jl. Hasanudin",
+    "amenity": "cafe",
+    "name": "Hangout Cafe",
+    "name:en": "Hangout"
+  }
+},
+{
+  "type": "node",
+  "id": 4329536233,
+  "lat": -6.8960232,
+  "lon": 107.6168462,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "42",
+    "addr:street": "Jalan Dipatiukur",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "website": "https://www.starbucks.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4329539516,
+  "lat": -6.8961805,
+  "lon": 107.6166992,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "36",
+    "addr:street": "Jl. Dipatiukur",
+    "amenity": "cafe",
+    "name": "Kedai Kecil"
+  }
+},
+{
+  "type": "node",
+  "id": 4329541106,
+  "lat": -6.8969548,
+  "lon": 107.6156562,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "26B",
+    "addr:street": "Jalan Dipatiukur",
+    "amenity": "cafe",
+    "name": "B'Owl!"
+  }
+},
+{
+  "type": "node",
+  "id": 4329573255,
+  "lat": -6.9189145,
+  "lon": 107.5889524,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:street": "Jl. Jendral Sudirman",
+    "amenity": "cafe",
+    "name": "Blackjack Coffee",
+    "name:en": "Blackjack"
+  }
+},
+{
+  "type": "node",
+  "id": 4329594116,
+  "lat": -6.9769183,
+  "lon": 107.6326245,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "88",
+    "addr:street": "Jl. Sukabirus",
+    "amenity": "cafe",
+    "name": "Kaminumasa",
+    "name:en": "Kaminumasa"
+  }
+},
+{
+  "type": "node",
+  "id": 4329601853,
+  "lat": -6.8975816,
+  "lon": 107.6437749,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "210",
+    "addr:street": "Jln. Cikutra",
+    "amenity": "cafe",
+    "cuisine": "tea;coffee_shop",
+    "name": "Chillax Coffee And Tea",
+    "name:en": "Chillax"
+  }
+},
+{
+  "type": "node",
+  "id": 4329610998,
+  "lat": -6.8869859,
+  "lon": 107.6149061,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:street": "Jl. Dipatiukur",
+    "amenity": "cafe",
+    "name": "Bober"
+  }
+},
+{
+  "type": "node",
+  "id": 4329644625,
+  "lat": -6.8710748,
+  "lon": 107.5936203,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "103",
+    "addr:street": "Jl. Setiabudhi",
+    "amenity": "cafe",
+    "name": "18 Hrs Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4354988714,
+  "lat": -6.9063815,
+  "lon": 107.6103688,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "3",
+    "addr:postcode": "40115",
+    "addr:street": "Jl. Ir. H. Djuanda",
+    "amenity": "cafe",
+    "cuisine": "western",
+    "name": "Soda Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 4365960649,
+  "lat": -6.9169485,
+  "lon": 107.6091118,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "99-101",
+    "addr:postcode": "40111",
+    "addr:street": "Jalan Braga",
+    "amenity": "cafe",
+    "branch": "Braga City Walk",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4366097668,
+  "lat": -6.9071717,
+  "lon": 107.6233922,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bober"
+  }
+},
+{
+  "type": "node",
+  "id": 4368869904,
+  "lat": -6.9045305,
+  "lon": 107.6199423,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Please, Please, Please"
+  }
+},
+{
+  "type": "node",
+  "id": 4370113727,
+  "lat": -6.9248412,
+  "lon": 107.6213740,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Le Delice Cafe And Bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 4370477176,
+  "lat": -6.9078484,
+  "lon": 107.6237768,
+  "tags": {
+    "addr:housenumber": "125",
+    "amenity": "cafe",
+    "name": "Nanny's Pavillon"
+  }
+},
+{
+  "type": "node",
+  "id": 4375134546,
+  "lat": -6.9070236,
+  "lon": 107.6057856,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "26",
+    "addr:postcode": "40117",
+    "addr:street": "Jalan Pajajaran",
+    "amenity": "cafe",
+    "name": "Ujenk Gemi Bar",
+    "name:en": "Ujenk Gemi"
+  }
+},
+{
+  "type": "node",
+  "id": 4446613135,
+  "lat": -6.9206091,
+  "lon": 107.6154775,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "79",
+    "addr:postcode": "40112",
+    "addr:street": "Jalan Naripan",
+    "amenity": "cafe",
+    "name": "Lacamera Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 4526894252,
+  "lat": -6.8767124,
+  "lon": 107.5728814,
+  "tags": {
+    "amenity": "cafe",
+    "name": "N Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4550655407,
+  "lat": -6.9061810,
+  "lon": 107.6144313,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Uncle A Urban Town"
+  }
+},
+{
+  "type": "node",
+  "id": 4553213241,
+  "lat": -6.8577375,
+  "lon": 107.6289779,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Forest Cafe",
+    "opening_hours": "Mo-Su 08:00-20:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4788348021,
+  "lat": -6.9307280,
+  "lon": 107.6219372,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Loco Chiks and Chill"
+  }
+},
+{
+  "type": "node",
+  "id": 4936436721,
+  "lat": -6.9186286,
+  "lon": 107.6141221,
+  "tags": {
+    "addr:housenumber": "No. 7",
+    "addr:street": "Jalan Veteran",
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "Brussels Spring"
+  }
+},
+{
+  "type": "node",
+  "id": 4971536021,
+  "lat": -6.9161264,
+  "lon": 107.5887671,
+  "tags": {
+    "amenity": "cafe",
+    "name": "sfroastery",
+    "name:it": "Sfroastery"
+  }
+},
+{
+  "type": "node",
+  "id": 4971536121,
+  "lat": -6.8581757,
+  "lon": 107.6323803,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Armor Coffee",
+    "name:it": "Armor"
+  }
+},
+{
+  "type": "node",
+  "id": 5047303242,
+  "lat": -6.8616646,
+  "lon": 107.6484767,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housename": "Aviator Coffee Camp",
+    "addr:housenumber": "28",
+    "addr:postcode": "40198",
+    "addr:street": "Jl. Dago Resort Raya",
+    "amenity": "cafe",
+    "cuisine": "asian",
+    "name": "Aviator Coffee Camp"
+  }
+},
+{
+  "type": "node",
+  "id": 5119336924,
+  "lat": -6.8901174,
+  "lon": 107.5960789,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The People's Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5119336926,
+  "lat": -6.8901104,
+  "lon": 107.5965612,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks Reserve",
+    "name:en": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5119339540,
+  "lat": -6.8901004,
+  "lon": 107.5961777,
+  "tags": {
+    "addr:housenumber": "B55",
+    "amenity": "cafe",
+    "name": "Djournál"
+  }
+},
+{
+  "type": "node",
+  "id": 5119339736,
+  "lat": -6.8886602,
+  "lon": 107.5960294,
+  "tags": {
+    "addr:housenumber": "B-69",
+    "addr:postcode": "40161",
+    "addr:street": "Jl. Paris Van Java Resort",
+    "amenity": "cafe",
+    "brand": "Caribou Coffee",
+    "brand:wikidata": "Q5039494",
+    "brand:wikipedia": "en:Caribou Coffee",
+    "cuisine": "coffee_shop",
+    "email": "caribou.coffee@mahadya.co.id",
+    "internet_access": "wlan",
+    "name": "Caribou Coffee",
+    "name:en": "Caribou",
+    "name:it": "Caribou",
+    "opening_hours": "Mo-Th 10:00-22:00; Fr-Su 08:00-23:00",
+    "phone": "+62 22 82063870",
+    "takeaway": "yes",
+    "website": "http://www.tellcaribouID.com"
+  }
+},
+{
+  "type": "node",
+  "id": 5119339737,
+  "lat": -6.8885606,
+  "lon": 107.5960266,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "Black Canyon"
+  }
+},
+{
+  "type": "node",
+  "id": 5119357421,
+  "lat": -6.8889259,
+  "lon": 107.5960428,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Halaman"
+  }
+},
+{
+  "type": "node",
+  "id": 5123534323,
+  "lat": -6.9615990,
+  "lon": 107.6246951,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rose Bread"
+  }
+},
+{
+  "type": "node",
+  "id": 5214626822,
+  "lat": -6.9157346,
+  "lon": 107.6304829,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jifast The Power Of Durian"
+  }
+},
+{
+  "type": "node",
+  "id": 5318324079,
+  "lat": -6.8733449,
+  "lon": 107.6050402,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5542883063,
+  "lat": -6.9064912,
+  "lon": 107.6170456,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5558373737,
+  "lat": -6.9106431,
+  "lon": 107.6260908,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kembang Deli Kopitiam"
+  }
+},
+{
+  "type": "node",
+  "id": 5724575421,
+  "lat": -6.9296717,
+  "lon": 107.6035086,
+  "tags": {
+    "addr:housenumber": "453",
+    "addr:street": "Jl. Oto Iskandardinata",
+    "amenity": "cafe",
+    "name": "La petite corner",
+    "opening_hours": "Tu-Su 09:00-21:00",
+    "phone": "+62 22 5207333"
+  }
+},
+{
+  "type": "node",
+  "id": 5803815453,
+  "lat": -6.9174934,
+  "lon": 107.6092599,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Jalan Braga",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "contact:instagram": "kopitokodjawa",
+    "indoor_seating": "yes",
+    "name": "Kopi Toko Djawa",
+    "takeaway": "only"
+  }
+},
+{
+  "type": "node",
+  "id": 5803815655,
+  "lat": -6.9171923,
+  "lon": 107.6093407,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Art"
+  }
+},
+{
+  "type": "node",
+  "id": 5803824053,
+  "lat": -6.9169517,
+  "lon": 107.6089282,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "shop": "tea",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6091307649,
+  "lat": -6.9165534,
+  "lon": 107.5889526,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:street": "Jalan Rajawali Timur",
+    "amenity": "cafe",
+    "internet_access": "yes",
+    "name": "Warnet Nur"
+  }
+},
+{
+  "type": "node",
+  "id": 6243860290,
+  "lat": -6.9137601,
+  "lon": 107.6294757,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Bali"
+  }
+},
+{
+  "type": "node",
+  "id": 6325289085,
+  "lat": -6.9018765,
+  "lon": 107.6097400,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Jalan Saung Galing",
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "Gajua Kopi",
+    "opening_hours": "Mo-Th 09:00-00:00; Fr-Su 09:00-02:00",
+    "phone": "+62 811 2001 372"
+  }
+},
+{
+  "type": "node",
+  "id": 6348952797,
+  "lat": -6.8949433,
+  "lon": 107.6162456,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40132",
+    "addr:street": "Jl. Hasanudin No. 10, Lebakgede, Coblong",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;regional",
+    "name": "Tiga Outdoor Cafe",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6390196086,
+  "lat": -6.8868433,
+  "lon": 107.6266658,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Siologi"
+  }
+},
+{
+  "type": "node",
+  "id": 6418849589,
+  "lat": -6.8629017,
+  "lon": 107.6301376,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Valley"
+  }
+},
+{
+  "type": "node",
+  "id": 6418850787,
+  "lat": -6.8615968,
+  "lon": 107.6321809,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kebon Awi"
+  }
+},
+{
+  "type": "node",
+  "id": 6418850788,
+  "lat": -6.8586541,
+  "lon": 107.6373118,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fashion Pasta"
+  }
+},
+{
+  "type": "node",
+  "id": 6418850789,
+  "lat": -6.8588451,
+  "lon": 107.6374225,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Lisung"
+  }
+},
+{
+  "type": "node",
+  "id": 6418850790,
+  "lat": -6.8657012,
+  "lon": 107.6213081,
+  "tags": {
+    "addr:street": "Jalan Ir. H. Juanda",
+    "amenity": "cafe",
+    "name": "Warung Taru",
+    "name:en": "Warung Taru"
+  }
+},
+{
+  "type": "node",
+  "id": 6520452488,
+  "lat": -6.8813092,
+  "lon": 107.5826337,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "The Goodlife"
+  }
+},
+{
+  "type": "node",
+  "id": 6593020150,
+  "lat": -6.9059425,
+  "lon": 107.6191508,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Makmoer",
+    "payment:coins": "yes",
+    "payment:gopay_id": "yes",
+    "payment:notes": "yes",
+    "payment:ovo": "yes",
+    "shop": "kiosk",
+    "takeaway": "only",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6711695723,
+  "lat": -6.9062428,
+  "lon": 107.5978201,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "shop": "coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7076329914,
+  "lat": -6.9097811,
+  "lon": 107.5969413,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chiba"
+  }
+},
+{
+  "type": "node",
+  "id": 7085999286,
+  "lat": -6.9054216,
+  "lon": 107.6202311,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jardin"
+  }
+},
+{
+  "type": "node",
+  "id": 7466927535,
+  "lat": -6.8924838,
+  "lon": 107.6251253,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Dono Reborn"
+  }
+},
+{
+  "type": "node",
+  "id": 7655404507,
+  "lat": -6.9071388,
+  "lon": 107.6180169,
+  "tags": {
+    "addr:city": "Cihapit, Bandung, Jawa Barat",
+    "addr:housenumber": "21",
+    "addr:postcode": "40115",
+    "addr:street": "Jalan Ambon",
+    "amenity": "cafe",
+    "cuisine": "regional;baso_aci;boci;ciwang88",
+    "name": "Baso Aci Ciwang 88",
+    "opening_hours": "Mo-Su 12:00-22:00",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9213347718,
+  "lat": -6.8686861,
+  "lon": 107.6065263,
+  "tags": {
+    "addr:housenumber": "1-B",
+    "addr:postcode": "40141",
+    "addr:street": "Jalan Gunung Kareumbi",
+    "amenity": "cafe",
+    "cuisine": "breakfast;cake;coffee_shop;ice_cream;indonesian;tea",
+    "internet_access": "wlan",
+    "name": "Masagi Coffee",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9213367417,
+  "lat": -6.8711062,
+  "lon": 107.6056926,
+  "tags": {
+    "addr:housenumber": "130",
+    "addr:postcode": "40141",
+    "addr:street": "Jalan Ciumbuleuit",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;indonesian;international;pasta",
+    "internet_access": "wlan",
+    "name": "Kuro Coffee",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+62222033406",
+    "website": "https://www.kurocoffee.co/"
+  }
+},
+{
+  "type": "node",
+  "id": 9286108642,
+  "lat": -6.9032558,
+  "lon": 107.6139508,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "24",
+    "addr:postcode": "40115",
+    "addr:street": "Jalan Sultan Tirtayasa",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "internet_access:ssid": "Kopipi",
+    "name": "Kopipi",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+62 813 2460 2637",
+    "website": "https://linktr.ee/Kopipi.id"
+  }
+},
+{
+  "type": "node",
+  "id": 9558304917,
+  "lat": -6.9142367,
+  "lon": 107.6297314,
+  "tags": {
+    "addr:housenumber": "219",
+    "addr:street": "Jalan R.E. Martadinata",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Jenderal Kopi Nusantara Buwas coffee",
+    "name:nl": "Jenderal Kopi Koffie",
+    "website": "https://jenderalkopi.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 9676827227,
+  "lat": -6.8840587,
+  "lon": 107.6177097,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 9742472715,
+  "lat": -6.8840265,
+  "lon": 107.6116969,
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Sangkuriang",
+    "amenity": "cafe",
+    "name": "Ngopo Doeloe Sangkurian"
+  }
+},
+{
+  "type": "node",
+  "id": 9938891182,
+  "lat": -6.9156712,
+  "lon": 107.6418632,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Joomba"
+  }
+},
+{
+  "type": "node",
+  "id": 9941468156,
+  "lat": -6.9160279,
+  "lon": 107.6407122,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Joh-Eun Keopi"
+  }
+},
+{
+  "type": "node",
+  "id": 9944377821,
+  "lat": -6.9182851,
+  "lon": 107.6094729,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:en": "MIXUEBINGCHENG",
+    "brand:wikidata": "Q107406476",
+    "brand:wikipedia": "zh:蜜雪冰城",
+    "brand:zh": "蜜雪冰城",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "name:en": "Mixue",
+    "name:zh": "蜜雪冰城",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10153299526,
+  "lat": -6.9107304,
+  "lon": 107.6329394,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Calf Coffee Industry",
+    "opening_hours": "Mo-Su 07:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10232370517,
+  "lat": -6.9248453,
+  "lon": 107.6039702,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "305",
+    "addr:postcode": "40241",
+    "addr:street": "Jalan Otto Iskandardinata",
+    "amenity": "cafe",
+    "cuisine": "dessert",
+    "name": "otto iskandardinata 305",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 10279612809,
+  "lat": -6.9487922,
+  "lon": 107.5625018,
+  "tags": {
+    "amenity": "cafe",
+    "name": "M Coffee Company"
+  }
+},
+{
+  "type": "node",
+  "id": 10573724816,
+  "lat": -6.8980574,
+  "lon": 107.6076980,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "3",
+    "addr:neighbourhood": "Tamansari",
+    "addr:postcode": "40116",
+    "addr:street": "Jalan Kebon Bibit",
+    "amenity": "cafe",
+    "cuisine": "indonesian",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Warung Kopi Imah Babaturan",
+    "opening_hours": "Mo-Su 07:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10725880605,
+  "lat": -6.8776541,
+  "lon": 107.6168476,
+  "tags": {
+    "addr:postcode": "40132",
+    "addr:street": "Jalan Insinyur Haji Juanda",
+    "amenity": "cafe",
+    "check_date": "2026-04-22",
+    "cuisine": "coffee_shop;indonesian",
+    "internet_access": "wlan",
+    "name": "Bagi Kopi",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 10732021705,
+  "lat": -6.9093416,
+  "lon": 107.5922661,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Teman Lama"
+  }
+},
+{
+  "type": "node",
+  "id": 10734191605,
+  "lat": -6.8855533,
+  "lon": 107.5955189,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kilogram"
+  }
+},
+{
+  "type": "node",
+  "id": 10772813657,
+  "lat": -6.9453718,
+  "lon": 107.6304886,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "branch": "Indomaret Fresh Buah Batu 270",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "shop": "coffee",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 10772813659,
+  "lat": -6.9410924,
+  "lon": 107.6268912,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "shop": "coffee",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10772813660,
+  "lat": -6.9411448,
+  "lon": 107.6270712,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "shop": "coffee",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 10772994548,
+  "lat": -6.9398319,
+  "lon": 107.6257750,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "takeaway": "yes",
+    "toilets": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 10996454907,
+  "lat": -6.9160953,
+  "lon": 107.6678117,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Mandja"
+  }
+},
+{
+  "type": "node",
+  "id": 10996460507,
+  "lat": -6.9158532,
+  "lon": 107.5944292,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "name": "Starbucks",
+    "name:en": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10996519147,
+  "lat": -6.9667086,
+  "lon": 107.6386485,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Transmart Buahbatu",
+    "brand": "Mixue",
+    "brand:en": "MIXUEBINGCHENG",
+    "brand:wikidata": "Q107406476",
+    "brand:wikipedia": "zh:蜜雪冰城",
+    "brand:zh": "蜜雪冰城",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "name:en": "Mixue",
+    "name:zh": "蜜雪冰城",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10996519148,
+  "lat": -6.9667087,
+  "lon": 107.6384718,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Transmart Buahbatu",
+    "name": "Janji Jiwa",
+    "opening_hours": "Mo-Su 09:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10996519156,
+  "lat": -6.9661903,
+  "lon": 107.6380992,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "delivery": "yes",
+    "name": "Chatime",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11009504905,
+  "lat": -6.9161426,
+  "lon": 107.6101371,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fork (24h)"
+  }
+},
+{
+  "type": "node",
+  "id": 11032812909,
+  "lat": -6.9293268,
+  "lon": 107.6383175,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "opening_hours": "Mo-Su 07:00-21:00",
+    "operator": "Indomaret",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11052508433,
+  "lat": -6.9011192,
+  "lon": 107.6117927,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11054255706,
+  "lat": -6.8936026,
+  "lon": 107.6051072,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11055954375,
+  "lat": -6.9130481,
+  "lon": 107.6326629,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Garden Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11057708376,
+  "lat": -6.9024399,
+  "lon": 107.6217955,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kofu"
+  }
+},
+{
+  "type": "node",
+  "id": 11059462325,
+  "lat": -6.9063298,
+  "lon": 107.5977616,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11062722750,
+  "lat": -6.9052076,
+  "lon": 107.6045701,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Eiger Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11101225745,
+  "lat": -6.9237589,
+  "lon": 107.6170370,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue",
+    "brand:en": "MIXUEBINGCHENG",
+    "brand:wikidata": "Q107406476",
+    "brand:wikipedia": "zh:蜜雪冰城",
+    "brand:zh": "蜜雪冰城",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "name:en": "Mixue",
+    "name:zh": "蜜雪冰城",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "yes",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11101257625,
+  "lat": -6.9241793,
+  "lon": 107.6201345,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "delivery": "Mo-Su 09:30-20:45",
+    "name": "Point Coffee",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "opening_hours:kitchen": "Mo-Su 09:00-20:45",
+    "operator": "Indomaret",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11231047001,
+  "lat": -6.9072927,
+  "lon": 107.6158218,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Halmahera",
+    "amenity": "cafe",
+    "description": "Cafe",
+    "name": "Kamasan",
+    "phone": "+62 811-2279-993",
+    "website": "https://thekamasan.business.site/"
+  }
+},
+{
+  "type": "node",
+  "id": 11232419507,
+  "lat": -6.8902542,
+  "lon": 107.6127312,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Bright Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11388907823,
+  "lat": -6.8991191,
+  "lon": 107.6211357,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "63",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Untung Surapati",
+    "addr:suburb": "Sadang Serang",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "delivery": "Mo-Su 09:00-22:00",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "operator": "Sari Coffee Indonesia",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 11459991304,
+  "lat": -6.9217662,
+  "lon": 107.6727307,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Broy.co"
+  }
+},
+{
+  "type": "node",
+  "id": 11515156250,
+  "lat": -6.8949076,
+  "lon": 107.5887755,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:street": "Jalan Dokter Djundjunan Setiakusumah",
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "drive_through": "yes",
+    "internet_access": "yes",
+    "name": "Kopi Kenangan",
+    "opening_hours": "24/7",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11536111669,
+  "lat": -6.8821567,
+  "lon": 107.6139604,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "diet:halal": "yes",
+    "internet_access": "wlan",
+    "name": "Kozi x Marawa",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11550132512,
+  "lat": -6.9074390,
+  "lon": 107.6089496,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11697917789,
+  "lat": -6.8766336,
+  "lon": 107.6234896,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "2",
+    "addr:postcode": "40191",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Cigadung Raya Barat",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Saraga Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11727625146,
+  "lat": -6.8755511,
+  "lon": 107.6042704,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11727625147,
+  "lat": -6.8756006,
+  "lon": 107.6042621,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11727625148,
+  "lat": -6.9183441,
+  "lon": 107.6182166,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11727625149,
+  "lat": -6.9170677,
+  "lon": 107.6178618,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11727650397,
+  "lat": -6.9136374,
+  "lon": 107.6023798,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Maxx Coffee",
+    "brand:wikidata": "Q124651563",
+    "cuisine": "coffee_shop",
+    "name": "Maxx Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11738983540,
+  "lat": -6.9086249,
+  "lon": 107.6149449,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11898859974,
+  "lat": -6.9235043,
+  "lon": 107.6058278,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11987504013,
+  "lat": -6.9087306,
+  "lon": 107.6109311,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Maxx Coffee",
+    "brand:wikidata": "Q124651563",
+    "cuisine": "coffee_shop",
+    "name": "Maxx Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11987511740,
+  "lat": -6.9088052,
+  "lon": 107.6112583,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime",
+    "not:brand:wikidata": "Q16829306"
+  }
+},
+{
+  "type": "node",
+  "id": 11987532224,
+  "lat": -6.9088105,
+  "lon": 107.6114756,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Xing Fu Tang",
+    "brand:en": "Xing Fu Tang",
+    "brand:wikidata": "Q95720330",
+    "brand:zh": "幸福堂",
+    "cuisine": "bubble_tea",
+    "name": "Xing Fu Tang",
+    "name:en": "Xing Fu Tang",
+    "name:zh": "幸福堂",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11987533081,
+  "lat": -6.9086534,
+  "lon": 107.6113254,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11987541415,
+  "lat": -6.9089357,
+  "lon": 107.6112758,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11987576565,
+  "lat": -6.9137299,
+  "lon": 107.6027866,
+  "tags": {
+    "air_conditioning": "yes",
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11989072573,
+  "lat": -6.9261260,
+  "lon": 107.6365703,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Coffee Bean"
+  }
+},
+{
+  "type": "node",
+  "id": 11989079605,
+  "lat": -6.9261073,
+  "lon": 107.6362726,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11989080204,
+  "lat": -6.9252899,
+  "lon": 107.6369539,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Guyu"
+  }
+},
+{
+  "type": "node",
+  "id": 11989081549,
+  "lat": -6.9258118,
+  "lon": 107.6366320,
+  "tags": {
+    "amenity": "cafe",
+    "name": "KOI The"
+  }
+},
+{
+  "type": "node",
+  "id": 11989096024,
+  "lat": -6.9256946,
+  "lon": 107.6369002,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Gulu Gulu"
+  }
+},
+{
+  "type": "node",
+  "id": 11989217726,
+  "lat": -6.9080783,
+  "lon": 107.6089945,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11989266842,
+  "lat": -6.9077481,
+  "lon": 107.6089409,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11989268921,
+  "lat": -6.9080543,
+  "lon": 107.6088041,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Coffee Dreams"
+  }
+},
+{
+  "type": "node",
+  "id": 11989270018,
+  "lat": -6.9346690,
+  "lon": 107.6126719,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11989406494,
+  "lat": -6.9305899,
+  "lon": 107.6158027,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11989412992,
+  "lat": -6.9299948,
+  "lon": 107.6159549,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Teh Indonesia"
+  }
+},
+{
+  "type": "node",
+  "id": 11989423045,
+  "lat": -6.9300680,
+  "lon": 107.6158972,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Korner"
+  }
+},
+{
+  "type": "node",
+  "id": 11989436159,
+  "lat": -6.9222099,
+  "lon": 107.6174482,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jala Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11989536453,
+  "lat": -6.9182591,
+  "lon": 107.6182294,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Kopi Oh"
+  }
+},
+{
+  "type": "node",
+  "id": 11989736377,
+  "lat": -6.9729145,
+  "lon": 107.6298675,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tel-U Coffee",
+    "shop": "coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11989797571,
+  "lat": -6.9385433,
+  "lon": 107.6240548,
+  "tags": {
+    "amenity": "cafe",
+    "bar": "no",
+    "cuisine": "coffee_shop",
+    "name": "Bean Spot",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "takeaway": "only"
+  }
+},
+{
+  "type": "node",
+  "id": 11989909206,
+  "lat": -6.8895732,
+  "lon": 107.5957994,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Soe"
+  }
+},
+{
+  "type": "node",
+  "id": 11989912458,
+  "lat": -6.8881792,
+  "lon": 107.5960006,
+  "tags": {
+    "amenity": "cafe",
+    "name": "CGV Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11989920848,
+  "lat": -6.8904932,
+  "lon": 107.5962339,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11989936280,
+  "lat": -6.8901338,
+  "lon": 107.5963640,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa"
+  }
+},
+{
+  "type": "node",
+  "id": 11989936282,
+  "lat": -6.8893096,
+  "lon": 107.5961320,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Lay"
+  }
+},
+{
+  "type": "node",
+  "id": 11989945576,
+  "lat": -6.8884167,
+  "lon": 107.5962458,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11989962066,
+  "lat": -6.9057311,
+  "lon": 107.5971955,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11989968828,
+  "lat": -6.8981169,
+  "lon": 107.5968488,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kupi Pass"
+  }
+},
+{
+  "type": "node",
+  "id": 11989978376,
+  "lat": -6.9014214,
+  "lon": 107.5976649,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Otten Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11989981680,
+  "lat": -6.9057404,
+  "lon": 107.5969756,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Janji Jiwa",
+    "brand:wikidata": "Q124030785",
+    "cuisine": "coffee_shop",
+    "name": "Janji Jiwa",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11990117134,
+  "lat": -6.9213245,
+  "lon": 107.6189710,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ganefo"
+  }
+},
+{
+  "type": "node",
+  "id": 11990120305,
+  "lat": -6.9191878,
+  "lon": 107.6240437,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11990131577,
+  "lat": -6.9221320,
+  "lon": 107.6181697,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Non Kitchen Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11990149267,
+  "lat": -6.9237935,
+  "lon": 107.6059891,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11990161478,
+  "lat": -6.9452040,
+  "lon": 107.5953253,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Dunkin Donuts"
+  }
+},
+{
+  "type": "node",
+  "id": 11990954668,
+  "lat": -6.9229907,
+  "lon": 107.6049753,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fruity"
+  }
+},
+{
+  "type": "node",
+  "id": 11990955196,
+  "lat": -6.9226965,
+  "lon": 107.6048411,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Janji Jiwa",
+    "brand:wikidata": "Q124030785",
+    "cuisine": "coffee_shop",
+    "name": "Janji Jiwa",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11990967821,
+  "lat": -6.9230413,
+  "lon": 107.6048908,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Pa Oyen"
+  }
+},
+{
+  "type": "node",
+  "id": 11990971371,
+  "lat": -6.9229215,
+  "lon": 107.6049189,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kimiku"
+  }
+},
+{
+  "type": "node",
+  "id": 11990977131,
+  "lat": -6.9228323,
+  "lon": 107.6052207,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11990987726,
+  "lat": -6.9230826,
+  "lon": 107.6048143,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Puyo"
+  }
+},
+{
+  "type": "node",
+  "id": 11991014566,
+  "lat": -6.9230346,
+  "lon": 107.6048197,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Gulu Gulu"
+  }
+},
+{
+  "type": "node",
+  "id": 11991014568,
+  "lat": -6.9300880,
+  "lon": 107.6035886,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "branch": "Indomaret",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11991085618,
+  "lat": -6.9214217,
+  "lon": 107.6100741,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Korner"
+  }
+},
+{
+  "type": "node",
+  "id": 11991116447,
+  "lat": -6.9170250,
+  "lon": 107.6083052,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11991130867,
+  "lat": -6.9181992,
+  "lon": 107.6094452,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bahagia Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11991131503,
+  "lat": -6.9214803,
+  "lon": 107.6087008,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11991132643,
+  "lat": -6.9172247,
+  "lon": 107.6086070,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Janji Jiwa",
+    "brand:wikidata": "Q124030785",
+    "cuisine": "coffee_shop",
+    "name": "Janji Jiwa",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11991134877,
+  "lat": -6.9171821,
+  "lon": 107.6087317,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Flash Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11991137424,
+  "lat": -6.9158827,
+  "lon": 107.6090844,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "diet:halal": "yes",
+    "name": "Korner"
+  }
+},
+{
+  "type": "node",
+  "id": 11991143423,
+  "lat": -6.9157469,
+  "lon": 107.6088571,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Shooters Pool & Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11991143507,
+  "lat": -6.9181054,
+  "lon": 107.6095813,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Why Not?"
+  }
+},
+{
+  "type": "node",
+  "id": 11991144711,
+  "lat": -6.9205344,
+  "lon": 107.6098582,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Goedang Kopi Braga"
+  }
+},
+{
+  "type": "node",
+  "id": 11991153715,
+  "lat": -6.9172487,
+  "lon": 107.6083790,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Toko Djawa"
+  }
+},
+{
+  "type": "node",
+  "id": 11991155141,
+  "lat": -6.9201483,
+  "lon": 107.6098461,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jabarano Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11991157736,
+  "lat": -6.9189781,
+  "lon": 107.6096597,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Suis Butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 11991160314,
+  "lat": -6.9163094,
+  "lon": 107.6082294,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11991160660,
+  "lat": -6.9208865,
+  "lon": 107.6058892,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Korner"
+  }
+},
+{
+  "type": "node",
+  "id": 11991168031,
+  "lat": -6.9170396,
+  "lon": 107.6086271,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jiwa Toast"
+  }
+},
+{
+  "type": "node",
+  "id": 11991168673,
+  "lat": -6.9184282,
+  "lon": 107.6096812,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Kopi Limarasa"
+  }
+},
+{
+  "type": "node",
+  "id": 11991169399,
+  "lat": -6.9181387,
+  "lon": 107.6095866,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Freezh"
+  }
+},
+{
+  "type": "node",
+  "id": 11991172352,
+  "lat": -6.9167108,
+  "lon": 107.6090294,
+  "tags": {
+    "amenity": "cafe",
+    "name": "MyLoc Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11991172536,
+  "lat": -6.9196038,
+  "lon": 107.6098227,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Korner"
+  }
+},
+{
+  "type": "node",
+  "id": 11991173995,
+  "lat": -6.9182265,
+  "lon": 107.6096222,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Gas Inc Coffee& Gelato",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa,Su 07:00-22:30"
+  }
+},
+{
+  "type": "node",
+  "id": 11991184981,
+  "lat": -6.9167960,
+  "lon": 107.6090569,
+  "tags": {
+    "amenity": "cafe",
+    "name": "18 Coffee & Brew"
+  }
+},
+{
+  "type": "node",
+  "id": 11991332821,
+  "lat": -6.8929457,
+  "lon": 107.6054862,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Xiyue"
+  }
+},
+{
+  "type": "node",
+  "id": 11991339204,
+  "lat": -6.8929670,
+  "lon": 107.6056096,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kelapa Mueda"
+  }
+},
+{
+  "type": "node",
+  "id": 11991342390,
+  "lat": -6.8938431,
+  "lon": 107.6055559,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Teh Nusantara"
+  }
+},
+{
+  "type": "node",
+  "id": 11991347614,
+  "lat": -6.8931774,
+  "lon": 107.6057169,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sour Sally"
+  }
+},
+{
+  "type": "node",
+  "id": 11991352502,
+  "lat": -6.8935395,
+  "lon": 107.6052113,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tong Tji Express"
+  }
+},
+{
+  "type": "node",
+  "id": 11991359995,
+  "lat": -6.8936633,
+  "lon": 107.6057263,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Puyo"
+  }
+},
+{
+  "type": "node",
+  "id": 11991360222,
+  "lat": -6.8934543,
+  "lon": 107.6059368,
+  "tags": {
+    "amenity": "cafe",
+    "name": "J.CO Donuts & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11991379579,
+  "lat": -6.8938151,
+  "lon": 107.6054902,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mochi Mochi"
+  }
+},
+{
+  "type": "node",
+  "id": 11991379837,
+  "lat": -6.8994802,
+  "lon": 107.6043275,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Upnormal Coffee Roasters"
+  }
+},
+{
+  "type": "node",
+  "id": 11991381206,
+  "lat": -6.8936474,
+  "lon": 107.6053038,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fore Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11991382145,
+  "lat": -6.8939469,
+  "lon": 107.6053146,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopilatinum"
+  }
+},
+{
+  "type": "node",
+  "id": 11991382146,
+  "lat": -6.8928805,
+  "lon": 107.6054969,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11991388513,
+  "lat": -6.8980223,
+  "lon": 107.6038112,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11991403170,
+  "lat": -6.8970045,
+  "lon": 107.6037307,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa"
+  }
+},
+{
+  "type": "node",
+  "id": 11992825896,
+  "lat": -6.8607502,
+  "lon": 107.5896710,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 12012295246,
+  "lat": -6.8906713,
+  "lon": 107.5962338,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Cafè",
+    "brand": "Tous les Jours",
+    "brand:wikidata": "Q3535609",
+    "name": "Tous les Jours",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 12014712322,
+  "lat": -6.8600609,
+  "lon": 107.5939400,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;dessert;cake",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Cafe de Musee",
+    "outdoor_seating": "yes",
+    "phone": "+62 85703007940"
+  }
+},
+{
+  "type": "node",
+  "id": 12354273199,
+  "lat": -6.8815672,
+  "lon": 107.5788046,
+  "tags": {
+    "addr:city": "Sukasari, Bandung, Jawa Barat",
+    "addr:housename": "Little Social Space",
+    "addr:housenumber": "2",
+    "addr:postcode": "40151",
+    "addr:street": "Jalan Sari Rasa",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;coffee;cafe",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Little Social Space",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+628886003060",
+    "smoking": "separated",
+    "website": "https://linktr.ee/ssclub"
+  }
+},
+{
+  "type": "node",
+  "id": 12373141856,
+  "lat": -6.8854024,
+  "lon": 107.6134807,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12373215653,
+  "lat": -6.8857827,
+  "lon": 107.6139375,
+  "tags": {
+    "air_conditioning": "yes",
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12429557642,
+  "lat": -6.9667946,
+  "lon": 107.6388108,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Transmart Buahbatu",
+    "brand": "Kopi Kenangan",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "indoor_seating": "no",
+    "name": "Kopi Kenangan",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "takeaway": "only"
+  }
+},
+{
+  "type": "node",
+  "id": 12429557644,
+  "lat": -6.9667935,
+  "lon": 107.6385967,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Transmart Buahbatu",
+    "cuisine": "bubble_tea",
+    "indoor_seating": "no",
+    "name": "Xi Boba",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "shop": "beverages"
+  }
+},
+{
+  "type": "node",
+  "id": 12429557645,
+  "lat": -6.9668766,
+  "lon": 107.6382542,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Transmart Buahbatu",
+    "brand": "The Coffee Bean & Tea Leaf",
+    "brand:wikidata": "Q1141384",
+    "cuisine": "coffee_shop",
+    "name": "The Coffee Bean & Tea Leaf",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12473218163,
+  "lat": -6.8959269,
+  "lon": 107.6048656,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:province": "Jawa Barat",
+    "addr:street": "jl. Cihampelas No. 144A",
+    "amenity": "cafe",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Persegi Coffee",
+    "opening_hours": "08:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+6281288038802"
+  }
+},
+{
+  "type": "node",
+  "id": 12482391290,
+  "lat": -6.8741674,
+  "lon": 107.6046198,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Jati"
+  }
+},
+{
+  "type": "node",
+  "id": 12482391293,
+  "lat": -6.8739650,
+  "lon": 107.6045856,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "name": "MIXUE Ciumbuleuit"
+  }
+},
+{
+  "type": "node",
+  "id": 12482476002,
+  "lat": -6.8794269,
+  "lon": 107.6032186,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Ditokokopi"
+  }
+},
+{
+  "type": "node",
+  "id": 12625460941,
+  "lat": -6.9075012,
+  "lon": 107.6182495,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Bandung Wetan",
+    "addr:housenumber": "8a",
+    "addr:postcode": "40115",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Ambon",
+    "addr:subdistrict": "Citarum",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "no",
+    "name": "TUKU - Ambon",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "smoking": "outside",
+    "website": "https://tuku.coffee/"
+  }
+},
+{
+  "type": "node",
+  "id": 12658003789,
+  "lat": -6.9468381,
+  "lon": 107.6413621,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Flash Coffee",
+    "brand:wikidata": "Q118627777",
+    "cuisine": "coffee_shop",
+    "name": "Flash Coffee",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12658003790,
+  "lat": -6.9463283,
+  "lon": 107.6411971,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12692501543,
+  "lat": -6.9757466,
+  "lon": 107.6374751,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12809507140,
+  "lat": -6.9066586,
+  "lon": 107.6171308,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12843689353,
+  "lat": -6.9171857,
+  "lon": 107.6093430,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Kota Bandung",
+    "addr:housenumber": "65",
+    "addr:neighbourhood": "Braga",
+    "addr:postcode": "40111",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Braga",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Art Coffee",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12843690500,
+  "lat": -6.9160496,
+  "lon": 107.6091452,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Coblog",
+    "addr:housenumber": "45",
+    "addr:neighbourhood": "Cipaganti",
+    "addr:postcode": "40131",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Cihampelas",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Wiki Coffe",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12843711959,
+  "lat": -6.9171712,
+  "lon": 107.6087343,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Sumur Bandung",
+    "addr:housenumber": "112",
+    "addr:neighbourhood": "Braga",
+    "addr:postcode": "40111",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Asia Afrika",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "flash coffee",
+    "opening_hours": "Mo-Su 08:00-20:00",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12843721485,
+  "lat": -6.9174913,
+  "lon": 107.6092602,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Kota Bandung",
+    "addr:neighbourhood": "Braga",
+    "addr:postcode": "40111",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Braga",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Kopi Toko Djawa",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+62 822 1234 5678",
+    "website": "https://kopitokodjawa.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12843737863,
+  "lat": -6.9163066,
+  "lon": 107.6082247,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Cibeunying Kidul",
+    "addr:housenumber": "225",
+    "addr:neighbourhood": "Cicadas",
+    "addr:postcode": "40282",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Jenderal Ahmad Yani",
+    "addr:subdistrict": "Cibeunying Kidul",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Bean Spot Cafe",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12887254413,
+  "lat": -6.9236101,
+  "lon": 107.6278801,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12956269076,
+  "lat": -6.8831467,
+  "lon": 107.5860352,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40163",
+    "addr:street": "Jalan Terusan Sutami 5",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Toebroek Coffee",
+    "outdoor_seating": "yes",
+    "phone": "+62 87778796493"
+  }
+},
+{
+  "type": "node",
+  "id": 12965822167,
+  "lat": -6.8764579,
+  "lon": 107.6232361,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Temu Roti"
+  }
+},
+{
+  "type": "node",
+  "id": 12994036955,
+  "lat": -6.9155748,
+  "lon": 107.6156562,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12999134198,
+  "lat": -6.9368383,
+  "lon": 107.6846021,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop"
+  }
+},
+{
+  "type": "node",
+  "id": 13040439475,
+  "lat": -6.9069845,
+  "lon": 107.6039968,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rooftop Coffee 1896"
+  }
+},
+{
+  "type": "node",
+  "id": 13058924874,
+  "lat": -6.8876954,
+  "lon": 107.6154204,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warkop Suka Rasa"
+  }
+},
+{
+  "type": "node",
+  "id": 13058935500,
+  "lat": -6.8895414,
+  "lon": 107.6162461,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Coklat Impian Dipati Ukur"
+  }
+},
+{
+  "type": "node",
+  "id": 13058940691,
+  "lat": -6.8897156,
+  "lon": 107.6155163,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Douwes Dekker Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 13058950358,
+  "lat": -6.8880494,
+  "lon": 107.6152539,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13059145530,
+  "lat": -6.9165847,
+  "lon": 107.6005901,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Pelagia f&b station"
+  }
+},
+{
+  "type": "node",
+  "id": 13061735071,
+  "lat": -6.8856431,
+  "lon": 107.5542341,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13061738084,
+  "lat": -6.8880054,
+  "lon": 107.5557692,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13073370692,
+  "lat": -6.8979085,
+  "lon": 107.6131797,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "East Indies"
+  }
+},
+{
+  "type": "node",
+  "id": 13092337601,
+  "lat": -6.9090414,
+  "lon": 107.6109495,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13097647044,
+  "lat": -6.8690585,
+  "lon": 107.5937257,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "opening_hours": "Mo-Su,PH 07:00-23:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13273484352,
+  "lat": -6.9143573,
+  "lon": 107.6323363,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13334575526,
+  "lat": -6.9035058,
+  "lon": 107.6041268,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Cerita di"
+  }
+},
+{
+  "type": "node",
+  "id": 13335214088,
+  "lat": -6.8868740,
+  "lon": 107.6233729,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Nescafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13366619343,
+  "lat": -6.9166642,
+  "lon": 107.6167624,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Nowala Coffee and Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 13373734633,
+  "lat": -6.9064704,
+  "lon": 107.5957325,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "opening_hours": "24/7",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13373782010,
+  "lat": -6.9124674,
+  "lon": 107.5987521,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Roempi Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 13373827955,
+  "lat": -6.9242636,
+  "lon": 107.6275601,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopitiam 136"
+  }
+},
+{
+  "type": "node",
+  "id": 13373840638,
+  "lat": -6.9269543,
+  "lon": 107.6344668,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kozi"
+  }
+},
+{
+  "type": "node",
+  "id": 13410062993,
+  "lat": -6.9402128,
+  "lon": 107.6256352,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Kopi Celah Kota"
+  }
+},
+{
+  "type": "node",
+  "id": 13449592280,
+  "lat": -6.8650292,
+  "lon": 107.6261412,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "opening_hours": "Mo-Su,PH 07:00-22:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13516178856,
+  "lat": -6.9085799,
+  "lon": 107.6092991,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13520030576,
+  "lat": -6.9150163,
+  "lon": 107.6016859,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Jalan Stasiun Barat",
+    "amenity": "cafe",
+    "name": "Terracotta ST.26",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13563730871,
+  "lat": -6.9176171,
+  "lon": 107.6307007,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jabarano Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 13595500462,
+  "lat": -6.8948816,
+  "lon": 107.6127494,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "The Houseplants Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 13605881790,
+  "lat": -6.8918716,
+  "lon": 107.6133905,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Riel's"
+  }
+},
+{
+  "type": "node",
+  "id": 13608911096,
+  "lat": -6.8980342,
+  "lon": 107.6163401,
+  "tags": {
+    "amenity": "cafe",
+    "name": "ko.pi.mu."
+  }
+},
+{
+  "type": "node",
+  "id": 13609049733,
+  "lat": -6.8921407,
+  "lon": 107.6124655,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Yumaju"
+  }
+},
+{
+  "type": "node",
+  "id": 13611603017,
+  "lat": -6.8892293,
+  "lon": 107.6131281,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Qaca"
+  }
+},
+{
+  "type": "node",
+  "id": 13613927312,
+  "lat": -6.8881675,
+  "lon": 107.6152842,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Foursis"
+  }
+},
+{
+  "type": "node",
+  "id": 13613947533,
+  "lat": -6.8914987,
+  "lon": 107.6172107,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "belikopi."
+  }
+},
+{
+  "type": "node",
+  "id": 13613963824,
+  "lat": -6.8898536,
+  "lon": 107.6160484,
+  "tags": {
+    "amenity": "cafe",
+    "name": "coffeebawa"
+  }
+},
+{
+  "type": "node",
+  "id": 13613972219,
+  "lat": -6.8855907,
+  "lon": 107.6148415,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Goffee"
+  }
+},
+{
+  "type": "node",
+  "id": 13619276655,
+  "lat": -6.9000525,
+  "lon": 107.6529964,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Cibeunying Kidul",
+    "addr:housename": "Lupba Cafe",
+    "addr:postcode": "40129",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jl. Khp Hasan Mustopa No.39",
+    "addr:subdistrict": "Pasirlayung",
+    "addr:unit": "Blok J-23",
+    "amenity": "cafe",
+    "cuisine": "regional;coffee_shop",
+    "internet_access": "yes",
+    "name": "Lupba Cafe",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "phone": "+62 821-1900-4525"
+  }
+},
+{
+  "type": "node",
+  "id": 13620566517,
+  "lat": -6.9299892,
+  "lon": 107.6352792,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Taman Kopie"
+  }
+},
+{
+  "type": "node",
+  "id": 13620605940,
+  "lat": -6.9280321,
+  "lon": 107.6370132,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13622895417,
+  "lat": -6.8907528,
+  "lon": 107.6161511,
+  "tags": {
+    "amenity": "cafe",
+    "name": "ta.lu.pa"
+  }
+},
+{
+  "type": "node",
+  "id": 13622934471,
+  "lat": -6.8906056,
+  "lon": 107.6160495,
+  "tags": {
+    "amenity": "cafe",
+    "name": "yanie's"
+  }
+},
+{
+  "type": "node",
+  "id": 13630093584,
+  "lat": -6.9538518,
+  "lon": 107.6060474,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jabarano Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 13630120025,
+  "lat": -6.9536319,
+  "lon": 107.6072452,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Fore"
+  }
+},
+{
+  "type": "node",
+  "id": 13630140606,
+  "lat": -6.9537584,
+  "lon": 107.6075403,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13630160090,
+  "lat": -6.9542802,
+  "lon": 107.6076389,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "tea",
+    "name": "teazzi",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 13630170402,
+  "lat": -6.9545540,
+  "lon": 107.6081941,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Dr. Ells"
+  }
+},
+{
+  "type": "node",
+  "id": 13647892100,
+  "lat": -6.9008433,
+  "lon": 107.6124960,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jiwan Coffee & Things"
+  }
+},
+{
+  "type": "node",
+  "id": 13647894656,
+  "lat": -6.8952504,
+  "lon": 107.6131845,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kisah Manis"
+  }
+},
+{
+  "type": "node",
+  "id": 13686433715,
+  "lat": -6.9781903,
+  "lon": 107.6324500,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Dayeuhkolot",
+    "addr:housenumber": "E01",
+    "addr:postcode": "40257",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Sukabirus",
+    "addr:subdistrict": "Citeureup",
+    "amenity": "cafe",
+    "name": "Your Internet Gaming Café",
+    "opening_hours": "24/7",
+    "phone": "+6285199282899"
+  }
+},
+{
+  "type": "node",
+  "id": 13695626664,
+  "lat": -6.9096731,
+  "lon": 107.6162313,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Sumur Bandung",
+    "addr:housenumber": "50",
+    "addr:neighbourhood": "Masjid Junudurrahmah",
+    "addr:postcode": "40113",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Aceh",
+    "addr:subdistrict": "Merdeka",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Tedja Coffee Saparua",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13713697182,
+  "lat": -6.8963792,
+  "lon": 107.5987441,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Yumaju Pavilion",
+    "opening_hours": "Mo-Su 06:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13737072663,
+  "lat": -6.8915557,
+  "lon": 107.6043872,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13737200650,
+  "lat": -6.8943944,
+  "lon": 107.6039259,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13742262463,
+  "lat": -6.9130852,
+  "lon": 107.6465293,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13742297237,
+  "lat": -6.9129243,
+  "lon": 107.6516685,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13742321767,
+  "lat": -6.9126104,
+  "lon": 107.6538134,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13742347878,
+  "lat": -6.9123773,
+  "lon": 107.6525651,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13742351913,
+  "lat": -6.9127387,
+  "lon": 107.6526405,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Mixue Ice Cream & Tea",
+    "brand:wikidata": "Q107406476",
+    "cuisine": "ice_cream;bubble_tea",
+    "name": "Mixue",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13742363563,
+  "lat": -6.9124721,
+  "lon": 107.6517295,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13745090903,
+  "lat": -6.9182472,
+  "lon": 107.5813747,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13745274099,
+  "lat": -6.9182475,
+  "lon": 107.5804134,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fullmoon Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 13752380801,
+  "lat": -6.8774561,
+  "lon": 107.6170449,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13760235868,
+  "lat": -6.8815954,
+  "lon": 107.6162590,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Wheel's Coffee Roasters"
+  }
+},
+{
+  "type": "node",
+  "id": 13760590074,
+  "lat": -6.8910393,
+  "lon": 107.6251659,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Waras"
+  }
+},
+{
+  "type": "node",
+  "id": 13783844093,
+  "lat": -6.9368512,
+  "lon": 107.6223351,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Yumaju",
+    "opening_hours": "Mo-Su 07:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13789600036,
+  "lat": -6.8969480,
+  "lon": 107.6148570,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Madalangu Bakehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13794929972,
+  "lat": -6.9066218,
+  "lon": 107.6131991,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13794959499,
+  "lat": -6.9062454,
+  "lon": 107.6157037,
+  "tags": {
+    "amenity": "cafe",
+    "name": "kedai inn."
+  }
+},
+{
+  "type": "node",
+  "id": 13794976289,
+  "lat": -6.9057747,
+  "lon": 107.6193288,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Satu Atap Mayasari"
+  }
+},
+{
+  "type": "node",
+  "id": 13794977240,
+  "lat": -6.9062859,
+  "lon": 107.6180785,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Taeun Coffee & Works"
+  }
+},
+{
+  "type": "node",
+  "id": 13794981248,
+  "lat": -6.9058137,
+  "lon": 107.6173510,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Wheels"
+  }
+},
+{
+  "type": "node",
+  "id": 13795264929,
+  "lat": -6.9075049,
+  "lon": 107.6209281,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mahkopi"
+  }
+},
+{
+  "type": "node",
+  "id": 13795275247,
+  "lat": -6.9064186,
+  "lon": 107.6209169,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Lombok"
+  }
+},
+{
+  "type": "node",
+  "id": 13795315895,
+  "lat": -6.9064483,
+  "lon": 107.6165251,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13801500390,
+  "lat": -6.9140149,
+  "lon": 107.6296844,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Skytree Coffee & Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 13801662256,
+  "lat": -6.9129930,
+  "lon": 107.6291312,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Toko Djawa"
+  }
+},
+{
+  "type": "node",
+  "id": 13801662283,
+  "lat": -6.9153705,
+  "lon": 107.6301256,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13806635096,
+  "lat": -6.9254817,
+  "lon": 107.6194728,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopitera"
+  }
+},
+{
+  "type": "node",
+  "id": 13808932502,
+  "lat": -6.8895141,
+  "lon": 107.5813579,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Calf",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13810583960,
+  "lat": -6.8852291,
+  "lon": 107.6181781,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13832216963,
+  "lat": -6.9227525,
+  "lon": 107.6062100,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13921209275,
+  "lat": -6.9194978,
+  "lon": 107.6081650,
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housename": "Braga8",
+    "addr:postcode": "40111",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Cikapundung no 55",
+    "amenity": "cafe",
+    "cuisine": "ice_cream;cake",
+    "name": "ICE CRIME - Ice Cream Store with Jail Experience",
+    "outdoor_seating": "yes",
+    "phone": "+62895350550060"
+  }
+},
+{
+  "type": "node",
+  "id": 13955736701,
+  "lat": -6.9678673,
+  "lon": 107.6291091,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 14003890530,
+  "lat": -6.8889401,
+  "lon": 107.6184435,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warkop ADD"
+  }
+},
+{
+  "type": "node",
+  "id": 14038481547,
+  "lat": -6.9457145,
+  "lon": 107.5928993,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Aerobus"
+  }
+},
+{
+  "type": "node",
+  "id": 14074673674,
+  "lat": -6.9165190,
+  "lon": 107.6435029,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Nomora"
+  }
+},
+{
+  "type": "node",
+  "id": 14074682848,
+  "lat": -6.9163429,
+  "lon": 107.6434817,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Siloka"
+  }
+},
+{
+  "type": "node",
+  "id": 14074686105,
+  "lat": -6.9167521,
+  "lon": 107.6435496,
+  "tags": {
+    "amenity": "cafe",
+    "name": "RD Coffee & Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 14077854124,
+  "lat": -6.9324628,
+  "lon": 107.6184606,
+  "tags": {
+    "addr:housenumber": "54",
+    "addr:street": "Jalan Buah Batu",
+    "amenity": "cafe",
+    "description": "Coffee Shop",
+    "name": "Lasco Koffie Haus"
+  }
+},
+{
+  "type": "node",
+  "id": 14093529901,
+  "lat": -6.8702536,
+  "lon": 107.6074788,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-08-14",
+    "name": "Kisah Manis"
+  }
+},
+{
+  "type": "node",
+  "id": 14094523339,
+  "lat": -6.8918928,
+  "lon": 107.6173905,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "name": "Haus"
+  }
+},
+{
+  "type": "node",
+  "id": 14152594602,
+  "lat": -6.9461299,
+  "lon": 107.6313006,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Buah Batu",
+    "name": "Tomoro",
+    "official_name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 14159257401,
+  "lat": -6.9082388,
+  "lon": 107.6271414,
+  "tags": {
+    "addr:city": "Kota Bandung",
+    "addr:district": "Bandung Wetan",
+    "addr:housenumber": "60",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Bengawan",
+    "addr:subdistrict": "Cihapit",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "contact:instagram": "https://www.instagram.com/_kopigoy/",
+    "cuisine": "coffee_shop",
+    "indoor_seating": "yes",
+    "internet_access:fee": "customers",
+    "name": "Kopi Goy",
+    "opening_hours": "Mo-Su 11:00-22:00",
+    "outdoor_seating": "yes",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "node",
+  "id": 14210372888,
+  "lat": -6.9251261,
+  "lon": 107.6463315,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "name": "Susu Mbok Darmi"
+  }
+},
+{
+  "type": "node",
+  "id": 14210581366,
+  "lat": -6.9077649,
+  "lon": 107.6091787,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14245706568,
+  "lat": -6.9018314,
+  "lon": 107.6124913,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Chatime",
+    "brand:wikidata": "Q16829306",
+    "cuisine": "bubble_tea",
+    "name": "Chatime",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14370201402,
+  "lat": -6.9079014,
+  "lon": 107.6202498,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Metodologi Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 119440785,
+  "center": {
+    "lat": -6.8976206,
+    "lon": 107.6132661
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "70",
+    "addr:postcode": "40132",
+    "addr:street": "Jalan Insinyur Haji Juanda",
+    "amenity": "cafe",
+    "building": "yes",
+    "building:levels": "1",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "commercial",
+    "building:walls": "brick",
+    "cuisine": "coffee_shop",
+    "name": "Jabarano Coffee",
+    "opening_hours": "Mo-Fr 08:00-17:00"
+  }
+},
+{
+  "type": "way",
+  "id": 219361659,
+  "center": {
+    "lat": -6.8696313,
+    "lon": 107.6202102
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Bukit Dago Selatan",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Choosy Coffe"
+  }
+},
+{
+  "type": "way",
+  "id": 299012300,
+  "center": {
+    "lat": -6.8644411,
+    "lon": 107.6278095
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40154",
+    "addr:street": "Bukit Pakar Timur IV Kav B1",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Calista Cafe",
+    "phone": "+62 22 2513355"
+  }
+},
+{
+  "type": "way",
+  "id": 376347946,
+  "center": {
+    "lat": -6.8852743,
+    "lon": 107.6117715
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "regional",
+    "internet_access": "wlan",
+    "name": "Kafe Halaman"
+  }
+},
+{
+  "type": "way",
+  "id": 376352118,
+  "center": {
+    "lat": -6.9049636,
+    "lon": 107.6178898
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Hummingbird"
+  }
+},
+{
+  "type": "way",
+  "id": 376352128,
+  "center": {
+    "lat": -6.9226088,
+    "lon": 107.6173874
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "regional",
+    "name": "Lekker"
+  }
+},
+{
+  "type": "way",
+  "id": 376628479,
+  "center": {
+    "lat": -6.9174741,
+    "lon": 107.6062333
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_bean_shop",
+    "name": "Kopi Aroma",
+    "smoking": "separated"
+  }
+},
+{
+  "type": "way",
+  "id": 377299655,
+  "center": {
+    "lat": -6.8820055,
+    "lon": 107.6159234
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kopitera"
+  }
+},
+{
+  "type": "way",
+  "id": 377299667,
+  "center": {
+    "lat": -6.8789791,
+    "lon": 107.6167447
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "Jl. Ir. H. Juanda No.314A, RT.1/RW.1, Dago, Kecamatan Coblong, Kota Bandung, Jawa Barat 40135",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Insinyur Haji Juanda",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "ice_cream;tea",
+    "name": "MIXUE Dago",
+    "opening_hours": "Mo-Su 10:30-21:30"
+  }
+},
+{
+  "type": "way",
+  "id": 377302805,
+  "center": {
+    "lat": -6.8753071,
+    "lon": 107.6190505
+  },
+  "tags": {
+    "addr:city": "Dago, Coblong, Kota Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Insinyur Haji Juanda",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "372 Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 381032756,
+  "center": {
+    "lat": -6.9003364,
+    "lon": 107.6096518
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Makmur Jaya"
+  }
+},
+{
+  "type": "way",
+  "id": 409364267,
+  "center": {
+    "lat": -6.9209030,
+    "lon": 107.6213783
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "126",
+    "addr:postcode": "40242",
+    "addr:street": "Jalan Jenderal Ahmad Yani",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "regional",
+    "name": "Ballroom & Karaoke"
+  }
+},
+{
+  "type": "way",
+  "id": 409367602,
+  "center": {
+    "lat": -6.9205379,
+    "lon": 107.6214744
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Roti"
+  }
+},
+{
+  "type": "way",
+  "id": 512326770,
+  "center": {
+    "lat": -6.9012127,
+    "lon": 107.6084386
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 512353767,
+  "center": {
+    "lat": -6.9020717,
+    "lon": 107.6141727
+  },
+  "tags": {
+    "amenity": "cafe",
+    "bar": "yes",
+    "building": "yes",
+    "cuisine": "burger;pizza;coffee_shop;italian",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "MASA",
+    "outdoor_seating": "yes",
+    "reservation": "recommended"
+  }
+},
+{
+  "type": "way",
+  "id": 512892169,
+  "center": {
+    "lat": -6.9148743,
+    "lon": 107.6257954
+  },
+  "tags": {
+    "addr:housenumber": "33",
+    "addr:street": "Jalan Gandapura",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Critoe"
+  }
+},
+{
+  "type": "way",
+  "id": 513810764,
+  "center": {
+    "lat": -6.9233207,
+    "lon": 107.6201736
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Lengkong",
+    "addr:housenumber": "3",
+    "addr:postcode": "40262",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Burangrang",
+    "addr:subdistrict": "Malabar",
+    "amenity": "cafe",
+    "building": "retail",
+    "building:levels": "2",
+    "internet_access:fee": "customers",
+    "name": "Onsite Cafe",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 518518161,
+  "center": {
+    "lat": -6.8529279,
+    "lon": 107.5900621
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Riverstone Bistro"
+  }
+},
+{
+  "type": "way",
+  "id": 519459112,
+  "center": {
+    "lat": -6.8640946,
+    "lon": 107.6266955
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housename": "terasararea",
+    "addr:housenumber": "7",
+    "addr:province": "west java",
+    "addr:street": "Jalan Bukit Pakar Tmur",
+    "addr:unit": "7",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "restaurant",
+    "email": "store@terasararea.com",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "terasararea kitchen",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+6282129559575"
+  }
+},
+{
+  "type": "way",
+  "id": 520143262,
+  "center": {
+    "lat": -6.8620332,
+    "lon": 107.5937389
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "U Café"
+  }
+},
+{
+  "type": "way",
+  "id": 521696656,
+  "center": {
+    "lat": -6.8613391,
+    "lon": 107.5825779
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Coffee Lab 5758"
+  }
+},
+{
+  "type": "way",
+  "id": 521696657,
+  "center": {
+    "lat": -6.8612893,
+    "lon": 107.5825954
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Coffee Lab 5758"
+  }
+},
+{
+  "type": "way",
+  "id": 522949351,
+  "center": {
+    "lat": -6.8686931,
+    "lon": 107.6065385
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Masagi Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 522968085,
+  "center": {
+    "lat": -6.8675479,
+    "lon": 107.6232347
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40134",
+    "addr:street": "Jalan Cigadung Raya Barat",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cafe Dante"
+  }
+},
+{
+  "type": "way",
+  "id": 530164018,
+  "center": {
+    "lat": -6.9021472,
+    "lon": 107.6045416
+  },
+  "tags": {
+    "addr:full": "Jalan Cihampelas No. 58 A, Tamansari, Bandung Wetan, Kota Bandung, Jawa Barat 40116",
+    "amenity": "cafe",
+    "building": "cafe",
+    "name": "Gonzo Anime Caffe",
+    "name:it": "Gonzo Anime"
+  }
+},
+{
+  "type": "way",
+  "id": 530164119,
+  "center": {
+    "lat": -6.9029278,
+    "lon": 107.6053089
+  },
+  "tags": {
+    "addr:full": "Jalan Linggawastu No.11, Tamansari, Bandung Wetan, Kota Bandung, Jawa Barat 40116",
+    "amenity": "cafe",
+    "building": "cafe",
+    "name": "Yelow Truck Coffe"
+  }
+},
+{
+  "type": "way",
+  "id": 546598291,
+  "center": {
+    "lat": -6.8892024,
+    "lon": 107.6155854
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "brand:wikidata": "Q66424373",
+    "building": "retail",
+    "cuisine": "coffee_shop",
+    "name": "Fore Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 546617076,
+  "center": {
+    "lat": -6.8945620,
+    "lon": 107.6150558
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Tree House Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 546623264,
+  "center": {
+    "lat": -6.8945796,
+    "lon": 107.6158108
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Ngopi Doeloe Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 546721631,
+  "center": {
+    "lat": -6.8846280,
+    "lon": 107.6125532
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jl. Siliwangi No.8, Dago, Kecamatan Coblong, Kota Bandung, Jawa Barat 40135",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "KOMA Fine Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 630307493,
+  "center": {
+    "lat": -6.9241319,
+    "lon": 107.6740092
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Iriz-u Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 630357609,
+  "center": {
+    "lat": -6.9217370,
+    "lon": 107.6727410
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Broy.co"
+  }
+},
+{
+  "type": "way",
+  "id": 631795087,
+  "center": {
+    "lat": -6.9192723,
+    "lon": 107.5834292
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Yumaju"
+  }
+},
+{
+  "type": "way",
+  "id": 632660174,
+  "center": {
+    "lat": -6.9384438,
+    "lon": 107.6245186
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:country": "ID",
+    "addr:housenumber": "159",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Buah Batu",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "building": "retail",
+    "building:use": "commercial",
+    "cuisine": "coffee_shop",
+    "delivery": "Mo-Su 08:30-21:30",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "2",
+    "name": "MAXX Coffee",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "opening_hours:kitchen": "Mo-Su 08:30-21:30",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers"
+  }
+},
+{
+  "type": "way",
+  "id": 632678834,
+  "center": {
+    "lat": -6.9380697,
+    "lon": 107.6234846
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:country": "ID",
+    "addr:housenumber": "158",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Buah Batu",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": ".lokatiam"
+  }
+},
+{
+  "type": "way",
+  "id": 632681307,
+  "center": {
+    "lat": -6.9413261,
+    "lon": 107.6266500
+  },
+  "tags": {
+    "addr:housenumber": "163",
+    "addr:street": "Jalan Buah Batu",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Janji Jiwa",
+    "building": "commercial",
+    "cuisine": "coffee_shop",
+    "delivery": "Mo-Su 06:15-02:45",
+    "indoor_seating": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "kids_area": "no",
+    "name": "Janji Jiwa Culture",
+    "opening_hours": "Mo-Su 06:00-03:00",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets:access": "customers"
+  }
+},
+{
+  "type": "way",
+  "id": 633530194,
+  "center": {
+    "lat": -6.9437732,
+    "lon": 107.6418121
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40281",
+    "addr:street": "Jalan Ibrahim Adji",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "ESKO Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 633708739,
+  "center": {
+    "lat": -6.9220311,
+    "lon": 107.6613011
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Antapani",
+    "addr:housenumber": "84",
+    "addr:neighbourhood": "Briwash Laundry",
+    "addr:postcode": "40291",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Sukanagara",
+    "addr:subdistrict": "Antapani Kidul",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Tedja Coffee Antapani",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 633768091,
+  "center": {
+    "lat": -6.9351925,
+    "lon": 107.5928299
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Bagi Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 637407892,
+  "center": {
+    "lat": -6.8792507,
+    "lon": 107.6127851
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Alpina",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kafe Leis"
+  }
+},
+{
+  "type": "way",
+  "id": 637417274,
+  "center": {
+    "lat": -6.8830301,
+    "lon": 107.6118307
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Cisitu Lama",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 638385048,
+  "center": {
+    "lat": -6.9167813,
+    "lon": 107.6894382
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "wlan",
+    "name": "Layung Coffee Roastery",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 638394110,
+  "center": {
+    "lat": -6.8816561,
+    "lon": 107.5786824
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop"
+  }
+},
+{
+  "type": "way",
+  "id": 711229872,
+  "center": {
+    "lat": -6.8595488,
+    "lon": 107.5941642
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Caffetaria"
+  }
+},
+{
+  "type": "way",
+  "id": 733084312,
+  "center": {
+    "lat": -6.8775851,
+    "lon": 107.6736973
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 733431489,
+  "center": {
+    "lat": -6.8792340,
+    "lon": 107.6325301
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40191",
+    "addr:street": "Ligar Resik no 48",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Jds Kopi and Roastery"
+  }
+},
+{
+  "type": "way",
+  "id": 738648227,
+  "center": {
+    "lat": -6.8674237,
+    "lon": 107.6277284
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Ranca Kendal Luhur",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Congo Gallery and Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 804277026,
+  "center": {
+    "lat": -6.9726488,
+    "lon": 107.6312516
+  },
+  "tags": {
+    "addr:street": "Telkom University",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "LAKESIDE",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 854403063,
+  "center": {
+    "lat": -6.8640452,
+    "lon": 107.6269154
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Bukit Pakar Tmur",
+    "addr:unit": "7",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "email": "store@terasararea.com",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "terasararea Coffee",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "phone": "+6282129559575"
+  }
+},
+{
+  "type": "way",
+  "id": 854403064,
+  "center": {
+    "lat": -6.8641391,
+    "lon": 107.6268612
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40191",
+    "addr:province": "west java",
+    "addr:street": "Jalan Bukit Pakar Tmur",
+    "addr:unit": "7",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "email": "store@terasararea.com",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "terasararea coffee",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "phone": "+6282129559575"
+  }
+},
+{
+  "type": "way",
+  "id": 866907262,
+  "center": {
+    "lat": -6.8842029,
+    "lon": 107.6123617
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "23",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Cisitu Baru",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cikopi"
+  }
+},
+{
+  "type": "way",
+  "id": 866946501,
+  "center": {
+    "lat": -6.8825450,
+    "lon": 107.6136553
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kidang Pananjung",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Parc C Coffe & Eatery"
+  }
+},
+{
+  "type": "way",
+  "id": 866946502,
+  "center": {
+    "lat": -6.8824294,
+    "lon": 107.6137274
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kidang Pananjung",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Parc C Coffe & Eatery"
+  }
+},
+{
+  "type": "way",
+  "id": 866946503,
+  "center": {
+    "lat": -6.8823754,
+    "lon": 107.6137763
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kidang Pananjung",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Parc C Coffe & Eatery"
+  }
+},
+{
+  "type": "way",
+  "id": 866946504,
+  "center": {
+    "lat": -6.8823576,
+    "lon": 107.6136486
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kidang Pananjung",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Parc C Coffe & Eatery"
+  }
+},
+{
+  "type": "way",
+  "id": 867199861,
+  "center": {
+    "lat": -6.8795268,
+    "lon": 107.6124665
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Cisitu Lama",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kopi Tentrem"
+  }
+},
+{
+  "type": "way",
+  "id": 867209817,
+  "center": {
+    "lat": -6.8836964,
+    "lon": 107.6113622
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 871016985,
+  "center": {
+    "lat": -6.8762239,
+    "lon": 107.6168047
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:district": "Coblong",
+    "addr:housename": "The Kamalaya Hotel",
+    "addr:housenumber": "319",
+    "addr:postcode": "40135",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jl. Ir. H. Juanda",
+    "addr:subdistrict": "Dago",
+    "addr:unit": "B",
+    "amenity": "cafe",
+    "building": "yes",
+    "indoor_seating": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "La Krema Coffee & Space",
+    "opening_hours": "Mo-Su 10:00-21:00",
+    "outdoor_seating": "yes",
+    "phone": "+62 812-2828-2319",
+    "smoking": "outside",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 871516184,
+  "center": {
+    "lat": -6.8750323,
+    "lon": 107.6186027
+  },
+  "tags": {
+    "addr:city": "Dago, Coblong, Kota Bandung, Jawa Barat",
+    "addr:housenumber": "343",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Insinyur Haji Juanda",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Prabu Coffe"
+  }
+},
+{
+  "type": "way",
+  "id": 874955333,
+  "center": {
+    "lat": -6.8779400,
+    "lon": 107.6194821
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kanayakan",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Ruang Ketiga"
+  }
+},
+{
+  "type": "way",
+  "id": 874955334,
+  "center": {
+    "lat": -6.8779648,
+    "lon": 107.6192374
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kanayakan",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kanay Coffe"
+  }
+},
+{
+  "type": "way",
+  "id": 875248918,
+  "center": {
+    "lat": -6.8792904,
+    "lon": 107.6166350
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "sandwich;asian",
+    "name": "Kabobs - Premium Kebab Dago"
+  }
+},
+{
+  "type": "way",
+  "id": 875256504,
+  "center": {
+    "lat": -6.8790209,
+    "lon": 107.6179680
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Gang H. Tahyati",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Clie Banana & Donuts"
+  }
+},
+{
+  "type": "way",
+  "id": 875777161,
+  "center": {
+    "lat": -6.8790974,
+    "lon": 107.6202254
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kanayakan",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Daily Routine Coffe"
+  }
+},
+{
+  "type": "way",
+  "id": 876400023,
+  "center": {
+    "lat": -6.8645564,
+    "lon": 107.6236298
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Insinyur Haji Juanda",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kurva Coffe"
+  }
+},
+{
+  "type": "way",
+  "id": 884809819,
+  "center": {
+    "lat": -6.8839582,
+    "lon": 107.6253334
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Sedjuk Bakmi And Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 885484098,
+  "center": {
+    "lat": -6.8793164,
+    "lon": 107.6241433
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Cigadung Raya Barat",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Adiksi Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 885484099,
+  "center": {
+    "lat": -6.8792738,
+    "lon": 107.6241246
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Cigadung Raya Barat",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Adiksi Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 885484103,
+  "center": {
+    "lat": -6.8793389,
+    "lon": 107.6240440
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:postcode": "40191",
+    "addr:street": "Jalan Cigadung Raya Barat",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Adiksi Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 892797295,
+  "center": {
+    "lat": -6.8869536,
+    "lon": 107.6187930
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "No.57a",
+    "addr:postcode": "40134",
+    "addr:street": "Jalan Sekeloa Utara",
+    "amenity": "cafe",
+    "building": "yes",
+    "capacity": "60",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "description": "Maju adalah coffee shop yang berada di kota bandung tepatnya di jl. sekeloa utara no.57a . coffee shop ini mengedepankan beans kopi robusta sebaga bahan baku utama dengan metode manual brew pada bar nya, konsep dan temanya adalah bohemian dan hommie vibes",
+    "email": "indonesiamajukopi@gmail.com",
+    "internet_access": "yes",
+    "name": "Toko Kopi Maju",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+6289507907674",
+    "smoking": "yes",
+    "takeaway": "yes",
+    "website": "https://toko-kopi-maju.business.site/"
+  }
+},
+{
+  "type": "way",
+  "id": 893892613,
+  "center": {
+    "lat": -6.9351194,
+    "lon": 107.6418324
+  },
+  "tags": {
+    "addr:city": "Kel. Binong",
+    "addr:postcode": "40275",
+    "addr:street": "Jalan Ibrahim Adji",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cafe Tarya"
+  }
+},
+{
+  "type": "way",
+  "id": 902274543,
+  "center": {
+    "lat": -6.8740331,
+    "lon": 107.6186196
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Dago Pojok",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Erla Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 902274549,
+  "center": {
+    "lat": -6.8691419,
+    "lon": 107.6277360
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 902277469,
+  "center": {
+    "lat": -6.8779560,
+    "lon": 107.6188188
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "14",
+    "addr:postcode": "40135",
+    "addr:street": "Jalan Kanayakan",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cats and Ice Cream Dago"
+  }
+},
+{
+  "type": "way",
+  "id": 970679306,
+  "center": {
+    "lat": -6.8927339,
+    "lon": 107.5902540
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:housenumber": "104",
+    "addr:postcode": "40163",
+    "addr:street": "Jalan Sukagalih",
+    "amenity": "cafe",
+    "building": "house",
+    "cuisine": "coffee_shop",
+    "name": "Mooja Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 1009920700,
+  "center": {
+    "lat": -6.8969375,
+    "lon": 107.6174358
+  },
+  "tags": {
+    "addr:city": "Bandung, Jawa Barat",
+    "addr:housenumber": "8",
+    "addr:postcode": "40132",
+    "addr:street": "Jalan Bagusrangin",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "burger;regional",
+    "name": "Malmo Food Explore",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "outdoor_seating": "yes",
+    "phone": "+62895351553489"
+  }
+},
+{
+  "type": "way",
+  "id": 1052983792,
+  "center": {
+    "lat": -6.8970565,
+    "lon": 107.6094185
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:district": "Coblong",
+    "addr:housenumber": "51a",
+    "addr:postcode": "40132",
+    "addr:street": "Jalan Taman Sari",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "indonesian",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Warung Kopi Imah Babaturan Cabang Tamansari",
+    "opening_hours": "Mo-Su 07:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1082793551,
+  "center": {
+    "lat": -6.9129636,
+    "lon": 107.6029650
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Loko Cafe"
+  }
+},
+{
+  "type": "way",
+  "id": 1144695080,
+  "center": {
+    "lat": -6.8939472,
+    "lon": 107.6122479
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1144695081,
+  "center": {
+    "lat": -6.8940090,
+    "lon": 107.6124753
+  },
+  "tags": {
+    "alt_name": "180 Coffee and Music",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "One Eighty Coffee and Music"
+  }
+},
+{
+  "type": "way",
+  "id": 1145014378,
+  "center": {
+    "lat": -6.9041405,
+    "lon": 107.6192054
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Simpang Wangi Coffee & Eatary"
+  }
+},
+{
+  "type": "way",
+  "id": 1158408610,
+  "center": {
+    "lat": -6.9388521,
+    "lon": 107.6249393
+  },
+  "tags": {
+    "addr:city": "Bandung",
+    "addr:country": "ID",
+    "addr:housenumber": "151",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Buah Batu",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "bar": "yes",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "commercial",
+    "building:use": "retail",
+    "cuisine": "coffee_shop",
+    "delivery": "Mo-Su 07:15-21:45",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "1",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "opening_hours:kitchen": "Mo-Su 07:15-21:45",
+    "operator": "Sari Coffee Indonesia",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 1184119184,
+  "center": {
+    "lat": -6.9760476,
+    "lon": 107.6368075
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "building": "commercial",
+    "building:use": "retail",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "24/7",
+    "operator": "PT. Sari Coffee Indonesia",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:electronic_purses": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1211278517,
+  "center": {
+    "lat": -6.9213419,
+    "lon": 107.6099795
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "delivery": "no",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 09:00-22:00; Sa 09:00-23:59; Su 09:00-23:00",
+    "operator": "PT Sari Coffee Indonesia",
+    "room": "shop",
+    "smoking": "no",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 1293425892,
+  "center": {
+    "lat": -6.9202108,
+    "lon": 107.6221651
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "regional",
+    "name": "Richeese Factory"
+  }
+},
+{
+  "type": "way",
+  "id": 1293670818,
+  "center": {
+    "lat": -6.8600532,
+    "lon": 107.5939417
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Cafe De Musee"
+  }
+},
+{
+  "type": "way",
+  "id": 1293683656,
+  "center": {
+    "lat": -6.8624665,
+    "lon": 107.5932426
+  },
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Tomoro Coffe",
+    "opening_hours": "Mo-Sa 08:00-20:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1299816098,
+  "center": {
+    "lat": -6.8740808,
+    "lon": 107.6036522
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "People Pleaser"
+  }
+},
+{
+  "type": "way",
+  "id": 1381598934,
+  "center": {
+    "lat": -6.9523881,
+    "lon": 107.6062445
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Tanulo Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 1381598950,
+  "center": {
+    "lat": -6.9527838,
+    "lon": 107.6058673
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Noir Coffee and Space"
+  }
+},
+{
+  "type": "way",
+  "id": 1510185701,
+  "center": {
+    "lat": -6.9231219,
+    "lon": 107.6201723
+  },
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Kopi Kenangan",
+    "brand:wikidata": "Q97221992",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "diet:halal": "only",
+    "name": "Kopi Kenangan",
+    "opening_hours": "24/7",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1567831241,
+  "center": {
+    "lat": -6.9150370,
+    "lon": 107.5924993
+  },
+  "tags": {
+    "addr:housename": "RUKO PASKAL HYPER SQUARE",
+    "addr:street": "N 29",
+    "amenity": "cafe",
+    "building": "commercial",
+    "cuisine": "japanese;tea;dessert",
+    "internet_access:fee": "no",
+    "name": "SUI",
+    "opening_hours": "08:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1581136055,
+  "center": {
+    "lat": -6.9405485,
+    "lon": 107.6587377
+  },
+  "tags": {
+    "amenity": "cafe",
+    "branch": "DT Soekarno Hatta",
+    "building": "retail",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Starbucks",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "operator": "Sari Coffee Indonesia",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "toilets:unisex": "yes",
+    "toilets:wheelchair": "yes"
+  }
+}
+
+  ]
+}

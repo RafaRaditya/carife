@@ -1,0 +1,3854 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-20T00:52:49Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 854228464,
+  "lat": -6.6120429,
+  "lon": 106.8144126,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bambula"
+  }
+},
+{
+  "type": "node",
+  "id": 856136568,
+  "lat": -6.6217457,
+  "lon": 106.8175569,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 856136576,
+  "lat": -6.6038305,
+  "lon": 106.8094459,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Josh Movie Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 1736977811,
+  "lat": -6.6160431,
+  "lon": 106.8152344,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "terminal"
+  }
+},
+{
+  "type": "node",
+  "id": 1736977952,
+  "lat": -6.6172438,
+  "lon": 106.8207035,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "terminal"
+  }
+},
+{
+  "type": "node",
+  "id": 1736977960,
+  "lat": -6.6172699,
+  "lon": 106.8188179,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "terminal"
+  }
+},
+{
+  "type": "node",
+  "id": 1736978474,
+  "lat": -6.6187266,
+  "lon": 106.8205985,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "terminal"
+  }
+},
+{
+  "type": "node",
+  "id": 1939340085,
+  "lat": -6.6083985,
+  "lon": 106.8168459,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "ice_cream",
+    "name": "Cafe Cisangkuy"
+  }
+},
+{
+  "type": "node",
+  "id": 2296032496,
+  "lat": -6.5836791,
+  "lon": 106.8172173,
+  "tags": {
+    "addr:city": "Bogor",
+    "addr:street": "Jalan Ahmad Adnawijaya",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Coffee Toffee",
+    "website": "https://coffeetoffee.co.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 2389596022,
+  "lat": -6.6017258,
+  "lon": 106.8064271,
+  "tags": {
+    "addr:city": "Bogor",
+    "addr:floor": "ground floor",
+    "addr:housenumber": "69-71",
+    "addr:street": "Jalan Raya Pajajaran",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "contact:fax": "+62 251 8400660",
+    "contact:phone": "+62 251 8400650",
+    "contact:website": "www.starbucks.co.id",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3887179938,
+  "lat": -6.6156697,
+  "lon": 106.8038399,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "international",
+    "internet_access": "wlan",
+    "name": "Starbucks",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "node",
+  "id": 5507176222,
+  "lat": -6.5927619,
+  "lon": 106.8030735,
+  "tags": {
+    "addr:street": "Jalan Halimun",
+    "amenity": "cafe",
+    "cuisine": "italian",
+    "internet_access": "wlan",
+    "name": "picnicroll",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5898473685,
+  "lat": -6.5955754,
+  "lon": 106.8057135,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Maxx Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 6227667186,
+  "lat": -6.5917991,
+  "lon": 106.8044584,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fat Bubble"
+  }
+},
+{
+  "type": "node",
+  "id": 6653243402,
+  "lat": -6.5804486,
+  "lon": 106.7968691,
+  "tags": {
+    "addr:city": "Bogor",
+    "addr:postcode": "16192",
+    "addr:street": "Jalan Pemuda",
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "internet_access": "yes",
+    "name": "Kedai Sholawat Bogor",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9559453520,
+  "lat": -6.5735899,
+  "lon": 106.8115032,
+  "tags": {
+    "addr:city": "Kota Bogor",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Kresna Raya",
+    "addr:subdistrict": "Bogor Utara",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Prolog coffe",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9676288971,
+  "lat": -6.6018561,
+  "lon": 106.8075223,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tous Les Jours - Botani Square Bogor"
+  }
+},
+{
+  "type": "node",
+  "id": 9676347600,
+  "lat": -6.6066717,
+  "lon": 106.8099051,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Raindear Coffeehouse - Kantor Pos"
+  }
+},
+{
+  "type": "node",
+  "id": 9843285217,
+  "lat": -6.5763098,
+  "lon": 106.8074003,
+  "tags": {
+    "addr:street": "Jalan Raya Pajajaran",
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "name": "Menantea"
+  }
+},
+{
+  "type": "node",
+  "id": 10175211823,
+  "lat": -6.5750934,
+  "lon": 106.8644270,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2022-11-11",
+    "name": "Anthology Cafe",
+    "outdoor_seating": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10586105700,
+  "lat": -6.5757095,
+  "lon": 106.8383920,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10972389222,
+  "lat": -6.5840300,
+  "lon": 106.8072343,
+  "tags": {
+    "addr:city": "BOGOR",
+    "addr:housenumber": "C2",
+    "addr:postcode": "16153",
+    "addr:street": "Jalan Komplek BPT",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Joffee Coffee&Eatery",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+6282177773686",
+    "website": "https://www.instagram.com/j.offeee"
+  }
+},
+{
+  "type": "node",
+  "id": 11368191935,
+  "lat": -6.5655605,
+  "lon": 106.8589116,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kook n Kleen"
+  }
+},
+{
+  "type": "node",
+  "id": 11687231238,
+  "lat": -6.6101916,
+  "lon": 106.8044558,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "branch": "Surya Kencana",
+    "brand": "Tomoro Coffee",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "level": "2",
+    "name": "Tomoro Coffee",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11727055715,
+  "lat": -6.5687722,
+  "lon": 106.8549043,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "contact:instagram": "kopirangkayo",
+    "covered": "yes",
+    "cuisine": "coffee_shop",
+    "indoor": "yes",
+    "name": "Kopi Rang Kayo",
+    "payment:cash": "no",
+    "payment:gpn_debit": "yes",
+    "payment:gpn_qris": "yes",
+    "payment:mastercard": "yes",
+    "payment:mastercard_debit": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+62 21 2293-0731",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11765287836,
+  "lat": -6.6230446,
+  "lon": 106.7926529,
+  "tags": {
+    "addr:city": "Bogor",
+    "addr:housename": "Kura",
+    "addr:housenumber": "78",
+    "addr:postcode": "16132",
+    "addr:province": "West Java",
+    "addr:street": "Jalan Raya Gotong Royong",
+    "addr:unit": "78",
+    "amenity": "cafe",
+    "cuisine": "italian;filipino;indonesian",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Kura Coffee and Kitchen",
+    "outdoor_seating": "no",
+    "phone": "+6285693354785"
+  }
+},
+{
+  "type": "node",
+  "id": 11933035149,
+  "lat": -6.5689956,
+  "lon": 106.7542329,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mie Aceh Anjoeng Kupi 02"
+  }
+},
+{
+  "type": "node",
+  "id": 11934215181,
+  "lat": -6.5716889,
+  "lon": 106.7510233,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Gorillaz Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11934296561,
+  "lat": -6.5717029,
+  "lon": 106.7509230,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warmindo Miko"
+  }
+},
+{
+  "type": "node",
+  "id": 11936009805,
+  "lat": -6.5702600,
+  "lon": 106.7669190,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi dari Hati & Toast"
+  }
+},
+{
+  "type": "node",
+  "id": 11936021949,
+  "lat": -6.5695325,
+  "lon": 106.7668299,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Can Ngopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11936034428,
+  "lat": -6.5706424,
+  "lon": 106.7676379,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11936036133,
+  "lat": -6.5692268,
+  "lon": 106.7665435,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Abu Amad"
+  }
+},
+{
+  "type": "node",
+  "id": 11936038790,
+  "lat": -6.5739877,
+  "lon": 106.7702349,
+  "tags": {
+    "amenity": "cafe",
+    "name": "D'Sruput"
+  }
+},
+{
+  "type": "node",
+  "id": 11936073295,
+  "lat": -6.5811481,
+  "lon": 106.7777230,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa Toast"
+  }
+},
+{
+  "type": "node",
+  "id": 11936100482,
+  "lat": -6.5839225,
+  "lon": 106.7734730,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Makkah"
+  }
+},
+{
+  "type": "node",
+  "id": 11936118592,
+  "lat": -6.5825559,
+  "lon": 106.7687678,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warunk Kopi Pemuda"
+  }
+},
+{
+  "type": "node",
+  "id": 11936161301,
+  "lat": -6.5790184,
+  "lon": 106.7550208,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Your Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 11936166288,
+  "lat": -6.5878933,
+  "lon": 106.7592030,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11936223919,
+  "lat": -6.6016558,
+  "lon": 106.7606586,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11937139945,
+  "lat": -6.5557637,
+  "lon": 106.7619020,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11937165664,
+  "lat": -6.5552081,
+  "lon": 106.7614346,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Teguk"
+  }
+},
+{
+  "type": "node",
+  "id": 11939626785,
+  "lat": -6.5857134,
+  "lon": 106.7715522,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cerita Nona Coffee & Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 11939826945,
+  "lat": -6.5799070,
+  "lon": 106.7626289,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11941573386,
+  "lat": -6.5561421,
+  "lon": 106.7758428,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11941595030,
+  "lat": -6.5560848,
+  "lon": 106.7756791,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Waffelicious"
+  }
+},
+{
+  "type": "node",
+  "id": 11941605912,
+  "lat": -6.5562793,
+  "lon": 106.7756563,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11941650305,
+  "lat": -6.5565938,
+  "lon": 106.7794812,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Toko Kopi TUKU - SPBU bp Sholeh Iskandar"
+  }
+},
+{
+  "type": "node",
+  "id": 11941673795,
+  "lat": -6.5566317,
+  "lon": 106.7824236,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ruang Tengah"
+  }
+},
+{
+  "type": "node",
+  "id": 11941829660,
+  "lat": -6.5585456,
+  "lon": 106.7852023,
+  "tags": {
+    "amenity": "cafe",
+    "name": "JCo"
+  }
+},
+{
+  "type": "node",
+  "id": 11943431418,
+  "lat": -6.5576303,
+  "lon": 106.7726684,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Harmony Juice and Salad Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 11943437052,
+  "lat": -6.5570961,
+  "lon": 106.7715324,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11943473597,
+  "lat": -6.5576570,
+  "lon": 106.7727287,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chigo X Flip"
+  }
+},
+{
+  "type": "node",
+  "id": 11944024159,
+  "lat": -6.5608199,
+  "lon": 106.7800076,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Summer Mini Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 11944028118,
+  "lat": -6.5576343,
+  "lon": 106.7780368,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sari Rasa Johar"
+  }
+},
+{
+  "type": "node",
+  "id": 11944125965,
+  "lat": -6.5608446,
+  "lon": 106.7800089,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Taste of Tokyo"
+  }
+},
+{
+  "type": "node",
+  "id": 11944137448,
+  "lat": -6.5593364,
+  "lon": 106.7790178,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Therapy"
+  }
+},
+{
+  "type": "node",
+  "id": 11944403784,
+  "lat": -6.5628837,
+  "lon": 106.7816786,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Aceh"
+  }
+},
+{
+  "type": "node",
+  "id": 11944456227,
+  "lat": -6.5652212,
+  "lon": 106.7832591,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11944471544,
+  "lat": -6.5658694,
+  "lon": 106.7837935,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Background Coffee & Munch"
+  }
+},
+{
+  "type": "node",
+  "id": 11944479734,
+  "lat": -6.5653291,
+  "lon": 106.7830063,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11944531023,
+  "lat": -6.5659600,
+  "lon": 106.7835192,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Susu Mbok Darmi"
+  }
+},
+{
+  "type": "node",
+  "id": 11944558684,
+  "lat": -6.5700248,
+  "lon": 106.7861377,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11944567160,
+  "lat": -6.5695652,
+  "lon": 106.7828970,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11945035528,
+  "lat": -6.5917748,
+  "lon": 106.7757274,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Surabi Duren Bang Kumis"
+  }
+},
+{
+  "type": "node",
+  "id": 11945106004,
+  "lat": -6.5915583,
+  "lon": 106.7755531,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Byon Coffee & Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 11946905446,
+  "lat": -6.5904009,
+  "lon": 106.7859195,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Haus"
+  }
+},
+{
+  "type": "node",
+  "id": 11947121158,
+  "lat": -6.5860628,
+  "lon": 106.7828071,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Savana"
+  }
+},
+{
+  "type": "node",
+  "id": 11947139459,
+  "lat": -6.5851109,
+  "lon": 106.7817195,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai De Javu 88"
+  }
+},
+{
+  "type": "node",
+  "id": 11947151479,
+  "lat": -6.5852887,
+  "lon": 106.7819501,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Waroeng Uncal"
+  }
+},
+{
+  "type": "node",
+  "id": 11947625791,
+  "lat": -6.5825669,
+  "lon": 106.7787288,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Btari Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11947652726,
+  "lat": -6.5891636,
+  "lon": 106.7833436,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Teras Semboja"
+  }
+},
+{
+  "type": "node",
+  "id": 11952624878,
+  "lat": -6.5892968,
+  "lon": 106.7876659,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11952630529,
+  "lat": -6.5954631,
+  "lon": 106.7897084,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11952711206,
+  "lat": -6.5921092,
+  "lon": 106.7879777,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Shu Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11953447777,
+  "lat": -6.5843748,
+  "lon": 106.7878302,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Gade Coffe & Gold"
+  }
+},
+{
+  "type": "node",
+  "id": 11953460642,
+  "lat": -6.5826708,
+  "lon": 106.7899827,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Melati Coffee & Beauty"
+  }
+},
+{
+  "type": "node",
+  "id": 11953464325,
+  "lat": -6.5810681,
+  "lon": 106.7953947,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kanca"
+  }
+},
+{
+  "type": "node",
+  "id": 11955055119,
+  "lat": -6.5822019,
+  "lon": 106.7968766,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11955068455,
+  "lat": -6.5816263,
+  "lon": 106.7969001,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Wedang Ronde Gg Aut"
+  }
+},
+{
+  "type": "node",
+  "id": 11955073949,
+  "lat": -6.5818848,
+  "lon": 106.7968545,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11955075892,
+  "lat": -6.5827228,
+  "lon": 106.7969424,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11955321860,
+  "lat": -6.5861340,
+  "lon": 106.7970376,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa Toast"
+  }
+},
+{
+  "type": "node",
+  "id": 11955338093,
+  "lat": -6.5890164,
+  "lon": 106.7968538,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11955338379,
+  "lat": -6.5892135,
+  "lon": 106.7968445,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Yung Bangka Es"
+  }
+},
+{
+  "type": "node",
+  "id": 11955524331,
+  "lat": -6.5917122,
+  "lon": 106.7964730,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11955604044,
+  "lat": -6.5805798,
+  "lon": 106.7964730,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11955641795,
+  "lat": -6.5703912,
+  "lon": 106.7982868,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11955661865,
+  "lat": -6.5790824,
+  "lon": 106.7965581,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Kopi Pemuda"
+  }
+},
+{
+  "type": "node",
+  "id": 11955662150,
+  "lat": -6.5720239,
+  "lon": 106.7976028,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kawula Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11955666350,
+  "lat": -6.5737293,
+  "lon": 106.7966601,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Circuloo Coffee & Cat"
+  }
+},
+{
+  "type": "node",
+  "id": 11955676970,
+  "lat": -6.5739651,
+  "lon": 106.7967211,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Oopy Malabar"
+  }
+},
+{
+  "type": "node",
+  "id": 11957023894,
+  "lat": -6.5756991,
+  "lon": 106.8001483,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Anami Coffe"
+  }
+},
+{
+  "type": "node",
+  "id": 11957024566,
+  "lat": -6.5711186,
+  "lon": 106.8003595,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Seremoni"
+  }
+},
+{
+  "type": "node",
+  "id": 11957038365,
+  "lat": -6.5708362,
+  "lon": 106.8043506,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Aumont Kofie"
+  }
+},
+{
+  "type": "node",
+  "id": 11957042654,
+  "lat": -6.5702500,
+  "lon": 106.8047610,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tentang Kopi Latte"
+  }
+},
+{
+  "type": "node",
+  "id": 11957059396,
+  "lat": -6.5746459,
+  "lon": 106.8010321,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Coffe Right"
+  }
+},
+{
+  "type": "node",
+  "id": 11957070188,
+  "lat": -6.5706737,
+  "lon": 106.8045303,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sejenak Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11957073929,
+  "lat": -6.5707016,
+  "lon": 106.8027332,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mamang Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11957081158,
+  "lat": -6.5713465,
+  "lon": 106.8026662,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bango Coffee House"
+  }
+},
+{
+  "type": "node",
+  "id": 11957089757,
+  "lat": -6.5726255,
+  "lon": 106.8029438,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bhumi Living Space"
+  }
+},
+{
+  "type": "node",
+  "id": 11957097119,
+  "lat": -6.5737526,
+  "lon": 106.8016282,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Surplus"
+  }
+},
+{
+  "type": "node",
+  "id": 11957101596,
+  "lat": -6.5758150,
+  "lon": 106.8004721,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Teras Dara"
+  }
+},
+{
+  "type": "node",
+  "id": 11957116639,
+  "lat": -6.5763172,
+  "lon": 106.7998961,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Serenity Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11959234454,
+  "lat": -6.5801435,
+  "lon": 106.7983143,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Makaroni Nachos"
+  }
+},
+{
+  "type": "node",
+  "id": 11959245421,
+  "lat": -6.5802195,
+  "lon": 106.7982821,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sweet Pot & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11959257967,
+  "lat": -6.5721285,
+  "lon": 106.7982942,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Et Al Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11959349352,
+  "lat": -6.5692961,
+  "lon": 106.8081406,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11959361993,
+  "lat": -6.5700488,
+  "lon": 106.8090914,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11959366772,
+  "lat": -6.5689750,
+  "lon": 106.8075062,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Yuu Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11959942270,
+  "lat": -6.5788859,
+  "lon": 106.8065648,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11960540412,
+  "lat": -6.5898450,
+  "lon": 106.8050145,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11960554851,
+  "lat": -6.5842442,
+  "lon": 106.8057440,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sequoia Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11960618235,
+  "lat": -6.5889711,
+  "lon": 106.8047047,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Klappertaart Huize Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11961573232,
+  "lat": -6.5956829,
+  "lon": 106.8063274,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Artisan Coffee Indonesia"
+  }
+},
+{
+  "type": "node",
+  "id": 11961611000,
+  "lat": -6.5953685,
+  "lon": 106.8059841,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa"
+  }
+},
+{
+  "type": "node",
+  "id": 11961626062,
+  "lat": -6.5951487,
+  "lon": 106.8053149,
+  "tags": {
+    "amenity": "cafe",
+    "name": "BooTheIn Coffe"
+  }
+},
+{
+  "type": "node",
+  "id": 11961647901,
+  "lat": -6.5949595,
+  "lon": 106.8059988,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Usisatoko"
+  }
+},
+{
+  "type": "node",
+  "id": 11961651613,
+  "lat": -6.5950367,
+  "lon": 106.8059801,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Ketan"
+  }
+},
+{
+  "type": "node",
+  "id": 11961660277,
+  "lat": -6.5975813,
+  "lon": 106.8058433,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kawula Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11961661848,
+  "lat": -6.5949675,
+  "lon": 106.8062443,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopitagram"
+  }
+},
+{
+  "type": "node",
+  "id": 11961676871,
+  "lat": -6.5970491,
+  "lon": 106.8048656,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Brascoff Coffee & Space"
+  }
+},
+{
+  "type": "node",
+  "id": 11962360253,
+  "lat": -6.6013435,
+  "lon": 106.8072514,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Auntie Anne's"
+  }
+},
+{
+  "type": "node",
+  "id": 11962383937,
+  "lat": -6.6011663,
+  "lon": 106.8075907,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Susu Mbok Darmi"
+  }
+},
+{
+  "type": "node",
+  "id": 11962384704,
+  "lat": -6.6014114,
+  "lon": 106.8073305,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Joomba"
+  }
+},
+{
+  "type": "node",
+  "id": 11962387982,
+  "lat": -6.6012569,
+  "lon": 106.8071508,
+  "tags": {
+    "amenity": "cafe",
+    "name": "J.Co"
+  }
+},
+{
+  "type": "node",
+  "id": 11962400534,
+  "lat": -6.6012702,
+  "lon": 106.8076377,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Share Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 11962774100,
+  "lat": -6.5773804,
+  "lon": 106.7577177,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Askara Coffee & Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 11964277119,
+  "lat": -6.5604002,
+  "lon": 106.7896313,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11964305973,
+  "lat": -6.5608119,
+  "lon": 106.7912815,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11965720242,
+  "lat": -6.5630622,
+  "lon": 106.7965280,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Monero Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11965727106,
+  "lat": -6.5663077,
+  "lon": 106.8097781,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11965742193,
+  "lat": -6.5618664,
+  "lon": 106.8068410,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Tjangkir Kodja"
+  }
+},
+{
+  "type": "node",
+  "id": 11965768155,
+  "lat": -6.5616366,
+  "lon": 106.8076410,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11965775036,
+  "lat": -6.5674988,
+  "lon": 106.8091303,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jawara Bakery & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11965859193,
+  "lat": -6.6008792,
+  "lon": 106.7921472,
+  "tags": {
+    "amenity": "cafe",
+    "name": "KOBA Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11965920618,
+  "lat": -6.6014301,
+  "lon": 106.7931410,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Favela Sunset Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11965945781,
+  "lat": -6.5962425,
+  "lon": 106.7904364,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Janji Jiwa",
+    "brand:wikidata": "Q124030785",
+    "cuisine": "coffee_shop",
+    "name": "Janji Jiwa",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11965949043,
+  "lat": -6.5956909,
+  "lon": 106.7899244,
+  "tags": {
+    "alt_name": "Indomaret Point",
+    "amenity": "cafe",
+    "brand": "Point Coffee",
+    "brand:wikidata": "Q124651558",
+    "cuisine": "coffee_shop",
+    "name": "Point Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11965953749,
+  "lat": -6.5962334,
+  "lon": 106.7903709,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "TOMORO Coffee",
+    "brand:wikidata": "Q126326801",
+    "cuisine": "coffee_shop",
+    "name": "TOMORO Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11965990538,
+  "lat": -6.5933062,
+  "lon": 106.8031517,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Maraca Books & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11966015677,
+  "lat": -6.5939350,
+  "lon": 106.7898647,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Niji Coffee Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 11966017450,
+  "lat": -6.5936619,
+  "lon": 106.8032576,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Stuck Coffee & Drinks"
+  }
+},
+{
+  "type": "node",
+  "id": 11966021230,
+  "lat": -6.5938597,
+  "lon": 106.8035144,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Samsara"
+  }
+},
+{
+  "type": "node",
+  "id": 11966042505,
+  "lat": -6.5895979,
+  "lon": 106.8025086,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Dimitree Coffee Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 11966302112,
+  "lat": -6.6078327,
+  "lon": 106.7959097,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11966307405,
+  "lat": -6.6048485,
+  "lon": 106.7958507,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Arah Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11966308559,
+  "lat": -6.6045847,
+  "lon": 106.7961766,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11966313162,
+  "lat": -6.6095885,
+  "lon": 106.7982291,
+  "tags": {
+    "amenity": "cafe",
+    "name": "89 Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11966322757,
+  "lat": -6.6047366,
+  "lon": 106.7957836,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11966324780,
+  "lat": -6.6095305,
+  "lon": 106.7981822,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Outspoken Coffee Crew"
+  }
+},
+{
+  "type": "node",
+  "id": 11984815566,
+  "lat": -6.5968259,
+  "lon": 106.7792706,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11984823012,
+  "lat": -6.6007680,
+  "lon": 106.7793410,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "The Coffee Bean & Tea Leaf",
+    "cuisine": "ice_cream;tea",
+    "delivery": "Pesan Online",
+    "food": "yes",
+    "indoor_seating": "yes",
+    "name": "Es•Teh Indonesia",
+    "outdoor_seating": "yes",
+    "takeaway": "yes",
+    "toilets": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11984833976,
+  "lat": -6.5980236,
+  "lon": 106.7789863,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11984861267,
+  "lat": -6.6143777,
+  "lon": 106.8037002,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Daily Brew Express"
+  }
+},
+{
+  "type": "node",
+  "id": 11984871017,
+  "lat": -6.6012809,
+  "lon": 106.7791841,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11984895037,
+  "lat": -6.6132660,
+  "lon": 106.8031624,
+  "tags": {
+    "amenity": "cafe",
+    "name": "XiBoba"
+  }
+},
+{
+  "type": "node",
+  "id": 11984898832,
+  "lat": -6.6009838,
+  "lon": 106.7829620,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warnabumi Sub-Tea-Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11984900919,
+  "lat": -6.6049991,
+  "lon": 106.7921332,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11984908505,
+  "lat": -6.6151570,
+  "lon": 106.8038195,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa"
+  }
+},
+{
+  "type": "node",
+  "id": 11984912882,
+  "lat": -6.6009418,
+  "lon": 106.7827106,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11984935111,
+  "lat": -6.6172538,
+  "lon": 106.8115295,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Exclusive Cafe & Karaoke"
+  }
+},
+{
+  "type": "node",
+  "id": 11984959866,
+  "lat": -6.6171653,
+  "lon": 106.8050721,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11984960372,
+  "lat": -6.6232413,
+  "lon": 106.8090002,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 11984980113,
+  "lat": -6.6156193,
+  "lon": 106.8095018,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kanakala Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11984985834,
+  "lat": -6.6233079,
+  "lon": 106.8118038,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cinta Lagi Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11984993131,
+  "lat": -6.6173291,
+  "lon": 106.8116067,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Holly Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 11985000140,
+  "lat": -6.6128597,
+  "lon": 106.8075471,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Dari Hati"
+  }
+},
+{
+  "type": "node",
+  "id": 11985013277,
+  "lat": -6.6163726,
+  "lon": 106.8105821,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kupi Noken"
+  }
+},
+{
+  "type": "node",
+  "id": 11985015759,
+  "lat": -6.6121749,
+  "lon": 106.8065480,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Kopi Hopeng"
+  }
+},
+{
+  "type": "node",
+  "id": 11985019527,
+  "lat": -6.6114582,
+  "lon": 106.8062335,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Jawara Bakery & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11985083701,
+  "lat": -6.6099235,
+  "lon": 106.8045974,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11985088552,
+  "lat": -6.6102905,
+  "lon": 106.8045726,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Haus!"
+  }
+},
+{
+  "type": "node",
+  "id": 11985092545,
+  "lat": -6.6098516,
+  "lon": 106.8044311,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe De Aut"
+  }
+},
+{
+  "type": "node",
+  "id": 11985104697,
+  "lat": -6.6106869,
+  "lon": 106.8051908,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Daily Brew Express"
+  }
+},
+{
+  "type": "node",
+  "id": 11985105342,
+  "lat": -6.6105137,
+  "lon": 106.8052243,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11985111939,
+  "lat": -6.6095339,
+  "lon": 106.8040375,
+  "tags": {
+    "amenity": "cafe",
+    "name": "iCafe Vaizard"
+  }
+},
+{
+  "type": "node",
+  "id": 11985184045,
+  "lat": -6.6087335,
+  "lon": 106.8029626,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mr Yos Bakery & Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11985228467,
+  "lat": -6.6073231,
+  "lon": 106.8016409,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fanaticoffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11985251210,
+  "lat": -6.6061727,
+  "lon": 106.8007819,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Belva Huis Coffee Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 11985254213,
+  "lat": -6.6066144,
+  "lon": 106.8013593,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Panalama Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11985255217,
+  "lat": -6.6059589,
+  "lon": 106.8006049,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cyrano K-Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11985307827,
+  "lat": -6.6177527,
+  "lon": 106.8141313,
+  "tags": {
+    "amenity": "cafe",
+    "name": "9 Ball Cafe & Billiard"
+  }
+},
+{
+  "type": "node",
+  "id": 11985346508,
+  "lat": -6.6206122,
+  "lon": 106.8149849,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11985353001,
+  "lat": -6.6183815,
+  "lon": 106.8150540,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopitiam Serasa"
+  }
+},
+{
+  "type": "node",
+  "id": 11985374164,
+  "lat": -6.6173038,
+  "lon": 106.8147465,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Dari Hati"
+  }
+},
+{
+  "type": "node",
+  "id": 11985390235,
+  "lat": -6.6181371,
+  "lon": 106.8157165,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Albens Cafe & Resto"
+  }
+},
+{
+  "type": "node",
+  "id": 11985404751,
+  "lat": -6.6136830,
+  "lon": 106.8131670,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kongdjie Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11985413027,
+  "lat": -6.6144023,
+  "lon": 106.8135902,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11985426590,
+  "lat": -6.6138108,
+  "lon": 106.8132763,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Aming Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11985434678,
+  "lat": -6.6142718,
+  "lon": 106.8130255,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kala Senja"
+  }
+},
+{
+  "type": "node",
+  "id": 11985444938,
+  "lat": -6.6126023,
+  "lon": 106.8133829,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Harmony Juice & Salad Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 11985455287,
+  "lat": -6.6117879,
+  "lon": 106.8121532,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11986176427,
+  "lat": -6.6095465,
+  "lon": 106.8129699,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 11986196713,
+  "lat": -6.6093598,
+  "lon": 106.8169449,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Popolo"
+  }
+},
+{
+  "type": "node",
+  "id": 11986218220,
+  "lat": -6.6086226,
+  "lon": 106.8122765,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kone Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11986219733,
+  "lat": -6.6063299,
+  "lon": 106.8113391,
+  "tags": {
+    "amenity": "cafe",
+    "name": "D'Fleur Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986219734,
+  "lat": -6.6062660,
+  "lon": 106.8114397,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ahora Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986222975,
+  "lat": -6.6096677,
+  "lon": 106.8130691,
+  "tags": {
+    "amenity": "cafe",
+    "name": "TR Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986225659,
+  "lat": -6.6117453,
+  "lon": 106.8143257,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Miru"
+  }
+},
+{
+  "type": "node",
+  "id": 11986237577,
+  "lat": -6.6109014,
+  "lon": 106.8141340,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tanmu Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986322070,
+  "lat": -6.6109420,
+  "lon": 106.8149346,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sharinc Live Music & Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11986322225,
+  "lat": -6.6068122,
+  "lon": 106.8104768,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Blue Moon Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11986327378,
+  "lat": -6.6108181,
+  "lon": 106.8147683,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bulan Madu Brew & Lounge"
+  }
+},
+{
+  "type": "node",
+  "id": 11986333467,
+  "lat": -6.6117005,
+  "lon": 106.8152025,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Point Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986333971,
+  "lat": -6.6110113,
+  "lon": 106.8149775,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Butterfields Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11986340816,
+  "lat": -6.6044848,
+  "lon": 106.8101375,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Daruma"
+  }
+},
+{
+  "type": "node",
+  "id": 11986357050,
+  "lat": -6.6054134,
+  "lon": 106.8124495,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cohere Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986357601,
+  "lat": -6.6046234,
+  "lon": 106.8095105,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Nu Sae"
+  }
+},
+{
+  "type": "node",
+  "id": 11986369825,
+  "lat": -6.6043183,
+  "lon": 106.8102072,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Awal Mula Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986395025,
+  "lat": -6.6035863,
+  "lon": 106.8108241,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Co Choc"
+  }
+},
+{
+  "type": "node",
+  "id": 11986396880,
+  "lat": -6.6043216,
+  "lon": 106.8101603,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Joempa Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986412405,
+  "lat": -6.6240763,
+  "lon": 106.8192340,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11986412478,
+  "lat": -6.6046830,
+  "lon": 106.8081081,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Maradika Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11986412691,
+  "lat": -6.6025411,
+  "lon": 106.8123436,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Stuco"
+  }
+},
+{
+  "type": "node",
+  "id": 11986498343,
+  "lat": -6.6281908,
+  "lon": 106.8234909,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11986513901,
+  "lat": -6.6223654,
+  "lon": 106.8170375,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Eiger Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11987021012,
+  "lat": -6.6337592,
+  "lon": 106.8268892,
+  "tags": {
+    "amenity": "cafe",
+    "name": "J.Co"
+  }
+},
+{
+  "type": "node",
+  "id": 11987024759,
+  "lat": -6.6334235,
+  "lon": 106.8269831,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Co. Choc"
+  }
+},
+{
+  "type": "node",
+  "id": 11987044232,
+  "lat": -6.6336846,
+  "lon": 106.8266720,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11987045900,
+  "lat": -6.6338631,
+  "lon": 106.8273586,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Lain Hati"
+  }
+},
+{
+  "type": "node",
+  "id": 11987050137,
+  "lat": -6.6337885,
+  "lon": 106.8271306,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Osuki"
+  }
+},
+{
+  "type": "node",
+  "id": 11987053944,
+  "lat": -6.6336606,
+  "lon": 106.8269965,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Hop Hop"
+  }
+},
+{
+  "type": "node",
+  "id": 11987054146,
+  "lat": -6.6341801,
+  "lon": 106.8269375,
+  "tags": {
+    "amenity": "cafe",
+    "name": "JS Cafe & Lounge"
+  }
+},
+{
+  "type": "node",
+  "id": 11987057388,
+  "lat": -6.6333862,
+  "lon": 106.8271574,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11987092701,
+  "lat": -6.6360624,
+  "lon": 106.8282706,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Susera Eat & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11987105771,
+  "lat": -6.6359259,
+  "lon": 106.8287232,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kedai Kopi Jidda"
+  }
+},
+{
+  "type": "node",
+  "id": 11987111163,
+  "lat": -6.6385068,
+  "lon": 106.8321061,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11987121791,
+  "lat": -6.6368883,
+  "lon": 106.8295205,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Be Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11987126046,
+  "lat": -6.6371960,
+  "lon": 106.8302038,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Lawson Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11987128435,
+  "lat": -6.6367131,
+  "lon": 106.8299335,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11987131963,
+  "lat": -6.6386227,
+  "lon": 106.8322577,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Haus!"
+  }
+},
+{
+  "type": "node",
+  "id": 11987134161,
+  "lat": -6.6364061,
+  "lon": 106.8292952,
+  "tags": {
+    "amenity": "cafe",
+    "name": "We Drink"
+  }
+},
+{
+  "type": "node",
+  "id": 11987149778,
+  "lat": -6.6377535,
+  "lon": 106.8309796,
+  "tags": {
+    "amenity": "cafe",
+    "name": "L.O.S Cafe & Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 11987157543,
+  "lat": -6.6399568,
+  "lon": 106.8347588,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Teras Ketje"
+  }
+},
+{
+  "type": "node",
+  "id": 11991818232,
+  "lat": -6.5691961,
+  "lon": 106.8075183,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopte Tarik"
+  }
+},
+{
+  "type": "node",
+  "id": 11991864745,
+  "lat": -6.5667087,
+  "lon": 106.8578821,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11991884985,
+  "lat": -6.5668313,
+  "lon": 106.8574798,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Puyo"
+  }
+},
+{
+  "type": "node",
+  "id": 11991885345,
+  "lat": -6.5667514,
+  "lon": 106.8586278,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Janji Jiwa"
+  }
+},
+{
+  "type": "node",
+  "id": 11991891488,
+  "lat": -6.5671297,
+  "lon": 106.8578580,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Shake Shake"
+  }
+},
+{
+  "type": "node",
+  "id": 11991893347,
+  "lat": -6.5665782,
+  "lon": 106.8571070,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Goods Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11991895721,
+  "lat": -6.5667434,
+  "lon": 106.8576381,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Boost Juice"
+  }
+},
+{
+  "type": "node",
+  "id": 11991896995,
+  "lat": -6.5672097,
+  "lon": 106.8580216,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Sinar Garut 27"
+  }
+},
+{
+  "type": "node",
+  "id": 11991898376,
+  "lat": -6.5673829,
+  "lon": 106.8582576,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Chatime"
+  }
+},
+{
+  "type": "node",
+  "id": 11991899130,
+  "lat": -6.5666821,
+  "lon": 106.8575147,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The People's Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11991908578,
+  "lat": -6.5671750,
+  "lon": 106.8571955,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Raga"
+  }
+},
+{
+  "type": "node",
+  "id": 11991908959,
+  "lat": -6.5644105,
+  "lon": 106.8473947,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 11992848230,
+  "lat": -6.5695146,
+  "lon": 106.8118004,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Haus!"
+  }
+},
+{
+  "type": "node",
+  "id": 11992867185,
+  "lat": -6.5704592,
+  "lon": 106.8145450,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Roasty Toast"
+  }
+},
+{
+  "type": "node",
+  "id": 11992959037,
+  "lat": -6.5711466,
+  "lon": 106.8164856,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Noba Cerita Rasa"
+  }
+},
+{
+  "type": "node",
+  "id": 11992969777,
+  "lat": -6.5714824,
+  "lon": 106.8163797,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cangkir Rasa"
+  }
+},
+{
+  "type": "node",
+  "id": 11992985640,
+  "lat": -6.5724643,
+  "lon": 106.8171273,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kop'Roll"
+  }
+},
+{
+  "type": "node",
+  "id": 11992985642,
+  "lat": -6.5764405,
+  "lon": 106.8177982,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Teh Indonesia"
+  }
+},
+{
+  "type": "node",
+  "id": 11992987918,
+  "lat": -6.5765411,
+  "lon": 106.8178763,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Arah Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11992990089,
+  "lat": -6.5777201,
+  "lon": 106.8177523,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Teh Special Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 11993003003,
+  "lat": -6.5704685,
+  "lon": 106.8155173,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi & Chick"
+  }
+},
+{
+  "type": "node",
+  "id": 11993003468,
+  "lat": -6.5710640,
+  "lon": 106.8164346,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Skymo"
+  }
+},
+{
+  "type": "node",
+  "id": 11993003671,
+  "lat": -6.5733849,
+  "lon": 106.8173513,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Adolescense"
+  }
+},
+{
+  "type": "node",
+  "id": 11993005312,
+  "lat": -6.5737792,
+  "lon": 106.8174961,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Klasik Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993007232,
+  "lat": -6.5733336,
+  "lon": 106.8177187,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Seduh Coffee & Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 11993010582,
+  "lat": -6.5743415,
+  "lon": 106.8178073,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kohvi Coffee Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 11993011141,
+  "lat": -6.5813799,
+  "lon": 106.8177778,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Otobull Coffee & Sisha"
+  }
+},
+{
+  "type": "node",
+  "id": 11993013076,
+  "lat": -6.5755645,
+  "lon": 106.8175384,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Waroeng 76"
+  }
+},
+{
+  "type": "node",
+  "id": 11993014722,
+  "lat": -6.5744107,
+  "lon": 106.8178314,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Hafa Coffee & Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 11993015438,
+  "lat": -6.5742069,
+  "lon": 106.8174425,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Naluri Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11993017256,
+  "lat": -6.5764118,
+  "lon": 106.8177999,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Es Kopi Indonesia"
+  }
+},
+{
+  "type": "node",
+  "id": 11993022084,
+  "lat": -6.5792702,
+  "lon": 106.8182002,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Artetic Studio & Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993024423,
+  "lat": -6.5757077,
+  "lon": 106.8178200,
+  "tags": {
+    "amenity": "cafe",
+    "name": "No.on"
+  }
+},
+{
+  "type": "node",
+  "id": 11993025023,
+  "lat": -6.5801149,
+  "lon": 106.8180983,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Groots Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993029874,
+  "lat": -6.5780798,
+  "lon": 106.8181103,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Yarra Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993033941,
+  "lat": -6.5797212,
+  "lon": 106.8186012,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bube Boba Kafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11993045797,
+  "lat": -6.5811401,
+  "lon": 106.8178066,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fairway Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11993047958,
+  "lat": -6.5797319,
+  "lon": 106.8187541,
+  "tags": {
+    "amenity": "cafe",
+    "name": "A Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993049105,
+  "lat": -6.5816044,
+  "lon": 106.8180694,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Surabi Duren Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11993049857,
+  "lat": -6.5812367,
+  "lon": 106.8180862,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rumah Tapi Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11993653629,
+  "lat": -6.5833856,
+  "lon": 106.8173640,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Senandung Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993660945,
+  "lat": -6.5822538,
+  "lon": 106.8176349,
+  "tags": {
+    "amenity": "cafe",
+    "name": "We Drink"
+  }
+},
+{
+  "type": "node",
+  "id": 11993678221,
+  "lat": -6.5836494,
+  "lon": 106.8172795,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Lawson Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993686237,
+  "lat": -6.5841190,
+  "lon": 106.8171173,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Teras"
+  }
+},
+{
+  "type": "node",
+  "id": 11993686952,
+  "lat": -6.5842829,
+  "lon": 106.8174150,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fabaro Kopi"
+  }
+},
+{
+  "type": "node",
+  "id": 11993694286,
+  "lat": -6.5839538,
+  "lon": 106.8175759,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11993703423,
+  "lat": -6.5841823,
+  "lon": 106.8171280,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kumpul Kedai Pandu"
+  }
+},
+{
+  "type": "node",
+  "id": 11993712333,
+  "lat": -6.5843502,
+  "lon": 106.8169677,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kopi Kenangan"
+  }
+},
+{
+  "type": "node",
+  "id": 11993756435,
+  "lat": -6.5847985,
+  "lon": 106.8171166,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Susu Mbok Darmi"
+  }
+},
+{
+  "type": "node",
+  "id": 11993919409,
+  "lat": -6.5847751,
+  "lon": 106.8167397,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kuleo Coffee & Beverage"
+  }
+},
+{
+  "type": "node",
+  "id": 11993966621,
+  "lat": -6.5855938,
+  "lon": 106.8166365,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sekoteng Raja"
+  }
+},
+{
+  "type": "node",
+  "id": 11993978854,
+  "lat": -6.5859562,
+  "lon": 106.8164869,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warkop Tampomas"
+  }
+},
+{
+  "type": "node",
+  "id": 11993981512,
+  "lat": -6.5856984,
+  "lon": 106.8166264,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Spoke Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11993981557,
+  "lat": -6.5861640,
+  "lon": 106.8163924,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Warung Kopi Mas Ge"
+  }
+},
+{
+  "type": "node",
+  "id": 11994021505,
+  "lat": -6.5862206,
+  "lon": 106.8164320,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Beunta Coffee & Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 11994021957,
+  "lat": -6.5870320,
+  "lon": 106.8163864,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tomoro Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11994206921,
+  "lat": -6.5877081,
+  "lon": 106.8160826,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Justrue"
+  }
+},
+{
+  "type": "node",
+  "id": 11994266915,
+  "lat": -6.5879153,
+  "lon": 106.8166076,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bean Spot"
+  }
+},
+{
+  "type": "node",
+  "id": 11994396200,
+  "lat": -6.5898430,
+  "lon": 106.8167800,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Kukikoi Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11994419502,
+  "lat": -6.5919986,
+  "lon": 106.8167793,
+  "tags": {
+    "amenity": "cafe",
+    "name": "ChaCha"
+  }
+},
+{
+  "type": "node",
+  "id": 11994456701,
+  "lat": -6.5925794,
+  "lon": 106.8168658,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Agreya Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11997904259,
+  "lat": -6.5818342,
+  "lon": 106.8134802,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Athologi Coffee & Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 11997910972,
+  "lat": -6.5819687,
+  "lon": 106.8172400,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tsuin Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 11997917399,
+  "lat": -6.5817229,
+  "lon": 106.8167491,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Ejji Coffee Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 11997918701,
+  "lat": -6.5818328,
+  "lon": 106.8133850,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Snap Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11997974478,
+  "lat": -6.5810801,
+  "lon": 106.8125736,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Bitter Sweet by Najla"
+  }
+},
+{
+  "type": "node",
+  "id": 11997974479,
+  "lat": -6.5812786,
+  "lon": 106.8123617,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Boen Roti & Kopitiam"
+  }
+},
+{
+  "type": "node",
+  "id": 11997978693,
+  "lat": -6.5812786,
+  "lon": 106.8118259,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rengganis Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 12056409456,
+  "lat": -6.6037974,
+  "lon": 106.7809257,
+  "tags": {
+    "addr:city": "Bogor",
+    "addr:district": "Bogor Barat",
+    "addr:housenumber": "28",
+    "addr:postcode": "16119",
+    "addr:province": "Jawa Barat",
+    "addr:street": "Jalan Jabaru II",
+    "addr:subdistrict": "Pasir Kuda",
+    "amenity": "cafe",
+    "cuisine": "fruit;dessert",
+    "description": "Kelapa Kopyor Kultur Jaringan Terbesar di Dunia, memproduksi Bibit Kelapa Kopyor dengan persentase 99% buah Kopyor melalui teknologi kultur embrio. Produsen tunggal kelapa kopyor terbesar Menjual juga buah segar yang dipanen setiap hari senin s.d kamis.",
+    "image": "https://kopyorbogor.plantage.id/wp-content/uploads/2024/01/bordir-saku-2048x1024.png",
+    "internet_access": "no",
+    "mobile": "+6287870260046",
+    "name": "Kopyor Bogor",
+    "opening_hours": "Mo-Su 10:00-15:30",
+    "outdoor_seating": "yes",
+    "reservation": "yes",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://www.instagram.com/kopyorbogor/"
+  }
+},
+{
+  "type": "node",
+  "id": 12468074953,
+  "lat": -6.5792625,
+  "lon": 106.7744682,
+  "tags": {
+    "addr:city": "Bogor",
+    "addr:district": "Kec. Bogor Baru",
+    "addr:housenumber": "142",
+    "addr:neighbourhood": "Cilendek",
+    "addr:postcode": "16111",
+    "addr:province": "West Java",
+    "addr:street": "Jalan Dr. Sumeru",
+    "addr:subdistrict": "Cilendek",
+    "addr:unit": "142",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Camp Survivor",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "website": "https://www.instagram.com/campsurvivor/"
+  }
+},
+{
+  "type": "node",
+  "id": 12600137243,
+  "lat": -6.5679251,
+  "lon": 106.8543644,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Tuku"
+  }
+},
+{
+  "type": "node",
+  "id": 12610288281,
+  "lat": -6.6014052,
+  "lon": 106.7786486,
+  "tags": {
+    "addr:state": "JW",
+    "addr:street": "Jalan Raya Ciomas",
+    "amenity": "cafe",
+    "cuisine": "juice",
+    "delivery": "Pesan Online",
+    "indoor_seating": "yes",
+    "name": "Duta Jus",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12942594176,
+  "lat": -6.5568032,
+  "lon": 106.7729764,
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Yasmin",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 14188854174,
+  "lat": -6.5914650,
+  "lon": 106.8017603,
+  "tags": {
+    "amenity": "cafe",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 158845420,
+  "center": {
+    "lat": -6.6087283,
+    "lon": 106.8110604
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Cabin"
+  }
+},
+{
+  "type": "way",
+  "id": 163100683,
+  "center": {
+    "lat": -6.6011634,
+    "lon": 106.8056170
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "wlan",
+    "petarakyat": "include"
+  }
+},
+{
+  "type": "way",
+  "id": 163100874,
+  "center": {
+    "lat": -6.6024145,
+    "lon": 106.8062813
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "internet_access": "wlan",
+    "name": "Kedai Telapak Cafe",
+    "petarakyat": "include"
+  }
+},
+{
+  "type": "way",
+  "id": 163110604,
+  "center": {
+    "lat": -6.5948553,
+    "lon": 106.8064769
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kebun Kita"
+  }
+},
+{
+  "type": "way",
+  "id": 163110610,
+  "center": {
+    "lat": -6.5904839,
+    "lon": 106.8044164
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Starbucks Reserve Bogor"
+  }
+},
+{
+  "type": "way",
+  "id": 164437532,
+  "center": {
+    "lat": -6.6363557,
+    "lon": 106.8435399
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 183498871,
+  "center": {
+    "lat": -6.5886948,
+    "lon": 106.8046772
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kopi Tugoh Signature"
+  }
+},
+{
+  "type": "way",
+  "id": 191351132,
+  "center": {
+    "lat": -6.5711923,
+    "lon": 106.7525586
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kopi Jalan Pintas"
+  }
+},
+{
+  "type": "way",
+  "id": 451213522,
+  "center": {
+    "lat": -6.5641204,
+    "lon": 106.7887200
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "UD Djaya Coffee House",
+    "opening_hours": "Mo-Su 09:00-21:00"
+  }
+},
+{
+  "type": "way",
+  "id": 481489848,
+  "center": {
+    "lat": -6.5596372,
+    "lon": 106.7884538
+  },
+  "tags": {
+    "addr:city": "Kota Bogor",
+    "addr:housenumber": "16",
+    "addr:postcode": "16164",
+    "addr:street": "Jalan Sholeh Iskandar",
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "asian",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Tenda Kuliner Basis HMS",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 491439941,
+  "center": {
+    "lat": -6.5794634,
+    "lon": 106.7716793
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "house",
+    "name": "Amara House"
+  }
+},
+{
+  "type": "way",
+  "id": 500713890,
+  "center": {
+    "lat": -6.5840812,
+    "lon": 106.8072272
+  },
+  "tags": {
+    "addr:city": "BOGOR",
+    "addr:housenumber": "C2",
+    "addr:postcode": "16153",
+    "addr:street": "Jalan Komplek BPT",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Joffee Coffee&Eatery",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "drive_through": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Joffee Coffee&Eatery",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+6282177773686",
+    "website": "https://www.instagram.com/j.offeee"
+  }
+},
+{
+  "type": "way",
+  "id": 588880983,
+  "center": {
+    "lat": -6.5869990,
+    "lon": 106.7889580
+  },
+  "tags": {
+    "addr:street": "Jalan Ciwaringin II",
+    "amenity": "cafe",
+    "name": "Gerimis Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 973646537,
+  "center": {
+    "lat": -6.5955425,
+    "lon": 106.7894196
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Drink Station - Cibogor"
+  }
+},
+{
+  "type": "way",
+  "id": 1038914173,
+  "center": {
+    "lat": -6.6034457,
+    "lon": 106.8102025
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Raindear Coffee and Kitchen - Baranangsiang"
+  }
+},
+{
+  "type": "way",
+  "id": 1100752121,
+  "center": {
+    "lat": -6.5613018,
+    "lon": 106.7923613
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "DPR by HMS"
+  }
+},
+{
+  "type": "way",
+  "id": 1260619342,
+  "center": {
+    "lat": -6.5690710,
+    "lon": 106.8457581
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "building:levels": "2",
+    "cuisine": "coffee_shop",
+    "name": "Kopi Tubing",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 1266035756,
+  "center": {
+    "lat": -6.5680098,
+    "lon": 106.8544059
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "cuisine": "coffee_shop",
+    "name": "Kopi Tuku"
+  }
+},
+{
+  "type": "way",
+  "id": 1268573603,
+  "center": {
+    "lat": -6.5981222,
+    "lon": 106.7899598
+  },
+  "tags": {
+    "addr:city": "Kota Bogor",
+    "addr:street": "Jalan Paledang",
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kopi Satu Tudju"
+  }
+},
+{
+  "type": "way",
+  "id": 1286193561,
+  "center": {
+    "lat": -6.5726694,
+    "lon": 106.7479069
+  },
+  "tags": {
+    "amenity": "cafe",
+    "name": "Shinju Ramen"
+  }
+},
+{
+  "type": "way",
+  "id": 1286206919,
+  "center": {
+    "lat": -6.5691191,
+    "lon": 106.7571451
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Kebin"
+  }
+},
+{
+  "type": "way",
+  "id": 1286207694,
+  "center": {
+    "lat": -6.5647112,
+    "lon": 106.7629836
+  },
+  "tags": {
+    "amenity": "cafe",
+    "name": "Mie Gacoan Yasmin"
+  }
+},
+{
+  "type": "way",
+  "id": 1286569416,
+  "center": {
+    "lat": -6.5683534,
+    "lon": 106.7588174
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Madam Coffee"
+  }
+},
+{
+  "type": "way",
+  "id": 1286575277,
+  "center": {
+    "lat": -6.5779510,
+    "lon": 106.7548773
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Sisi Teras Coffee & Kitchen"
+  }
+},
+{
+  "type": "way",
+  "id": 1286576254,
+  "center": {
+    "lat": -6.5801859,
+    "lon": 106.7509808
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Everythey Coffee and Plant"
+  }
+},
+{
+  "type": "way",
+  "id": 1286800411,
+  "center": {
+    "lat": -6.5749780,
+    "lon": 106.7522981
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Friday Coffee Plants & Eatery"
+  }
+},
+{
+  "type": "way",
+  "id": 1286802628,
+  "center": {
+    "lat": -6.5774716,
+    "lon": 106.7574950
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Senandung Kopi"
+  }
+},
+{
+  "type": "way",
+  "id": 1286954148,
+  "center": {
+    "lat": -6.5806132,
+    "lon": 106.7758860
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Ulin-Ulin Coffee Park"
+  }
+},
+{
+  "type": "way",
+  "id": 1286955235,
+  "center": {
+    "lat": -6.5840617,
+    "lon": 106.7742019
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Uniko Coffee & Gallery"
+  }
+},
+{
+  "type": "way",
+  "id": 1287600865,
+  "center": {
+    "lat": -6.5567790,
+    "lon": 106.7738310
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "Golden Black"
+  }
+},
+{
+  "type": "way",
+  "id": 1292957594,
+  "center": {
+    "lat": -6.6037470,
+    "lon": 106.8110497
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "contact:instagram": "https://www.instagram.com/kopinako.id/",
+    "contact:linkedin": "https://id.linkedin.com/company/kanmagroup",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "email": "support@kanmagroup.id",
+    "name": "Kopi Nako",
+    "operator": "Kanma Group",
+    "website": "https://www.kopinako.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 1422649086,
+  "center": {
+    "lat": -6.6014314,
+    "lon": 106.7795070
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "commercial",
+    "cuisine": "ice cream, Tea, Coffee",
+    "delivery": "Gojek, Grabfood, Shopeefood",
+    "indoor_seating": "yes",
+    "name": "Bingxue",
+    "opening_hours": "Mo-Su 10:00-22:30",
+    "takeaway": "yes",
+    "toilets:wheelchair": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1422649088,
+  "center": {
+    "lat": -6.6014310,
+    "lon": 106.7794551
+  },
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Fore Coffee",
+    "building": "commercial",
+    "cuisine": "coffee_shop",
+    "delivery": "Gojek, Grabfood, Shopeefood",
+    "food": "snacks",
+    "indoor_seating": "yes",
+    "internet_access": "wired",
+    "internet_access:fee": "yes",
+    "name": "Fore Coffee",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa-Su 07:00-23:00",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1422650243,
+  "center": {
+    "lat": -6.6014440,
+    "lon": 106.7797458
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "commercial",
+    "cuisine": "coffee",
+    "indoor_seating": "yes",
+    "name": "Janji Jiwa",
+    "not:brand:wikidata": "Q124030785",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1422650247,
+  "center": {
+    "lat": -6.6014441,
+    "lon": 106.7797120
+  },
+  "tags": {
+    "amenity": "cafe",
+    "building": "commercial",
+    "cuisine": "coffee_shop",
+    "delivery": "Pesan Online",
+    "diet:dairy": "yes",
+    "diet:halal": "only",
+    "indoor_seating": "yes",
+    "internet_access": "wired",
+    "internet_access:fee": "customers",
+    "name": "Kopi Kenangan",
+    "not:brand:wikidata": "Q97221992",
+    "outdoor_seating": "no",
+    "takeaway": "yes",
+    "toilets:wheelchair": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1496391471,
+  "center": {
+    "lat": -6.6411233,
+    "lon": 106.7725107
+  },
+  "tags": {
+    "amenity": "cafe",
+    "operator": "Trio Padang"
+  }
+},
+{
+  "type": "way",
+  "id": 1496391473,
+  "center": {
+    "lat": -6.6412398,
+    "lon": 106.7727714
+  },
+  "tags": {
+    "amenity": "cafe",
+    "level": "Momo",
+    "name": "Momoyo"
+  }
+}
+
+  ]
+}
