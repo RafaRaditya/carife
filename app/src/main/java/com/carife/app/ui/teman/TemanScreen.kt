@@ -244,11 +244,6 @@ fun TemanScreen(
             item {
                 CarifeSectionHeader(
                     title = "Room nongkrong",
-                    supporting = if (joinedOnly) {
-                        "${visibleRooms.size} room yang kamu ikuti"
-                    } else {
-                        "${visibleRooms.size} room"
-                    },
                     actionLabel = "Buat room",
                     onAction = { showCreateRoom = true },
                     modifier = Modifier.padding(horizontal = 20.dp),
@@ -755,7 +750,11 @@ private fun CheckInDialog(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 if (cafes.isNotEmpty()) {
-                    CafePicker(cafes, selectedCafe?.id) { selectedCafeId = it }
+                    CafePicker(
+                        cafes = cafes,
+                        selectedId = selectedCafe?.id,
+                        onSelect = { selectedCafeId = it },
+                    )
                 } else {
                     Text("Belum ada kafe di kota ini", style = MaterialTheme.typography.titleSmall)
                 }

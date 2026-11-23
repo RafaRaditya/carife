@@ -13,27 +13,9 @@ android {
         applicationId = "com.carife.app"
         minSdk = 26
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1"
-    }
-
-    flavorDimensions += "connectivity"
-
-    productFlavors {
-        create("online") {
-            dimension = "connectivity"
-            applicationIdSuffix = ""
-            versionNameSuffix = ""
-            buildConfigField("boolean", "OFFLINE_ONLY", "false")
-            resValue("string", "app_name", "Carife")
-        }
-        create("offline") {
-            dimension = "connectivity"
-            applicationIdSuffix = ".offline"
-            versionNameSuffix = "-offline"
-            buildConfigField("boolean", "OFFLINE_ONLY", "true")
-            resValue("string", "app_name", "Carife Offline")
-        }
+        versionCode = 3
+        versionName = "1.2"
+        buildConfigField("boolean", "OFFLINE_ONLY", "false")
     }
 
     buildTypes {

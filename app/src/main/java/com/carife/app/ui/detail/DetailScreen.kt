@@ -24,6 +24,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.GroupAdd
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -67,6 +68,7 @@ import com.carife.app.ui.components.SharePreview
 import com.carife.app.ui.components.formatRupiahFull
 import com.carife.app.ui.components.openCafeDirections
 import com.carife.app.ui.components.openShareSheet
+import com.carife.app.ui.teman.CreateRoomDialog
 import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
@@ -130,6 +132,7 @@ fun DetailScreen(
     val isComparing = compareIds.contains(cafe.id)
     val openNow = OpeningHours.isOpenNow(cafe, now)
     var shareAction by rememberSaveable(cafe.id) { mutableStateOf<ShareAction?>(null) }
+    var showCreateRoom by rememberSaveable(cafe.id) { mutableStateOf(false) }
 
     LazyColumn(
         modifier = Modifier
@@ -199,47 +202,67 @@ fun DetailScreen(
         }
 
         item {
-            Row(
+            Column(
                 modifier = Modifier.padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Button(
-                    onClick = { openCafeDirections(context, cafe, viewModel::emitMessage) },
-                    modifier = Modifier.weight(1f),
+                    onClick = { showCreateRoom = true },
+                    modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(14.dp),
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 10.dp),
+                    contentPadding = PaddingValues(vertical = 12.dp),
                 ) {
-                    Text("Rute", style = MaterialTheme.typography.labelMedium)
-                }
-                OutlinedButton(
-                    onClick = { viewModel.toggleCompare(cafe.id) },
-                    modifier = Modifier.weight(1f),
-                    shape = RoundedCornerShape(14.dp),
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 10.dp),
-                    border = BorderStroke(1.dp, CarifeOutlineVariant),
-                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.GroupAdd,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                    )
                     Text(
-                        text = if (isComparing) "Dipilih" else "Bandingkan",
-                        style = MaterialTheme.typography.labelMedium,
-                        textAlign = TextAlign.Center,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
+                        text = "Buat room di kafe ini",
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier.padding(start = 8.dp),
                     )
                 }
-                OutlinedButton(
-                    onClick = { shareAction = ShareAction.INVITE },
-                    modifier = Modifier.weight(1f),
-                    shape = RoundedCornerShape(14.dp),
-                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 10.dp),
-                    border = BorderStroke(1.dp, CarifeOutlineVariant),
-                ) {
-                    Text(
-                        text = "Ajak Teman",
-                        style = MaterialTheme.typography.labelMedium,
-                        textAlign = TextAlign.Center,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedButton(
+                        onClick = { openCafeDirections(context, cafe, viewModel::emitMessage) },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(14.dp),
+                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 10.dp),
+                        border = BorderStroke(1.dp, CarifeOutlineVariant),
+                    ) {
+                        Text("Rute", style = MaterialTheme.typography.labelMedium)
+                    }
+                    OutlinedButton(
+                        onClick = { viewModel.toggleCompare(cafe.id) },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(14.dp),
+                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 10.dp),
+                        border = BorderStroke(1.dp, CarifeOutlineVariant),
+                    ) {
+                        Text(
+                            text = if (isComparing) "Dipilih" else "Bandingkan",
+                            style = MaterialTheme.typography.labelMedium,
+                            textAlign = TextAlign.Center,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                    OutlinedButton(
+                        onClick = { shareAction = ShareAction.INVITE },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(14.dp),
+                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 10.dp),
+                        border = BorderStroke(1.dp, CarifeOutlineVariant),
+                    ) {
+                        Text(
+                            text = "Ajak Teman",
+                            style = MaterialTheme.typography.labelMedium,
+                            textAlign = TextAlign.Center,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
                 }
             }
         }
@@ -440,6 +463,25 @@ fun DetailScreen(
                 }
             }
         }
+    }
+
+    if (showCreateRoom) {
+        CreateRoomDialog(
+            cafes = listOf(cafe),
+            fixedCafe = cafe,
+            onDismiss = { showCreateRoom = false },
+            onCreate = { targetCafe, schedule ->
+                viewModel.createRoom(
+                    cafe = targetCafe,
+                    title = "Nongkrong di ${targetCafe.name}",
+                    schedule = schedule,
+                    note = "",
+                    invitedFriendIds = emptyList(),
+                    capacity = 5,
+                )
+                showCreateRoom = false
+            },
+        )
     }
 
     shareAction?.let { action ->

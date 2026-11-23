@@ -2,6 +2,7 @@ package com.carife.app.ui.teman
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,13 +25,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Logout
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.DeleteOutline
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.MeetingRoom
+import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -41,6 +46,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TimePicker
+import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,6 +58,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -60,6 +69,7 @@ import com.carife.app.data.DemoFriendsData
 import com.carife.app.data.FriendPerson
 import com.carife.app.ui.components.CafePicker
 import com.carife.app.ui.components.CarifeChip
+import com.carife.app.ui.components.CarifeHairline
 import com.carife.app.ui.components.ProfileAvatar
 import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifeOnTertiaryFixed
@@ -68,8 +78,14 @@ import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainer
+import com.carife.app.ui.theme.CarifeSurfaceContainerLow
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import com.carife.app.ui.theme.CarifeTertiaryFixed
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 internal data class RoomView(
     val room: StudyRoom,
@@ -753,18 +769,34 @@ private fun QuotaDialog(
     )
 }
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 internal fun CreateRoomDialog(
     cafes: List<Cafe>,
     onDismiss: () -> Unit,
     onCreate: (Cafe, String) -> Unit,
+    fixedCafe: Cafe? = null,
 ) {
-    var selectedCafeId by remember { mutableStateOf<String?>(null) }
-    var schedule by remember { mutableStateOf("Hari ini · 16.00") }
+    var selectedCafeId by remember {
+        mutableStateOf<String?>(fixedCafe?.id ?: cafes.singleOrNull()?.id)
+    }
+    var selectedDate by remember { mutableStateOf(LocalDate.now()) }
+    var selectedHour by remember { mutableStateOf(16) }
+    var selectedMinute by remember { mutableStateOf(0) }
+    var showDatePicker by remember { mutableStateOf(false) }
+    var showTimePicker by remember { mutableStateOf(false) }
 
-    val selectedCafe = cafes.firstOrNull { it.id == selectedCafeId }
-    val presets = listOf("Hari ini · 16.00", "Hari ini · 19.00", "Besok · 10.00")
+    val selectedCafe = fixedCafe ?: cafes.firstOrNull { it.id == selectedCafeId }
+    val today = LocalDate.now()
+    val dateLabel = when (selectedDate) {
+        today -> "Hari ini"
+        today.plusDays(1) -> "Besok"
+        else -> selectedDate.format(
+            DateTimeFormatter.ofPattern("EEE, d MMM", Locale.forLanguageTag("id-ID"))
+        )
+    }
+    val timeLabel = String.format(Locale.ROOT, "%02d.%02d", selectedHour, selectedMinute)
+    val schedule = "$dateLabel · $timeLabel"
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -777,12 +809,48 @@ internal fun CreateRoomDialog(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 Text(
-                    text = "Pilih kafe dan waktu. Kamu bisa mengundang teman setelah room dibuat.",
+                    text = if (fixedCafe != null) {
+                        "Pilih waktu. Kamu bisa mengundang teman setelah room dibuat."
+                    } else {
+                        "Pilih kafe dan waktu. Kamu bisa mengundang teman setelah room dibuat."
+                    },
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
-                if (cafes.isNotEmpty()) {
-                    CafePicker(cafes, selectedCafe?.id) { selectedCafeId = it }
+
+                if (fixedCafe != null) {
+                    Surface(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        color = CarifeSurfaceContainerLow,
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.LocationOn,
+                                contentDescription = null,
+                                tint = CarifePrimary,
+                                modifier = Modifier.size(18.dp),
+                            )
+                            Text(
+                                text = fixedCafe.name,
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+                } else if (cafes.isNotEmpty()) {
+                    CafePicker(
+                        cafes = cafes,
+                        selectedId = selectedCafe?.id,
+                        onSelect = { selectedCafeId = it },
+                        searchable = true,
+                        showDetails = true,
+                        height = 240.dp,
+                    )
                 } else {
                     Text("Belum ada kafe di kota ini", style = MaterialTheme.typography.titleSmall)
                 }
@@ -792,33 +860,135 @@ internal fun CreateRoomDialog(
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    color = CarifeSurfaceContainerLow,
+                    border = BorderStroke(1.dp, CarifeOutlineVariant),
                 ) {
-                    presets.forEach { preset ->
-                        CarifeChip(
-                            label = preset,
-                            selected = schedule == preset,
-                            onClick = { schedule = preset },
+                    Column {
+                        SchedulePickerRow(
+                            icon = Icons.Outlined.CalendarMonth,
+                            label = "Tanggal",
+                            value = dateLabel,
+                            onClick = { showDatePicker = true },
+                        )
+                        CarifeHairline()
+                        SchedulePickerRow(
+                            icon = Icons.Outlined.Schedule,
+                            label = "Jam",
+                            value = timeLabel,
+                            onClick = { showTimePicker = true },
                         )
                     }
                 }
-                OutlinedTextField(
-                    value = schedule,
-                    onValueChange = { schedule = it },
-                    label = { Text("Atau tulis sendiri") },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
             }
         },
         confirmButton = {
             TextButton(
                 onClick = { selectedCafe?.let { onCreate(it, schedule) } },
-                enabled = selectedCafe != null && schedule.isNotBlank(),
+                enabled = selectedCafe != null,
             ) { Text("Buat Room") }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Batal") } },
     )
+
+    if (showDatePicker) {
+        val datePickerState = rememberDatePickerState(
+            initialSelectedDateMillis = selectedDate
+                .atStartOfDay(ZoneOffset.UTC)
+                .toInstant()
+                .toEpochMilli(),
+        )
+        DatePickerDialog(
+            onDismissRequest = { showDatePicker = false },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        datePickerState.selectedDateMillis?.let { millis ->
+                            selectedDate = Instant.ofEpochMilli(millis)
+                                .atZone(ZoneOffset.UTC)
+                                .toLocalDate()
+                        }
+                        showDatePicker = false
+                    },
+                ) { Text("Pilih") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDatePicker = false }) { Text("Batal") }
+            },
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
+
+    if (showTimePicker) {
+        val timePickerState = rememberTimePickerState(
+            initialHour = selectedHour,
+            initialMinute = selectedMinute,
+            is24Hour = true,
+        )
+        AlertDialog(
+            onDismissRequest = { showTimePicker = false },
+            title = { Text("Pilih jam") },
+            text = { TimePicker(state = timePickerState) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        selectedHour = timePickerState.hour
+                        selectedMinute = timePickerState.minute
+                        showTimePicker = false
+                    },
+                ) { Text("Pilih") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showTimePicker = false }) { Text("Batal") }
+            },
+        )
+    }
+}
+
+@Composable
+private fun SchedulePickerRow(
+    icon: ImageVector,
+    label: String,
+    value: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = CarifePrimary,
+            modifier = Modifier.size(18.dp),
+        )
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(1.dp),
+        ) {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.Bold,
+            )
+        }
+        Text(
+            text = "Ubah",
+            style = MaterialTheme.typography.labelSmall,
+            color = CarifePrimary,
+        )
+    }
 }
