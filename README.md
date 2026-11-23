@@ -12,8 +12,6 @@ Sekarang hanya ada **satu APK**:
 | APK debug | `app/build/outputs/apk/debug/app-debug.apk` |
 | Internet | Opsional untuk katalog; tile peta OSM butuh internet |
 
-Tidak ada lagi flavor `online`/`offline`. Snapshot katalog OpenStreetMap tetap dibundel di dalam APK yang sama, sehingga layar inti bisa dibuka tanpa koneksi. Jika di perangkat masih terpasang **Carife Offline** lama (`com.carife.app.offline`), uninstall aplikasi itu karena varian terpisah sudah dihapus.
-
 ## Status
 
 - Build `assembleDebug` berhasil dan **89 unit test JVM** lulus di 15 kelas test.
