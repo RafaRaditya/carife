@@ -3,6 +3,7 @@ package com.carife.app.ui.profile
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,11 +23,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -50,11 +50,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.carife.app.core.model.profileAvatarColors
 import com.carife.app.ui.CarifeViewModel
+import com.carife.app.ui.components.CarifeTopBar
 import com.carife.app.ui.components.CityPickerDialog
 import com.carife.app.ui.components.ProfileAvatar
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
-import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import kotlinx.coroutines.launch
 
@@ -103,21 +104,11 @@ fun AccountSettingsScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Kembali")
-            }
-            Text(
-                text = "Pengaturan Akun",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-            )
-        }
+        CarifeTopBar(
+            title = "Pengaturan akun",
+            onBack = onBack,
+            subtitle = "Profil dan foto disimpan lokal",
+        )
 
         Column(
             modifier = Modifier
@@ -125,13 +116,14 @@ fun AccountSettingsScreen(
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
-                .padding(bottom = 24.dp),
+                .padding(bottom = 28.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             Surface(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(18.dp),
                 color = CarifeSurfaceContainerLowest,
+                border = BorderStroke(1.dp, CarifeOutlineVariant),
             ) {
                 Column(
                     modifier = Modifier.padding(16.dp),
@@ -144,8 +136,12 @@ fun AccountSettingsScreen(
                         pendingPhotoUri = pendingPhotoUri.takeUnless { removePhoto },
                     )
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        OutlinedButton(onClick = { photoPicker.launch("image/*") }) {
-                            Text("Pilih Foto")
+                        OutlinedButton(
+                            onClick = { photoPicker.launch("image/*") },
+                            shape = RoundedCornerShape(12.dp),
+                            border = BorderStroke(1.dp, CarifeOutlineVariant),
+                        ) {
+                            Text("Pilih foto")
                         }
                         if (previewProfile.hasPhoto) {
                             TextButton(
@@ -153,7 +149,7 @@ fun AccountSettingsScreen(
                                     pendingPhotoUri = null
                                     removePhoto = true
                                 },
-                            ) { Text("Hapus Foto") }
+                            ) { Text("Hapus foto") }
                         }
                     }
                     Text(
@@ -164,101 +160,76 @@ fun AccountSettingsScreen(
                 }
             }
 
-            Surface(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
-                color = CarifeSurfaceContainerLowest,
-            ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    Text(
-                        "Profil",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    OutlinedTextField(
-                        value = name,
-                        onValueChange = { name = it.take(40) },
-                        label = { Text("Nama tampilan") },
-                        singleLine = true,
-                        isError = name.isBlank(),
-                        supportingText = {
-                            if (name.isBlank()) {
-                                Text("Nama wajib diisi")
-                            }
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                    OutlinedTextField(
-                        value = tagline,
-                        onValueChange = { tagline = it.take(70) },
-                        label = { Text("Tagline") },
-                        placeholder = { Text("Productive Workspace Seeker") },
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                    OutlinedTextField(
-                        value = status,
-                        onValueChange = { status = it.take(30) },
-                        label = { Text("Status singkat") },
-                        placeholder = { Text("Solo Deep Worker") },
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                }
+            SectionCard(title = "Profil") {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it.take(40) },
+                    label = { Text("Nama tampilan") },
+                    singleLine = true,
+                    isError = name.isBlank(),
+                    supportingText = {
+                        if (name.isBlank()) {
+                            Text("Nama wajib diisi")
+                        }
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = tagline,
+                    onValueChange = { tagline = it.take(70) },
+                    label = { Text("Tagline") },
+                    placeholder = { Text("Pencari tempat nugas") },
+                    singleLine = true,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    value = status,
+                    onValueChange = { status = it.take(30) },
+                    label = { Text("Status singkat") },
+                    placeholder = { Text("Fokus kerja sendiri") },
+                    singleLine = true,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
 
-            Surface(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
-                color = CarifeSurfaceContainerLowest,
-            ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
+            SectionCard(title = "Warna avatar") {
+                Text(
+                    text = "Dipakai saat foto profil belum dipilih.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    Text(
-                        "Warna avatar",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Text(
-                        "Dipakai saat foto profil belum dipilih.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    FlowRow(
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
-                        verticalArrangement = Arrangement.spacedBy(10.dp),
-                    ) {
-                        profileAvatarColors.forEach { color ->
-                            val selected = avatarColor == color
-                            Box(
-                                modifier = Modifier
-                                    .size(44.dp)
-                                    .clip(CircleShape)
-                                    .background(Color(color))
-                                    .border(
-                                        width = if (selected) 3.dp else 0.dp,
-                                        color = CarifePrimary,
-                                        shape = CircleShape,
-                                    )
-                                    .selectable(
-                                        selected = selected,
-                                        role = Role.RadioButton,
-                                        onClick = { avatarColor = color },
-                                    ),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                if (selected) {
-                                    Icon(
-                                        imageVector = Icons.Filled.Check,
-                                        contentDescription = null,
-                                        tint = Color.White,
-                                    )
-                                }
+                    profileAvatarColors.forEach { color ->
+                        val selected = avatarColor == color
+                        Box(
+                            modifier = Modifier
+                                .size(44.dp)
+                                .clip(CircleShape)
+                                .background(Color(color))
+                                .border(
+                                    width = if (selected) 3.dp else 0.dp,
+                                    color = CarifePrimary,
+                                    shape = CircleShape,
+                                )
+                                .selectable(
+                                    selected = selected,
+                                    role = Role.RadioButton,
+                                    onClick = { avatarColor = color },
+                                ),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            if (selected) {
+                                Icon(
+                                    imageVector = Icons.Filled.Check,
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                )
                             }
                         }
                     }
@@ -267,15 +238,16 @@ fun AccountSettingsScreen(
 
             Surface(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp),
+                shape = RoundedCornerShape(18.dp),
                 color = CarifeSurfaceContainerLowest,
+                border = BorderStroke(1.dp, CarifeOutlineVariant),
             ) {
                 Row(
                     modifier = Modifier.padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
-                    Column(Modifier.weight(1f)) {
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                         Text(
                             "Kota utama",
                             style = MaterialTheme.typography.labelMedium,
@@ -316,8 +288,10 @@ fun AccountSettingsScreen(
                     .semantics {
                         contentDescription = "Simpan profil"
                     },
+                shape = RoundedCornerShape(14.dp),
+                contentPadding = PaddingValues(vertical = 12.dp),
             ) {
-                Text(if (saving) "Menyimpan..." else "Simpan Profil")
+                Text(if (saving) "Menyimpan…" else "Simpan profil")
             }
 
             Text(
@@ -338,5 +312,30 @@ fun AccountSettingsScreen(
                 showCityPicker = false
             },
         )
+    }
+}
+
+@Composable
+private fun SectionCard(
+    title: String,
+    content: @Composable () -> Unit,
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        color = CarifeSurfaceContainerLowest,
+        border = BorderStroke(1.dp, CarifeOutlineVariant),
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+            )
+            content()
+        }
     }
 }

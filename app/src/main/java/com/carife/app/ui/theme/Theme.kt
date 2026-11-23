@@ -14,7 +14,7 @@ private val CarifeColorScheme = lightColorScheme(
     secondaryContainer = CarifeSecondaryContainer,
     onSecondaryContainer = CarifeOnSecondaryContainer,
     tertiary = CarifeTertiary,
-    onTertiary = CarifeOnPrimary,
+    onTertiary = CarifeOnTertiary,
     tertiaryContainer = CarifeTertiaryFixed,
     onTertiaryContainer = CarifeOnTertiaryFixed,
     error = CarifeError,
@@ -34,6 +34,7 @@ private val CarifeColorScheme = lightColorScheme(
     surfaceContainerHighest = CarifeSurfaceContainerHighest,
     outline = CarifeOutline,
     outlineVariant = CarifeOutlineVariant,
+    surfaceTint = CarifePrimary,
 )
 
 @Composable

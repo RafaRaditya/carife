@@ -1,16 +1,15 @@
 package com.carife.app.ui.explore
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,19 +17,12 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.FilterList
-import androidx.compose.material.icons.filled.Fullscreen
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.CompareArrows
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
@@ -48,13 +40,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.carife.app.BuildConfig
@@ -70,12 +59,18 @@ import com.carife.app.domain.MatchScorer
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.ExploreEntry
 import com.carife.app.ui.components.CafeCard
+import com.carife.app.ui.components.CafeMapCard
 import com.carife.app.ui.components.CarifeChip
 import com.carife.app.ui.components.CarifeEmptyState
+import com.carife.app.ui.components.CarifeSearchField
+import com.carife.app.ui.components.CarifeSectionHeader
 import com.carife.app.ui.components.FilterPanel
 import com.carife.app.ui.components.FullMapDialog
-import com.carife.app.ui.components.OsmMapView
+import com.carife.app.ui.theme.CarifeOnPrimary
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
+import com.carife.app.ui.theme.CarifePrimaryFixed
+import com.carife.app.ui.theme.CarifeSurfaceContainerLow
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import java.time.Instant
 
@@ -102,6 +97,8 @@ fun ExploreScreen(
     var showFullMap by rememberSaveable { mutableStateOf(false) }
     var focusSearch by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
+    val focusRequester = remember { FocusRequester() }
+    val keyboard = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
@@ -124,6 +121,14 @@ fun ExploreScreen(
         viewModel.consumeExploreEntry()
     }
 
+    LaunchedEffect(focusSearch) {
+        if (focusSearch) {
+            focusRequester.requestFocus()
+            keyboard?.show()
+            focusSearch = false
+        }
+    }
+
     val scores = remember(catalog.cafes, appState.hasSavedPreferences, appState.preferences) {
         if (!appState.hasSavedPreferences) emptyMap()
         else catalog.cafes.mapNotNull { cafe ->
@@ -141,21 +146,39 @@ fun ExploreScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background),
-            contentPadding = PaddingValues(bottom = 96.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            contentPadding = PaddingValues(
+                top = 8.dp,
+                bottom = if (compareIds.size >= 2) 112.dp else 28.dp,
+            ),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                SearchBar(
-                    query = filters.query,
-                    cityName = city.name,
-                    focusRequested = focusSearch,
-                    onFocusHandled = { focusSearch = false },
-                    onQueryChange = { viewModel.setExploreFilters(filters.copy(query = it)) },
-                    onOpenFilters = {
-                        focusManager.clearFocus()
-                        showFilterSheet = true
-                    },
-                )
+                Column(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(
+                            text = "Jelajah",
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Text(
+                            text = "Saring kafe di ${city.name} berdasarkan Wi-Fi, colokan, suasana, dan harga.",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    CarifeSearchField(
+                        value = filters.query,
+                        onValueChange = { viewModel.setExploreFilters(filters.copy(query = it)) },
+                        onOpenFilters = {
+                            focusManager.clearFocus()
+                            showFilterSheet = true
+                        },
+                        focusRequester = focusRequester,
+                    )
+                }
             }
 
             item {
@@ -173,141 +196,181 @@ fun ExploreScreen(
                 }
             }
 
-            item {
-                Box(
-                    modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .fillMaxWidth()
-                        .height(170.dp)
-                        .clip(RoundedCornerShape(20.dp)),
-                ) {
-                    OsmMapView(
-                        city = city,
-                        cafes = results,
-                        onOpenCafe = onOpenCafe,
-                        maxMarkers = 60,
-                        modifier = Modifier.fillMaxSize(),
-                    )
-                    Surface(
-                        onClick = { showFullMap = true },
-                        modifier = Modifier
-                            .align(Alignment.BottomEnd)
-                            .padding(10.dp),
-                        shape = RoundedCornerShape(999.dp),
-                        color = CarifeSurfaceContainerLowest,
-                        shadowElevation = 3.dp,
-                    ) {
-                        Icon(
-                            Icons.Filled.Fullscreen,
-                            contentDescription = "Buka peta penuh",
-                            tint = CarifePrimary,
-                            modifier = Modifier
-                                .padding(8.dp)
-                                .size(20.dp),
+            if (catalog.cafes.isNotEmpty()) {
+                if (results.isNotEmpty()) {
+                    item {
+                        CafeMapCard(
+                            city = city,
+                            cafes = results.sortedBy { it.distanceMeters ?: Int.MAX_VALUE },
+                            title = "Peta hasil",
+                            onOpenCafe = onOpenCafe,
+                            onOpenFullMap = { showFullMap = true },
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                            height = 176.dp,
+                            maxMarkers = 30,
                         )
                     }
                 }
-            }
 
-            item {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = "${filters.explicitCriteriaCount} filter aktif · ${results.size} spot nugas",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    TextButton(
-                        onClick = { viewModel.setExploreFilters(filters.withoutCriteria()) },
-                        enabled = filters.hasExplicitCriteria,
-                    ) { Text("Reset Semua") }
-                }
-            }
-
-            item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        "Hasil Pencarian",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    SortSelector(
-                        current = filters.sort,
-                        onSelect = { viewModel.setExploreFilters(filters.copy(sort = it)) },
-                    )
-                }
-            }
-
-            when {
-                catalog.cafes.isEmpty() && catalog.city != null && !catalog.isRefreshing -> item {
-                    CarifeEmptyState(
-                        title = "Belum ada data kafe",
-                        message = catalog.errorMessage ?: "Katalog ${city.name} belum berisi kafe.",
-                        primaryLabel = if (BuildConfig.OFFLINE_ONLY) "Kembali ke Home" else "Muat ulang",
-                        onPrimary = if (BuildConfig.OFFLINE_ONLY) onOpenHome else viewModel::retry,
-                    )
-                }
-
-                catalog.cafes.isEmpty() -> item {
-                    Box(
+                item {
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 40.dp),
-                        contentAlignment = Alignment.Center,
-                    ) { CircularProgressIndicator(color = CarifePrimary) }
+                            .padding(horizontal = 20.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = if (filters.hasExplicitCriteria) {
+                                "${filters.explicitCriteriaCount} filter aktif · ${results.size} spot"
+                            } else {
+                                "${results.size} spot di ${city.name}"
+                            },
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.weight(1f),
+                        )
+                        if (filters.hasExplicitCriteria) {
+                            TextButton(
+                                onClick = { viewModel.setExploreFilters(filters.withoutCriteria()) },
+                            ) { Text("Reset") }
+                        }
+                    }
                 }
 
-                results.isEmpty() -> item {
-                    EmptyResults(
-                        filters = filters,
-                        hasKeyword = filters.query.isNotBlank(),
-                        onResetFilters = { viewModel.setExploreFilters(filters.withoutCriteria()) },
-                        onClearQuery = { viewModel.setExploreFilters(filters.copy(query = "")) },
-                    )
-                }
-
-                else -> items(results, key = { it.id }) { cafe ->
-                    CafeCard(
-                        cafe = cafe,
-                        matchScore = scores[cafe.id],
-                        isFavorite = appState.favorites.contains(cafe.id),
-                        isSelectedForCompare = compareIds.contains(cafe.id),
-                        now = now,
-                        onOpen = { onOpenCafe(cafe.id) },
-                        onToggleFavorite = { viewModel.toggleFavorite(cafe.id) },
-                        onToggleCompare = { viewModel.toggleCompare(cafe.id) },
+                item {
+                    Column(
                         modifier = Modifier.padding(horizontal = 20.dp),
-                    )
+                        verticalArrangement = Arrangement.spacedBy(9.dp),
+                    ) {
+                        CarifeSectionHeader(
+                            title = "Hasil",
+                            supporting = "Diurutkan: ${filters.sort.label.lowercase()}",
+                        )
+                        SortSelector(
+                            current = filters.sort,
+                            onSelect = { viewModel.setExploreFilters(filters.copy(sort = it)) },
+                        )
+                    }
+                }
+
+                when {
+                    results.isEmpty() -> item {
+                        EmptyResults(
+                            filters = filters,
+                            hasKeyword = filters.query.isNotBlank(),
+                            onResetFilters = { viewModel.setExploreFilters(filters.withoutCriteria()) },
+                            onClearQuery = { viewModel.setExploreFilters(filters.copy(query = "")) },
+                        )
+                    }
+
+                    else -> items(results, key = { it.id }) { cafe ->
+                        CafeCard(
+                            cafe = cafe,
+                            matchScore = scores[cafe.id],
+                            isFavorite = appState.favorites.contains(cafe.id),
+                            isSelectedForCompare = compareIds.contains(cafe.id),
+                            now = now,
+                            onOpen = { onOpenCafe(cafe.id) },
+                            onToggleFavorite = { viewModel.toggleFavorite(cafe.id) },
+                            onToggleCompare = { viewModel.toggleCompare(cafe.id) },
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                        )
+                    }
+                }
+            } else {
+                when {
+                    catalog.city != null && !catalog.isRefreshing -> item {
+                        CarifeEmptyState(
+                            title = "Belum ada data kafe",
+                            message = catalog.errorMessage ?: "Katalog ${city.name} belum berisi kafe.",
+                            primaryLabel = if (BuildConfig.OFFLINE_ONLY) "Kembali ke Home" else "Muat ulang",
+                            onPrimary = if (BuildConfig.OFFLINE_ONLY) onOpenHome else viewModel::retry,
+                        )
+                    }
+
+                    else -> item {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 48.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(10.dp),
+                            ) {
+                                CircularProgressIndicator(color = CarifePrimary)
+                                Text(
+                                    "Memuat kafe di ${city.name}…",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
 
         if (compareIds.size >= 2) {
-            ExtendedFloatingActionButton(
-                onClick = onOpenCompare,
+            Surface(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 16.dp),
-                containerColor = CarifePrimary,
-                contentColor = androidx.compose.ui.graphics.Color.White,
-                text = {
-                    Text(
-                        text = "Bandingkan ${compareIds.size} Kafe Pilihan",
-                        style = MaterialTheme.typography.labelLarge,
-                    )
-                },
-                icon = { Text("⚖") },
-            )
+                    .padding(horizontal = 20.dp, vertical = 12.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                color = CarifeSurfaceContainerLowest,
+                border = BorderStroke(1.dp, CarifeOutlineVariant),
+                shadowElevation = 4.dp,
+            ) {
+                Row(
+                    modifier = Modifier.padding(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(38.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(CarifePrimaryFixed),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.CompareArrows,
+                            contentDescription = null,
+                            tint = CarifePrimary,
+                            modifier = Modifier.size(19.dp),
+                        )
+                    }
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(1.dp),
+                    ) {
+                        Text(
+                            text = "${compareIds.size} kafe dipilih",
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Text(
+                            text = "Bandingkan 2–3 kafe sekaligus",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    Button(
+                        onClick = onOpenCompare,
+                        shape = RoundedCornerShape(12.dp),
+                        contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
+                    ) {
+                        Text(
+                            text = "Bandingkan",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = CarifeOnPrimary,
+                        )
+                    }
+                }
+            }
         }
     }
 
@@ -315,6 +378,7 @@ fun ExploreScreen(
         ModalBottomSheet(
             onDismissRequest = { showFilterSheet = false },
             sheetState = sheetState,
+            containerColor = MaterialTheme.colorScheme.background,
         ) {
             FilterPanel(
                 filters = filters,
@@ -344,112 +408,45 @@ fun ExploreScreen(
 }
 
 @Composable
-private fun SearchBar(
-    query: String,
-    cityName: String,
-    focusRequested: Boolean,
-    onFocusHandled: () -> Unit,
-    onQueryChange: (String) -> Unit,
-    onOpenFilters: () -> Unit,
-) {
-    val focusRequester = remember { FocusRequester() }
-    val keyboard = LocalSoftwareKeyboardController.current
-    val focusManager = LocalFocusManager.current
-    LaunchedEffect(focusRequested) {
-        if (focusRequested) {
-            focusRequester.requestFocus()
-            keyboard?.show()
-            onFocusHandled()
-        }
-    }
-
-    Column(
-        modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
+private fun SortSelector(current: SortOption, onSelect: (SortOption) -> Unit) {
+    Surface(
+        shape = RoundedCornerShape(12.dp),
+        color = CarifeSurfaceContainerLow,
+        border = BorderStroke(1.dp, CarifeOutlineVariant),
     ) {
-        Text(
-            "Sekitar $cityName",
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Surface(
-            shape = RoundedCornerShape(999.dp),
-            color = CarifeSurfaceContainerLowest,
-            shadowElevation = 2.dp,
-            modifier = Modifier.fillMaxWidth(),
+        Row(
+            modifier = Modifier.padding(3.dp),
+            horizontalArrangement = Arrangement.spacedBy(3.dp),
         ) {
-            Row(
-                modifier = Modifier.padding(start = 16.dp, end = 6.dp, top = 11.dp, bottom = 11.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                Icon(Icons.Filled.Search, contentDescription = null, tint = CarifePrimary, modifier = Modifier.size(20.dp))
-                Box(Modifier.weight(1f)) {
-                    if (query.isEmpty()) {
-                        Text(
-                            "Cari nama kafe, area, atau fasilitas…",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            SortOption.entries.forEach { option ->
+                val selected = current == option
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(9.dp))
+                        .background(if (selected) CarifeSurfaceContainerLowest else Color.Transparent)
+                        .then(
+                            if (selected) {
+                                Modifier.clip(RoundedCornerShape(9.dp))
+                            } else {
+                                Modifier
+                            }
                         )
-                    }
-                    BasicTextField(
-                        value = query,
-                        onValueChange = onQueryChange,
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                        keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() }),
-                        textStyle = MaterialTheme.typography.bodyMedium.copy(
-                            color = MaterialTheme.colorScheme.onSurface,
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .focusRequester(focusRequester)
-                            .semantics { contentDescription = "Kolom pencarian kafe" },
+                        .clickable { onSelect(option) }
+                        .padding(vertical = 8.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = when (option) {
+                            SortOption.MATCH -> "Kecocokan"
+                            SortOption.NEAREST -> "Terdekat"
+                            SortOption.CHEAPEST -> "Termurah"
+                        },
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
+                        color = if (selected) CarifePrimary else MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-                if (query.isNotEmpty()) {
-                    IconButton(
-                        onClick = { onQueryChange("") },
-                        modifier = Modifier
-                            .size(40.dp)
-                            .semantics { contentDescription = "Hapus kata kunci" },
-                    ) {
-                        Icon(Icons.Filled.Close, contentDescription = null, modifier = Modifier.size(18.dp))
-                    }
-                }
-                IconButton(
-                    onClick = onOpenFilters,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .semantics { contentDescription = "Buka panel filter" },
-                ) {
-                    Icon(Icons.Filled.FilterList, contentDescription = null, tint = CarifePrimary)
-                }
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun SortSelector(current: SortOption, onSelect: (SortOption) -> Unit) {
-    FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
-    ) {
-        SortOption.entries.forEach { option ->
-            Surface(
-                onClick = { onSelect(option) },
-                shape = RoundedCornerShape(999.dp),
-                color = if (current == option) CarifePrimary else MaterialTheme.colorScheme.surfaceContainer,
-            ) {
-                Text(
-                    text = option.label,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = if (current == option) androidx.compose.ui.graphics.Color.White
-                    else MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
-                )
             }
         }
     }

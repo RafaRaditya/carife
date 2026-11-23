@@ -9,9 +9,11 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.carife.app.R
 import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.City
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -74,6 +76,7 @@ fun OsmMapView(
                 position = GeoPoint(cafe.lat, cafe.lon)
                 setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
                 title = cafe.name
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_map_pin)
                 setOnMarkerClickListener { _, _ ->
                     currentOnOpenCafe(cafe.id)
                     true

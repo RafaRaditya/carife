@@ -1,5 +1,6 @@
 package com.carife.app.ui.compare
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -11,12 +12,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.NearMe
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -29,24 +35,34 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.carife.app.core.model.Amenity
 import com.carife.app.core.model.Cafe
+import com.carife.app.data.demo.DemoCafePhotos
 import com.carife.app.domain.CompareAdvisor
 import com.carife.app.domain.DistanceUtil
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafePhotoPlaceholder
+import com.carife.app.ui.components.CarifeHairline
+import com.carife.app.ui.components.CarifeSectionHeader
 import com.carife.app.ui.components.formatRupiahFull
 import com.carife.app.ui.components.openCafeDirections
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
+import com.carife.app.ui.theme.CarifePrimaryFixed
 import com.carife.app.ui.theme.CarifeSecondary
-import com.carife.app.ui.theme.CarifeSecondaryContainer
-import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
+import com.carife.app.ui.theme.CarifeTertiary
 
 private const val NO_DATA = "Belum ada data"
+
+private val LabelWidth = 96.dp
+private val CellWidth = 150.dp
+private val MatrixGap = 8.dp
 
 @Composable
 fun CompareScreen(
@@ -62,41 +78,61 @@ fun CompareScreen(
     val selected = compareIds.mapNotNull { id -> catalog.cafes.firstOrNull { it.id == id } }
 
     if (selected.size < 2) {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background),
+                .background(MaterialTheme.colorScheme.background)
+                .padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
-            Column(
+            Text(
+                text = "Bandingkan kafe",
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+            )
+            Text(
+                text = if (selected.isEmpty()) {
+                    "Pilih 2–3 kafe dari Home atau Peta untuk melihat fasilitasnya berdampingan."
+                } else {
+                    "Kamu baru memilih 1 kafe. Tambah satu lagi untuk mulai membandingkan."
+                },
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(top = 8.dp),
+            )
+            Button(
+                onClick = onPickCafes,
+                shape = RoundedCornerShape(14.dp),
+                modifier = Modifier.padding(top = 16.dp),
+            ) { Text("Pilih kafe") }
+            if (selected.isNotEmpty()) {
+                TextButton(onClick = viewModel::clearCompare) { Text("Kosongkan pilihan") }
+            }
+            Surface(
                 modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(10.dp),
+                    .fillMaxWidth()
+                    .padding(top = 22.dp),
+                shape = RoundedCornerShape(16.dp),
+                color = CarifePrimaryFixed,
             ) {
-                Text(
-                    "Perbandingan Kafe",
-                    style = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    if (selected.isEmpty()) {
-                        "Belum ada kafe dipilih. Pilih 2 sampai 3 kafe untuk dibandingkan."
-                    } else {
-                        "Kamu baru memilih 1 kafe. Tambah satu lagi untuk membandingkan."
-                    },
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Button(onClick = onPickCafes) { Text("Pilih Kafe") }
-                if (selected.isNotEmpty()) {
-                    TextButton(onClick = viewModel::clearCompare) { Text("Kosongkan pilihan") }
+                Column(
+                    modifier = Modifier.padding(14.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Text(
+                        text = "Cara memilih",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = CarifePrimary,
+                    )
+                    Text(
+                        text = "Centang “Bandingkan” pada kartu kafe. Tiga pilihan pertama masuk ke tabel; pilihan keempat ditolak.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
                 }
-                Text(
-                    "Maksimal 3 kafe dalam satu perbandingan.",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
             }
         }
         return
@@ -108,33 +144,44 @@ fun CompareScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = PaddingValues(top = 14.dp, bottom = 28.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item {
             Column(
                 modifier = Modifier.padding(horizontal = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 Text(
-                    "Perbandingan Kafe",
+                    text = "Bandingkan",
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
-                    "Membandingkan ${selected.size} kafe",
+                    text = "${selected.size} kafe dipilih · geser tabel ke samping",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    TextButton(onClick = onPickCafes) { Text("Ubah Pilihan") }
-                    TextButton(onClick = viewModel::clearCompare) { Text("Kosongkan") }
+                    TextButton(
+                        onClick = onPickCafes,
+                        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 4.dp),
+                    ) { Text("Ubah pilihan") }
+                    TextButton(
+                        onClick = viewModel::clearCompare,
+                        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 4.dp),
+                    ) { Text("Kosongkan") }
                 }
             }
         }
 
         item {
-            CompareMatrix(selected, advice, onOpenCafe, onRemoveCafe = viewModel::toggleCompare)
+            CompareMatrix(
+                cafes = selected,
+                advice = advice,
+                onOpenCafe = onOpenCafe,
+                onRemoveCafe = viewModel::toggleCompare,
+            )
         }
 
         if (advice.summary != null) {
@@ -143,15 +190,15 @@ fun CompareScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp),
-                    shape = RoundedCornerShape(20.dp),
-                    color = CarifeSurfaceContainer,
+                    shape = RoundedCornerShape(16.dp),
+                    color = CarifePrimaryFixed,
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier.padding(14.dp),
+                        verticalArrangement = Arrangement.spacedBy(5.dp),
                     ) {
                         Text(
-                            "Saran Carife",
+                            text = "Saran Carife",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Bold,
                             color = CarifePrimary,
@@ -164,20 +211,33 @@ fun CompareScreen(
 
         item {
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
+                modifier = Modifier.padding(horizontal = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
+                CarifeSectionHeader(
+                    title = "Rute cepat",
+                    supporting = "Buka navigasi ke kafe yang dibandingkan",
+                )
                 selected.forEach { cafe ->
-                    Button(
+                    OutlinedButton(
                         onClick = { openCafeDirections(context, cafe, viewModel::emitMessage) },
                         modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(14.dp),
+                        border = BorderStroke(1.dp, CarifeOutlineVariant),
+                        contentPadding = PaddingValues(horizontal = 14.dp, vertical = 10.dp),
                     ) {
+                        Icon(
+                            imageVector = Icons.Outlined.NearMe,
+                            contentDescription = null,
+                            modifier = Modifier.size(16.dp),
+                            tint = CarifePrimary,
+                        )
                         Text(
-                            "Rute ke ${cafe.name}",
+                            text = "Rute ke ${cafe.name}",
+                            style = MaterialTheme.typography.labelMedium,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.padding(start = 8.dp),
                         )
                     }
                 }
@@ -194,74 +254,101 @@ private fun CompareMatrix(
     onRemoveCafe: (String) -> Unit,
 ) {
     val scrollState = rememberScrollState()
+    val tableWidth: Dp = 16.dp +
+        LabelWidth +
+        CellWidth * cafes.size +
+        MatrixGap * cafes.size
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .horizontalScroll(scrollState)
-            .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+            .padding(horizontal = 20.dp)
+            .horizontalScroll(scrollState),
     ) {
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Box(Modifier.width(112.dp))
-            cafes.forEach { cafe ->
-                CafeHeaderCell(
-                    cafe = cafe,
-                    isBestForStudy = advice.bestForStudyId == cafe.id,
-                    isCheapest = advice.cheapestId == cafe.id,
-                    onOpen = { onOpenCafe(cafe.id) },
-                    onRemove = { onRemoveCafe(cafe.id) },
-                )
+        Surface(
+            modifier = Modifier.width(tableWidth),
+            shape = RoundedCornerShape(18.dp),
+            color = CarifeSurfaceContainerLowest,
+            border = BorderStroke(1.dp, CarifeOutlineVariant),
+        ) {
+            Column {
+                Row(
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(MatrixGap),
+                    verticalAlignment = Alignment.Top,
+                ) {
+                    Text(
+                        text = "Kafe",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .width(LabelWidth)
+                            .padding(top = 8.dp, start = 2.dp),
+                    )
+                    cafes.forEach { cafe ->
+                        CafeHeaderCell(
+                            cafe = cafe,
+                            isBestForStudy = advice.bestForStudyId == cafe.id,
+                            isCheapest = advice.cheapestId == cafe.id,
+                            onOpen = { onOpenCafe(cafe.id) },
+                            onRemove = { onRemoveCafe(cafe.id) },
+                        )
+                    }
+                }
+
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+
+                CompareRow("Budget", cafes) { cafe ->
+                    if (cafe.priceMin != null && cafe.priceMax != null) {
+                        "${formatRupiahFull(cafe.priceMin)}–${formatRupiahFull(cafe.priceMax)}"
+                    } else {
+                        NO_DATA
+                    }
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Jarak", cafes) { cafe ->
+                    cafe.distanceMeters?.let { DistanceUtil.formatDistance(it) } ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Wi-Fi", cafes) { cafe ->
+                    cafe.wifiMbps?.let { "$it Mbps" }
+                        ?: if (cafe.hasWifi) "Ada Wi-Fi" else NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Colokan", cafes) { cafe ->
+                    cafe.outletCount?.let { "$it colokan" } ?: cafe.outlets ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Kepadatan", cafes) { cafe ->
+                    cafe.densityLevel?.let { level ->
+                        level.label + (cafe.densityPercent?.let { " · $it%" } ?: "")
+                    } ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Suasana", cafes) { cafe ->
+                    cafe.noiseLevel?.label ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Zonasi rokok", cafes) { cafe ->
+                    cafe.smokingZone?.label ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Jam buka", cafes) { cafe ->
+                    cafe.openingHoursRaw ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Fasilitas", cafes) { cafe ->
+                    cafe.amenities.takeIf { it.isNotEmpty() }
+                        ?.joinToString(", ") { it.label }
+                        ?: NO_DATA
+                }
+                CarifeHairline(Modifier.padding(horizontal = 8.dp))
+                CompareRow("Menu", cafes) { cafe ->
+                    cafe.menu.take(3).takeIf { it.isNotEmpty() }
+                        ?.joinToString(", ") { it.name }
+                        ?: NO_DATA
+                }
             }
-        }
-
-        CompareRow("ESTIMASI BUDGET", cafes) { cafe ->
-            if (cafe.priceMin != null && cafe.priceMax != null) {
-                "${formatRupiahFull(cafe.priceMin)} – ${formatRupiahFull(cafe.priceMax)}"
-            } else {
-                NO_DATA
-            }
-        }
-
-        CompareRow("JARAK", cafes) { cafe ->
-            cafe.distanceMeters?.let { DistanceUtil.formatDistance(it) } ?: NO_DATA
-        }
-
-        CompareRow("KONEKSI WI-FI", cafes) { cafe ->
-            cafe.wifiMbps?.let { "$it Mbps" }
-                ?: if (cafe.amenities.contains(Amenity.WIFI)) "Ada Wi-Fi" else NO_DATA
-        }
-
-        CompareRow("COLOKAN", cafes) { cafe ->
-            cafe.outletCount?.let { "$it colokan" } ?: cafe.outlets ?: NO_DATA
-        }
-
-        CompareRow("KEPADATAN", cafes) { cafe ->
-            cafe.densityLevel?.let { density ->
-                density.label + (cafe.densityPercent?.let { " · $it%" } ?: "")
-            } ?: NO_DATA
-        }
-
-        CompareRow("SUASANA", cafes) { cafe ->
-            cafe.noiseLevel?.label ?: NO_DATA
-        }
-
-        CompareRow("ZONASI & ROKOK", cafes) { cafe ->
-            cafe.smokingZone?.label ?: NO_DATA
-        }
-
-        CompareRow("JAM OPERASIONAL", cafes) { cafe ->
-            cafe.openingHoursRaw ?: NO_DATA
-        }
-
-        CompareRow("FASILITAS", cafes) { cafe ->
-            cafe.amenities.takeIf { it.isNotEmpty() }?.joinToString(", ") { it.label } ?: NO_DATA
-        }
-
-        CompareRow("MENU", cafes) { cafe ->
-            cafe.menu.take(3).takeIf { it.isNotEmpty() }
-                ?.joinToString(", ") { it.name }
-                ?: NO_DATA
         }
     }
 }
@@ -275,56 +362,66 @@ private fun CafeHeaderCell(
     onRemove: () -> Unit,
 ) {
     Column(
-        modifier = Modifier
-            .width(160.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .background(CarifeSurfaceContainerLowest)
-            .padding(10.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
+        modifier = Modifier.width(CellWidth),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        if (isBestForStudy || isCheapest) {
-            Surface(
-                shape = RoundedCornerShape(999.dp),
-                color = if (isBestForStudy) CarifeSecondaryContainer else CarifeSurfaceContainer,
-            ) {
+        Column(
+            modifier = Modifier.height(32.dp),
+            verticalArrangement = Arrangement.Top,
+        ) {
+            if (isBestForStudy) {
                 Text(
-                    text = when {
-                        isBestForStudy && isCheapest -> "Cocok Nugas & Hemat"
-                        isBestForStudy -> "Cocok Buat Nugas"
-                        else -> "Paling Hemat"
-                    },
+                    text = "Cocok buat nugas",
                     style = MaterialTheme.typography.labelSmall,
-                    color = if (isBestForStudy) CarifeSecondary else MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+                    fontWeight = FontWeight.SemiBold,
+                    color = CarifeSecondary,
+                )
+            }
+            if (isCheapest) {
+                Text(
+                    text = "Paling hemat",
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = CarifeTertiary,
                 )
             }
         }
-
         CafePhotoPlaceholder(
             seed = cafe.id,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(76.dp),
-            cornerRadius = 14.dp,
+                .height(72.dp),
+            cornerRadius = 12.dp,
+            photoAsset = DemoCafePhotos.assetFor(cafe),
         )
-
         Text(
-            cafe.name,
+            text = cafe.name,
             style = MaterialTheme.typography.titleSmall,
             fontWeight = FontWeight.Bold,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
         )
-
         Row {
-            TextButton(onClick = onOpen, modifier = Modifier.weight(1f)) { Text("Detail") }
+            TextButton(
+                onClick = onOpen,
+                modifier = Modifier.weight(1f),
+                contentPadding = PaddingValues(horizontal = 0.dp),
+            ) {
+                Text("Detail", style = MaterialTheme.typography.labelSmall)
+            }
             TextButton(
                 onClick = onRemove,
-                modifier = Modifier.weight(1f).semantics {
-                    contentDescription = "Hapus ${cafe.name} dari perbandingan"
-                },
-                contentPadding = PaddingValues(horizontal = 4.dp),
-            ) { Text("Hapus") }
+                modifier = Modifier
+                    .weight(1f)
+                    .semantics { contentDescription = "Hapus ${cafe.name} dari perbandingan" },
+                contentPadding = PaddingValues(horizontal = 0.dp),
+            ) {
+                Text(
+                    "Hapus",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
         }
     }
 }
@@ -336,29 +433,30 @@ private fun CompareRow(
     value: (Cafe) -> String,
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(MatrixGap),
         verticalAlignment = Alignment.Top,
     ) {
         Text(
-            label,
+            text = label,
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier
-                .width(112.dp)
-                .padding(top = 10.dp),
+                .width(LabelWidth)
+                .padding(top = 8.dp),
         )
         cafes.forEach { cafe ->
-            Surface(
-                modifier = Modifier.width(160.dp),
-                shape = RoundedCornerShape(14.dp),
-                color = CarifeSurfaceContainerLowest,
-            ) {
-                Text(
-                    text = value(cafe),
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(10.dp),
-                )
-            }
+            Text(
+                text = value(cafe),
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier
+                    .width(CellWidth)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MaterialTheme.colorScheme.surfaceContainerLow.copy(alpha = 0.35f))
+                    .padding(horizontal = 8.dp, vertical = 8.dp),
+            )
         }
     }
 }

@@ -2,6 +2,7 @@ package com.carife.app.domain
 
 import com.carife.app.core.model.Amenity
 import com.carife.app.core.model.Cafe
+import com.carife.app.core.model.RadiusPreference
 import com.carife.app.core.model.UserPreferences
 import com.carife.app.core.model.WifiRequirement
 import com.carife.app.core.model.ZonePreference
@@ -72,6 +73,15 @@ class MatchScorerTest {
         val ranked = MatchScorer.rank(cafes, prefs)
 
         assertEquals(listOf("near", "a", "z"), ranked.map { it.first.id })
+    }
+
+    @Test
+    fun `far radius preference rewards cafes beyond three kilometers`() {
+        val prefs = UserPreferences(radius = RadiusPreference.FAR)
+
+        assertEquals(100, MatchScorer.score(cafe("far", distance = 5_000), prefs))
+        assertEquals(0, MatchScorer.score(cafe("near", distance = 500), prefs))
+        assertEquals(0, MatchScorer.score(cafe("unknown"), prefs))
     }
 
     @Test

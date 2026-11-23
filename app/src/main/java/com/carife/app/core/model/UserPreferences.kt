@@ -25,6 +25,7 @@ enum class ZonePreference(val label: String) {
 enum class RadiusPreference(val label: String, val minMeters: Int, val maxMeters: Int?) {
     NEAR("Dekat (<1 km)", 0, 999),
     MID("Sedang (1–3 km)", 1_000, 3_000),
+    FAR("Jauh (>3 km)", 3_001, null),
     ANY("Bebas", 0, null),
 }
 

@@ -5,6 +5,7 @@ import com.carife.app.core.model.BudgetBucket
 import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.ExploreFilters
 import com.carife.app.core.model.NoiseLevel
+import com.carife.app.core.model.RadiusPreference
 import com.carife.app.core.model.SmokingZone
 import com.carife.app.core.model.SortOption
 import com.carife.app.core.model.WifiRequirement
@@ -210,6 +211,27 @@ class FilterEngineTest {
         val result = FilterEngine.apply(cafes, ExploreFilters(priceCap = 30_000))
 
         assertEquals(listOf("cheap"), result.map { it.id })
+    }
+
+    @Test
+    fun `radius bands split at one and three kilometers`() {
+        val cafes = listOf(
+            cafe("near", distance = 999),
+            cafe("edge", distance = 1_000),
+            cafe("mid", distance = 3_000),
+            cafe("far", distance = 3_001),
+            cafe("veryFar", distance = 9_000),
+            cafe("unknown"),
+        )
+
+        fun ids(radius: RadiusPreference) = FilterEngine.apply(
+            cafes,
+            ExploreFilters(distance = radius, sort = SortOption.NEAREST),
+        ).map { it.id }
+
+        assertEquals(listOf("near"), ids(RadiusPreference.NEAR))
+        assertEquals(listOf("edge", "mid"), ids(RadiusPreference.MID))
+        assertEquals(listOf("far", "veryFar"), ids(RadiusPreference.FAR))
     }
 
     @Test

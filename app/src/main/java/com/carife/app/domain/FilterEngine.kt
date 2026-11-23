@@ -112,8 +112,8 @@ object FilterEngine {
     private fun matchesRadius(cafe: Cafe, radius: RadiusPreference): Boolean {
         if (radius == RadiusPreference.ANY) return true
         val distance = cafe.distanceMeters ?: return false
-        val max = radius.maxMeters ?: return true
         if (distance < radius.minMeters) return false
+        val max = radius.maxMeters ?: return true
         return distance <= max
     }
 

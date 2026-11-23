@@ -1,7 +1,9 @@
 package com.carife.app.ui.profile
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -9,14 +11,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -41,9 +41,13 @@ import com.carife.app.core.model.ZonePreference
 import com.carife.app.domain.MatchScorer
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CarifeChip
+import com.carife.app.ui.components.CarifeHairline
+import com.carife.app.ui.components.CarifeSectionHeader
+import com.carife.app.ui.components.CarifeTag
+import com.carife.app.ui.components.CarifeTopBar
 import com.carife.app.ui.components.ProfileAvatar
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
-import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import kotlinx.coroutines.launch
 
@@ -77,143 +81,138 @@ fun ProfileScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Kembali")
-            }
-            Text(
-                text = "Profil",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-            )
-        }
+        CarifeTopBar(
+            title = "Profil",
+            onBack = onBack,
+            actions = {
+                TextButton(
+                    onClick = onOpenAccountSettings,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                ) { Text("Edit") }
+            },
+        )
 
         LazyColumn(
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(bottom = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
+            contentPadding = PaddingValues(bottom = 28.dp),
+            verticalArrangement = Arrangement.spacedBy(18.dp),
         ) {
             item {
-                ProfileCard(
+                ProfileIdentity(
                     profile = profile,
                     cityName = appState.selectedCity.name,
-                    onEditProfile = onOpenAccountSettings,
                     modifier = Modifier.padding(horizontal = 20.dp),
                 )
             }
 
             item {
-                Row(
+                ProfileStats(
+                    favorites = appState.favorites.size,
+                    matchScore = bestMatchScore,
+                    friends = appState.friendIds.size,
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                )
+            }
+
+            item {
+                Column(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    CarifeSectionHeader(
+                        title = "Preferensi nugas",
+                        supporting = "Memengaruhi skor Carife Match dan urutan Kecocokan.",
+                    )
+                }
+            }
+
+            item {
+                Surface(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    shape = RoundedCornerShape(18.dp),
+                    color = CarifeSurfaceContainerLowest,
+                    border = BorderStroke(1.dp, CarifeOutlineVariant),
                 ) {
-                    StatCard(
-                        value = appState.favorites.size.toString(),
-                        label = "Spot Favorit",
-                        modifier = Modifier.weight(1f),
-                    )
-                    StatCard(
-                        value = bestMatchScore?.let { "$it%" } ?: "—",
-                        label = "Fokus Match",
-                        modifier = Modifier.weight(1f),
-                    )
-                    StatCard(
-                        value = appState.friendIds.size.toString(),
-                        label = "Teman",
-                        modifier = Modifier.weight(1f),
-                    )
+                    Column(
+                        modifier = Modifier.padding(14.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        PreferenceSection("Budget") {
+                            BudgetBucket.entries.filter { it != BudgetBucket.ANY }.forEach { bucket ->
+                                CarifeChip(
+                                    label = bucket.label,
+                                    selected = draft.budget == bucket,
+                                    onClick = {
+                                        draft = draft.copy(
+                                            budget = if (draft.budget == bucket) BudgetBucket.ANY else bucket
+                                        )
+                                    },
+                                )
+                            }
+                        }
+                        PreferenceDivider()
+                        PreferenceSection("Kebutuhan Wi-Fi") {
+                            listOf(WifiRequirement.MIN_30, WifiRequirement.STANDARD, WifiRequirement.ANY).forEach { requirement ->
+                                CarifeChip(
+                                    label = requirement.label,
+                                    selected = draft.wifi == requirement,
+                                    onClick = { draft = draft.copy(wifi = requirement) },
+                                )
+                            }
+                        }
+                        PreferenceDivider()
+                        PreferenceSection("Ruangan & rokok") {
+                            listOf(ZonePreference.NON_SMOKING_AC, ZonePreference.SEPARATE, ZonePreference.ANY).forEach { zone ->
+                                CarifeChip(
+                                    label = zone.label,
+                                    selected = draft.zone == zone,
+                                    onClick = { draft = draft.copy(zone = zone) },
+                                )
+                            }
+                        }
+                        PreferenceDivider()
+                        PreferenceSection("Fasilitas wajib") {
+                            Amenity.entries.forEach { amenity ->
+                                CarifeChip(
+                                    label = amenity.label,
+                                    selected = draft.amenities.contains(amenity),
+                                    onClick = {
+                                        draft = draft.copy(
+                                            amenities = if (draft.amenities.contains(amenity)) {
+                                                draft.amenities - amenity
+                                            } else {
+                                                draft.amenities + amenity
+                                            }
+                                        )
+                                    },
+                                )
+                            }
+                        }
+                        PreferenceDivider()
+                        PreferenceSection("Radius") {
+                            RadiusPreference.entries.filter { it != RadiusPreference.ANY }.forEach { radius ->
+                                CarifeChip(
+                                    label = radius.label,
+                                    selected = draft.radius == radius,
+                                    onClick = {
+                                        draft = draft.copy(
+                                            radius = if (draft.radius == radius) RadiusPreference.ANY else radius
+                                        )
+                                    },
+                                )
+                            }
+                        }
+                    }
                 }
             }
 
             item {
                 Column(
                     modifier = Modifier.padding(horizontal = 20.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    Text(
-                        "Preferensi Nugas",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Text(
-                        "Preferensi memengaruhi skor Carife Match dan urutan Kecocokan.",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-
-                    PreferenceSection("Budget") {
-                        BudgetBucket.entries.filter { it != BudgetBucket.ANY }.forEach { bucket ->
-                            CarifeChip(
-                                label = bucket.label,
-                                selected = draft.budget == bucket,
-                                onClick = {
-                                    draft = draft.copy(
-                                        budget = if (draft.budget == bucket) BudgetBucket.ANY else bucket
-                                    )
-                                },
-                            )
-                        }
-                    }
-
-                    PreferenceSection("Kebutuhan Wi-Fi") {
-                        listOf(WifiRequirement.MIN_30, WifiRequirement.STANDARD, WifiRequirement.ANY).forEach { requirement ->
-                            CarifeChip(
-                                label = requirement.label,
-                                selected = draft.wifi == requirement,
-                                onClick = { draft = draft.copy(wifi = requirement) },
-                            )
-                        }
-                    }
-
-                    PreferenceSection("Ruangan & Rokok") {
-                        listOf(ZonePreference.NON_SMOKING_AC, ZonePreference.SEPARATE, ZonePreference.ANY).forEach { zone ->
-                            CarifeChip(
-                                label = zone.label,
-                                selected = draft.zone == zone,
-                                onClick = { draft = draft.copy(zone = zone) },
-                            )
-                        }
-                    }
-
-                    PreferenceSection("Fasilitas Wajib") {
-                        Amenity.entries.forEach { amenity ->
-                            CarifeChip(
-                                label = amenity.label,
-                                selected = draft.amenities.contains(amenity),
-                                onClick = {
-                                    draft = draft.copy(
-                                        amenities = if (draft.amenities.contains(amenity)) {
-                                            draft.amenities - amenity
-                                        } else {
-                                            draft.amenities + amenity
-                                        }
-                                    )
-                                },
-                            )
-                        }
-                    }
-
-                    PreferenceSection("Radius") {
-                        RadiusPreference.entries.filter { it != RadiusPreference.ANY }.forEach { radius ->
-                            CarifeChip(
-                                label = radius.label,
-                                selected = draft.radius == radius,
-                                onClick = {
-                                    draft = draft.copy(
-                                        radius = if (draft.radius == radius) RadiusPreference.ANY else radius
-                                    )
-                                },
-                            )
-                        }
-                    }
-
                     Button(
                         onClick = {
                             savingPreferences = true
@@ -227,101 +226,139 @@ fun ProfileScreen(
                         },
                         enabled = !savingPreferences,
                         modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(14.dp),
+                        contentPadding = PaddingValues(vertical = 12.dp),
                     ) {
-                        Text("Simpan Preferensi")
+                        Text("Simpan preferensi")
                     }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ProfileCard(
-    profile: UserProfile,
-    cityName: String,
-    onEditProfile: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Surface(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = CarifeSurfaceContainerLowest,
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-            ) {
-                ProfileAvatar(profile = profile, size = 64.dp)
-                Column(Modifier.weight(1f)) {
                     Text(
-                        text = profile.displayName,
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Text(
-                        text = listOfNotNull(cityName, profile.tagline.takeIf { it.isNotBlank() })
-                            .joinToString(" · "),
-                        style = MaterialTheme.typography.bodySmall,
+                        text = "Preferensi tersimpan di perangkat ini dan dipakai ulang saat aplikasi dibuka.",
+                        style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                profile.status.takeIf { it.isNotBlank() }?.let { status ->
-                    Surface(shape = RoundedCornerShape(999.dp), color = CarifeSurfaceContainer) {
-                        Text(
-                            text = status,
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
-                        )
-                    }
-                }
-            }
-            TextButton(onClick = onEditProfile) {
-                Text("Edit Profil", color = CarifePrimary)
-            }
         }
     }
 }
 
 @Composable
-private fun StatCard(value: String, label: String, modifier: Modifier = Modifier) {
-    Surface(
-        modifier = modifier,
-        shape = RoundedCornerShape(18.dp),
-        color = CarifeSurfaceContainerLowest,
+private fun ProfileIdentity(
+    profile: UserProfile,
+    cityName: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Column(
-            modifier = Modifier.padding(vertical = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
         ) {
-            Text(value, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-            Text(
-                label,
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            ProfileAvatar(profile = profile, size = 72.dp)
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(
+                    text = profile.displayName,
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = listOfNotNull(cityName, profile.tagline.takeIf { it.isNotBlank() })
+                        .joinToString(" · "),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+        profile.status.takeIf { it.isNotBlank() }?.let { status ->
+            CarifeTag(status)
+        }
+    }
+}
+
+@Composable
+private fun ProfileStats(
+    favorites: Int,
+    matchScore: Int?,
+    friends: Int,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        color = CarifeSurfaceContainerLowest,
+        border = BorderStroke(1.dp, CarifeOutlineVariant),
+    ) {
+        Row(Modifier.fillMaxWidth()) {
+            StatCell(
+                value = favorites.toString(),
+                label = "Spot favorit",
+                modifier = Modifier.weight(1f),
+            )
+            StatDivider()
+            StatCell(
+                value = matchScore?.let { "$it%" } ?: "—",
+                label = "Fokus match",
+                modifier = Modifier.weight(1f),
+            )
+            StatDivider()
+            StatCell(
+                value = friends.toString(),
+                label = "Teman",
+                modifier = Modifier.weight(1f),
             )
         }
     }
 }
 
 @Composable
+private fun StatCell(value: String, label: String, modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier.padding(vertical = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(1.dp),
+    ) {
+        Text(
+            value,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            color = CarifePrimary,
+        )
+        Text(
+            label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+@Composable
+private fun StatDivider() {
+    Box(
+        modifier = Modifier
+            .width(1.dp)
+            .height(30.dp)
+            .background(CarifeOutlineVariant),
+    )
+}
+
+@Composable
+private fun PreferenceDivider() {
+    CarifeHairline(Modifier.padding(vertical = 12.dp))
+}
+
+@Composable
 private fun PreferenceSection(title: String, content: @Composable () -> Unit) {
-    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
         Text(
             title,
             style = MaterialTheme.typography.labelMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = MaterialTheme.colorScheme.onSurface,
         )
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             content()
         }

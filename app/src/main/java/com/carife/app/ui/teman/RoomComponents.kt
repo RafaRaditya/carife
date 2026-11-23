@@ -21,6 +21,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.Logout
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.outlined.DeleteOutline
 import androidx.compose.material.icons.outlined.Edit
@@ -61,6 +63,7 @@ import com.carife.app.ui.components.CarifeChip
 import com.carife.app.ui.components.ProfileAvatar
 import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifeOnTertiaryFixed
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
@@ -119,92 +122,12 @@ internal fun buildRoomViews(
 }
 
 @Composable
-internal fun RoomTab(
-    modifier: Modifier,
-    rooms: List<RoomView>,
-    joinedRoomIds: Set<String>,
-    joinedOnly: Boolean,
-    onJoinedOnlyChange: (Boolean) -> Unit,
-    onCreateRoom: () -> Unit,
-    onOpenRoom: (RoomView) -> Unit,
-) {
-    LazyColumn(
-        modifier = modifier,
-        contentPadding = PaddingValues(top = 12.dp, bottom = 24.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = "Room Nongkrong",
-                    modifier = Modifier.weight(1f),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                )
-                TextButton(onClick = onCreateRoom) { Text("Buat Room") }
-            }
-        }
-
-        item {
-            Row(
-                modifier = Modifier.padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                CarifeChip(
-                    label = "Semua",
-                    selected = !joinedOnly,
-                    onClick = { onJoinedOnlyChange(false) },
-                )
-                CarifeChip(
-                    label = "Tergabung",
-                    selected = joinedOnly,
-                    onClick = { onJoinedOnlyChange(true) },
-                )
-            }
-        }
-
-        if (rooms.isEmpty()) {
-            item {
-                Text(
-                    text = if (joinedOnly) {
-                        "Belum ada room yang kamu ikuti."
-                    } else {
-                        "Belum ada room. Buat room pertamamu untuk mengajak teman nongkrong."
-                    },
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 20.dp),
-                )
-                if (!joinedOnly) {
-                    Button(
-                        onClick = onCreateRoom,
-                        modifier = Modifier.padding(horizontal = 20.dp),
-                    ) { Text("Buat Room") }
-                }
-            }
-        } else {
-            items(rooms, key = { it.room.id }) { view ->
-                Box(Modifier.padding(horizontal = 20.dp)) {
-                    RoomCard(
-                        view = view,
-                        joined = view.isHost || view.room.id in joinedRoomIds,
-                        onOpen = { onOpenRoom(view) },
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun RoomCard(
+internal fun RoomCard(
     view: RoomView,
     joined: Boolean,
+    checkedIn: Boolean,
+    onCheckIn: () -> Unit,
+    onLeave: () -> Unit,
     onOpen: () -> Unit,
 ) {
     val room = view.room
@@ -214,13 +137,16 @@ private fun RoomCard(
     Surface(
         onClick = onOpen,
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(16.dp),
         color = if (joined) {
-            CarifeSecondaryContainer.copy(alpha = 0.28f)
+            CarifeSecondaryContainer.copy(alpha = 0.5f)
         } else {
             CarifeSurfaceContainerLowest
         },
-        border = if (joined) BorderStroke(1.dp, CarifeSecondary) else null,
+        border = BorderStroke(
+            width = 1.dp,
+            color = if (joined) CarifeSecondary.copy(alpha = 0.4f) else CarifeOutlineVariant,
+        ),
     ) {
         Column(
             modifier = Modifier.padding(14.dp),
@@ -267,6 +193,46 @@ private fun RoomCard(
                 )
             }
 
+            if (joined && view.cafe != null) {
+                if (checkedIn) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Check,
+                            contentDescription = null,
+                            tint = CarifeSecondary,
+                            modifier = Modifier.size(15.dp),
+                        )
+                        Text(
+                            text = "Sudah check-in di kafe ini",
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.SemiBold,
+                            color = CarifeSecondary,
+                        )
+                    }
+                } else {
+                    TextButton(
+                        onClick = onCheckIn,
+                        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 0.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.LocationOn,
+                            contentDescription = null,
+                            tint = CarifePrimary,
+                            modifier = Modifier.size(15.dp),
+                        )
+                        Text(
+                            text = "Check-in di kafe ini",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = CarifePrimary,
+                            modifier = Modifier.padding(start = 4.dp),
+                        )
+                    }
+                }
+            }
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
@@ -302,6 +268,31 @@ private fun RoomCard(
                     modifier = Modifier.size(16.dp),
                 )
             }
+
+            if (joined && !view.isHost) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                ) {
+                    TextButton(
+                        onClick = onLeave,
+                        contentPadding = PaddingValues(horizontal = 0.dp, vertical = 0.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.Logout,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.size(15.dp),
+                        )
+                        Text(
+                            text = "Keluar dari room",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.padding(start = 4.dp),
+                        )
+                    }
+                }
+            }
         }
     }
 }
@@ -313,7 +304,7 @@ private fun RoomStatusBadge(view: RoomView, joined: Boolean) {
         joined -> Triple("Tergabung", CarifeSecondaryContainer, CarifeSecondary)
         else -> Triple("Room teman", CarifeSurfaceContainer, MaterialTheme.colorScheme.onSurfaceVariant)
     }
-    Surface(shape = RoundedCornerShape(8.dp), color = background) {
+    Surface(shape = RoundedCornerShape(7.dp), color = background) {
         Text(
             text = label,
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
@@ -348,6 +339,8 @@ internal fun ParticipantAvatar(initials: String, color: Long) {
 internal fun RoomDetailSheet(
     view: RoomView,
     joined: Boolean,
+    checkedInHere: Boolean,
+    onCheckInAtCafe: () -> Unit,
     viewerProfile: UserProfile,
     friends: List<FriendPerson>,
     onDismiss: () -> Unit,
@@ -366,7 +359,10 @@ internal fun RoomDetailSheet(
     val participants = 1 + view.invitedPeople.size + if (!view.isHost && joined) 1 else 0
     val isFull = !joined && participants >= room.capacity
 
-    ModalBottomSheet(onDismissRequest = onDismiss) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        containerColor = MaterialTheme.colorScheme.background,
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -438,13 +434,66 @@ internal fun RoomDetailSheet(
                 }
             }
 
+            if (view.cafe != null && (view.isHost || joined)) {
+                if (checkedInHere) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(CarifeSecondaryContainer.copy(alpha = 0.5f))
+                            .padding(horizontal = 12.dp, vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Check,
+                            contentDescription = null,
+                            tint = CarifeSecondary,
+                            modifier = Modifier.size(16.dp),
+                        )
+                        Text(
+                            text = "Sudah check-in di kafe ini",
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.SemiBold,
+                            color = CarifeSecondary,
+                        )
+                    }
+                } else {
+                    OutlinedButton(
+                        onClick = onCheckInAtCafe,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        border = BorderStroke(1.dp, CarifeOutlineVariant),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.LocationOn,
+                            contentDescription = null,
+                            tint = CarifePrimary,
+                            modifier = Modifier.size(16.dp),
+                        )
+                        Text(
+                            text = "Check-in di kafe ini",
+                            modifier = Modifier.padding(start = 7.dp),
+                        )
+                    }
+                }
+            }
+
             if (view.isHost) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = onShare, modifier = Modifier.weight(1f)) {
+                    OutlinedButton(
+                        onClick = onShare,
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(12.dp),
+                    ) {
                         Icon(Icons.Outlined.Share, contentDescription = null, modifier = Modifier.size(16.dp))
-                        Text("Bagikan")
+                        Text("Bagikan", modifier = Modifier.padding(start = 7.dp))
                     }
-                    OutlinedButton(onClick = { showInvite = true }, modifier = Modifier.weight(1f)) {
+                    OutlinedButton(
+                        onClick = { showInvite = true },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(12.dp),
+                    ) {
                         Text("Undang Teman")
                     }
                 }
@@ -465,29 +514,61 @@ internal fun RoomDetailSheet(
                     Text("Tutup Room", color = MaterialTheme.colorScheme.error)
                 }
             } else {
-                Button(
-                    onClick = onToggleJoin,
-                    enabled = joined || !isFull,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(
-                        when {
-                            joined -> "Tergabung"
-                            isFull -> "Room penuh"
-                            else -> "Gabung"
-                        }
-                    )
-                }
                 if (joined) {
-                    Text(
-                        text = "Kamu tergabung di room ini.",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = CarifeSecondary,
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(5.dp),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Check,
+                            contentDescription = null,
+                            tint = CarifeSecondary,
+                            modifier = Modifier.size(15.dp),
+                        )
+                        Text(
+                            text = "Kamu tergabung di room ini.",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = CarifeSecondary,
+                        )
+                    }
+                    OutlinedButton(
+                        onClick = onToggleJoin,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        border = BorderStroke(
+                            1.dp,
+                            MaterialTheme.colorScheme.error.copy(alpha = 0.4f),
+                        ),
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.Logout,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.size(16.dp),
+                        )
+                        Text(
+                            text = "Keluar dari room",
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.padding(start = 7.dp),
+                        )
+                    }
+                } else {
+                    Button(
+                        onClick = onToggleJoin,
+                        enabled = !isFull,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                    ) {
+                        Text(if (isFull) "Room penuh" else "Gabung")
+                    }
                 }
-                OutlinedButton(onClick = onShare, modifier = Modifier.fillMaxWidth()) {
+                OutlinedButton(
+                    onClick = onShare,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                ) {
                     Icon(Icons.Outlined.Share, contentDescription = null, modifier = Modifier.size(16.dp))
-                    Text("Bagikan Undangan")
+                    Text("Bagikan Undangan", modifier = Modifier.padding(start = 7.dp))
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.carife.app.ui.teman
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,34 +10,32 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.outlined.Group
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Shield
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -61,16 +60,21 @@ import com.carife.app.domain.SocialRules
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafePicker
 import com.carife.app.ui.components.CarifeChip
+import com.carife.app.ui.components.CarifeHairline
+import com.carife.app.ui.components.CarifeSectionHeader
 import com.carife.app.ui.components.ProfileAvatar
 import com.carife.app.ui.components.openShareSheet
-import com.carife.app.ui.theme.CarifeOnPrimary
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
+import com.carife.app.ui.theme.CarifePrimaryFixed
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
-import com.carife.app.ui.theme.CarifeSurfaceContainer
+import com.carife.app.ui.theme.CarifeSurfaceContainerLow
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import java.time.Duration
 import java.time.Instant
+
+private const val ROOM_SECTION_INDEX = 3
 
 private data class CheckInMove(
     val cafe: Cafe,
@@ -89,13 +93,20 @@ fun TemanScreen(
     val now by viewModel.openingHoursTime.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
-    var selectedTab by rememberSaveable { mutableIntStateOf(0) }
-    var activityJoinedOnly by rememberSaveable { mutableStateOf(false) }
-    var roomJoinedOnly by rememberSaveable { mutableStateOf(false) }
+    var joinedOnly by rememberSaveable { mutableStateOf(false) }
     var showCheckInDialog by rememberSaveable { mutableStateOf(false) }
     var showCreateRoom by rememberSaveable { mutableStateOf(false) }
     var selectedRoomId by rememberSaveable { mutableStateOf<String?>(null) }
     var pendingCheckInMove by remember { mutableStateOf<CheckInMove?>(null) }
+
+    val listState = rememberLazyListState()
+    var scrollTarget by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(scrollTarget) {
+        scrollTarget?.let { target ->
+            listState.animateScrollToItem(target)
+            scrollTarget = null
+        }
+    }
 
     val friendPeople = remember(appState.friendIds) {
         DemoFriendsData.friends(appState.friendIds)
@@ -114,16 +125,18 @@ fun TemanScreen(
     val currentCheckInCafe = appState.checkIn?.cafeId?.let { id ->
         catalog.cafes.firstOrNull { it.id == id }
     }
-    val visibleSpots = if (activityJoinedOnly) {
+    val visibleSpots = if (joinedOnly) {
         friendSpots.filter { it.person.id in appState.joinedSpotFriendIds }
     } else {
         friendSpots
     }
-    val visibleRooms = if (roomJoinedOnly) {
+    val visibleRooms = if (joinedOnly) {
         roomViews.filter { it.isHost || it.room.id in appState.joinedRoomIds }
     } else {
         roomViews
     }
+    val joinedRoomCount = roomViews.count { it.isHost || it.room.id in appState.joinedRoomIds }
+    val joinedCount = appState.joinedSpotFriendIds.size + joinedRoomCount
     val selectedRoom = roomViews.firstOrNull { it.room.id == selectedRoomId }
 
     fun handleJoin(resolved: FriendSpotResolved) {
@@ -144,84 +157,166 @@ fun TemanScreen(
         }
     }
 
+    fun checkInToCafe(cafe: Cafe?) {
+        cafe ?: return
+        viewModel.checkIn(cafe, null, null)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
     ) {
-        TemanHeader(
-            profile = appState.profile,
-            friendCount = appState.friendIds.size,
-            roomCount = roomViews.size,
-            joinedCount = appState.joinedSpotFriendIds.size,
-            onOpenProfile = onOpenProfile,
-            onOpenFriends = onOpenFriends,
-            onOpenTeman = onOpenFriends,
-            onOpenRoom = {
-                selectedTab = 1
-                roomJoinedOnly = false
-            },
-            onOpenJoined = {
-                selectedTab = 0
-                activityJoinedOnly = true
-            },
-        )
-
-        TabRow(
-            selectedTabIndex = selectedTab,
-            containerColor = MaterialTheme.colorScheme.background,
+        LazyColumn(
+            state = listState,
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(top = 6.dp, bottom = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Tab(
-                selected = selectedTab == 0,
-                onClick = { selectedTab = 0 },
-                text = { Text("Aktivitas") },
-            )
-            Tab(
-                selected = selectedTab == 1,
-                onClick = { selectedTab = 1 },
-                text = { Text("Room") },
-            )
-        }
+            item {
+                TemanHeader(
+                    profile = appState.profile,
+                    friendCount = appState.friendIds.size,
+                    roomCount = roomViews.size,
+                    joinedCount = joinedCount,
+                    onOpenProfile = onOpenProfile,
+                    onOpenTeman = onOpenFriends,
+                    onOpenRoom = {
+                        joinedOnly = false
+                        scrollTarget = ROOM_SECTION_INDEX
+                    },
+                    onOpenJoined = {
+                        joinedOnly = true
+                        scrollTarget = ROOM_SECTION_INDEX
+                    },
+                )
+            }
 
-        if (selectedTab == 0) {
-            ActivityTab(
-                modifier = Modifier.weight(1f),
-                profile = appState.profile,
-                checkIn = appState.checkIn,
-                currentCafe = currentCheckInCafe,
-                now = now,
-                joinedOnly = activityJoinedOnly,
-                onJoinedOnlyChange = { activityJoinedOnly = it },
-                spots = visibleSpots,
-                hasFriends = appState.friendIds.isNotEmpty(),
-                joinedIds = appState.joinedSpotFriendIds,
-                onCheckInClick = { showCheckInDialog = true },
-                onCheckOut = viewModel::checkOut,
-                onShareCheckIn = {
-                    val checkIn = appState.checkIn
-                    val cafe = currentCheckInCafe
-                    if (checkIn != null && cafe != null) {
-                        openShareSheet(
-                            context,
-                            ShareTextBuilder.mySpotMessage(cafe, checkIn.note, checkIn.floor),
-                            viewModel::emitMessage,
+            item {
+                val checkIn = appState.checkIn
+                if (checkIn == null) {
+                    CheckInCta(
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                        onClick = { showCheckInDialog = true },
+                    )
+                } else {
+                    CurrentCheckInCard(
+                        checkIn = checkIn,
+                        cafe = currentCheckInCafe,
+                        profile = appState.profile,
+                        now = now,
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                        onClick = { showCheckInDialog = true },
+                        onShare = {
+                            val checkIn = appState.checkIn
+                            val cafe = currentCheckInCafe
+                            if (checkIn != null && cafe != null) {
+                                openShareSheet(
+                                    context,
+                                    ShareTextBuilder.mySpotMessage(cafe, checkIn.note, checkIn.floor),
+                                    viewModel::emitMessage,
+                                )
+                            }
+                        },
+                        onCheckOut = viewModel::checkOut,
+                    )
+                }
+            }
+
+            item {
+                Row(
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    CarifeChip(
+                        label = "Semua",
+                        selected = !joinedOnly,
+                        onClick = { joinedOnly = false },
+                    )
+                    CarifeChip(
+                        label = "Tergabung",
+                        selected = joinedOnly,
+                        onClick = { joinedOnly = true },
+                    )
+                }
+            }
+
+            item {
+                CarifeSectionHeader(
+                    title = "Room nongkrong",
+                    supporting = if (joinedOnly) {
+                        "${visibleRooms.size} room yang kamu ikuti"
+                    } else {
+                        "${visibleRooms.size} room"
+                    },
+                    actionLabel = "Buat room",
+                    onAction = { showCreateRoom = true },
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                )
+            }
+
+            if (visibleRooms.isEmpty()) {
+                item {
+                    RoomEmptyState(
+                        joinedOnly = joinedOnly,
+                        onCreateRoom = { showCreateRoom = true },
+                    )
+                }
+            } else {
+                items(visibleRooms, key = { it.room.id }) { view ->
+                    val roomCafe = view.cafe
+                    val checkedInHere = roomCafe?.id != null && appState.checkIn?.cafeId == roomCafe.id
+                    Box(Modifier.padding(horizontal = 20.dp)) {
+                        RoomCard(
+                            view = view,
+                            joined = view.isHost || view.room.id in appState.joinedRoomIds,
+                            checkedIn = checkedInHere,
+                            onCheckIn = { checkInToCafe(roomCafe) },
+                            onLeave = { viewModel.toggleJoinRoom(view.room) },
+                            onOpen = { selectedRoomId = view.room.id },
                         )
                     }
-                },
-                onToggleJoin = ::handleJoin,
-                onOpenCafe = onOpenCafe,
-                onOpenFriends = onOpenFriends,
-            )
-        } else {
-            RoomTab(
-                modifier = Modifier.weight(1f),
-                rooms = visibleRooms,
-                joinedRoomIds = appState.joinedRoomIds,
-                joinedOnly = roomJoinedOnly,
-                onJoinedOnlyChange = { roomJoinedOnly = it },
-                onCreateRoom = { showCreateRoom = true },
-                onOpenRoom = { view -> selectedRoomId = view.room.id },
-            )
+                }
+            }
+
+            item {
+                CarifeHairline(
+                    modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp),
+                )
+            }
+
+            item {
+                CarifeSectionHeader(
+                    title = "Aktivitas teman",
+                    supporting = if (joinedOnly) {
+                        "${visibleSpots.size} aktivitas yang kamu ikuti"
+                    } else {
+                        "${visibleSpots.size} aktivitas"
+                    },
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                )
+            }
+
+            if (visibleSpots.isEmpty()) {
+                item {
+                    ActivityEmptyState(
+                        hasFriends = appState.friendIds.isNotEmpty(),
+                        joinedOnly = joinedOnly,
+                        onOpenFriends = onOpenFriends,
+                    )
+                }
+            } else {
+                items(visibleSpots, key = { it.person.id }) { resolved ->
+                    Box(Modifier.padding(horizontal = 20.dp)) {
+                        FriendSpotCard(
+                            resolved = resolved,
+                            joined = resolved.person.id in appState.joinedSpotFriendIds,
+                            onToggleJoin = { handleJoin(resolved) },
+                            onOpenCafe = onOpenCafe,
+                        )
+                    }
+                }
+            }
         }
     }
 
@@ -256,7 +351,7 @@ fun TemanScreen(
                 ) { Text("Pindahkan") }
             },
             dismissButton = {
-                TextButton(onClick = { pendingCheckInMove = null }) { Text("Nanti Saja") }
+                TextButton(onClick = { pendingCheckInMove = null }) { Text("Nanti saja") }
             },
         )
     }
@@ -280,13 +375,24 @@ fun TemanScreen(
     }
 
     selectedRoom?.let { view ->
+        val roomCafe = view.cafe
+        val checkedInHere = roomCafe?.id != null && appState.checkIn?.cafeId == roomCafe.id
         RoomDetailSheet(
             view = view,
             joined = view.isHost || view.room.id in appState.joinedRoomIds,
+            checkedInHere = checkedInHere,
+            onCheckInAtCafe = {
+                checkInToCafe(roomCafe)
+                selectedRoomId = null
+            },
             viewerProfile = appState.profile,
             friends = friendPeople,
             onDismiss = { selectedRoomId = null },
-            onToggleJoin = { viewModel.toggleJoinRoom(view.room) },
+            onToggleJoin = {
+                val wasJoined = !view.isHost && view.room.id in appState.joinedRoomIds
+                viewModel.toggleJoinRoom(view.room)
+                if (wasJoined) selectedRoomId = null
+            },
             onShare = {
                 openShareSheet(
                     context,
@@ -316,37 +422,29 @@ private fun TemanHeader(
     roomCount: Int,
     joinedCount: Int,
     onOpenProfile: () -> Unit,
-    onOpenFriends: () -> Unit,
     onOpenTeman: () -> Unit,
     onOpenRoom: () -> Unit,
     onOpenJoined: () -> Unit,
 ) {
     Column(
-        modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp),
+        modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = "Teman Nongkrong",
-                    style = MaterialTheme.typography.titleLarge,
+                    text = "Teman",
+                    style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
-                    text = "Aktivitas nongkrong temanmu hari ini.",
+                    text = "Aktivitas dan room teman untuk demo.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-            IconButton(onClick = onOpenFriends) {
-                Icon(
-                    imageVector = Icons.Outlined.Group,
-                    contentDescription = "Buka Teman Saya",
-                    tint = CarifePrimary,
                 )
             }
             Box(
@@ -359,29 +457,38 @@ private fun TemanHeader(
                     ),
                 contentAlignment = Alignment.Center,
             ) {
-                ProfileAvatar(profile = profile, size = 36.dp)
+                ProfileAvatar(profile = profile, size = 40.dp)
             }
         }
 
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            SocialStat(
-                value = friendCount.toString(),
-                label = "Teman",
-                onClick = onOpenTeman,
-                modifier = Modifier.weight(1f),
-            )
-            SocialStat(
-                value = roomCount.toString(),
-                label = "Room",
-                onClick = onOpenRoom,
-                modifier = Modifier.weight(1f),
-            )
-            SocialStat(
-                value = joinedCount.toString(),
-                label = "Ikut",
-                onClick = onOpenJoined,
-                modifier = Modifier.weight(1f),
-            )
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp),
+            color = CarifeSurfaceContainerLowest,
+            border = BorderStroke(1.dp, CarifeOutlineVariant),
+        ) {
+            Row(Modifier.fillMaxWidth()) {
+                SocialStat(
+                    value = friendCount.toString(),
+                    label = "Teman",
+                    onClick = onOpenTeman,
+                    modifier = Modifier.weight(1f),
+                )
+                SocialDivider()
+                SocialStat(
+                    value = roomCount.toString(),
+                    label = "Room",
+                    onClick = onOpenRoom,
+                    modifier = Modifier.weight(1f),
+                )
+                SocialDivider()
+                SocialStat(
+                    value = joinedCount.toString(),
+                    label = "Ikut",
+                    onClick = onOpenJoined,
+                    modifier = Modifier.weight(1f),
+                )
+            }
         }
     }
 }
@@ -393,123 +500,88 @@ private fun SocialStat(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Surface(
-        onClick = onClick,
-        modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
-        color = CarifeSurfaceContainerLowest,
+    Column(
+        modifier = modifier
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(vertical = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(1.dp),
     ) {
-        Column(
-            modifier = Modifier.padding(vertical = 10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(
-                text = value,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = CarifePrimary,
-            )
-            Text(
-                text = label,
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            color = CarifePrimary,
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+@Composable
+private fun SocialDivider() {
+    Box(
+        modifier = Modifier
+            .width(1.dp)
+            .height(30.dp)
+            .background(CarifeOutlineVariant),
+    )
+}
+
+@Composable
+private fun RoomEmptyState(
+    joinedOnly: Boolean,
+    onCreateRoom: () -> Unit,
+) {
+    Column(
+        modifier = Modifier.padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(
+            text = if (joinedOnly) {
+                "Belum ada room yang kamu ikuti."
+            } else {
+                "Belum ada room. Buat room pertamamu untuk mengajak teman nongkrong."
+            },
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        if (!joinedOnly) {
+            Button(
+                onClick = onCreateRoom,
+                shape = RoundedCornerShape(12.dp),
+            ) { Text("Buat room") }
         }
     }
 }
 
 @Composable
-private fun ActivityTab(
-    modifier: Modifier,
-    profile: UserProfile,
-    checkIn: CheckIn?,
-    currentCafe: Cafe?,
-    now: Instant,
-    joinedOnly: Boolean,
-    onJoinedOnlyChange: (Boolean) -> Unit,
-    spots: List<FriendSpotResolved>,
+private fun ActivityEmptyState(
     hasFriends: Boolean,
-    joinedIds: Set<String>,
-    onCheckInClick: () -> Unit,
-    onCheckOut: () -> Unit,
-    onShareCheckIn: () -> Unit,
-    onToggleJoin: (FriendSpotResolved) -> Unit,
-    onOpenCafe: (String) -> Unit,
+    joinedOnly: Boolean,
     onOpenFriends: () -> Unit,
 ) {
-    LazyColumn(
-        modifier = modifier,
-        contentPadding = PaddingValues(top = 12.dp, bottom = 24.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+    Column(
+        modifier = Modifier.padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        item {
-            if (checkIn == null) {
-                CheckInCta(
-                    modifier = Modifier.padding(horizontal = 20.dp),
-                    onClick = onCheckInClick,
-                )
-            } else {
-                CurrentCheckInCard(
-                    checkIn = checkIn,
-                    cafe = currentCafe,
-                    profile = profile,
-                    now = now,
-                    modifier = Modifier.padding(horizontal = 20.dp),
-                    onClick = onCheckInClick,
-                    onShare = onShareCheckIn,
-                    onCheckOut = onCheckOut,
-                )
-            }
-        }
-
-        item {
-            Row(
-                modifier = Modifier.padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                CarifeChip(
-                    label = "Semua",
-                    selected = !joinedOnly,
-                    onClick = { onJoinedOnlyChange(false) },
-                )
-                CarifeChip(
-                    label = "Tergabung",
-                    selected = joinedOnly,
-                    onClick = { onJoinedOnlyChange(true) },
-                )
-            }
-        }
-
-        if (spots.isEmpty()) {
-            item {
-                Text(
-                    text = when {
-                        !hasFriends -> "Belum ada aktivitas. Tambah teman untuk melihat tempat nongkrong mereka."
-                        joinedOnly -> "Belum ada yang kamu ikuti."
-                        else -> "Temanmu belum check-in hari ini."
-                    },
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 20.dp),
-                )
-                if (!hasFriends) {
-                    TextButton(
-                        onClick = onOpenFriends,
-                        modifier = Modifier.padding(horizontal = 12.dp),
-                    ) { Text("Tambah Teman") }
-                }
-            }
-        } else {
-            items(spots, key = { it.person.id }) { resolved ->
-                Box(Modifier.padding(horizontal = 20.dp)) {
-                    FriendSpotCard(
-                        resolved = resolved,
-                        joined = resolved.person.id in joinedIds,
-                        onToggleJoin = { onToggleJoin(resolved) },
-                        onOpenCafe = onOpenCafe,
-                    )
-                }
-            }
+        Text(
+            text = when {
+                !hasFriends -> "Belum ada aktivitas. Tambah teman untuk melihat tempat nongkrong mereka."
+                joinedOnly -> "Belum ada aktivitas yang kamu ikuti."
+                else -> "Temanmu belum check-in hari ini."
+            },
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        if (!hasFriends) {
+            TextButton(
+                onClick = onOpenFriends,
+                contentPadding = PaddingValues(horizontal = 0.dp, vertical = 4.dp),
+            ) { Text("Tambah teman") }
         }
     }
 }
@@ -517,38 +589,54 @@ private fun ActivityTab(
 @Composable
 private fun CheckInCta(modifier: Modifier = Modifier, onClick: () -> Unit) {
     Surface(
-        onClick = onClick,
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = CarifePrimary,
-        contentColor = CarifeOnPrimary,
+        shape = RoundedCornerShape(16.dp),
+        color = CarifeSurfaceContainerLowest,
+        border = BorderStroke(1.dp, CarifeOutlineVariant),
     ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        Column(
+            modifier = Modifier.padding(14.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Icon(
-                imageVector = Icons.Outlined.LocationOn,
-                contentDescription = null,
-                modifier = Modifier.size(22.dp),
-            )
-            Column(Modifier.weight(1f)) {
-                Text(
-                    text = "Check-in di Kafe",
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    text = "Biar teman tahu kamu sedang nongkrong di mana.",
-                    style = MaterialTheme.typography.labelSmall,
-                )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(38.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(CarifePrimaryFixed),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.LocationOn,
+                        contentDescription = null,
+                        tint = CarifePrimary,
+                        modifier = Modifier.size(19.dp),
+                    )
+                }
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(1.dp)) {
+                    Text(
+                        text = "Check-in di kafe",
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                        text = "Beri tahu teman kamu sedang nugas di mana.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                contentDescription = null,
-                modifier = Modifier.size(18.dp),
-            )
+            Button(
+                onClick = onClick,
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                contentPadding = PaddingValues(vertical = 10.dp),
+            ) {
+                Text("Check-in sekarang")
+            }
         }
     }
 }
@@ -567,20 +655,20 @@ private fun CurrentCheckInCard(
     Surface(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = CarifeSecondaryContainer.copy(alpha = 0.32f),
-        border = androidx.compose.foundation.BorderStroke(1.dp, CarifeSecondary),
+        shape = RoundedCornerShape(16.dp),
+        color = CarifeSecondaryContainer.copy(alpha = 0.55f),
+        border = BorderStroke(1.dp, CarifeSecondary.copy(alpha = 0.35f)),
     ) {
         Column(
             modifier = Modifier.padding(14.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(9.dp),
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 ProfileAvatar(profile = profile, size = 40.dp)
-                Column(Modifier.weight(1f)) {
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(1.dp)) {
                     Text(
                         text = "Kamu sedang di ${cafe?.name ?: checkIn.cafeName}",
                         style = MaterialTheme.typography.titleSmall,
@@ -608,19 +696,23 @@ private fun CurrentCheckInCard(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
-            checkIn.note?.let { note ->
-                NoteBubble(note)
-            }
+            checkIn.note?.let { note -> NoteBubble(note) }
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                OutlinedButton(onClick = onShare, enabled = cafe != null) {
-                    Text("Bagikan")
-                }
-                TextButton(onClick = onCheckOut) {
+                OutlinedButton(
+                    onClick = onShare,
+                    enabled = cafe != null,
+                    shape = RoundedCornerShape(12.dp),
+                    border = BorderStroke(1.dp, CarifeOutlineVariant),
+                ) { Text("Bagikan") }
+                TextButton(
+                    onClick = onCheckOut,
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                ) {
                     Text("Check-out", color = MaterialTheme.colorScheme.error)
                 }
             }
@@ -654,7 +746,7 @@ private fun CheckInDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(if (initial == null) "Check-in di Kafe" else "Ganti Check-in") },
+        title = { Text(if (initial == null) "Check-in di kafe" else "Ganti check-in") },
         text = {
             Column(
                 modifier = Modifier
@@ -668,7 +760,10 @@ private fun CheckInDialog(
                     Text("Belum ada kafe di kota ini", style = MaterialTheme.typography.titleSmall)
                 }
 
-                TextButton(onClick = { showDetails = !showDetails }) {
+                TextButton(
+                    onClick = { showDetails = !showDetails },
+                    contentPadding = PaddingValues(horizontal = 0.dp, vertical = 4.dp),
+                ) {
                     Text(if (showDetails) "Sembunyikan detail" else "Tambah detail (lantai/catatan)")
                 }
 
@@ -678,6 +773,7 @@ private fun CheckInDialog(
                         onValueChange = { floor = it },
                         label = { Text("Lantai (opsional)") },
                         singleLine = true,
+                        shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth(),
                     )
                     OutlinedTextField(
@@ -685,6 +781,7 @@ private fun CheckInDialog(
                         onValueChange = { note = it },
                         label = { Text("Catatan (opsional)") },
                         maxLines = 3,
+                        shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth(),
                     )
                 }

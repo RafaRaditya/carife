@@ -3,7 +3,19 @@ package com.carife.app.ui
 import android.Manifest
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CompareArrows
 import androidx.compose.material.icons.filled.Group
@@ -16,21 +28,27 @@ import androidx.compose.material.icons.outlined.Map
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -39,6 +57,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.carife.app.ui.compare.CompareScreen
+import com.carife.app.ui.components.CarifeHairline
 import com.carife.app.ui.detail.DetailScreen
 import com.carife.app.ui.explore.ExploreScreen
 import com.carife.app.ui.home.HomeScreen
@@ -47,6 +66,10 @@ import com.carife.app.ui.profile.AccountSettingsScreen
 import com.carife.app.ui.profile.ProfileScreen
 import com.carife.app.ui.teman.FriendsScreen
 import com.carife.app.ui.teman.TemanScreen
+import com.carife.app.ui.theme.CarifeOnPrimary
+import com.carife.app.ui.theme.CarifePrimary
+import com.carife.app.ui.theme.CarifePrimaryFixed
+import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 
 private data class BottomDestination(
     val route: String,
@@ -102,6 +125,7 @@ fun CarifeRoot(viewModel: CarifeViewModel = viewModel()) {
     val showBottomBar = currentRoute in destinations.map { it.route }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
         snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
             if (showBottomBar) {
@@ -127,33 +151,78 @@ private fun CarifeBottomBar(
     currentRoute: String?,
     compareCount: Int,
 ) {
-    NavigationBar {
-        destinations.forEach { destination ->
-            val selected = currentRoute == destination.route
-            NavigationBarItem(
-                selected = selected,
-                onClick = {
-                    if (!selected) {
-                        navController.openTab(destination.route)
-                    }
-                },
-                icon = {
-                    if (destination.route == Routes.COMPARE && compareCount > 0) {
-                        BadgedBox(badge = { Badge { Text(compareCount.toString()) } }) {
-                            Icon(
-                                imageVector = if (selected) destination.selectedIcon else destination.unselectedIcon,
-                                contentDescription = null,
+    Surface(color = CarifeSurfaceContainerLowest) {
+        Column {
+            CarifeHairline()
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .navigationBarsPadding()
+                    .padding(horizontal = 6.dp, vertical = 6.dp),
+                horizontalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                destinations.forEach { destination ->
+                    val selected = currentRoute == destination.route
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(12.dp))
+                            .selectable(
+                                selected = selected,
+                                role = Role.Tab,
+                                onClick = {
+                                    if (!selected) {
+                                        navController.openTab(destination.route)
+                                    }
+                                },
                             )
+                            .padding(vertical = 5.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(2.dp),
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .widthIn(min = 44.dp)
+                                .height(28.dp)
+                                .clip(RoundedCornerShape(9.dp))
+                                .background(if (selected) CarifePrimaryFixed else Color.Transparent),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            if (destination.route == Routes.COMPARE && compareCount > 0) {
+                                BadgedBox(
+                                    badge = {
+                                        Badge(
+                                            containerColor = CarifePrimary,
+                                            contentColor = CarifeOnPrimary,
+                                        ) { Text(compareCount.toString()) }
+                                    },
+                                ) {
+                                    Icon(
+                                        imageVector = if (selected) destination.selectedIcon else destination.unselectedIcon,
+                                        contentDescription = null,
+                                        tint = if (selected) CarifePrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                        modifier = Modifier.size(20.dp),
+                                    )
+                                }
+                            } else {
+                                Icon(
+                                    imageVector = if (selected) destination.selectedIcon else destination.unselectedIcon,
+                                    contentDescription = null,
+                                    tint = if (selected) CarifePrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.size(20.dp),
+                                )
+                            }
                         }
-                    } else {
-                        Icon(
-                            imageVector = if (selected) destination.selectedIcon else destination.unselectedIcon,
-                            contentDescription = null,
+                        Text(
+                            text = destination.label,
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
+                            color = if (selected) CarifePrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
                         )
                     }
-                },
-                label = { Text(destination.label) },
-            )
+                }
+            }
         }
     }
 }

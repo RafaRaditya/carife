@@ -5,42 +5,34 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.FilterList
-import androidx.compose.material.icons.filled.NearMe
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.AccessTime
 import androidx.compose.material.icons.outlined.Deck
+import androidx.compose.material.icons.outlined.LocalCafe
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Payments
 import androidx.compose.material.icons.outlined.Power
 import androidx.compose.material.icons.outlined.SmokeFree
 import androidx.compose.material.icons.outlined.VolumeOff
 import androidx.compose.material.icons.outlined.Wifi
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,8 +42,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.carife.app.BuildConfig
@@ -64,18 +58,17 @@ import com.carife.app.domain.MatchScorer
 import com.carife.app.domain.OpeningHours
 import com.carife.app.ui.CarifeViewModel
 import com.carife.app.ui.components.CafeCard
+import com.carife.app.ui.components.CafeMapCard
 import com.carife.app.ui.components.CarifeChip
+import com.carife.app.ui.components.CarifeEmptyState
+import com.carife.app.ui.components.CarifeSearchField
+import com.carife.app.ui.components.CarifeSectionHeader
 import com.carife.app.ui.components.CityPickerDialog
+import com.carife.app.ui.components.FeaturedCafeCard
 import com.carife.app.ui.components.FullMapDialog
-import com.carife.app.ui.components.OsmMapView
-import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifePrimaryFixed
 import com.carife.app.ui.theme.CarifeSecondary
-import com.carife.app.ui.theme.CarifeSecondaryContainer
-import com.carife.app.ui.theme.CarifeSurfaceContainer
-import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
-import com.carife.app.ui.theme.CarifeTertiary
 
 private data class QuickChip(
     val label: String,
@@ -97,7 +90,6 @@ private val quickChips = listOf(
     },
 )
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun HomeScreen(
     viewModel: CarifeViewModel,
@@ -128,6 +120,9 @@ fun HomeScreen(
         val score = cafe?.let { scores[it.id] } ?: 0
         if (cafe != null && score > 0) cafe to score else null
     }
+    val featured = bestMatch?.first ?: nearest.firstOrNull()
+    val featuredScore = bestMatch?.second
+    val remaining = nearest.filterNot { it.id == featured?.id }
 
     var showCityPicker by remember { mutableStateOf(false) }
     var showFullMap by remember { mutableStateOf(false) }
@@ -136,13 +131,14 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
-        contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 24.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp),
+        contentPadding = PaddingValues(bottom = 28.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item {
-            HomeHeader(
+            HomeMasthead(
                 cityName = city.name,
                 openNowCount = openNowCount,
+                cafeCount = cafes.size,
                 onOpenSearch = onOpenSearch,
                 onOpenFilters = onOpenExploreWithFilters,
                 onPickCity = { showCityPicker = true },
@@ -151,7 +147,7 @@ fun HomeScreen(
 
         item {
             LazyRow(
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 20.dp),
+                contentPadding = PaddingValues(horizontal = 20.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 items(quickChips) { chip ->
@@ -168,188 +164,80 @@ fun HomeScreen(
             }
         }
 
-        item {
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .fillMaxWidth()
-                    .height(170.dp)
-                    .clip(RoundedCornerShape(20.dp)),
-            ) {
-                OsmMapView(
+        if (cafes.isNotEmpty()) {
+            item {
+                CafeMapCard(
                     city = city,
                     cafes = nearest,
+                    title = "Peta sekitar",
                     onOpenCafe = onOpenCafe,
-                    maxMarkers = 60,
-                    modifier = Modifier.fillMaxSize(),
-                )
-                Surface(
-                    onClick = { showFullMap = true },
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(10.dp),
-                    shape = RoundedCornerShape(999.dp),
-                    color = CarifeSurfaceContainerLowest,
-                    shadowElevation = 3.dp,
-                ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        Text(
-                            text = "Buka Peta",
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = CarifePrimary,
-                        )
-                        Icon(
-                            Icons.Filled.NearMe,
-                            contentDescription = null,
-                            tint = CarifePrimary,
-                            modifier = Modifier.size(14.dp),
-                        )
-                    }
-                }
-            }
-        }
-
-        if (bestMatch != null) {
-            item {
-                Surface(
-                    onClick = { onOpenCafe(bestMatch.first.id) },
-                    modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .fillMaxWidth(),
-                    shape = RoundedCornerShape(20.dp),
-                    color = CarifePrimaryFixed,
-                ) {
-                    Row(
-                        modifier = Modifier.padding(14.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(38.dp)
-                                .clip(RoundedCornerShape(999.dp))
-                                .background(CarifePrimary),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Text("◎", color = CarifeOnPrimary, fontWeight = FontWeight.Bold)
-                        }
-                        Column(Modifier.weight(1f)) {
-                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                                Text(
-                                    text = "${bestMatch.second}% cocok",
-                                    style = MaterialTheme.typography.labelLarge,
-                                    fontWeight = FontWeight.Bold,
-                                )
-                                Text(
-                                    text = "Carife Match",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = CarifePrimary,
-                                )
-                            }
-                            Text(
-                                text = bestMatch.first.name,
-                                style = MaterialTheme.typography.bodySmall,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                        }
-                    }
-                }
-            }
-        }
-
-        item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = "${nearest.size} Kafe Nugas Terdekat",
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.weight(1f).padding(end = 8.dp),
-                )
-                Text(
-                    text = "Jarak terdekat",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
-
-        if (catalog.errorMessage != null && cafes.isNotEmpty()) {
-            item {
-                Row(
+                    onOpenFullMap = { showFullMap = true },
                     modifier = Modifier.padding(horizontal = 20.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        text = catalog.errorMessage.orEmpty(),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.weight(1f),
-                    )
-                    TextButton(onClick = viewModel::retry) { Text("Coba lagi") }
-                }
-            }
-        }
-
-        when {
-            catalog.errorMessage != null && cafes.isEmpty() -> item {
-                CatalogErrorState(
-                    message = catalog.errorMessage ?: "",
-                    onRetry = viewModel::retry,
+                    maxMarkers = 20,
                 )
             }
 
-            (catalog.city == null || catalog.isRefreshing) && cafes.isEmpty() -> item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 40.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        CircularProgressIndicator(color = CarifePrimary)
-                        Spacer(Modifier.size(12.dp))
-                        Text(
-                            "Memuat kafe di ${city.name}…",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                }
-            }
-
-            cafes.isEmpty() -> item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp, vertical = 28.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Text(
-                        "Belum ada kafe ditemukan di sekitar ${city.name}",
-                        style = MaterialTheme.typography.titleSmall,
+            if (featured != null) {
+                item {
+                    CarifeSectionHeader(
+                        title = if (featuredScore != null) "Pilihan untukmu" else "Paling dekat",
+                        supporting = if (featuredScore != null) {
+                            "Dihitung dari preferensi nugas yang kamu simpan"
+                        } else if (appState.userLocation != null) {
+                            "Jarak terdekat dari lokasimu"
+                        } else {
+                            "Jarak terdekat dari pusat kota"
+                        },
+                        modifier = Modifier.padding(horizontal = 20.dp),
                     )
-                    if (BuildConfig.OFFLINE_ONLY) {
-                        TextButton(onClick = { showCityPicker = true }) { Text("Pilih kota") }
-                    } else {
-                        TextButton(onClick = viewModel::retry) { Text("Muat ulang") }
+                }
+                item {
+                    FeaturedCafeCard(
+                        cafe = featured,
+                        matchScore = featuredScore,
+                        isFavorite = appState.favorites.contains(featured.id),
+                        isSelectedForCompare = compareIds.contains(featured.id),
+                        now = now,
+                        onOpen = { onOpenCafe(featured.id) },
+                        onToggleFavorite = { viewModel.toggleFavorite(featured.id) },
+                        onToggleCompare = { viewModel.toggleCompare(featured.id) },
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                    )
+                }
+            }
+
+            item {
+                CarifeSectionHeader(
+                    title = "Semua kafe",
+                    supporting = "${nearest.size} spot · urut jarak terdekat",
+                    modifier = Modifier.padding(horizontal = 20.dp),
+                )
+            }
+
+            if (catalog.errorMessage != null) {
+                item {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(
+                            text = catalog.errorMessage.orEmpty(),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.weight(1f),
+                        )
+                        TextButton(
+                            onClick = viewModel::retry,
+                            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
+                        ) { Text("Coba lagi") }
                     }
                 }
             }
 
-            else -> items(nearest, key = { it.id }) { cafe ->
+            items(remaining, key = { it.id }) { cafe ->
                 CafeCard(
                     cafe = cafe,
                     matchScore = scores[cafe.id],
@@ -362,16 +250,58 @@ fun HomeScreen(
                     modifier = Modifier.padding(horizontal = 20.dp),
                 )
             }
-        }
 
-        if (catalog.origin != null) {
-            item {
-                Text(
-                    text = catalogSourceLabel(catalog.origin),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 20.dp),
-                )
+            if (catalog.origin != null) {
+                item {
+                    Text(
+                        text = catalogSourceLabel(catalog.origin),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 20.dp),
+                    )
+                }
+            }
+        } else {
+            when {
+                catalog.errorMessage != null -> item {
+                    CarifeEmptyState(
+                        title = "Katalog belum bisa dimuat",
+                        message = catalog.errorMessage.orEmpty(),
+                        primaryLabel = "Coba lagi",
+                        onPrimary = viewModel::retry,
+                        modifier = Modifier.padding(top = 8.dp),
+                    )
+                }
+
+                catalog.city == null || catalog.isRefreshing -> item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 48.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        CircularProgressIndicator(color = CarifePrimary)
+                        Text(
+                            "Memuat kafe di ${city.name}…",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+
+                else -> item {
+                    CarifeEmptyState(
+                        title = "Belum ada kafe di ${city.name}",
+                        message = "Coba pilih kota lain, atau muat ulang katalog.",
+                        primaryLabel = if (BuildConfig.OFFLINE_ONLY) "Pilih kota" else "Muat ulang",
+                        onPrimary = if (BuildConfig.OFFLINE_ONLY) {
+                            { showCityPicker = true }
+                        } else {
+                            viewModel::retry
+                        },
+                    )
+                }
             }
         }
     }
@@ -402,16 +332,17 @@ fun HomeScreen(
 }
 
 @Composable
-private fun HomeHeader(
+private fun HomeMasthead(
     cityName: String,
     openNowCount: Int,
+    cafeCount: Int,
     onOpenSearch: () -> Unit,
     onOpenFilters: () -> Unit,
     onPickCity: () -> Unit,
 ) {
     Column(
-        modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp),
+        verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -420,114 +351,107 @@ private fun HomeHeader(
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                modifier = Modifier
-                    .clip(RoundedCornerShape(14.dp))
-                    .clickable(onClick = onPickCity)
-                    .padding(vertical = 2.dp),
+                horizontalArrangement = Arrangement.spacedBy(9.dp),
             ) {
-                Text("☕", style = MaterialTheme.typography.titleLarge)
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(CarifePrimaryFixed),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.LocalCafe,
+                        contentDescription = null,
+                        tint = CarifePrimary,
+                        modifier = Modifier.size(18.dp),
+                    )
+                }
                 Column {
                     Text(
-                        "Carife",
+                        text = "Carife",
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
-                        color = CarifePrimary,
+                        color = MaterialTheme.colorScheme.onSurface,
                     )
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
-                            "Sekitar $cityName",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                        Icon(
-                            Icons.Filled.ArrowDropDown,
-                            contentDescription = "Ganti kota",
-                            tint = CarifePrimary,
-                            modifier = Modifier.size(16.dp),
-                        )
-                    }
+                    Text(
+                        text = "Panduan nugas",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
             }
-            if (openNowCount > 0) {
+
+            Row(
+                modifier = Modifier
+                    .minimumInteractiveComponentSize()
+                    .clip(RoundedCornerShape(8.dp))
+                    .clickable(role = Role.Button, onClick = onPickCity)
+                    .padding(horizontal = 6.dp)
+                    .semantics { contentDescription = "Ganti kota, sekarang $cityName" },
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.LocationOn,
+                    contentDescription = null,
+                    tint = CarifePrimary,
+                    modifier = Modifier.size(15.dp),
+                )
                 Text(
-                    text = "● $openNowCount Spot Buka Sekarang",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = CarifeSecondary,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(999.dp))
-                        .background(CarifeSecondaryContainer)
-                        .padding(horizontal = 10.dp, vertical = 5.dp),
+                    text = cityName,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Icon(
+                    imageVector = Icons.Filled.ArrowDropDown,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(18.dp),
                 )
             }
         }
 
-        Text(
-            "EKSPLORASI NUGAS",
-            style = MaterialTheme.typography.labelSmall,
-            color = CarifePrimary,
-            fontWeight = FontWeight.Bold,
-        )
-        Text(
-            "Tempat Nugas Sekitarmu",
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-        )
-
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(999.dp),
-            color = CarifeSurfaceContainerLowest,
-            shadowElevation = 2.dp,
-        ) {
-            Row(
-                modifier = Modifier.padding(end = 4.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
+        Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
+            Text(
+                text = "Tempat nugas\nsekitarmu.",
+                style = MaterialTheme.typography.headlineLarge,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+            Text(
+                text = "Kafe di $cityName dengan Wi-Fi kencang, colokan, dan meja yang tenang untuk fokus.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            if (openNowCount > 0) {
                 Row(
-                    modifier = Modifier
-                        .weight(1f)
-                        .heightIn(min = 48.dp)
-                        .clickable(onClick = onOpenSearch)
-                        .padding(start = 16.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(5.dp),
                 ) {
-                    Icon(Icons.Filled.Search, contentDescription = null, tint = CarifePrimary, modifier = Modifier.size(20.dp))
-                    Text(
-                        "Cari kafe, wifi, colokan…",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-                IconButton(onClick = onOpenFilters) {
                     Icon(
-                        Icons.Filled.FilterList,
-                        contentDescription = "Buka filter",
-                        tint = CarifePrimary,
+                        imageVector = Icons.Outlined.AccessTime,
+                        contentDescription = null,
+                        tint = CarifeSecondary,
+                        modifier = Modifier.size(14.dp),
+                    )
+                    Text(
+                        text = "$openNowCount buka sekarang · $cafeCount spot",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = CarifeSecondary,
                     )
                 }
             }
         }
-    }
-}
 
-@Composable
-private fun CatalogErrorState(message: String, onRetry: () -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        Text("Belum ada data kafe", style = MaterialTheme.typography.titleSmall)
-        Text(
-            message,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        CarifeSearchField(
+            value = "",
+            onValueChange = {},
+            onOpenFilters = onOpenFilters,
+            readOnly = true,
+            onClick = onOpenSearch,
+            placeholder = "Cari kafe, area, atau fasilitas",
         )
-        TextButton(onClick = onRetry) { Text("Coba lagi") }
     }
 }
 

@@ -1,5 +1,6 @@
 package com.carife.app.ui.teman
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,7 +16,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.outlined.VolumeDown
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.outlined.ChatBubbleOutline
@@ -47,10 +47,10 @@ import com.carife.app.data.FriendSpotResolved
 import com.carife.app.domain.DistanceUtil
 import com.carife.app.ui.theme.CarifeOnPrimary
 import com.carife.app.ui.theme.CarifeOnTertiaryFixed
+import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
-import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLow
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
 import com.carife.app.ui.theme.CarifeTertiaryFixed
@@ -79,32 +79,28 @@ internal fun FriendSpotCard(
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .then(openCafe)
-            .then(
-                if (joined) {
-                    Modifier.border(1.dp, CarifeSecondary, RoundedCornerShape(20.dp))
-                } else {
-                    Modifier
-                }
-            ),
-        shape = RoundedCornerShape(20.dp),
+            .then(openCafe),
+        shape = RoundedCornerShape(16.dp),
         color = if (joined) {
-            CarifeSecondaryContainer.copy(alpha = 0.28f)
+            CarifeSecondaryContainer.copy(alpha = 0.5f)
         } else {
             CarifeSurfaceContainerLowest
         },
+        border = BorderStroke(
+            width = 1.dp,
+            color = if (joined) CarifeSecondary.copy(alpha = 0.4f) else CarifeOutlineVariant,
+        ),
     ) {
         Column(
             modifier = Modifier.padding(14.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(9.dp),
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                FriendAvatar(person, 44.dp)
-                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                FriendAvatar(person, 42.dp)
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
@@ -132,13 +128,13 @@ internal fun FriendSpotCard(
                             imageVector = Icons.Outlined.LocationOn,
                             contentDescription = null,
                             tint = if (cafe != null) CarifePrimary else MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.size(15.dp),
+                            modifier = Modifier.size(14.dp),
                         )
                         Text(
                             text = cafe?.name ?: "Belum ada kafe di kota ini",
                             modifier = Modifier.weight(1f, fill = false),
                             style = MaterialTheme.typography.labelMedium,
-                            fontWeight = if (cafe != null) FontWeight.Bold else FontWeight.Normal,
+                            fontWeight = if (cafe != null) FontWeight.SemiBold else FontWeight.Normal,
                             color = if (cafe != null) CarifePrimary else MaterialTheme.colorScheme.onSurfaceVariant,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
@@ -162,13 +158,13 @@ internal fun FriendSpotCard(
             if (joined) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    horizontalArrangement = Arrangement.spacedBy(5.dp),
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Check,
                         contentDescription = null,
                         tint = CarifeSecondary,
-                        modifier = Modifier.size(16.dp),
+                        modifier = Modifier.size(15.dp),
                     )
                     Text(
                         text = "Kamu ikut nongkrong di sini.",
@@ -226,7 +222,7 @@ internal fun FriendAvatar(person: FriendPerson, size: Dp) {
         Box(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .size(13.dp)
+                .size(12.dp)
                 .clip(CircleShape)
                 .background(if (person.isOnline) CarifeSecondary else MaterialTheme.colorScheme.outline)
                 .border(2.dp, CarifeSurfaceContainerLowest, CircleShape),
@@ -239,16 +235,17 @@ internal fun NoteBubble(note: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(10.dp))
             .background(CarifeSurfaceContainerLow)
             .padding(10.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.Top,
     ) {
         Icon(
             imageVector = Icons.Outlined.ChatBubbleOutline,
             contentDescription = null,
             tint = CarifePrimary,
-            modifier = Modifier.size(16.dp),
+            modifier = Modifier.size(14.dp),
         )
         Text(
             text = "\"$note\"",
@@ -263,11 +260,11 @@ internal fun NoteBubble(note: String) {
 internal fun FriendBadge(label: String, prominent: Boolean) {
     Surface(
         shape = RoundedCornerShape(8.dp),
-        color = if (prominent) CarifeTertiaryFixed else CarifeSurfaceContainer,
+        color = if (prominent) CarifeTertiaryFixed else CarifeSurfaceContainerLow,
     ) {
         Text(
             text = label,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+            modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp),
             style = MaterialTheme.typography.labelSmall,
             fontWeight = FontWeight.SemiBold,
             color = if (prominent) CarifeOnTertiaryFixed else MaterialTheme.colorScheme.onSurfaceVariant,
@@ -285,10 +282,10 @@ internal fun FriendCta(
     onClick: () -> Unit,
 ) {
     val background = when {
-        !enabled -> CarifeSurfaceContainer
+        !enabled -> CarifeSurfaceContainerLow
         selected -> CarifeSecondaryContainer
         prominent -> CarifePrimary
-        else -> CarifeSurfaceContainer
+        else -> CarifeSurfaceContainerLow
     }
     val contentColor = when {
         !enabled -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
@@ -300,26 +297,28 @@ internal fun FriendCta(
     Surface(
         onClick = onClick,
         enabled = enabled,
-        shape = RoundedCornerShape(999.dp),
+        shape = RoundedCornerShape(12.dp),
         color = background,
         contentColor = contentColor,
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
+            modifier = Modifier.padding(horizontal = 13.dp, vertical = 9.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp),
         ) {
+            if (selected) {
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = null,
+                    tint = contentColor,
+                    modifier = Modifier.size(15.dp),
+                )
+            }
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Bold,
                 color = contentColor,
-            )
-            Icon(
-                imageVector = if (selected) Icons.Filled.Check else Icons.AutoMirrored.Filled.ArrowForward,
-                contentDescription = null,
-                tint = contentColor,
-                modifier = Modifier.size(16.dp),
             )
         }
     }
@@ -337,7 +336,7 @@ internal fun FriendMetaItem(meta: FriendMeta) {
             imageVector = meta.icon,
             contentDescription = null,
             tint = CarifeSecondary,
-            modifier = Modifier.size(14.dp),
+            modifier = Modifier.size(13.dp),
         )
         Text(
             text = meta.label,

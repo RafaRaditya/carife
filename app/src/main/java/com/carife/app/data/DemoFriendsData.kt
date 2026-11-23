@@ -155,7 +155,7 @@ object DemoFriendsData {
     val demoRooms: List<StudyRoom> = listOf(
         StudyRoom(
             id = "demo:room-dkv",
-            cafeNameHint = "Kopi",
+            cafeName = "Simetri Coffee Roasters",
             hostFriendId = "dinda",
             title = "Tugas Kelompok DKV",
             schedule = "Hari ini · 16.00",
