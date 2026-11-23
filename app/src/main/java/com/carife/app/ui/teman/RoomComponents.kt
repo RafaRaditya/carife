@@ -72,15 +72,12 @@ import com.carife.app.ui.components.CarifeChip
 import com.carife.app.ui.components.CarifeHairline
 import com.carife.app.ui.components.ProfileAvatar
 import com.carife.app.ui.theme.CarifeOnPrimary
-import com.carife.app.ui.theme.CarifeOnTertiaryFixed
 import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
-import com.carife.app.ui.theme.CarifeSurfaceContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLow
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
-import com.carife.app.ui.theme.CarifeTertiaryFixed
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
@@ -168,25 +165,19 @@ internal fun RoomCard(
             modifier = Modifier.padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Row(
-                verticalAlignment = Alignment.Top,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                    Text(
-                        text = room.title,
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                    Text(
-                        text = "Host: ${view.hostName} · ${room.schedule}",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-                RoomStatusBadge(view = view, joined = joined)
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(
+                    text = room.title,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = "Host: ${view.hostName} · ${room.schedule}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
 
             Row(
@@ -310,25 +301,6 @@ internal fun RoomCard(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun RoomStatusBadge(view: RoomView, joined: Boolean) {
-    val (label, background, contentColor) = when {
-        view.isHost -> Triple("Room saya", CarifeTertiaryFixed, CarifeOnTertiaryFixed)
-        joined -> Triple("Tergabung", CarifeSecondaryContainer, CarifeSecondary)
-        else -> Triple("Room teman", CarifeSurfaceContainer, MaterialTheme.colorScheme.onSurfaceVariant)
-    }
-    Surface(shape = RoundedCornerShape(7.dp), color = background) {
-        Text(
-            text = label,
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-            style = MaterialTheme.typography.labelSmall,
-            fontWeight = FontWeight.SemiBold,
-            color = contentColor,
-            maxLines = 1,
-        )
     }
 }
 

@@ -41,19 +41,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.carife.app.core.model.Cafe
-import com.carife.app.data.DemoFriendsData
 import com.carife.app.data.FriendPerson
 import com.carife.app.data.FriendSpotResolved
 import com.carife.app.domain.DistanceUtil
 import com.carife.app.ui.theme.CarifeOnPrimary
-import com.carife.app.ui.theme.CarifeOnTertiaryFixed
 import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSecondary
 import com.carife.app.ui.theme.CarifeSecondaryContainer
 import com.carife.app.ui.theme.CarifeSurfaceContainerLow
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
-import com.carife.app.ui.theme.CarifeTertiaryFixed
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -66,7 +63,6 @@ internal fun FriendSpotCard(
     val person = resolved.person
     val spot = resolved.spot
     val cafe = resolved.cafe
-    val badge = cafe?.let { DemoFriendsData.badgeLabel(spot, it) }
     val openCafe = cafe?.let { target ->
         Modifier
             .clickable(
@@ -135,9 +131,6 @@ internal fun FriendSpotCard(
                             )
                         }
                     }
-                }
-                badge?.let { label ->
-                    FriendBadge(label = label, prominent = spot.groupProject)
                 }
             }
 
@@ -240,23 +233,6 @@ internal fun NoteBubble(note: String) {
             style = MaterialTheme.typography.bodySmall,
             fontStyle = FontStyle.Italic,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-    }
-}
-
-@Composable
-internal fun FriendBadge(label: String, prominent: Boolean) {
-    Surface(
-        shape = RoundedCornerShape(8.dp),
-        color = if (prominent) CarifeTertiaryFixed else CarifeSurfaceContainerLow,
-    ) {
-        Text(
-            text = label,
-            modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp),
-            style = MaterialTheme.typography.labelSmall,
-            fontWeight = FontWeight.SemiBold,
-            color = if (prominent) CarifeOnTertiaryFixed else MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = 1,
         )
     }
 }

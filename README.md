@@ -1,39 +1,56 @@
 # Carife — Android MVP
 
-Aplikasi Android untuk mencari kafe tempat nugas. Seluruh layar inti mengikuti prototipe di folder induk.
+Aplikasi Android untuk menemukan kafe tempat nugas. Pengguna bisa mencari berdasarkan kebutuhan (Wi-Fi, colokan, suasana, zonasi rokok, harga, jarak), melihat detail, membandingkan kafe, dan mengatur rencana nugas bersama teman.
 
-Ada **dua varian build** dari satu proyek:
+Sekarang hanya ada **satu APK**:
 
-| Varian | Paket | Data kafe | Butuh internet? |
-| --- | --- | --- | --- |
-| `online` | `com.carife.app` | Overpass API langsung + cache | Ya, untuk memuat kota baru |
-| `offline` | `com.carife.app.offline` | **Snapshot OpenStreetMap di dalam APK** | **Tidak sama sekali** |
+| Item | Nilai |
+| --- | --- |
+| Nama aplikasi | Carife |
+| Package | `com.carife.app` |
+| Versi | 1.2 (versionCode 3) |
+| APK debug | `app/build/outputs/apk/debug/app-debug.apk` |
+| Internet | Opsional untuk katalog; tile peta OSM butuh internet |
 
-Keduanya memakai basis kode yang sama; yang berbeda hanya flag `BuildConfig.OFFLINE_ONLY` dan sumber data awal.
+Tidak ada lagi flavor `online`/`offline`. Snapshot katalog OpenStreetMap tetap dibundel di dalam APK yang sama, sehingga layar inti bisa dibuka tanpa koneksi. Jika di perangkat masih terpasang **Carife Offline** lama (`com.carife.app.offline`), uninstall aplikasi itu karena varian terpisah sudah dihapus.
 
 ## Status
 
-Build debug untuk kedua varian berjalan, **58 unit test lolos**, dan keduanya sudah diuji di emulator (Pixel 6a, API 37).
+- Build `assembleDebug` berhasil dan **89 unit test JVM** lulus di 15 kelas test.
+- Diuji di emulator Pixel 6a (API 37).
+- Peta memakai tile OpenStreetMap lewat osmdroid; tile yang sudah pernah dibuka tersimpan di cache. Tanpa internet, pin dan daftar kafe di layar peta tetap berfungsi.
 
-Varian offline diuji dengan **mode pesawat aktif**: Home memuat 95 kafe Bekasi (92 dari OSM + 3 hero demo), ganti kota ke Jakarta menampilkan 604 kafe, detail menampilkan jam `Mo-Su 07:00–21:00` dan website asli, pencarian "kopi" menyaring 604 → 103 hasil. Tidak ada satu pun request jaringan.
+## Fitur
 
-Peta penuh, section **Peta**, dan preview di Home memakai tile **OpenStreetMap** lewat osmdroid, jadi gambarnya butuh internet (tile yang sudah pernah dibuka tersimpan di cache). Tanpa koneksi, pin dan daftar kafe di layar peta tetap berfungsi.
+| Layar | Isi |
+| --- | --- |
+| Home | Masthead + pencarian, jumlah buka sekarang, peta OSM interaktif, kartu kafe unggulan, daftar kafe dengan foto dan aksi favorit/banding |
+| Peta / Jelajah | Pencarian, chip cepat, peta hasil, filter lengkap, sort Kecocokan/Terdekat/Termurah, compare tray |
+| Detail Kafe | Foto hero, ringkasan fakta, simulasi kepadatan, fasilitas, menu, ulasan, rute, favorit, banding, dan CTA utama **Buat room di kafe ini** |
+| Bandingkan | Matriks 2–3 kafe yang bisa digeser, sorotan Cocok Nugas/Paling Hemat, Saran Carife, rute cepat |
+| Teman | Satu feed berisi check-in, room nongkrong, dan aktivitas teman. Bisa gabung/keluar room, check-in dari room, dan membuat room dengan pencarian kafe + pemilih tanggal/jam |
+| Profil & Pengaturan | Profil lokal, statistik favorit/match/teman, preferensi nugas, avatar, kota utama |
+| Teman Saya | Daftar teman dan saran teman dengan pencarian |
 
-| Layar | Status | Catatan |
-| --- | --- | --- |
-| Home Discovery | Berfungsi | Kafe nyata per kota + data contoh lengkap, jumlah buka dihitung dari data, peta OSM interaktif, peta penuh, pemilih kota |
-| Explore & Filters | Berfungsi | Filter AND, sort, panel bottom sheet, peta OSM interaktif, empty state yang menjelaskan |
-| Cafe Detail | Berfungsi | Semua field OSM + simulasi kepadatan, menu, dan ulasan contoh |
-| Bandingkan | Berfungsi | Matriks 2–3 kafe digeser horizontal, sorotan Cocok Nugas & Paling Hemat |
-| Teman | Berfungsi | Konten demo berlabel, tautan ke kafe OSM nyata, form preferensi tersimpan |
+## Data & foto
 
-## Cakupan kota & data offline
+Identitas kafe berasal dari OpenStreetMap. Field yang OSM tidak menyediakan — harga, kecepatan Wi-Fi, jumlah colokan, rating, kepadatan, menu, dan ulasan — diisi lapisan demo di `data/demo/`.
+
+- `DemoProfiles` berisi kurasi manual untuk kafe yang tampil di prototipe.
+- `DemoDataGenerator` mengisi angka deterministik dari `id` kafe untuk kafe lainnya, sehingga nilainya stabil saat aplikasi dibuka ulang.
+- Tiga kafe hero yang tidak ada di OSM ditambahkan sebagai entri demo di koordinat asli area Bekasi: Kopitagram Galaxy Bekasi, Koma Junkyard Bekasi Timur, dan Titik Temu Galaxy Bekasi.
+- Overlay dipanggil di `CafeRepository.load` dan `refresh` lewat `DemoDataOverlay.apply()`.
+- Layar Detail menandai menu/ulasan sebagai contoh dan kepadatan sebagai simulasi. Header Teman juga menyebut konten demo. Kartu kafe tidak memakai badge khusus.
+
+Foto suasana adalah **9 gambar contoh dari prototipe** yang dibundel di `app/src/main/assets/photos/`. `DemoCafePhotos` memetakan foto kurasi ke kafe demo dan memilih foto contoh secara deterministik untuk kafe lain. Foto ini ilustrasi suasana, bukan verifikasi foto resmi tiap kafe.
+
+## Cakupan kota & snapshot offline
 
 13 kota: Bekasi, Jakarta, Depok, Tangerang, Tangerang Selatan, Bogor, Bandung, Semarang, Yogyakarta, Surabaya, Malang, Medan, Makassar.
 
-Snapshot offline ada di `app/src/main/assets/offline/<cityId>.json` (~3.100 kafe, 835 KB), diambil sekali dari Overpass saat menyiapkan proyek. Isinya kafe **nyata**, bukan data karangan. Karena itu `BundledCatalogAssetsTest` ikut memvalidasi berkas ini setiap kali test dijalankan.
+Snapshot ada di `app/src/main/assets/offline/<cityId>.json` (sekitar 3.100 kafe), diambil sekali dari Overpass saat menyiapkan proyek. Isinya kafe nyata, bukan data karangan. `BundledCatalogAssetsTest` memvalidasi berkas snapshot setiap kali test dijalankan.
 
-Untuk memperbarui snapshot (misal setahun kemudian):
+Untuk memperbarui snapshot:
 
 ```powershell
 $d = "app\src\main\assets\offline"
@@ -44,78 +61,53 @@ curl.exe -s --max-time 150 -A "Carife/1.0" --data-binary "@$env:TEMP\q.txt" -o "
 
 Koordinat dan radius tiap kota ada di `app/src/main/assets/cities.json`.
 
-## Catatan penting soal data
-
-**Identitas kafe dari OpenStreetMap; angka kelengkapannya data contoh.**
-
-Dari OSM diambil apa adanya: nama, koordinat, alamat, jam operasional, website, dan fasilitas yang memang tercatat. OSM **tidak menyediakan** harga, kecepatan Wi-Fi (Mbps), jumlah colokan, rating, kepadatan, menu, atau ulasan — jadi field itu diisi lapisan demo (`data/demo/`) dan **selalu diberi badge "Contoh"** di kartu, detail, dan tabel banding.
-
-Dua sumber data contoh:
-
-| Sumber | Isi |
-| --- | --- |
-| `DemoProfiles` | Kurasi manual untuk kafe yang tampil di prototipe. Angkanya mengikuti video: Kopitagram 50 Mbps / Rp22–45rb / 4.8 (330 ulasan) / kepadatan SEDANG 45%. Simetri 75 Mbps sesuai spesifikasi. |
-| `DemoDataGenerator` | Angka deterministik dari `id` kafe untuk sisanya, supaya semua kartu terlihat lengkap dan nilainya tidak berubah saat aplikasi dibuka ulang. |
-
-**Tiga kafe hero tidak ada di OSM**, jadi ditambahkan sebagai entri demo di koordinat asli area Bekasi: `Kopitagram Galaxy Bekasi`, `Koma Junkyard Bekasi Timur`, `Titik Temu Galaxy Bekasi`. Semuanya `isDemoData = true` dan hanya muncul untuk kota `bekasi`.
-
-Konsekuensinya:
-
-- Filter harga, Wi-Fi, colokan, kepadatan, dan suasana **berfungsi penuh** (sebelumnya chip ini disabled karena field OSM kosong).
-- Matriks perbandingan terisi, bukan "Belum ada data" di semua baris.
-- Jarak tetap dihitung haversine dari koordinat nyata, bukan angka tabel spesifikasi.
-- Alamat yang tidak ada di OSM tetap tampil "Belum ada data" — overlay tidak mengarang alamat.
-
-Kalau nanti ingin kembali ke data murni OSM, cukup lewati `DemoDataOverlay.apply()` di `CafeRepository.decorate()`; badge "Contoh" otomatis hilang karena bergantung pada `cafe.isDemoData`.
-
 ## Build & jalankan
 
 ```powershell
-$env:JAVA_HOME="C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot"
+# opsional: arahkan ke JDK yang dipakai Android Studio
+# $env:JAVA_HOME="C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot"
 
-# varian online
-.\gradlew.bat assembleOnlineDebug
-# varian offline
-.\gradlew.bat assembleOfflineDebug
-
-# test kedua varian
-.\gradlew.bat testOnlineDebugUnitTest testOfflineDebugUnitTest
+.\gradlew.bat assembleDebug
+.\gradlew.bat testDebugUnitTest
 ```
 
-APK:
+APK tunggal:
 
-- `app/build/outputs/apk/online/debug/app-online-debug.apk` → `com.carife.app`
-- `app/build/outputs/apk/offline/debug/app-offline-debug.apk` → `com.carife.app.offline`
+```text
+app/build/outputs/apk/debug/app-debug.apk
+```
+
+Install dan buka:
 
 ```powershell
-adb install -r .\app\build\outputs\apk\offline\debug\app-offline-debug.apk
-adb shell am start -n com.carife.app.offline/com.carife.app.MainActivity
+adb install -r .\app\build\outputs\apk\debug\app-debug.apk
+adb shell am start -n com.carife.app/.MainActivity
 ```
-
-Kedua varian bisa terpasang bersamaan karena package ID-nya berbeda.
 
 `local.properties` berisi `sdk.dir` dan tidak di-commit.
 
 ## Versi tooling
 
-Gradle 8.13 · AGP 8.13.0 · Kotlin 2.1.20 · Compose BOM 2025.06.01 · `compileSdk 36` · `minSdk 26` · JDK 17 target (jalan di JDK 21).
+Gradle 8.13 · AGP 8.13.0 · Kotlin 2.1.20 · Compose BOM 2025.06.01 · `compileSdk 36` · `targetSdk 36` · `minSdk 26` · JDK 17 target (jalan di JDK 21).
 
 ## Struktur
 
-- `core/model` — `Cafe`, `City`, `UserPreferences`, `ExploreFilters`, `DemoTypes`
+- `core/model` — `Cafe`, `City`, `UserPreferences`, `ExploreFilters`, `SocialModels`, `DemoTypes`
 - `data/remote` — `OverpassClient`, `OverpassQuery`, `OsmCafeMapper`
-- `data/local` — `BundledCatalog` (snapshot offline di assets), `CafeCache` (TTL 30 menit), `PreferencesStore` (DataStore)
-- `data/demo` — `DemoProfiles` (kurasi + kafe hero), `DemoDataGenerator` (angka deterministik), `DemoDataOverlay` (titik suntik)
-- `data` — `CafeRepository` (offline-first: bundel → cache → jaringan opsional), `CityRepository`
-- `domain` — `FilterEngine`, `MatchScorer`, `OpeningHours`, `DistanceUtil`, `CompareAdvisor`, `ShareTextBuilder`
-- `ui` — tema, komponen (termasuk `OsmMapView`), dan lima layar + `CarifeRoot` (navigasi)
+- `data/local` — `BundledCatalog` (snapshot di assets), `CafeCache` (TTL 30 menit), `PreferencesStore` (DataStore), `ProfilePhotoStore`
+- `data/demo` — `DemoProfiles`, `DemoDataGenerator`, `DemoDataOverlay`, `DemoCafePhotos`
+- `data` — `CafeRepository` (bundel → cache → jaringan opsional), `CityRepository`, `DemoFriendsData`
+- `domain` — `FilterEngine`, `MatchScorer`, `OpeningHours`, `DistanceUtil`, `CompareAdvisor`, `ShareTextBuilder`, `SocialRules`
+- `ui/theme` — warna, tipografi Plus Jakarta Sans, shape
+- `ui/components` — `CafeCard`, `CafeMapCard`, `CafePhotoPlaceholder`, `CafePicker`, `CarifeSearchField`, `FilterPanel`, `FullMapDialog`, komponen primitif
+- `ui` — `CarifeRoot`, `CarifeViewModel`, layar Home, Explore, Detail, Compare, Teman, Profile; `ui/teman` untuk room, aktivitas, dan dialog room
 
 ## Test
 
-58 unit test JVM di `app/src/test/`:
+89 unit test JVM di `app/src/test/`:
 
 ```powershell
-.\gradlew.bat test
+.\gradlew.bat testDebugUnitTest
 ```
 
-Mencakup aturan filter (termasuk Wi-Fi ketat, suasana, colokan, dan batas harga), skor match deterministik, parser jam operasional (`24/7`, rentang lewat tengah malam, format tak dikenal), pemilihan "Paling Hemat", pemetaan tag Overpass termasuk dedupe, validasi 13 berkas snapshot offline, dan checklist penerimaan §7 pada katalog Bekasi berlapis data demo.
+Mencakup aturan filter (termasuk Wi-Fi ketat, radius dekat/sedang/jauh, suasana, colokan, dan batas harga), skor match deterministik, parser jam operasional (`24/7`, rentang lewat tengah malam, format tak dikenal), pemilihan “Paling Hemat”, pemetaan tag Overpass termasuk dedupe, validasi snapshot 13 kota, aturan sosial/room, dan checklist penerimaan katalog Bekasi berlapis data demo.
