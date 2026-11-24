@@ -41,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -49,6 +50,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.carife.app.BuildConfig
+import com.carife.app.R
 import com.carife.app.core.model.Amenity
 import com.carife.app.core.model.ExploreFilters
 import com.carife.app.core.model.NoiseLevel
@@ -362,11 +364,10 @@ private fun HomeMasthead(
                         .background(CarifePrimaryFixed),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.LocalCafe,
+                    androidx.compose.foundation.Image(
+                        painter = painterResource(R.drawable.logo_carife),
                         contentDescription = null,
-                        tint = CarifePrimary,
-                        modifier = Modifier.size(18.dp),
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
                 Column {
