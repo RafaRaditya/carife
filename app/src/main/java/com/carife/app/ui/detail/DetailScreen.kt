@@ -514,6 +514,7 @@ private fun CafeHero(
             iconSize = 44.dp,
             showLabel = true,
             photoAsset = DemoCafePhotos.assetFor(cafe),
+            photoUrl = cafe.photoUrl,
         )
         Row(
             modifier = Modifier

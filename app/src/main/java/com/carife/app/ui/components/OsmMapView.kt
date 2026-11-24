@@ -16,6 +16,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.carife.app.R
 import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.City
+import com.carife.app.location.LocationProvider
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
@@ -31,6 +32,7 @@ fun OsmMapView(
     onOpenCafe: (String) -> Unit,
     modifier: Modifier = Modifier,
     maxMarkers: Int = 120,
+    userLocation: LocationProvider.UserLocation? = null,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -67,7 +69,7 @@ fun OsmMapView(
         }
     }
 
-    LaunchedEffect(city, cafes, maxMarkers) {
+    LaunchedEffect(city, cafes, maxMarkers, userLocation) {
         mapView.overlays.removeAll { it is Marker }
 
         val visible = cafes.take(maxMarkers)
@@ -85,7 +87,17 @@ fun OsmMapView(
             mapView.overlays.add(marker)
         }
 
-        val (center, zoom) = cameraFor(city, visible)
+        if (userLocation != null) {
+            val userMarker = Marker(mapView).apply {
+                position = GeoPoint(userLocation.lat, userLocation.lon)
+                setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                title = "Lokasi saya"
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_map_pin)
+            }
+            mapView.overlays.add(userMarker)
+        }
+
+        val (center, zoom) = cameraFor(city, visible, userLocation)
         mapView.controller.setCenter(center)
         mapView.controller.setZoom(zoom)
         mapView.invalidate()
@@ -97,7 +109,14 @@ fun OsmMapView(
     )
 }
 
-private fun cameraFor(city: City, cafes: List<Cafe>): Pair<GeoPoint, Double> {
+private fun cameraFor(
+    city: City,
+    cafes: List<Cafe>,
+    userLocation: LocationProvider.UserLocation?,
+): Pair<GeoPoint, Double> {
+    if (userLocation != null) {
+        return GeoPoint(userLocation.lat, userLocation.lon) to 15.5
+    }
     if (cafes.isEmpty()) return GeoPoint(city.lat, city.lon) to 12.5
 
     var minLat = cafes.first().lat

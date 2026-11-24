@@ -48,6 +48,12 @@ object OsmCafeMapper {
                 if (houseNumber != null) append(" No. ").append(houseNumber)
             }
         }.ifBlank { null }
+        val phone = tags.text("phone") ?: tags.text("contact:phone")
+        val cuisine = tags.text("cuisine")?.split(';')
+            ?.map { it.trim().replaceFirstChar { char -> char.titlecase() } }
+            ?.filter { it.isNotBlank() }
+            ?.joinToString(", ")
+        val photoUrl = realPhotoUrl(tags)
 
         val amenities = buildSet {
             val internet = tags.text("internet_access")
@@ -72,6 +78,9 @@ object OsmCafeMapper {
             address = address,
             lat = lat,
             lon = lon,
+            phone = phone,
+            cuisine = cuisine,
+            photoUrl = photoUrl,
             amenities = amenities,
             smokingZone = smokingZone,
             openingHoursRaw = tags.text("opening_hours"),
@@ -96,4 +105,25 @@ object OsmCafeMapper {
 
     private fun JsonObject.double(key: String): Double? =
         (this[key] as? JsonElement)?.let { runCatching { it.jsonPrimitive.content.toDouble() }.getOrNull() }
+
+    private fun realPhotoUrl(tags: JsonObject): String? {
+        val image = tags.text("image")?.trim()
+        if (!image.isNullOrBlank()) {
+            if (image.startsWith("http://") || image.startsWith("https://")) return image
+        }
+
+        val commons = tags.text("wikimedia_commons")?.trim()
+        if (!commons.isNullOrBlank()) {
+            val fileName = commons
+                .removePrefix("https://commons.wikimedia.org/wiki/")
+                .removePrefix("File:")
+                .removePrefix("file:")
+                .trim()
+                .takeIf { it.isNotBlank() }
+                ?: return null
+            val encoded = java.net.URLEncoder.encode(fileName, "UTF-8").replace("+", "%20")
+            return "https://commons.wikimedia.org/wiki/Special:Redirect/file/$encoded?width=1280"
+        }
+        return null
+    }
 }

@@ -174,6 +174,7 @@ fun HomeScreen(
                     onOpenFullMap = { showFullMap = true },
                     modifier = Modifier.padding(horizontal = 20.dp),
                     maxMarkers = 20,
+                    userLocation = appState.userLocation,
                 )
             }
 
@@ -327,6 +328,7 @@ fun HomeScreen(
                 onOpenCafe(cafeId)
             },
             onDismiss = { showFullMap = false },
+            userLocation = appState.userLocation,
         )
     }
 }

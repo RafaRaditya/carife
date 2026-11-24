@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.City
+import com.carife.app.location.LocationProvider
 import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
@@ -38,6 +39,7 @@ fun CafeMapCard(
     modifier: Modifier = Modifier,
     height: Dp = 168.dp,
     maxMarkers: Int = 20,
+    userLocation: LocationProvider.UserLocation? = null,
 ) {
     val pinCount = minOf(maxMarkers, cafes.size)
     val supporting = if (cafes.size > maxMarkers) {
@@ -99,6 +101,7 @@ fun CafeMapCard(
                     onOpenCafe = onOpenCafe,
                     maxMarkers = maxMarkers,
                     modifier = Modifier.fillMaxSize(),
+                    userLocation = userLocation,
                 )
             }
         }

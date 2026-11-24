@@ -33,6 +33,7 @@ import com.carife.app.ui.theme.CarifeOutlineVariant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlin.math.abs
+import java.net.URL
 
 private data class PhotoTone(val background: Color, val ink: Color)
 
@@ -51,14 +52,16 @@ fun CafePhotoPlaceholder(
     iconSize: Dp = 22.dp,
     showLabel: Boolean = false,
     photoAsset: String? = null,
+    photoUrl: String? = null,
 ) {
     val context = LocalContext.current
     val tone = photoTones[abs(seed.hashCode()) % photoTones.size]
     val shape = RoundedCornerShape(cornerRadius)
 
-    val bitmap by produceState<Bitmap?>(initialValue = null, photoAsset) {
-        value = photoAsset?.let { asset ->
-            withContext(Dispatchers.IO) { CafePhotoCache.load(context, asset) }
+    val bitmap by produceState<Bitmap?>(initialValue = null, photoAsset, photoUrl) {
+        value = withContext(Dispatchers.IO) {
+            photoUrl?.let { CafePhotoCache.loadUrl(it) }
+                ?: photoAsset?.let { CafePhotoCache.loadAsset(context, it) }
         }
     }
     val image = bitmap
@@ -105,7 +108,7 @@ private object CafePhotoCache {
 
     private val cache = mutableMapOf<String, Bitmap?>()
 
-    fun load(context: Context, asset: String): Bitmap? = synchronized(cache) {
+    fun loadAsset(context: Context, asset: String): Bitmap? = synchronized(cache) {
         if (cache.containsKey(asset)) {
             return cache[asset]
         }
@@ -123,6 +126,32 @@ private object CafePhotoCache {
         }.getOrNull()
 
         cache[asset] = bitmap
+        bitmap
+    }
+
+    fun loadUrl(url: String): Bitmap? = synchronized(cache) {
+        val key = "url:$url"
+        if (cache.containsKey(key)) return cache[key]
+
+        val bitmap = runCatching {
+            val connection = URL(url).openConnection().apply {
+                connectTimeout = 10_000
+                readTimeout = 15_000
+                setRequestProperty("User-Agent", "Carife/1.0 (Android)")
+            }
+            connection.getInputStream().use { stream ->
+                val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+                val bytes = stream.readBytes()
+                BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
+
+                var sample = 1
+                while (bounds.outWidth / sample > MAX_WIDTH) sample *= 2
+                val options = BitmapFactory.Options().apply { inSampleSize = sample }
+                BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
+            }
+        }.getOrNull()
+
+        cache[key] = bitmap
         bitmap
     }
 

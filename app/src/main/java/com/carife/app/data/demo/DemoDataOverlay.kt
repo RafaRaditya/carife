@@ -6,8 +6,8 @@ import com.carife.app.core.model.Cafe
  * Menempelkan data contoh di atas katalog OpenStreetMap.
  *
  * Nama, alamat, koordinat, jam, dan fasilitas dari OSM dibiarkan apa adanya.
- * Hanya field yang OSM tidak sediakan yang diisi dari profil kurasi atau
- * generator deterministik, lalu kafe ditandai sebagai data demo.
+ * Field yang tidak disediakan OSM diisi dari profil kurasi atau generator
+ * deterministik, lalu kafe ditandai sebagai data demo.
  */
 object DemoDataOverlay {
 

@@ -32,6 +32,7 @@ import com.carife.app.core.model.Cafe
 import com.carife.app.core.model.City
 import com.carife.app.data.demo.DemoCafePhotos
 import com.carife.app.domain.DistanceUtil
+import com.carife.app.location.LocationProvider
 import com.carife.app.ui.theme.CarifeOutlineVariant
 import com.carife.app.ui.theme.CarifePrimary
 import com.carife.app.ui.theme.CarifeSurfaceContainerLowest
@@ -42,6 +43,7 @@ fun FullMapDialog(
     cafes: List<Cafe>,
     onOpenCafe: (String) -> Unit,
     onDismiss: () -> Unit,
+    userLocation: LocationProvider.UserLocation? = null,
 ) {
     val markerCount = minOf(MAX_MARKERS, cafes.size)
 
@@ -91,6 +93,7 @@ fun FullMapDialog(
                         .weight(1.1f)
                         .padding(horizontal = 16.dp)
                         .clip(RoundedCornerShape(18.dp)),
+                    userLocation = userLocation,
                 )
 
                 Text(

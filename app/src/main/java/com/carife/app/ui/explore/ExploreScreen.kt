@@ -208,6 +208,7 @@ fun ExploreScreen(
                             modifier = Modifier.padding(horizontal = 20.dp),
                             height = 176.dp,
                             maxMarkers = 30,
+                            userLocation = appState.userLocation,
                         )
                     }
                 }
@@ -403,6 +404,7 @@ fun ExploreScreen(
                 onOpenCafe(cafeId)
             },
             onDismiss = { showFullMap = false },
+            userLocation = appState.userLocation,
         )
     }
 }
